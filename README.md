@@ -39,3 +39,4 @@ pkg install git tsu -y
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
 cd Root_Regers
 chmod +x main.sh modules/*.sh
+./main.sh
