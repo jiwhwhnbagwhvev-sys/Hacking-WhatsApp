@@ -30,6 +30,10 @@ Tool ini membutuhkan akses ROOT. Gunakan dengan bijak. Risiko ditanggung penggun
 - Logcat Monitor
 - Kernel Info
 - Backup Aplikasi
+
+# Katasandi server kode
+USERNAME= Rio2026
+PASSWORD= Root_Rage 2026
   
 # Cara jalanin modules biar berfungsi fitur nya
 salin semua kode ini paste ke termux
