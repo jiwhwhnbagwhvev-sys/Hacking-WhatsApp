@@ -1,10 +1,12 @@
-#!/bin/bash
-clear
-echo "[*] GPU BOOST"
-su -c "
-for g in /sys/class/kgsl/kgsl-3d0/devfreq/governor; do
- echo performance > \$g
-done
-"
-echo "[✓] GPU performance enabled"
-read; bash main.sh
+#!/data/data/com.termux/files/usr/bin/bash
+. ./modules/_common.sh
+
+MODUL="GPU Boost"
+echo "[*] Menjalankan $MODUL"
+loading
+
+need_root
+tsu -c 'for f in /sys/class/kgsl/kgsl-3d0/*freq*; do cat $f 2>/dev/null; done'
+echo "[i] GPU boost tergantung kernel"
+
+back
