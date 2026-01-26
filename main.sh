@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-bash modules/login.sh || exit 1
+bash ./login.sh || exit 1
 
 RED="\e[1;31m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
 
