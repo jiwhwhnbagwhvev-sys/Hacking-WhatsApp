@@ -5,93 +5,91 @@
 
 MODULE_NAME="BATTERY SAVER"
 LOG="/data/local/tmp/root_ragers.log"
-R="\e[0m"
-G="\e[1;32m"
-Y="\e[1;33m"
-RED="\e[1;31m"
-C="\e[1;36m"
-B="\e[1m"
+R="\e[0m"; G="\e[1;32m"; Y="\e[1;33m"; RED="\e[1;31m"; C="\e[1;36m"; B="\e[1m"
 
-pause() { read -rp "Tekan ENTER untuk kembali..."; }
+pause() { read -rp "Tekan ENTER untuk kembali ke menu..."; }
 log() { echo "[$(date '+%F %T')] $MODULE_NAME : $1" >> "$LOG"; }
 
 header() {
-clear
-echo -e "${C}${B}"
-echo "╔══════════════════════════════════════╗"
-echo "║          BATTERY SAVER MODULE        ║"
-echo "╚══════════════════════════════════════╝"
-echo -e "${R}"
+    clear
+    echo -e "${C}${B}"
+    echo "╔══════════════════════════════════════╗"
+    echo "║           BATTERY SAVER MODULE       ║"
+    echo "╚══════════════════════════════════════╝"
+    echo -e "${R}"
 }
 
-progress() {
-echo -ne "${Y}Mengoptimasi baterai"
-for i in $(seq 1 30); do
-  echo -ne "."
-  sleep 0.05
-done
-echo -e "${R}"
+progress_bar() {
+    local text="$1"
+    echo -ne "${Y}$text"
+    for i in $(seq 1 40); do
+        echo -ne "."
+        sleep 0.05
+    done
+    echo -e "${R}"
 }
 
-check_battery() {
-BATTERY_LEVEL=$(dumpsys battery | grep level | awk '{print $2}')
-BATTERY_STATUS=$(dumpsys battery | grep status | awk '{print $2}')
-TEMP=$(dumpsys battery | grep temperature | awk '{print $2}')
-echo -e "${Y}[*] Status baterai: level=$BATTERY_LEVEL%, status=$BATTERY_STATUS, suhu=$(($TEMP/10))°C${R}"
-log "Battery level=$BATTERY_LEVEL%, status=$BATTERY_STATUS, temp=$(($TEMP/10))°C"
+check_root() {
+    if command -v su >/dev/null 2>&1; then
+        echo -e "${G}[✓] ROOT TERDETEKSI — Bisa tweak battery${R}"
+        log "ROOT OK"
+    else
+        echo -e "${Y}[!] ROOT TIDAK TERDETEKSI — Battery saver terbatas${R}"
+        log "ROOT NOT DETECTED"
+    fi
 }
 
 optimize_battery() {
-echo -e "${Y}[*] Mengoptimasi sistem untuk menghemat baterai...${R}"
-# CPU throttling / governor
-if [ -f /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ]; then
-  for CPU in /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq; do
-    su -c "echo 800000 > $CPU" 2>/dev/null
-  done
-  echo -e "${G}[✓] CPU maksimum dibatasi untuk hemat daya${R}"
-  log "CPU throttling applied"
-fi
+    echo -e "${Y}[*] Menonaktifkan wakelock dan background services...${R}"
+    sleep 0.3
 
-# Matikan background app (simple)
-APPS=($(pm list packages -3 | cut -d: -f2))
-for APP in "${APPS[@]}"; do
-  su -c "pm disable-user --user 0 $APP" >/dev/null 2>&1
-done
-echo -e "${G}[✓] Background apps dimatikan sementara${R}"
-log "Background apps disabled"
+    # Contoh tweak: hentikan beberapa service intensif (simulasi)
+    SERVICES=("com.android.sync" "com.google.android.gms" "com.android.updater")
+    for S in "${SERVICES[@]}"; do
+        su -c "am stopservice $S" >/dev/null 2>&1
+        log "Service $S dihentikan"
+    done
 
-# Network tweak (mode hemat)
-su -c "svc wifi disable" >/dev/null 2>&1
-su -c "svc data disable" >/dev/null 2>&1
-echo -e "${G}[✓] Network services dimatikan sementara${R}"
-log "Network disabled"
+    # Matikan beberapa animasi (simulasi)
+    su -c "settings put global window_animation_scale 0.0" >/dev/null 2>&1
+    su -c "settings put global transition_animation_scale 0.0" >/dev/null 2>&1
+    su -c "settings put global animator_duration_scale 0.0" >/dev/null 2>&1
+    log "Animation scale dimatikan"
+
+    echo -e "${G}[✓] Optimasi Battery selesai${R}"
 }
 
 auto_test() {
-echo -e "${C}${B}"
-echo "╔══════════════════════════════════════╗"
-echo "║          AUTO TEST BATTERY           ║"
-echo "╚══════════════════════════════════════╝"
-echo -e "${R}"
+    echo -e "${C}${B}"
+    echo "╔══════════════════════════════════════╗"
+    echo "║          AUTO TEST BATTERY           ║"
+    echo "╚══════════════════════════════════════╝"
+    echo -e "${R}"
+    sleep 0.3
 
-# Test ringan: cek CPU, apps, network
-CPU_TEST=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2>/dev/null)
-if [ -n "$CPU_TEST" ]; then
-  echo -e "${G}[✓] AUTO TEST SUCCESS — CPU throttling OK${R}"
-else
-  echo -e "${RED}[✗] AUTO TEST FAILED — CPU throttling gagal${R}"
-fi
-pause
+    # Cek animation scale
+    WIN=$(su -c "settings get global window_animation_scale")
+    TRANS=$(su -c "settings get global transition_animation_scale")
+    ANIM=$(su -c "settings get global animator_duration_scale")
+
+    if [[ "$WIN" == "0.0" && "$TRANS" == "0.0" && "$ANIM" == "0.0" ]]; then
+        echo -e "${G}[✓] AUTO TEST SUCCESS — Animation scale dimatikan${R}"
+        log "AUTO TEST OK: Animation scales set to 0.0"
+    else
+        echo -e "${RED}[✗] AUTO TEST FAILED — Animation scale tidak berubah${R}"
+        log "AUTO TEST FAILED: Animation scales not set"
+    fi
+    sleep 0.3
 }
 
 main() {
-header
-check_battery
-progress
-optimize_battery
-progress
-auto_test
-pause
+    header
+    check_root
+    progress_bar "Menjalankan Optimasi Battery"
+    optimize_battery
+    progress_bar "Menjalankan Auto Test"
+    auto_test
+    pause
 }
 
 main
