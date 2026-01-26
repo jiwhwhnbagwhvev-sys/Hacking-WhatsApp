@@ -2,6 +2,20 @@
 
 bash ./login.sh || exit 1
 
+loading() {
+clear
+text="LOGIN SUCCESS — WELCOME Rio2026"
+colors=(31 32 33 34 35 36)
+for i in {1..3}; do
+  for c in "${colors[@]}"; do
+    echo -ne "\033[${c}m$text\033[0m\r"
+    sleep 0.15
+  done
+done
+echo
+sleep 0.5
+}
+
 RED="\e[1;31m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
 
 logo() {
