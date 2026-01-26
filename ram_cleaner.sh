@@ -1,41 +1,97 @@
-#!/data/data/com.termux/files/usr/bin/bash
-. ./modules/_common.sh
+#!/system/bin/sh
+# ==========================================
+# RAM CLEANER MODULE — ROOT_RAGERS
+# ==========================================
 
-header "RAM CLEANER & MEMORY CONTROL"
+MODULE_NAME="RAM CLEANER"
+LOG="/data/local/tmp/root_ragers.log"
+TEST_MODE=1
 
-need_root || exit
+# ---------- COLOR ----------
+R="\e[0m"
+G="\e[1;32m"
+Y="\e[1;33m"
+RED="\e[1;31m"
+C="\e[1;36m"
+B="\e[1m"
 
-echo "[*] Status RAM sebelum pembersihan:"
+pause() { read -rp "Tekan ENTER untuk kembali..."; }
+log() { echo "[$(date '+%F %T')] $MODULE_NAME : $1" >> "$LOG"; }
+
+header() {
+clear
+echo -e "${C}${B}"
+echo "╔══════════════════════════════════════╗"
+echo "║           RAM CLEANER MODULE         ║"
+echo "╚══════════════════════════════════════╝"
+echo -e "${R}"
+}
+
+progress() {
+echo -ne "${Y}Membersihkan RAM"
+for i in $(seq 1 30); do
+  echo -ne "."
+  sleep 0.05
+done
+echo -e "${R}"
+}
+
+check_root() {
+if ! su -c "id" >/dev/null 2>&1; then
+  echo -e "${RED}[✗] ROOT TIDAK TERDETEKSI${R}"
+  log "ROOT FAILED"
+  exit 1
+fi
+echo -e "${G}[✓] ROOT TERDETEKSI${R}"
+log "ROOT OK"
+}
+
+show_ram() {
+echo -e "${Y}[*] RAM STATUS:${R}"
 free -h
-line
+}
 
-echo "Pilih metode pembersihan:"
-echo "1. Drop page cache"
-echo "2. Drop dentries & inode"
-echo "3. Drop ALL cache (recommended)"
-echo "0. Batal"
-read -p "Pilihan: " opt
+clean_ram() {
+echo -e "${Y}[*] Flush cache dan drop caches...${R}"
+su -c "sync"
+su -c "echo 3 > /proc/sys/vm/drop_caches" 2>/dev/null
+}
 
-case $opt in
-  1) DROP=1 ;;
-  2) DROP=2 ;;
-  3) DROP=3 ;;
-  0) pause; exit ;;
-  *) echo "[!] Pilihan tidak valid"; pause; exit ;;
-esac
+auto_test() {
+[ "$TEST_MODE" != "1" ] && return
+echo -e "${C}${B}"
+echo "╔══════════════════════════════════════╗"
+echo "║           AUTO TEST RAM             ║"
+echo "╚══════════════════════════════════════╝"
+echo -e "${R}"
 
-echo
-echo "[*] Sinkronisasi filesystem..."
-$ROOTCMD -c sync & spinner
+BEFORE=$(free -m | grep Mem | awk '{print $4}')
+echo " RAM free sebelum : ${BEFORE}MB"
+sleep 1
+clean_ram
+sleep 1
+AFTER=$(free -m | grep Mem | awk '{print $4}')
+echo " RAM free setelah : ${AFTER}MB"
 
-echo "[*] Menjalankan drop_caches = $DROP"
-$ROOTCMD -c "echo $DROP > /proc/sys/vm/drop_caches"
+if [ "$AFTER" -gt "$BEFORE" ]; then
+  echo -e "${G}[✓] RAM CLEAN SUCCESS${R}"
+  log "RAM CLEAN SUCCESS"
+else
+  echo -e "${Y}[!] RAM CLEAN TIDAK BERUBAH${R}"
+  log "RAM CLEAN NO CHANGE"
+fi
+}
 
-sleep 0.5
-line
-echo "[*] Status RAM setelah pembersihan:"
-free -h
-
-line
-echo -e "${GRN}[✓] RAM CLEANER SELESAI — MODE $DROP${RST}"
+main() {
+header
+check_root
+show_ram
+progress
+clean_ram
+progress
+show_ram
+auto_test
 pause
+}
+
+main
