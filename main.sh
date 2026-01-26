@@ -2,17 +2,6 @@
 
 bash modules/login.sh || exit 1
 
-clear
-echo "MASUK MENU ROOT RAGERS"
-echo "1. Root Check"
-echo "0. Exit"
-read -p "Pilih: " p
-
-case $p in
-  1) bash modules/root_check.sh ;;
-  0) exit ;;
-esac
-
 RED="\e[1;31m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
 
 logo() {
