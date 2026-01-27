@@ -15,6 +15,16 @@ Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang s
 ## ⚠️ Peringatan
 Tool ini membutuhkan akses ROOT. Gunakan dengan bijak. Risiko ditanggung pengguna.
 
+# Cara jalanin WiFi Intruder Scanne
+salin kode termux ini biar wifi nya aktif dan bisa jalanin halaman fitur menu ini 
+```
+ip route
+pkg install iproute2 iputils -y
+```
+# cek terlebih dahulu pake kode
+ip route dan harus ada imput ini
+- default via 192.168.1.1 dev wlan0
+
 ## ✨ Fitur
 - Root Check
 - System Information
@@ -49,7 +59,8 @@ salin semua kode ini paste ke termux
 ```
 pwd
 ls
-rm -rf modules
+r
+m -rf modules
 mkdir modules
 ls modules
 mv \
