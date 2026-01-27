@@ -47,7 +47,7 @@ echo -e "${WHT}
 6 GPU Boost         14 SELinux Status   22 Kernel Info
 7 RAM Cleaner       15 SELinux Perm     23 Backup Apps
 8 Disable Thermal   16 Basic Root Hide  24 Network Speed & IP Check   
-25 WiFi Intruder Scanner               
+25 WiFi Intruder Scanner   28 LED BLE Control Center            
 26 Auto Spam Block Guard
 27 HP Security Guard
 0 Exit.          
@@ -88,6 +88,7 @@ while true; do
         25) bash modules/wifi_intruder_scan.sh ;;
         26) bash modules/auto_spam_block_guard.sh ;;
         27) bash modules/hp_security_guard.sh ;;
+        28) bash modules/led_ble_control.sh ;;
         0)  echo "[✓] Keluar..."; exit ;;
         *)  echo "[!] Pilihan salah"; sleep 1 ;;
     esac
