@@ -52,7 +52,7 @@ echo -e "${WHT}
 27 HP Security Guard.      30 network sistem ai launcher
 31 DNS Benchmark.          32 Command AI System
 33 Smart System Monitor.   34 Security Watch System
-35 Local Web Lab
+35 Local Web Lab.          36 DARK CODING LAB
 0 Exit
 ${R}"
 }
@@ -99,6 +99,7 @@ while true; do
         33) bash modules/smart_monitor.sh ;;
         34) bash modules/security_watch.sh ;;
         35) bash modules/web_lab.sh ;;
+        36) bash modules/coding_dark_lab.sh ;;
         0)  echo "[✓] Keluar..."; exit ;;
         *)  echo "[!] Pilihan salah"; sleep 1 ;;
     esac
