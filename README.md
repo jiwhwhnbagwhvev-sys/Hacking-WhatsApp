@@ -49,6 +49,7 @@ ip route dan harus ada imput ini
 - Backup Aplikasi
 - WiFi Intruder Scanner
 - Auto Spam Block Guard
+- AI Sistem
 
 # Katasandi server kode
 - USERNAME= Rio2026
