@@ -51,7 +51,7 @@ echo -e "${WHT}
 26 Auto Spam Block Guard.  29 network learning jaringan 
 27 HP Security Guard.      30 network sistem ai launcher
 31 DNS Benchmark.          32 Command AI System
-33 Smart System Monitor
+33 Smart System Monitor.   34 Security Watch System
 0 Exit
 ${R}"
 }
@@ -96,6 +96,7 @@ while true; do
         31) bash modules/dns_benchmark.sh ;;
         32) bash modules/command_ai.sh ;;
         33) bash modules/smart_monitor.sh ;;
+        34) bash modules/security_watch.sh ;;
         0)  echo "[✓] Keluar..."; exit ;;
         *)  echo "[!] Pilihan salah"; sleep 1 ;;
     esac
