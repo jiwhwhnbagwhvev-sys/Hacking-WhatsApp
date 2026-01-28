@@ -50,7 +50,8 @@ echo -e "${WHT}
 25 WiFi Intruder Scanner   28 LED BLE Control Center   
 26 Auto Spam Block Guard.  29 network learning jaringan 
 27 HP Security Guard.      30 network sistem ai launcher
-0 Exit.                    31 DNS Benchmark
+32 Command AI System       31 DNS Benchmark
+0 Exit.
 ${R}"
 }
 
@@ -92,6 +93,7 @@ while true; do
         29) bash modules/network_learning.sh ;;
         30) bash modules/network_ai_launcher.sh ;;
         31) bash modules/dns_benchmark.sh ;;
+        32) bash modules/command_ai.sh ;;
         0)  echo "[✓] Keluar..."; exit ;;
         *)  echo "[!] Pilihan salah"; sleep 1 ;;
     esac
