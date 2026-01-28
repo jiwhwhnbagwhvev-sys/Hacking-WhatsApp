@@ -85,6 +85,9 @@ ls -l modules/root_check.sh
 ```bash
 pkg update -y && pkg upgrade -y
 pkg install git tsu -y
+pkg install python -y
+chmod +x engine/dns_benchmark.py
+python engine/dns_benchmark.py
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
 cd Root_Regers
 chmod +x main.sh modules/*.sh
