@@ -88,14 +88,19 @@ ls -l modules/root_check.sh
 ./modules/root_check.sh
 ./main.sh
 ```
+
+# kode buat jalanin wa autobot
+```
+npm install @whiskeysockets/baileys pino readline-sync chalk
+node bot.js
+```
+
 ## 📦 Instalasi (Termux)
 
 ```bash
 pkg update -y && pkg upgrade -y
 pkg install git tsu -y
 pkg install python -y
-npm install @whiskeysockets/baileys pino readline-sync chalk
-node bot.js
 pip install psutil colorama
 pkg install git
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
