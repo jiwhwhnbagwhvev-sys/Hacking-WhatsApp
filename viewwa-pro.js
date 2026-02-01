@@ -1,125 +1,107 @@
- const {
- default: makeWASocket,
- useMultiFileAuthState,
- fetchLatestBaileysVersion,
- DisconnectReason,
- downloadMediaMessage
+const {
+  default: makeWASocket,
+  useMultiFileAuthState,
+  DisconnectReason,
+  fetchLatestBaileysVersion,
+  downloadMediaMessage
 } = require("@whiskeysockets/baileys")
 
-const Pino = require("pino")
-const qrcode = require("qrcode-terminal")
+const P = require("pino")
 const fs = require("fs")
-const readline = require("readline")
+const qrcode = require("qrcode-terminal")
 
-const rl = readline.createInterface({
- input: process.stdin,
- output: process.stdout
-})
+console.clear()
+
+console.log("=== VIEW WA TERMINAL ===")
 
 async function start(){
 
- const { state, saveCreds } =
+const { state, saveCreds } =
   await useMultiFileAuthState("session_view")
 
- const { version } =
+const { version } =
   await fetchLatestBaileysVersion()
 
- const sock = makeWASocket({
+const sock = makeWASocket({
   auth: state,
-  version,
-  logger: Pino({level:"silent"})
- })
-
-// ===== QR =====
-sock.ev.on("connection.update", update=>{
- const { connection, qr, lastDisconnect } = update
-
- if(qr){
-  console.clear()
-  console.log("📱 SCAN QR DI WHATSAPP")
-  qrcode.generate(qr,{small:true})
- }
-
- if(connection==="open"){
-  console.log("\n✅ TERHUBUNG\n")
- }
-
- if(connection==="close"){
-  const reason =
-   lastDisconnect?.error?.output?.statusCode
-
-  if(reason!==DisconnectReason.loggedOut){
-   start()
-  } else {
-   console.log("❌ Logout")
-  }
- }
+  logger: P({level:"silent"}),
+  version
 })
 
 sock.ev.on("creds.update", saveCreds)
 
-// ===== MONITOR =====
+
+// ===== CONNECTION =====
+sock.ev.on("connection.update", (update)=>{
+  const { connection, qr, lastDisconnect } = update
+
+  if(qr){
+    console.log("\nSCAN QR DI WHATSAPP:")
+    qrcode.generate(qr,{small:true})
+  }
+
+  if(connection==="open"){
+    console.log("\n✅ TERHUBUNG KE WHATSAPP\n")
+  }
+
+  if(connection==="close"){
+    const shouldReconnect =
+      lastDisconnect?.error?.output?.statusCode !==
+      DisconnectReason.loggedOut
+
+    if(shouldReconnect){
+      console.log("Reconnect...")
+      start()
+    }
+  }
+})
+
+
+// ===== MONITOR CHAT =====
 sock.ev.on("messages.upsert", async ({messages})=>{
 
- const msg = messages[0]
- if(!msg.message) return
+const m = messages[0]
+if(!m.message) return
 
- const from = msg.key.remoteJid
+const from = m.key.remoteJid
 
-// ===== TEXT =====
- const text =
-  msg.message.conversation ||
-  msg.message.extendedTextMessage?.text
+console.log("\n====================")
+console.log("Dari:", from)
 
- if(text){
-  console.log(`\n📩 ${from}`)
-  console.log(`💬 ${text}`)
- }
+// TEXT
+if(m.message.conversation){
+  console.log("Pesan:", m.message.conversation)
+}
 
-// ===== IMAGE =====
- if(msg.message.imageMessage){
+// EXTENDED TEXT
+if(m.message.extendedTextMessage){
+  console.log("Pesan:", m.message.extendedTextMessage.text)
+}
 
-  console.log(`\n🖼️ Gambar dari ${from}`)
+// IMAGE
+if(m.message.imageMessage){
+  console.log("📷 Gambar diterima")
 
   const buffer =
-   await downloadMediaMessage(
-    msg,"buffer",{}, {logger:Pino()}
-   )
+    await downloadMediaMessage(
+      m,
+      "buffer",
+      {},
+      { logger:P({level:"silent"}) }
+    )
 
-  const fileName =
-   `img_${Date.now()}.jpg`
+  const name = "img_"+Date.now()+".jpg"
+  fs.writeFileSync(name,buffer)
+  console.log("Tersimpan:", name)
+}
 
-  fs.writeFileSync(fileName, buffer)
-
-  console.log(`📁 Tersimpan: ${fileName}`)
- }
-
-// ===== LOCATION =====
- if(msg.message.locationMessage){
-
-  const loc = msg.message.locationMessage
-  const lat = loc.degreesLatitude
-  const lng = loc.degreesLongitude
-
-  console.log(`\n📍 Lokasi dari ${from}`)
-  console.log(`Latitude : ${lat}`)
-  console.log(`Longitude: ${lng}`)
-  console.log(
-   `🌍 Map: https://maps.google.com/?q=${lat},${lng}`
-  )
- }
-
-// ===== REPLY OPTION =====
- if(text || msg.message.imageMessage || msg.message.locationMessage){
-
-  rl.question("\nBalas? (y/n): ", ans=>{
-   if(ans==="y"){
-    rl.question("Ketik balasan: ", async reply=>{
-     await sock.sendMessage(from,{text:reply})
-     console.log("✅ Terkirim")
-    })
-   }
- }
+// LOCATION
+if(m.message.locationMessage){
+  const loc = m.message.locationMessage
+  console.log("📍 Lokasi:")
+  console.log("Latitude:", loc.degreesLatitude)
+  console.log("Longitude:", loc.degreesLongitude)
+}
 
 })
 
