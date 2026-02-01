@@ -54,7 +54,7 @@ echo -e "${WHT}
 33 Smart System Monitor.   34 Security Watch System
 35 Local Web Lab.          36 DARK CODING LAB
 37 Game Account Security pro 38 wa autobot
-39 View chating wa
+39 Hecking WhatsApp 
 0 Exit
 ${R}"
 }
