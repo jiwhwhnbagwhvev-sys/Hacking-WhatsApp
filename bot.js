@@ -1,4 +1,4 @@
-// ===== ROOT RAGERS BOT + AI REPLY =====
+         // ===== ROOT RAGERS BOT + AUTO REPLY + OPTIONAL QR =====
 
 const {
   default: makeWASocket,
@@ -34,7 +34,6 @@ let data = {
   promo: [],
   users: {}
 }
-
 if(fs.existsSync("data.json")){
   data = JSON.parse(fs.readFileSync("data.json"))
 }
@@ -60,7 +59,7 @@ function logo(){
 ██║  ██║╚██████╔╝╚██████╔╝
 ╚═╝  ╚═╝╚═════╝╚═════╝
 `))
-  console.log(chalk.green(">>> ROOT RAGERS BOT ONLINE <<<"))
+  console.log(chalk.green(">>> ROOT RAGERS BOT READY <<<"))
   hackerScroll()
 }
 
@@ -85,7 +84,11 @@ async function startBot(){
   sock.ev.on("connection.update", update=>{
     const { connection, lastDisconnect, qr } = update
 
-    if(qr) qrcode.generate(qr,{small:true}) // scan QR di Termux
+    if(qr){
+      console.log(chalk.yellow("[📌] Scan QR berikut di WhatsApp:"))
+      qrcode.generate(qr,{small:true}) // QR muncul di terminal
+    }
+
     if(connection==="open") console.log(chalk.green("[✓] BOT ONLINE"))
     if(connection==="close"){
       const reason = lastDisconnect?.error?.output?.statusCode
