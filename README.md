@@ -62,8 +62,9 @@ ip route dan harus ada imput ini
 - Baca chating WhatsApp 
 
 # Katasandi server kode
-- USERNAME= Rio2026
-- PASSWORD= Root_Rage 2026
+- Hubungi admin untuk mendapatkan katasandi server nya
+- https://wa.me/85283786794
+- 
 
 # kalo kode nya eror
 jalanin perintah di bawah ini
