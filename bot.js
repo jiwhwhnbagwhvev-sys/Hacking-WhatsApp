@@ -1,4 +1,4 @@
-// ===== ROOT RAGERS BOT v3 =====
+      // ===== ROOT RAGERS BOT vTermux =====
 const {
   default: makeWASocket,
   useMultiFileAuthState,
@@ -10,6 +10,7 @@ const Pino = require("pino")
 const chalk = require("chalk")
 const fs = require("fs")
 const readline = require("readline-sync")
+const qrcode = require("qrcode-terminal")
 
 // ===== INPUT NOMOR BOT & ADMIN =====
 const botNumber = readline.question("Nomor BOT (62xxx): ")
@@ -60,8 +61,7 @@ logo()
 
 // ===== START BOT =====
 async function startBot(){
-
-  const { state, saveCreds } = await useMultiFileAuthState(`session_${botNumber}`) // unik per nomor bot
+  const { state, saveCreds } = await useMultiFileAuthState(`session_${botNumber}`)
   const { version } = await fetchLatestBaileysVersion()
 
   const sock = makeWASocket({
@@ -71,25 +71,26 @@ async function startBot(){
   })
 
   // ===== CONNECTION =====
-sock.ev.on("connection.update", update=>{
- const { connection, qr, lastDisconnect } = update
+  sock.ev.on("connection.update", update=>{
+    const { connection, lastDisconnect, qr } = update
 
- if(qr){
-  console.log("\nScan QR di WhatsApp:\n")
-  qrcode.generate(qr,{small:true})
- }
+    if(qr){
+      console.log(chalk.yellow("[📌] Scan QR di WhatsApp:"))
+      qrcode.generate(qr, { small: true }) // QR bisa discan di Termux
+    }
 
- if(connection==="open"){
-  console.log(chalk.green("✅ BOT ONLINE\n"))
- }
+    if(connection==="open") console.log(chalk.green("[✓] BOT ONLINE & TERHUBUNG"))
 
- if(connection==="close"){
-  console.log(chalk.red("⚠ BOT TERPUTUS, reconnecting..."))
-  start()
- }
-})
+    if(connection==="close"){
+      const reason = lastDisconnect?.error?.output?.statusCode
+      if(reason!==DisconnectReason.loggedOut){
+        console.log(chalk.red("[!] Terputus, reconnecting..."))
+        startBot()
+      } else console.log(chalk.red("[!] Session habis, login ulang"))
+    }
+  })
 
-sock.ev.on("creds.update", saveCreds)
+  sock.ev.on("creds.update", saveCreds)
 
   // ===== MESSAGE HANDLER =====
   sock.ev.on("messages.upsert", async ({messages})=>{
@@ -175,7 +176,6 @@ ADMIN COMMAND:
     }
 
   })
-
 }
 
 startBot()
