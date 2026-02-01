@@ -1,63 +1,61 @@
 const {
-  default: makeWASocket,
-  useMultiFileAuthState,
-  DisconnectReason,
-  fetchLatestBaileysVersion,
-  downloadMediaMessage
+ default: makeWASocket,
+ useMultiFileAuthState,
+ fetchLatestBaileysVersion,
+ downloadMediaMessage
 } = require("@whiskeysockets/baileys")
 
-const P = require("pino")
-const fs = require("fs")
+const Pino = require("pino")
+const readline = require("readline-sync")
 const qrcode = require("qrcode-terminal")
+const fs = require("fs")
 
+// ===== LOGO =====
 console.clear()
+console.log(`
+██████╗ ██╗   ██╗
+██╔══██╗██║   ██║
+██████╔╝██║   ██║
+██╔═══╝ ██║   ██║
+██║     ╚██████╔╝
+╚═╝      ╚═════╝
 
-console.log("=== VIEW WA TERMINAL ===")
+>>> VIEW WA TERMINAL <<<
+`)
 
+// ===== START =====
 async function start(){
 
 const { state, saveCreds } =
-  await useMultiFileAuthState("session_view")
+ await useMultiFileAuthState("view-session")
 
 const { version } =
-  await fetchLatestBaileysVersion()
+ await fetchLatestBaileysVersion()
 
 const sock = makeWASocket({
-  auth: state,
-  logger: P({level:"silent"}),
-  version
+ auth: state,
+ logger: Pino({level:"silent"}),
+ version
+})
+
+// ===== QR CODE =====
+sock.ev.on("connection.update", (update)=>{
+ const { connection, qr } = update
+
+ if(qr){
+  console.log("\nScan QR ini di WhatsApp kamu:\n")
+  qrcode.generate(qr,{small:true})
+ }
+
+ if(connection==="open"){
+  console.log("\n✅ TERHUBUNG KE WHATSAPP!")
+  console.log("Sekarang semua chat akan muncul di sini.\n")
+ }
 })
 
 sock.ev.on("creds.update", saveCreds)
 
-
-// ===== CONNECTION =====
-sock.ev.on("connection.update", (update)=>{
-  const { connection, qr, lastDisconnect } = update
-
-  if(qr){
-    console.log("\nSCAN QR DI WHATSAPP:")
-    qrcode.generate(qr,{small:true})
-  }
-
-  if(connection==="open"){
-    console.log("\n✅ TERHUBUNG KE WHATSAPP\n")
-  }
-
-  if(connection==="close"){
-    const shouldReconnect =
-      lastDisconnect?.error?.output?.statusCode !==
-      DisconnectReason.loggedOut
-
-    if(shouldReconnect){
-      console.log("Reconnect...")
-      start()
-    }
-  }
-})
-
-
-// ===== MONITOR CHAT =====
+// ===== PESAN MASUK =====
 sock.ev.on("messages.upsert", async ({messages})=>{
 
 const m = messages[0]
@@ -65,42 +63,55 @@ if(!m.message) return
 
 const from = m.key.remoteJid
 
-console.log("\n====================")
-console.log("Dari:", from)
+console.log("\n======================")
+console.log("📩 Dari:", from)
 
-// TEXT
-if(m.message.conversation){
-  console.log("Pesan:", m.message.conversation)
+// ===== TEXT =====
+let text=""
+
+if(m.message.conversation)
+ text = m.message.conversation
+
+if(m.message.extendedTextMessage)
+ text = m.message.extendedTextMessage.text
+
+if(text){
+ console.log("💬 Pesan:", text)
 }
 
-// EXTENDED TEXT
-if(m.message.extendedTextMessage){
-  console.log("Pesan:", m.message.extendedTextMessage.text)
-}
-
-// IMAGE
+// ===== GAMBAR =====
 if(m.message.imageMessage){
-  console.log("📷 Gambar diterima")
+ console.log("📷 Gambar diterima")
 
-  const buffer =
-    await downloadMediaMessage(
-      m,
-      "buffer",
-      {},
-      { logger:P({level:"silent"}) }
-    )
+ const buffer =
+  await downloadMediaMessage(
+   m,"buffer",{},{}
+  )
 
-  const name = "img_"+Date.now()+".jpg"
-  fs.writeFileSync(name,buffer)
-  console.log("Tersimpan:", name)
+ const file =
+  `img_${Date.now()}.jpg`
+
+ fs.writeFileSync(file,buffer)
+
+ console.log("Tersimpan:", file)
 }
 
-// LOCATION
+// ===== LOKASI =====
 if(m.message.locationMessage){
-  const loc = m.message.locationMessage
-  console.log("📍 Lokasi:")
-  console.log("Latitude:", loc.degreesLatitude)
-  console.log("Longitude:", loc.degreesLongitude)
+ const loc = m.message.locationMessage
+
+ console.log("📍 Lokasi:")
+ console.log("Latitude:", loc.degreesLatitude)
+ console.log("Longitude:", loc.degreesLongitude)
+}
+
+// ===== BALAS MANUAL =====
+let reply =
+ readline.question("Balas (enter = skip): ")
+
+if(reply){
+ await sock.sendMessage(from,{text:reply})
+ console.log("✅ Terkirim")
 }
 
 })
