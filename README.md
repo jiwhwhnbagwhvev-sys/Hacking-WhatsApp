@@ -106,7 +106,7 @@ npm install chalk@4
 ```
 - jalan kan lagi
 ```
-node bot.js
+./main.sh
 ```
 
 ## 📦 Instalasi (Termux)
