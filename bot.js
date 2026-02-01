@@ -1,4 +1,4 @@
-         // ===== ROOT RAGERS BOT + AUTO REPLY + OPTIONAL QR =====
+// ===== ROOT RAGERS BOT + MENU & ADMIN =====
 
 const {
   default: makeWASocket,
@@ -12,11 +12,6 @@ const chalk = require("chalk")
 const fs = require("fs")
 const readline = require("readline-sync")
 const qrcode = require("qrcode-terminal")
-
-// ===== OpenAI setup =====
-const { Configuration, OpenAIApi } = require("openai")
-const configuration = new Configuration({ apiKey: process.env.OPENAI_API_KEY })
-const openai = new OpenAIApi(configuration)
 
 // ===== INPUT NOMOR BOT =====
 const botNumber = readline.question("Nomor Bot (62xxx): ")
@@ -86,7 +81,7 @@ async function startBot(){
 
     if(qr){
       console.log(chalk.yellow("[📌] Scan QR berikut di WhatsApp:"))
-      qrcode.generate(qr,{small:true}) // QR muncul di terminal
+      qrcode.generate(qr,{small:true})
     }
 
     if(connection==="open") console.log(chalk.green("[✓] BOT ONLINE"))
@@ -179,19 +174,9 @@ async function startBot(){
       await sock.sendMessage(from,{text:`✅ Promo "${p}" berhasil ditambahkan!`})
     }
 
-    // ===== AI REPLY UNTUK CHAT TIDAK DIKENALI =====
+    // ===== DEFAULT REPLY =====
     else {
-      try {
-        const response = await openai.createChatCompletion({
-          model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: text }]
-        })
-        const aiReply = response.data.choices[0].message.content
-        await sock.sendMessage(from, { text: aiReply })
-      } catch (err) {
-        console.error("Error AI:", err)
-        await sock.sendMessage(from, { text: "Maaf, saya tidak mengerti 😅" })
-      }
+      await sock.sendMessage(from, { text: "Ketik *menu* 😊" })
     }
   })
 }
