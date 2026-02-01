@@ -1,115 +1,197 @@
-// ===== ROOT RAGERS WA BOT MENU DYNAMIC =====
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion } = require('@whiskeysockets/baileys')
-const Pino = require('pino')
-const readline = require('readline-sync')
-const chalk = require('chalk')
+// ===== ROOT RAGERS ULTRA BOT =====
 
-console.clear()
-console.log(chalk.green(`
-██████╗  ██████╗  ██████╗
-██╔══██╗██╔═══██╗██╔═══██╗
+const {
+ default: makeWASocket,
+ useMultiFileAuthState,
+ DisconnectReason,
+ fetchLatestBaileysVersion
+} = require("@whiskeysockets/baileys")
+
+const Pino = require("pino")
+const chalk = require("chalk")
+const fs = require("fs")
+
+// ===== ADMIN =====
+const admin = "6285283786794"
+const adminJid = admin + "@s.whatsapp.net"
+
+// ===== DATA FILE =====
+let data = {
+ harga: "50K",
+ stok: "Tersedia",
+ voucher: [],
+ users: {}
+}
+
+if(fs.existsSync("data.json")){
+ data = JSON.parse(fs.readFileSync("data.json"))
+}
+
+// ===== ANIMASI =====
+function hackerScroll(){
+ const chars="01#@$%&"
+ for(let i=0;i<15;i++){
+  let line=""
+  for(let j=0;j<60;j++)
+   line+=chars[Math.floor(Math.random()*chars.length)]
+  console.log(chalk.green(line))
+ }
+}
+
+function logo(){
+ console.clear()
+ console.log(chalk.red(`
+██████╗  ██████╗ ██████╗ 
+██╔══██╗██╔═══██╗██╔══██╗
 ██████╔╝██║   ██║██║   ██║
 ██╔══██╗██║   ██║██║   ██║
-██║  ██║╚██████╔╝╚██████╔╝
-╚═╝  ╚═╝╚═════╝  ╚═════╝
+██║  ██║╚██████╔╝██████╔╝
+╚═╝  ╚═╝ ╚═════╝ ╚═════╝
 `))
-console.log(chalk.red(">>> ROOT RAGERS WA BOT MENU DYNAMIC <<<\n"))
+ console.log(chalk.green(">>> ROOT RAGERS BOT ONLINE <<<"))
+ hackerScroll()
+}
 
-const target = readline.question("Nomor admin tujuan (62xxx): ")
-const targetJid = target + "@s.whatsapp.net"
+logo()
 
-// ===== DATA DYNAMIC =====
-let harga = "50K"
-let stok = "Tersedia"
-let voucher = []
+// ===== START BOT =====
+async function startBot(){
 
-async function startBot() {
-    const { state, saveCreds } = await useMultiFileAuthState("session")
-    const { version } = await fetchLatestBaileysVersion()
+ const { state, saveCreds } =
+  await useMultiFileAuthState("session")
 
-    const sock = makeWASocket({ auth: state, logger: Pino({ level: 'silent' }), version })
+ const { version } =
+  await fetchLatestBaileysVersion()
 
-    sock.ev.on('connection.update', update => {
-        const { connection, lastDisconnect, qr } = update
-        if(qr) console.log(chalk.yellow('[📌] Scan QR:'), qr)
-        if(connection === 'open') console.log(chalk.green('[✓] BOT ONLINE'))
-        if(connection === 'close'){
-            const reason = lastDisconnect?.error?.output?.statusCode
-            if(reason !== DisconnectReason.loggedOut){
-                console.log(chalk.red('[!] Terputus, reconnecting...'))
-                startBot()
-            }
-        }
-    })
+ const sock = makeWASocket({
+  auth: state,
+  logger: Pino({level:"silent"}),
+  version
+ })
 
-    sock.ev.on('creds.update', saveCreds)
+// ===== CONNECTION =====
+sock.ev.on("connection.update", update=>{
+ const { connection, lastDisconnect } = update
 
-    // ===== PESAN MASUK =====
-    sock.ev.on('messages.upsert', async ({ messages }) => {
-        const msg = messages[0]
-        if(!msg.message || msg.key.fromMe) return
+ if(connection==="open")
+  console.log(chalk.green("[✓] BOT ONLINE"))
 
-        const from = msg.key.remoteJid
-        const text = msg.message.conversation || msg.message.extendedTextMessage?.text || ""
-        const t = text.toLowerCase()
-        console.log(chalk.cyan(`[Chat] ${from}: ${t}`))
+ if(connection==="close"){
+  const reason =
+   lastDisconnect?.error?.output?.statusCode
 
-        // ===== AUTO REPLY DYNAMIC MENU =====
-        if(t === 'menu'){
-            await sock.sendMessage(from, { text:
+  if(reason!==DisconnectReason.loggedOut){
+   console.log("Reconnect...")
+   startBot()
+  } else {
+   console.log("Session habis, login ulang")
+  }
+ }
+})
+
+sock.ev.on("creds.update", saveCreds)
+
+// ===== MESSAGE HANDLER =====
+sock.ev.on("messages.upsert", async ({messages})=>{
+
+ const msg=messages[0]
+ if(!msg.message || msg.key.fromMe) return
+
+ const from=msg.key.remoteJid
+ const text=
+  msg.message.conversation ||
+  msg.message.extendedTextMessage?.text ||
+  ""
+
+ const t=text.toLowerCase()
+
+// ===== TRACK USER =====
+data.users[from]={last:new Date().toISOString()}
+fs.writeFileSync("data.json",
+ JSON.stringify(data,null,2))
+
+// ===== MENU =====
+if(t==="menu"){
+ await sock.sendMessage(from,{text:
 `📋 MENU
+
 • harga
 • stok
 • beli
 • voucher
 • admin
-• tambah harga
-• tambah stok
-• tambah voucher`
-            })
-        }
-        else if(t === 'harga'){
-            await sock.sendMessage(from, { text: `💰 Harga sekarang: ${harga}` })
-        }
-        else if(t === 'stok'){
-            await sock.sendMessage(from, { text: `📦 Stok: ${stok}` })
-        }
-        else if(t === 'beli'){
-            await sock.sendMessage(from, { text: "🛒 Order diterima, admin segera proses." })
-            await sock.sendMessage(targetJid, { text:`📢 ORDER BARU dari ${from}` })
-        }
-        else if(t === 'voucher'){
-            await sock.sendMessage(from, { text: `🎫 Voucher tersedia: ${voucher.join(", ") || "Tidak ada"}` })
-        }
-        else if(t === 'admin'){
-            await sock.sendMessage(from, { text: '👤 Admin: wa.me/6285283786794' })
-        }
+• user online
 
-        // ===== MENU ADMIN UNTUK UPDATE =====
-        else if(t.startsWith('tambah harga ')){
-            if(from === targetJid){
-                harga = t.replace('tambah harga ','')
-                await sock.sendMessage(from,{text:`✅ Harga berhasil diubah: ${harga}`})
-            }
-        }
-        else if(t.startsWith('tambah stok ')){
-            if(from === targetJid){
-                stok = t.replace('tambah stok ','')
-                await sock.sendMessage(from,{text:`✅ Stok berhasil diubah: ${stok}`})
-            }
-        }
-        else if(t.startsWith('tambah voucher ')){
-            if(from === targetJid){
-                let v = t.replace('tambah voucher ','')
-                voucher.push(v)
-                await sock.sendMessage(from,{text:`✅ Voucher ditambahkan: ${v}`})
-            }
-        }
+ADMIN:
+• tambah harga 100K
+• tambah stok Ready
+• tambah voucher DISKON10`
+})
+}
 
-        else {
-            await sock.sendMessage(from,{text:'Ketik *menu* ya 😊'})
-        }
-    })
+// ===== USER MENU =====
+else if(t==="harga")
+ await sock.sendMessage(from,
+  {text:`💰 Harga: ${data.harga}`})
+
+else if(t==="stok")
+ await sock.sendMessage(from,
+  {text:`📦 Stok: ${data.stok}`})
+
+else if(t==="voucher")
+ await sock.sendMessage(from,
+  {text:`🎫 ${data.voucher.join(", ")||"Tidak ada"}`})
+
+else if(t==="admin")
+ await sock.sendMessage(from,
+  {text:`👤 Admin: wa.me/${admin}`})
+
+else if(t==="user online"){
+ const u=Object.keys(data.users).length
+ await sock.sendMessage(from,
+  {text:`🟢 User aktif: ${u}`})
+}
+
+else if(t==="beli"){
+ await sock.sendMessage(from,
+  {text:"🛒 Order diterima!"})
+
+ await sock.sendMessage(adminJid,
+  {text:`📢 ORDER BARU dari ${from}`})
+}
+
+// ===== ADMIN COMMAND =====
+else if(from===adminJid &&
+ t.startsWith("tambah harga ")){
+ data.harga=
+  t.replace("tambah harga ","")
+ sock.sendMessage(from,
+  {text:"✅ Harga diupdate"})
+}
+
+else if(from===adminJid &&
+ t.startsWith("tambah stok ")){
+ data.stok=
+  t.replace("tambah stok ","")
+ sock.sendMessage(from,
+  {text:"✅ Stok diupdate"})
+}
+
+else if(from===adminJid &&
+ t.startsWith("tambah voucher ")){
+ let v=t.replace("tambah voucher ","")
+ data.voucher.push(v)
+ sock.sendMessage(from,
+  {text:"✅ Voucher ditambah"})
+}
+
+else{
+ await sock.sendMessage(from,
+  {text:"Ketik *menu* 😊"})
+}
+
+})
+
 }
 
 startBot()
