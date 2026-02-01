@@ -71,29 +71,25 @@ async function startBot(){
   })
 
   // ===== CONNECTION =====
-  sock.ev.on("connection.update", update=>{
-    const { connection, lastDisconnect, qr } = update
+sock.ev.on("connection.update", update=>{
+ const { connection, qr, lastDisconnect } = update
 
-    if(qr){
-      console.log(chalk.yellow("[📌] Scan QR WhatsApp untuk nomor BOT:"), qr)
-    }
+ if(qr){
+  console.log("\nScan QR di WhatsApp:\n")
+  qrcode.generate(qr,{small:true})
+ }
 
-    if(connection==="open"){
-      console.log(chalk.green("[✓] BOT ONLINE & TERHUBUNG"))
-    }
+ if(connection==="open"){
+  console.log(chalk.green("✅ BOT ONLINE\n"))
+ }
 
-    if(connection==="close"){
-      const reason = lastDisconnect?.error?.output?.statusCode
-      if(reason!==DisconnectReason.loggedOut){
-        console.log(chalk.red("[!] Terputus, reconnecting..."))
-        startBot()
-      } else {
-        console.log(chalk.red("[!] Session habis, login ulang"))
-      }
-    }
-  })
+ if(connection==="close"){
+  console.log(chalk.red("⚠ BOT TERPUTUS, reconnecting..."))
+  start()
+ }
+})
 
-  sock.ev.on("creds.update", saveCreds)
+sock.ev.on("creds.update", saveCreds)
 
   // ===== MESSAGE HANDLER =====
   sock.ev.on("messages.upsert", async ({messages})=>{
