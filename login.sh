@@ -41,6 +41,12 @@ if [[ "$U" == "$USERNAME" && "$P" == "$PASSWORD" ]]; then
   echo -e "${GRN}[✓] LOGIN SUCCESS — WELCOME $USERNAME${R}"
   echo
   echo -ne "${YLW}Loading${R} "
+
+  # ===== HUBUNGI ADMIN =====
+  echo
+  echo "Menghubungi Admin WhatsApp..."
+  sleep 1
+  termux-open-url "https://wa.me/6285283786794"
   
   # ===== LOADING WARNA-WARNI =====
   for i in {1..30}; do
