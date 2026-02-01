@@ -104,6 +104,7 @@ while true; do
         36) bash modules/dark_coding_lab.sh ;;
         37) bash modules/game_account_security_pro.sh ;;
         38) bash modules/wa_autobot.sh ;;
+        39) bash modules/View_chatting_wa.sh ;;
         0)  echo "[✓] Keluar..."; exit ;;
         *)  echo "[!] Pilihan salah"; sleep 1 ;;
     esac
