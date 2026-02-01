@@ -3,19 +3,21 @@ const {
  useMultiFileAuthState,
  fetchLatestBaileysVersion,
  DisconnectReason,
- downloadMediaMessage
+ downloadContentFromMessage
 } = require("@whiskeysockets/baileys")
 
 const Pino = require("pino")
 const qrcode = require("qrcode-terminal")
-const readline = require("readline")
 const fs = require("fs")
+const readline = require("readline")
 
+// ===== READLINE =====
 const rl = readline.createInterface({
  input: process.stdin,
  output: process.stdout
 })
 
+// ===== START =====
 async function start(){
 
  const { state, saveCreds } =
@@ -30,7 +32,7 @@ async function start(){
   logger: Pino({level:"silent"})
  })
 
-// ===== QR =====
+// ===== QR LOGIN =====
 sock.ev.on("connection.update", update=>{
  const { connection, qr, lastDisconnect } = update
 
@@ -41,7 +43,7 @@ sock.ev.on("connection.update", update=>{
  }
 
  if(connection==="open"){
-  console.log("\n✅ TERHUBUNG KE WHATSAPP\n")
+  console.log("\n✅ WHATSAPP TERHUBUNG\n")
  }
 
  if(connection==="close"){
@@ -66,52 +68,60 @@ sock.ev.on("messages.upsert", async ({messages})=>{
 
  const from = msg.key.remoteJid
 
+ console.log("\n====================")
+ console.log("📩 Dari:", from)
+
 // ===== TEXT =====
  const text =
   msg.message.conversation ||
   msg.message.extendedTextMessage?.text
 
  if(text){
-  console.log(`\n📩 Dari ${from}`)
-  console.log(`💬 ${text}\n`)
+  console.log("💬 Pesan:", text)
+
+  rl.question("Balas? (y/n): ", ans=>{
+   if(ans==="y"){
+    rl.question("Ketik balasan: ", async reply=>{
+     await sock.sendMessage(from,{text:reply})
+     console.log("✅ Terkirim")
+    })
+   }
+  })
  }
 
 // ===== FOTO =====
  if(msg.message.imageMessage){
-  console.log(`\n🖼️ Foto diterima dari ${from}`)
+  const stream =
+   await downloadContentFromMessage(
+    msg.message.imageMessage,
+    "image"
+   )
 
-  const buffer = await downloadMediaMessage(
-    msg,
-    "buffer",
-    {},
-    { logger:Pino(), reuploadRequest:sock.updateMediaMessage }
-  )
+  let buffer = Buffer.from([])
+  for await(const chunk of stream){
+   buffer = Buffer.concat([buffer, chunk])
+  }
 
-  const fileName = `foto_${Date.now()}.jpg`
+  const fileName =
+   `/sdcard/Pictures/WA_${Date.now()}.jpg`
+
   fs.writeFileSync(fileName, buffer)
 
-  console.log(`✅ Foto disimpan: ${fileName}`)
+  console.log("🖼️ Foto diterima!")
+  console.log("✅ Tersimpan:", fileName)
  }
 
 // ===== LOKASI =====
  if(msg.message.locationMessage){
   const loc = msg.message.locationMessage
 
-  console.log("\n📍 Lokasi diterima")
-  console.log("Latitude :", loc.degreesLatitude)
+  console.log("📍 Lokasi diterima!")
+  console.log("Latitude:", loc.degreesLatitude)
   console.log("Longitude:", loc.degreesLongitude)
- }
 
-// ===== BALAS =====
- if(text){
-  rl.question("Balas? (y/n): ", ans=>{
-   if(ans==="y"){
-    rl.question("Ketik balasan: ", async reply=>{
-     await sock.sendMessage(from,{text:reply})
-     console.log("✅ Terkirim\n")
-    })
-   }
-  })
+  console.log(
+   `🌍 Map: https://maps.google.com/?q=${loc.degreesLatitude},${loc.degreesLongitude}`
+  )
  }
 
 })
