@@ -53,7 +53,7 @@ echo -e "${WHT}
 31 DNS Benchmark.          32 Command AI System
 33 Smart System Monitor.   34 Security Watch System
 35 Local Web Lab.          36 DARK CODING LAB
-37 Game Account Security pro 
+37 Game Account Security pro 38 sistem wa bot
 0 Exit
 ${R}"
 }
@@ -102,6 +102,7 @@ while true; do
         35) bash modules/web_lab.sh ;;
         36) bash modules/dark_coding_lab.sh ;;
         37) bash modules/game_account_security_pro.sh ;;
+        38) bash modules/wa_bot.sh ;;
         0)  echo "[✓] Keluar..."; exit ;;
         *)  echo "[!] Pilihan salah"; sleep 1 ;;
     esac
