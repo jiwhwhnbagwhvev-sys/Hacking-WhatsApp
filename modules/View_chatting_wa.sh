@@ -1,97 +1,65 @@
-const {
-  default: makeWASocket,
-  useMultiFileAuthState,
-  fetchLatestBaileysVersion,
-  DisconnectReason
-} = require("@whiskeysockets/baileys")
+#!/bin/bash
 
-const Pino = require("pino")
-const qrcode = require("qrcode-terminal")
-const chalk = require("chalk")
-const readline = require("readline")
+clear
 
-// ===== LOGO =====
-console.clear()
-console.log(chalk.green(`
-██╗   ██╗██╗███████╗██╗    ██╗    ██╗    ██╗ █████╗ 
-██║   ██║██║██╔════╝██║    ██║    ██║    ██║██╔══██╗
-██║   ██║██║█████╗  ██║ █╗ ██║    ██║ █╗ ██║███████║
-╚██╗ ██╔╝██║██╔══╝  ██║███╗██║    ██║███╗██║██╔══██║
- ╚████╔╝ ██║███████╗╚███╔███╔╝    ╚███╔███╔╝██║  ██║
-  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝      ╚══╝╚══╝ ╚═╝  ╚═╝
-`))
-console.log(chalk.yellow(">>> VIEW WHATSAPP TERMUX <<<"))
-console.log()
+# ===== WARNA =====
+G="\033[1;32m"
+R="\033[1;31m"
+C="\033[1;36m"
+Y="\033[1;33m"
+W="\033[0m"
 
-// ===== INPUT TERMINAL =====
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-})
+# ===== LOGO =====
+echo -e "${R}"
+echo "██╗   ██╗██╗███████╗██╗    ██╗"
+echo "██║   ██║██║██╔════╝██║    ██║"
+echo "██║   ██║██║█████╗  ██║ █╗ ██║"
+echo "╚██╗ ██╔╝██║██╔══╝  ██║███╗██║"
+echo " ╚████╔╝ ██║███████╗╚███╔███╔╝"
+echo "  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝"
+echo -e "${W}"
 
-async function start() {
+echo -e "${G}>>> VIEW CHATTING WA <<<${W}"
+echo
 
-  const { state, saveCreds } =
-    await useMultiFileAuthState("session")
+# ===== INFO PANEL =====
+echo -e "${C}STATUS : READY${W}"
+echo -e "${C}MODE   : LIVE VIEW${W}"
+echo -e "${C}ENGINE : BAILEYS${W}"
+echo -e "${C}NODE   : $(node -v)${W}"
+echo
 
-  const { version } =
-    await fetchLatestBaileysVersion()
+# ===== MATRIX EFFECT =====
+chars="01@#$%&"
+for i in {1..8}
+do
+line=""
+for j in {1..60}
+do
+rand=$((RANDOM % 6))
+line+="${chars:$rand:1}"
+done
+echo -e "${G}$line${W}"
+sleep 0.05
+done
 
-  const sock = makeWASocket({
-    version,
-    auth: state,
-    logger: Pino({ level: "silent" })
-  })
+echo
+echo -e "${Y}[1] Jalankan VIEW WA${W}"
+echo -e "${Y}[2] Cek Node Version${W}"
+echo -e "${Y}[3] Keluar${W}"
+echo
 
-  // ===== QR =====
-  sock.ev.on("connection.update", (update) => {
-    const { connection, qr, lastDisconnect } = update
+read -p "Pilih menu : " pilih
 
-    if (qr) {
-      console.log(chalk.cyan("\nScan QR ini di WhatsApp:\n"))
-      qrcode.generate(qr, { small: true })
-    }
+if [ "$pilih" = "1" ]; then
+  echo -e "${G}Menjalankan VIEW WA...${W}"
+  sleep 1
+  node viewwa-pro.js
 
-    if (connection === "open") {
-      console.log(chalk.green("\n[✓] TERHUBUNG KE WHATSAPP\n"))
-    }
+elif [ "$pilih" = "2" ]; then
+  node -v
 
-    if (connection === "close") {
-      if (lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut) {
-        console.log("Reconnect...")
-        start()
-      } else {
-        console.log("Logout, scan ulang QR.")
-      }
-    }
-  })
-
-  sock.ev.on("creds.update", saveCreds)
-
-  // ===== TAMPILKAN CHAT MASUK =====
-  sock.ev.on("messages.upsert", async ({ messages }) => {
-    const msg = messages[0]
-    if (!msg.message) return
-
-    const from = msg.key.remoteJid
-    const text =
-      msg.message.conversation ||
-      msg.message.extendedTextMessage?.text ||
-      ""
-
-    console.log(chalk.yellow("\n======================"))
-    console.log(chalk.green("DARI:"), from)
-    console.log(chalk.white("PESAN:"), text)
-    console.log(chalk.yellow("======================"))
-
-    // ===== BALAS MANUAL =====
-    rl.question("Balas (kosong = skip): ", async (jawab) => {
-      if (jawab) {
-        await sock.sendMessage(from, { text: jawab })
-        console.log(chalk.green("✓ Terkirim"))
-      }
-    })
-  })
-}
-
-start()
+else
+  echo -e "${R}Keluar...${W}"
+  exit
+fi
