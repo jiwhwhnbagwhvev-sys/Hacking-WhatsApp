@@ -1,104 +1,92 @@
-const {
- default: makeWASocket,
- useMultiFileAuthState,
- fetchLatestBaileysVersion,
- downloadMediaMessage
+ const {
+  default: makeWASocket,
+  useMultiFileAuthState,
+  fetchLatestBaileysVersion,
+  downloadMediaMessage
 } = require("@whiskeysockets/baileys")
 
-const Pino = require("pino")
-const readline = require("readline-sync")
-const qrcode = require("qrcode-terminal")
 const fs = require("fs")
+const readline = require("readline")
 
-async function start(){
-
-const { state, saveCreds } =
- await useMultiFileAuthState("view-session")
-
-const { version } =
- await fetchLatestBaileysVersion()
-
-const sock = makeWASocket({
- auth: state,
- logger: Pino({level:"silent"}),
- version
+// ===== INPUT TERMINAL =====
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 })
 
-// ===== QR =====
-sock.ev.on("connection.update", (update)=>{
- const { connection, qr } = update
+// ===== START =====
+async function start() {
 
- if(qr){
-  console.log("\nScan QR berikut di WhatsApp:\n")
-  qrcode.generate(qr,{small:true})
- }
+  const { state, saveCreds } = await useMultiFileAuthState("view-session")
+  const { version } = await fetchLatestBaileysVersion()
 
- if(connection==="open"){
-  console.log("\n✅ WhatsApp Terhubung\n")
- }
-})
+  const sock = makeWASocket({
+    auth: state,
+    version,
+    printQRInTerminal: true
+  })
 
-sock.ev.on("creds.update", saveCreds)
+  sock.ev.on("creds.update", saveCreds)
 
-// ===== PESAN MASUK =====
-sock.ev.on("messages.upsert", async ({messages})=>{
+  sock.ev.on("connection.update", (u) => {
+    if (u.connection === "open") {
+      console.log("\n✅ WhatsApp Terhubung\n")
+    }
+  })
 
-const m = messages[0]
-if(!m.message) return
+  // ===== MESSAGE VIEWER =====
+  sock.ev.on("messages.upsert", async ({ messages }) => {
 
-const from = m.key.remoteJid
+    const m = messages[0]
+    if (!m.message || m.key.fromMe) return
 
-console.log("\n====================")
-console.log("📩 Dari:", from)
+    const from = m.key.remoteJid
 
-// ===== TEXT =====
-let text=""
+    console.log("\n====================")
+    console.log("📩 Dari:", from)
 
-if(m.message.conversation)
- text = m.message.conversation
+    // ===== TEXT =====
+    let text =
+      m.message.conversation ||
+      m.message.extendedTextMessage?.text
 
-if(m.message.extendedTextMessage)
- text = m.message.extendedTextMessage.text
+    if (text) {
+      console.log("💬 Pesan:", text)
+    }
 
-if(text){
- console.log("💬 Pesan:", text)
-}
+    // ===== IMAGE =====
+    if (m.message.imageMessage) {
+      console.log("🖼️ Gambar diterima")
 
-// ===== GAMBAR =====
-if(m.message.imageMessage){
- console.log("📷 Gambar diterima")
+      const buffer = await downloadMediaMessage(
+        m,
+        "buffer",
+        {},
+        { }
+      )
 
- const buffer =
-  await downloadMediaMessage(
-   m,"buffer",{},{}
-  )
+      const file = `img_${Date.now()}.jpg`
+      fs.writeFileSync(file, buffer)
+      console.log("📁 Disimpan:", file)
+    }
 
- const file = `img_${Date.now()}.jpg`
- fs.writeFileSync(file,buffer)
+    // ===== LOCATION =====
+    if (m.message.locationMessage) {
+      const loc = m.message.locationMessage
+      console.log("📍 Lokasi:")
+      console.log("Latitude:", loc.degreesLatitude)
+      console.log("Longitude:", loc.degreesLongitude)
+    }
 
- console.log("Tersimpan:", file)
-}
+    // ===== REPLY =====
+    rl.question("Balas (enter = skip): ", async (jawab) => {
+      if (jawab) {
+        await sock.sendMessage(from, { text: jawab })
+        console.log("✅ Terkirim")
+      }
+    })
 
-// ===== LOKASI =====
-if(m.message.locationMessage){
- const loc = m.message.locationMessage
-
- console.log("📍 Lokasi:")
- console.log("Latitude:", loc.degreesLatitude)
- console.log("Longitude:", loc.degreesLongitude)
-}
-
-// ===== BALAS =====
-let reply =
- readline.question("Balas (enter = skip): ")
-
-if(reply){
- await sock.sendMessage(from,{text:reply})
- console.log("✅ Terkirim")
-}
-
-})
-
+  })
 }
 
 start()
