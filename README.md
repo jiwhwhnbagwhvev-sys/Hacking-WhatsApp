@@ -92,7 +92,7 @@ ls -l modules/root_check.sh
 # kode buat jalanin wa autobot
 ```
 npm init -y
-npm install @whiskeysockets/baileys pino readline-sync chalk
+npm install @whiskeysockets/baileys pino chalk readline-sync qrcode-terminal
 ```
 # kalo eror wa autobot nya
 jalanin kode ini di termux 
