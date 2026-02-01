@@ -1,123 +1,82 @@
-const fs = require("fs")
+#!/data/data/com.termux/files/usr/bin/bash
 
-// ===== DATABASE SIMPLE =====
-const dbFile = "./database.json"
+# ===== WARNA =====
+R="\e[31m"
+G="\e[32m"
+GR="\e[1;32m"
+RR="\e[1;31m"
+Y="\e[33m"
+C="\e[36m"
+W="\e[97m"
+B="\e[1m"
+N="\e[0m"
 
-function loadDB(){
-    if(!fs.existsSync(dbFile)){
-        fs.writeFileSync(dbFile, JSON.stringify({users:[]},null,2))
-    }
-    return JSON.parse(fs.readFileSync(dbFile))
-}
+clear
 
-function saveDB(data){
-    fs.writeFileSync(dbFile, JSON.stringify(data,null,2))
-}
+# ===== LOGO =====
+echo -e "${GR}${B}"
+echo "██████╗  ██████╗  ██████╗ ████████╗"
+echo "██╔══██╗██╔═══██╗██╔════╝ ╚══██╔══╝"
+echo "██████╔╝██║   ██║██║         ██║"
+echo "██╔══██╗██║   ██║██║         ██║"
+echo "██║  ██║╚██████╔╝╚██████╗    ██║"
+echo "╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝"
+echo -e "${RR}     WHATSAPP AUTO BOT SYSTEM"
+echo -e "${GR}         ROOT RAGERS${N}"
+echo
+sleep 1
 
-module.exports = async (sock, msg) => {
-    if (!msg.message) return
+# ===== ANIMASI LOADING =====
+echo -ne "${G}Starting system "
+for i in {1..20}; do
+    echo -ne "${GR}█${N}"
+    sleep 0.05
+done
+echo
+sleep 1
 
-    const from = msg.key.remoteJid
-    const sender = msg.key.participant || from
+# ===== CEK NODEJS =====
+if ! command -v node >/dev/null 2>&1; then
+    echo -e "${R}[!] NodeJS belum ada${N}"
+    echo -e "${Y}Menginstall NodeJS...${N}"
+    pkg install nodejs -y
+fi
 
-    const text =
-        msg.message.conversation ||
-        msg.message.extendedTextMessage?.text ||
-        ""
+# ===== CEK FOLDER BOT =====
+if [ ! -f "bot.js" ]; then
+    echo -e "${R}[!] bot.js tidak ditemukan${N}"
+    echo -e "${Y}Pastikan file bot.js ada di folder utama${N}"
+    read -p "ENTER..."
+    exit
+fi
 
-    const cmd = text.toLowerCase().trim()
+# ===== CEK BAILEYS =====
+if [ ! -d "node_modules/@whiskeysockets" ]; then
+    echo -e "${Y}[+] Install Baileys...${N}"
+    npm install @whiskeysockets/baileys
+fi
 
-    const db = loadDB()
+clear
 
-    // ===== AUTO SAVE USER =====
-    if(!db.users.includes(sender)){
-        db.users.push(sender)
-        saveDB(db)
-    }
+echo -e "${GR}${B}"
+echo "╔════════════════════════════╗"
+echo "║   WHATSAPP AUTO REPLY BOT  ║"
+echo "╚════════════════════════════╝"
+echo -e "${N}"
 
-    // ===== MENU =====
-    if(cmd === "menu"){
-        await sock.sendMessage(from,{
-text:
-`🔥 *ROOT RAGERS PRO BOT* 🔥
+echo -e "${G}Status:${N} READY"
+echo -e "${G}Mode:${N} AUTO REPLY"
+echo -e "${G}Engine:${N} Baileys"
+echo
 
-📌 COMMAND LIST
-━━━━━━━━━━━━━━━
-• menu
-• ping
-• owner
-• about
-• runtime
-• usercount
-• promo
-• script
+echo -e "${C}Bot akan berjalan 24 jam"
+echo "Scan QR jika diminta"
+echo
 
-Ketik salah satu`
-        })
-    }
+read -p "Tekan ENTER untuk menjalankan bot..."
 
-    // ===== PING =====
-    else if(cmd === "ping"){
-        await sock.sendMessage(from,{text:"🏓 PONG!\nBot aktif & responsif"})
-    }
+# ===== JALANKAN BOT =====
+node bot.js
 
-    // ===== OWNER =====
-    else if(cmd === "owner"){
-        await sock.sendMessage(from,{
-            text:"👑 Owner Bot:\nwa.me/6285283786794"
-        })
-    }
-
-    // ===== ABOUT =====
-    else if(cmd === "about"){
-        await sock.sendMessage(from,{
-text:
-`🤖 ROOT RAGERS BOT
-
-✔ Real WhatsApp Bot
-✔ Multi Command
-✔ Database System
-✔ Baileys Engine
-✔ Auto Save User
-
-Status: ONLINE`
-        })
-    }
-
-    // ===== RUNTIME =====
-    else if(cmd === "runtime"){
-        const up = process.uptime()
-        await sock.sendMessage(from,{
-            text:`⏱ Runtime: ${Math.floor(up/60)} menit`
-        })
-    }
-
-    // ===== USER COUNT =====
-    else if(cmd === "usercount"){
-        await sock.sendMessage(from,{
-            text:`👥 Total User:\n${db.users.length}`
-        })
-    }
-
-    // ===== PROMO AUTO SELL =====
-    else if(cmd === "promo"){
-        await sock.sendMessage(from,{
-text:
-`💎 PROMO TOPUP GAME
-
-🔥 Free Fire
-🔥 MLBB
-🔥 PUBG
-
-Harga murah & aman
-Minat? Chat Owner`
-        })
-    }
-
-    // ===== SCRIPT INFO =====
-    else if(cmd === "script"){
-        await sock.sendMessage(from,{
-            text:"📦 Script by Root Ragers\nEngine: Baileys MD"
-        })
-    }
-}
+echo
+echo -e "${R}Bot berhenti...${N}"
