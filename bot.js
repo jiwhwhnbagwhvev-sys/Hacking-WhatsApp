@@ -1,4 +1,4 @@
-// ===== ROOT RAGERS ULTRA BOT =====
+// ===== ROOT RAGERS BOT + INPUT NOMOR =====
 
 const {
  default: makeWASocket,
@@ -10,6 +10,11 @@ const {
 const Pino = require("pino")
 const chalk = require("chalk")
 const fs = require("fs")
+const readline = require("readline-sync")
+
+// ===== INPUT NOMOR BOT =====
+const botNumber = readline.question("Nomor Bot (62xxx): ")
+console.log(chalk.green("[✓] Bot akan berjalan dengan nomor:"), botNumber)
 
 // ===== ADMIN =====
 const admin = "6285283786794"
@@ -58,7 +63,7 @@ logo()
 async function startBot(){
 
  const { state, saveCreds } =
-  await useMultiFileAuthState("session")
+  await useMultiFileAuthState(`session_${botNumber}`) // folder session unik per nomor
 
  const { version } =
   await fetchLatestBaileysVersion()
