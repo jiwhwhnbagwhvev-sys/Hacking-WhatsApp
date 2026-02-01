@@ -91,7 +91,21 @@ ls -l modules/root_check.sh
 
 # kode buat jalanin wa autobot
 ```
+npm init -y
 npm install @whiskeysockets/baileys pino readline-sync chalk
+```
+# kalo eror wa autobot nya
+jalanin kode ini di termux 
+- hapus calk lama
+```
+npm uninstall chalk
+```
+- install calk versi terbaru
+```
+npm install chalk@4
+```
+- jalan kan lagi
+```
 node bot.js
 ```
 
