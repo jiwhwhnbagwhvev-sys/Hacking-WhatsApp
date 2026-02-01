@@ -1,93 +1,69 @@
 #!/bin/bash
-# ==========================================
-# ===== VIEW CHATTING WA — ROOT RAGERS =====
-# ==========================================
 
 clear
 
 # ===== WARNA =====
-R='\033[1;31m'
-G='\033[1;32m'
-Y='\033[1;33m'
-C='\033[1;36m'
-W='\033[0m'
+G="\033[1;32m"
+R="\033[1;31m"
+C="\033[1;36m"
+Y="\033[1;33m"
+W="\033[0m"
 
-# ===== LOGO BESAR =====
-echo -e "${R}"
+# ===== LOGO =====
+echo -e "${G}"
 echo "██╗   ██╗██╗███████╗██╗    ██╗"
 echo "██║   ██║██║██╔════╝██║    ██║"
 echo "██║   ██║██║█████╗  ██║ █╗ ██║"
 echo "╚██╗ ██╔╝██║██╔══╝  ██║███╗██║"
 echo " ╚████╔╝ ██║███████╗╚███╔███╔╝"
 echo "  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ "
-echo -e "${G}CHAT MONITORING SYSTEM${W}"
-sleep 1
+echo -e "${W}"
 
-# ===== ANIMASI HACKER =====
-chars="01#@$%&"
-echo -e "${G}"
-for i in {1..12}
+echo -e "${C}>>> VIEW WA TERMINAL <<<${W}"
+echo
+
+echo -e "${Y}Status : READY${W}"
+echo -e "${Y}Engine : Baileys MD${W}"
+echo -e "${Y}Mode   : Live Chat${W}"
+echo
+
+# ===== MATRIX EFFECT =====
+chars="01@#$%&"
+for i in {1..10}
 do
   line=""
   for j in {1..60}
   do
     rand=$((RANDOM % 6))
-    line="$line${chars:$rand:1}"
+    line+="${chars:$rand:1}"
   done
-  echo "$line"
-  sleep 0.05
+  echo -e "${G}$line${W}"
+  sleep 0.04
 done
 
-echo -e "${W}"
-
-# ===== INFO SYSTEM =====
-echo -e "${C}━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo -e "STATUS  : READY"
-echo -e "MODE    : LIVE CHAT VIEW"
-echo -e "ENGINE  : NODE + BAILEYS"
-echo -e "UPTIME  : 24 JAM"
-echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━${W}"
-
 echo
-echo -e "${Y}Tekan ENTER untuk mulai melihat chatting...${W}"
-read
+echo -e "${G}[✓] Engine Siap${W}"
+echo -e "${G}[✓] Monitoring Aktif${W}"
+echo
 
-# ===== CEK NODE =====
-if ! command -v node &> /dev/null
-then
-    echo -e "${R}[✗] Node.js belum terinstall!${W}"
+# ===== MENU =====
+echo "1. Jalankan View WA"
+echo "2. Cek Node"
+echo "3. Keluar"
+echo
+
+read -p "Pilih: " pilih
+
+if [ "$pilih" = "1" ]; then
+  if [ ! -f "view-wa.js" ]; then
+    echo -e "${R}File view-wa.js tidak ada!${W}"
     exit
+  fi
+  
+  echo -e "${G}Menjalankan engine WA...${W}"
+  node view-wa.js
+elif [ "$pilih" = "2" ]; then
+  node -v
+else
+  exit
 fi
-
-# ===== CEK FILE BOT =====
-if [ ! -f "bot.js" ]; then
-    echo -e "${R}[✗] bot.js tidak ditemukan di folder ini!${W}"
-    exit
-fi
-
-# ===== LOADING BAR =====
-echo -e "${G}Memulai sistem...${W}"
-for i in {1..20}
-do
-  echo -ne "${G}▓${W}"
-  sleep 0.05
-done
-echo
-
-sleep 1
-clear
-
-# ===== START BOT =====
-echo -e "${C}[✓] Sistem aktif..."
-echo -e "[✓] Monitoring chatting berjalan..."
-echo -e "[✓] Menunggu pesan masuk...${W}"
-echo
-
-node bot.js
-
-# ===== AUTO RESTART =====
-while [ $? -ne 0 ]; do
-  echo -e "${R}[!] Sistem terputus! Restart 5 detik...${W}"
-  sleep 5
-  node bot.js
-done
