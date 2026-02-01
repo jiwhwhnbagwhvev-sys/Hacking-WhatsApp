@@ -58,7 +58,8 @@ ip route dan harus ada imput ini
 - AI Sistem
 - Account security scanner
 - wa autobot
-- scaning keamanan akun Game 
+- scaning keamanan akun Game
+- Baca chating WhatsApp 
 
 # Katasandi server kode
 - USERNAME= Rio2026
