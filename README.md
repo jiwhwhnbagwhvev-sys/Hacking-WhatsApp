@@ -117,6 +117,7 @@ pkg install git tsu -y
 pkg install python -y
 pip install psutil colorama
 npm install qrcode-terminal
+npm install readline-sync
 pkg install git
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
 cd Root_Regers
