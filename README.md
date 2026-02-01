@@ -56,7 +56,9 @@ ip route dan harus ada imput ini
 - WiFi Intruder Scanner
 - Auto Spam Block Guard
 - AI Sistem
-- Account security scanner 
+- Account security scanner
+- wa autobot
+- scaning keamanan akun Game 
 
 # Katasandi server kode
 - USERNAME= Rio2026
@@ -87,6 +89,22 @@ chmod +x modules/*.sh
 ls -l modules/root_check.sh
 ./modules/root_check.sh
 ./main.sh
+```
+# 📋CARA MENAMBAH / MENGUPGRADE MENU DI ROOT RAGERS BOT
+
+ROOT RAGERS BOT adalah bot WhatsApp yang memungkinkan pengguna untuk berinteraksi melalui chat, dan admin dapat menambahkan, mengubah, atau menghapus menu, harga, stok, voucher, dan promo langsung melalui chat WhatsApp. Sistem bot ini menggunakan session WhatsApp melalui QR code, jadi hanya nomor yang scan QR yang dianggap sebagai admin resmi, sementara nomor lain hanya bisa mengakses menu dan melakukan perintah terbatas seperti “beli” atau melihat menu, tanpa dapat mengubah konfigurasi
+
+Sebelum admin dapat menambahkan atau mengubah menu, pastikan nomor admin sudah diatur
+```
+const admin = "628xxxxxxx";  // Nomor admin WA
+const adminJid = admin + "@s.whatsapp.net"
+```
+- Scan QR hanya perlu dilakukan dengan nomor admin ini, agar session aktif di bot mengenali perintah admin
+- Jika nomor lain (termasuk nomor bot) yang scan QR, maka perintah admin tidak akan diakui dan chat akan dibalas default “Ketik menu 😊”
+- Pastikan session lama dihapus    sebelum scan QR baru
+- Dengan kode di bawah ini
+ ```
+  rm -rf session_62*
 ```
 
 # kode buat jalanin wa autobot
