@@ -1,4 +1,4 @@
-// ===== ROOT RAGERS ULTIMATE BOT =====
+// ===== ROOT RAGERS BOT PROFESSIONAL =====
 
 const {
   default: makeWASocket,
@@ -11,24 +11,28 @@ const Pino = require("pino")
 const chalk = require("chalk")
 const fs = require("fs")
 const qrcode = require("qrcode-terminal")
-const readline = require("readline-sync")
 
-// ===== INPUT NOMOR BOT =====
-const botNumber = readline.question("Nomor Bot (62xxx): ")
-console.log(chalk.green("[✓] Bot akan berjalan dengan nomor:"), botNumber)
-
-// ===== ADMIN NUMBER =====
+// ===== ADMIN =====
 const admin = "6285283786794"
 const adminJid = admin + "@s.whatsapp.net"
 
 // ===== DATA =====
-let data = { harga:"50K", stok:"Tersedia", voucher:[], users:{} }
+let data = {
+ menu: {
+   harga: "50K",
+   stok: "Tersedia",
+   voucher: ["DISKON10","FREE100"],
+   beli: "🛒 Order diterima!",
+   admin: `wa.me/${admin}`,
+   "user online": "User aktif: 0"
+ }
+}
 
 if(fs.existsSync("data.json")){
  data = JSON.parse(fs.readFileSync("data.json"))
 }
 
-// ===== ANIMASI HACKER =====
+// ===== LOGO & ANIMASI =====
 function hackerScroll(lines=15){
  const chars="01#@$%&"
  for(let i=0;i<lines;i++){
@@ -39,7 +43,6 @@ function hackerScroll(lines=15){
  }
 }
 
-// ===== LOGO =====
 function logo(){
  console.clear()
  console.log(chalk.red(`
@@ -50,7 +53,7 @@ function logo(){
 ██║  ██║╚██████╔╝╚██████╔╝
 ╚═╝  ╚═╝╚═════╝  ╚═════╝
 `))
- console.log(chalk.green(">>> ROOT RAGERS BOT ONLINE <<<"))
+ console.log(chalk.green(">>> ROOT RAGERS BOT PROFESSIONAL ONLINE <<<"))
  hackerScroll()
 }
 
@@ -60,7 +63,7 @@ logo()
 async function start(){
 
  const { state, saveCreds } =
-  await useMultiFileAuthState(`session_${botNumber}`)
+  await useMultiFileAuthState("session_bot")
 
  const { version } =
   await fetchLatestBaileysVersion()
@@ -77,7 +80,7 @@ sock.ev.on("connection.update", update=>{
 
  if(qr){
   console.log("\nScan QR di WhatsApp:\n")
-  qrcode.generate(qr, { small:true })
+  qrcode.generate(qr,{small:true})
  }
 
  if(connection==="open"){
@@ -107,72 +110,57 @@ sock.ev.on("messages.upsert", async ({messages})=>{
  const t = text.toLowerCase()
 
 // ===== TRACK USER ONLINE =====
-data.users[from] = new Date().toISOString()
-fs.writeFileSync("data.json", JSON.stringify(data,null,2))
-
-// ===== MENU =====
-if(t==="menu"){
- await sock.sendMessage(from,{text:
-`📋 MENU
-
-• harga
-• stok
-• voucher
-• beli
-• admin
-• user online
-
-ADMIN:
-• set harga <harga>
-• set stok <stok>
-• add voucher <kode>`})
-}
+data.menu["user online"] = "User aktif: " + Object.keys(data.menu).length
+fs.writeFileSync("data.json",JSON.stringify(data,null,2))
 
 // ===== USER MENU =====
-else if(t==="harga")
- await sock.sendMessage(from,{text:`💰 Harga: ${data.harga}`})
-
-else if(t==="stok")
- await sock.sendMessage(from,{text:`📦 Stok: ${data.stok}`})
-
-else if(t==="voucher")
- await sock.sendMessage(from,{text:`🎫 ${data.voucher.join(", ") || "Tidak ada"}`})
-
-else if(t==="beli"){
- await sock.sendMessage(from,{text:"🛒 Order diterima!"})
- await sock.sendMessage(adminJid,{text:`📢 ORDER BARU dari ${from}`})
+if(t==="menu"){
+ let menuText = "📋 MENU\n\n"
+ for(let key in data.menu){
+  const val = data.menu[key]
+  menuText += `• ${key}: ${Array.isArray(val)?val.join(", "):val}\n`
+ }
+ // animasi hacker scroll
+ hackerScroll(5)
+ await sock.sendMessage(from,{text:menuText})
 }
 
-else if(t==="admin")
- await sock.sendMessage(from,{text:`👤 Admin: wa.me/${admin}`})
-
-else if(t==="user online"){
- const u = Object.keys(data.users).length
- await sock.sendMessage(from,{text:`🟢 User aktif: ${u}`})
+// ===== ADMIN MENU DYNAMIC =====
+else if(from===adminJid && t.startsWith("set menu ")){
+ // set menu <nama>|<isi>
+ const param = t.replace("set menu ","").split("|")
+ if(param.length===2){
+  const [name,value] = param
+  // jika ada koma, buat array
+  data.menu[name] = value.includes(",") ? value.split(",").map(v=>v.trim()) : value
+  fs.writeFileSync("data.json",JSON.stringify(data,null,2))
+  await sock.sendMessage(from,{text:`✅ Menu '${name}' diupdate!`})
+ } else {
+  await sock.sendMessage(from,{text:"Format salah! Gunakan: set menu <nama>|<isi> (pisahkan array pakai koma)"})
+ }
 }
 
-// ===== ADMIN COMMAND =====
-else if(from===adminJid && t.startsWith("set harga ")){
- data.harga = t.replace("set harga ","")
- fs.writeFileSync("data.json",JSON.stringify(data,null,2))
- await sock.sendMessage(from,{text:"✅ Harga diupdate"})
+// ===== DELETE MENU =====
+else if(from===adminJid && t.startsWith("del menu ")){
+ const name = t.replace("del menu ","")
+ if(data.menu[name]){
+  delete data.menu[name]
+  fs.writeFileSync("data.json",JSON.stringify(data,null,2))
+  await sock.sendMessage(from,{text:`✅ Menu '${name}' dihapus!`})
+ } else {
+  await sock.sendMessage(from,{text:`❌ Menu '${name}' tidak ditemukan`})
+ }
 }
 
-else if(from===adminJid && t.startsWith("set stok ")){
- data.stok = t.replace("set stok ","")
- fs.writeFileSync("data.json",JSON.stringify(data,null,2))
- await sock.sendMessage(from,{text:"✅ Stok diupdate"})
+// ===== USER PENGGUNAAN MENU =====
+else if(data.menu[t]){
+ const val = data.menu[t]
+ await sock.sendMessage(from,{text:Array.isArray(val)?val.join(", "):val})
 }
 
-else if(from===adminJid && t.startsWith("add voucher ")){
- let v = t.replace("add voucher ","")
- data.voucher.push(v)
- fs.writeFileSync("data.json",JSON.stringify(data,null,2))
- await sock.sendMessage(from,{text:"✅ Voucher ditambah"})
-}
-
+// ===== DEFAULT =====
 else{
- await sock.sendMessage(from,{text:"Ketik *menu* 😊"})
+ await sock.sendMessage(from,{text:"Ketik *menu* untuk lihat menu terbaru 😊"})
 }
 
 })
