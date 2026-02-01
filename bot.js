@@ -1,131 +1,141 @@
+// ===== ROOT RAGERS STABLE WA BOT =====
+
 const {
   default: makeWASocket,
   useMultiFileAuthState,
   DisconnectReason,
+  fetchLatestBaileysVersion
 } = require("@whiskeysockets/baileys")
+
 const P = require("pino")
 const readline = require("readline-sync")
-const fs = require("fs")
 const chalk = require("chalk")
 
-// ====== UTIL ======
-function slowPrint(t, d = 0.02) {
-  for (const c of t) {
-    process.stdout.write(c)
-    require("child_process").execSync("sleep " + d)
-  }
-  console.log()
-}
+console.clear()
 
-function logo() {
-  console.clear()
-  console.log(chalk.greenBright(`
-██████╗ ██████╗ ██████╗
+console.log(chalk.green(`
+██████╗  ██████╗  ██████╗
 ██╔══██╗██╔═══██╗██╔═══██╗
 ██████╔╝██║   ██║██║   ██║
-██╔═══╝ ██║   ██║██║   ██║
-██║     ╚██████╔╝╚██████╔╝
-╚═╝      ╚═════╝  ╚═════╝
+██╔══██╗██║   ██║██║   ██║
+██║  ██║╚██████╔╝╚██████╔╝
+╚═╝  ╚═╝ ╚═════╝  ╚═════╝
 `))
-  console.log(chalk.red(">>> PUBLIC GAME & STORE WA BOT <<<"))
-  slowPrint("Starting bot...", 0.01)
-}
 
-// ====== BOT ======
+console.log(chalk.red(">>> ROOT RAGERS WA BOT STABLE <<<\n"))
+
+// ===== INPUT NOMOR =====
+const target = readline.question("Nomor tujuan (62xxx): ")
+const targetJid = target + "@s.whatsapp.net"
+
 async function startBot() {
-  logo()
 
-  // Auth session
-  const { state, saveCreds } = await useMultiFileAuthState("session")
+  const { state, saveCreds } =
+    await useMultiFileAuthState("session")
+
+  const { version } =
+    await fetchLatestBaileysVersion()
 
   const sock = makeWASocket({
     auth: state,
     printQRInTerminal: true,
     logger: P({ level: "silent" }),
+    version
   })
 
-  console.log(chalk.cyan("[INFO] BOT CONNECTING..."))
-
-  // ====== Input nomor pelanggan ======
-  let targets = []
-  const multi = readline.question("Masukkan nomor pelanggan (pisah koma, contoh 6281234567890,628987654321): ")
-  targets = multi.split(",").map(n => n.trim() + "@s.whatsapp.net")
-
-  // ====== PESAN MASUK ======
-  sock.ev.on("messages.upsert", async ({ messages }) => {
-    const msg = messages[0]
-    if (!msg.message) return
-    if (msg.key.fromMe) return
-
-    const from = msg.key.remoteJid
-    const text =
-      msg.message.conversation ||
-      msg.message.extendedTextMessage?.text ||
-      ""
-    const t = text.toLowerCase()
-
-    // Log pesan
-    fs.appendFileSync("log.txt", `${new Date().toLocaleString()} | ${from}: ${text}\n`)
-
-    // ====== AUTO REPLY ======
-    if (t.includes("menu")) {
-      await sock.sendMessage(from, {
-        text:
-`📋 *MENU TOKO*
-
-1️⃣ ketik *harga*
-2️⃣ ketik *stok*
-3️⃣ ketik *beli*
-4️⃣ ketik *admin*`
-      })
-    } else if (t.includes("harga")) {
-      await sock.sendMessage(from, { text: "💰 Harga produk mulai 50K ya kak 😊" })
-    } else if (t.includes("stok")) {
-      await sock.sendMessage(from, { text: "📦 Stok masih tersedia 👍" })
-    } else if (t.includes("beli")) {
-      await sock.sendMessage(from, {
-        text:
-`🛒 *Cara Order*
-Kirim:
-• Nama produk
-• Alamat
-• Metode bayar
-Admin akan memproses ya 🙏`
-      })
-
-      // ====== Kirim notifikasi ke semua target ======
-      for (const targe of targets) {
-        await sock.sendMessage(targe, { text: `💬 Ada order baru dari ${from}` })
-      }
-
-    } else if (t.includes("admin")) {
-      await sock.sendMessage(from, { text: "👨‍💼 Admin: wa.me/6285283786794" })
-    } else {
-      await sock.sendMessage(from, {
-        text:
-`Halo 👋
-Selamat datang di toko kami.
-Ketik *menu* untuk melihat daftar.`
-      })
-    }
-  })
-
-  // ====== CONNECTION UPDATE ======
+  // ===== KONEKSI =====
   sock.ev.on("connection.update", (update) => {
     const { connection, lastDisconnect } = update
-    if (connection === "open") console.log(chalk.green("[INFO] BOT ONLINE ✅"))
+
+    if (connection === "open") {
+      console.log(chalk.green("\n✅ BOT ONLINE & TERHUBUNG\n"))
+    }
+
     if (connection === "close") {
-      const shouldReconnect = lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut
-      console.log(chalk.red("[INFO] Koneksi terputus ❌"))
+      const shouldReconnect =
+        lastDisconnect?.error?.output?.statusCode !==
+        DisconnectReason.loggedOut
+
+      console.log(chalk.red("❌ Koneksi terputus"))
+
       if (shouldReconnect) {
-        console.log(chalk.yellow("[INFO] Reconnecting... 🔄"))
+        console.log("🔄 Reconnecting...")
         startBot()
       }
     }
   })
 
   sock.ev.on("creds.update", saveCreds)
+
+  // ===== PESAN MASUK =====
+  sock.ev.on("messages.upsert", async ({ messages }) => {
+
+    const msg = messages[0]
+    if (!msg.message) return
+    if (msg.key.fromMe) return
+
+    const from = msg.key.remoteJid
+
+    const text =
+      msg.message.conversation ||
+      msg.message.extendedTextMessage?.text ||
+      ""
+
+    const t = text.toLowerCase()
+
+    console.log("Chat:", t)
+
+    // ===== AUTO REPLY =====
+    if (t === "menu") {
+      await sock.sendMessage(from, {
+        text:
+`📋 MENU
+
+• harga
+• stok
+• beli
+• admin`
+      })
+    }
+
+    else if (t === "harga") {
+      await sock.sendMessage(from, {
+        text: "💰 Harga mulai 50K"
+      })
+    }
+
+    else if (t === "stok") {
+      await sock.sendMessage(from, {
+        text: "📦 Stok tersedia"
+      })
+    }
+
+    else if (t === "beli") {
+
+      await sock.sendMessage(from, {
+        text: "🛒 Order diterima, admin segera proses."
+      })
+
+      // Notif ke nomor kamu
+      await sock.sendMessage(targetJid, {
+        text: `📢 ORDER BARU dari ${from}`
+      })
+    }
+
+    else if (t === "admin") {
+      await sock.sendMessage(from, {
+        text: "👤 Admin: wa.me/6285283786794"
+      })
+    }
+
+    else {
+      await sock.sendMessage(from, {
+        text: "Ketik *menu* ya 😊"
+      })
+    }
+
+  })
+
 }
 
-// ====== RUN BOT ======
 startBot()
