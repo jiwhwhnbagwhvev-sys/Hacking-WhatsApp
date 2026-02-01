@@ -10,20 +10,6 @@ const readline = require("readline-sync")
 const qrcode = require("qrcode-terminal")
 const fs = require("fs")
 
-// ===== LOGO =====
-console.clear()
-console.log(`
-██████╗ ██╗   ██╗
-██╔══██╗██║   ██║
-██████╔╝██║   ██║
-██╔═══╝ ██║   ██║
-██║     ╚██████╔╝
-╚═╝      ╚═════╝
-
->>> VIEW WA TERMINAL <<<
-`)
-
-// ===== START =====
 async function start(){
 
 const { state, saveCreds } =
@@ -38,18 +24,17 @@ const sock = makeWASocket({
  version
 })
 
-// ===== QR CODE =====
+// ===== QR =====
 sock.ev.on("connection.update", (update)=>{
  const { connection, qr } = update
 
  if(qr){
-  console.log("\nScan QR ini di WhatsApp kamu:\n")
+  console.log("\nScan QR berikut di WhatsApp:\n")
   qrcode.generate(qr,{small:true})
  }
 
  if(connection==="open"){
-  console.log("\n✅ TERHUBUNG KE WHATSAPP!")
-  console.log("Sekarang semua chat akan muncul di sini.\n")
+  console.log("\n✅ WhatsApp Terhubung\n")
  }
 })
 
@@ -63,7 +48,7 @@ if(!m.message) return
 
 const from = m.key.remoteJid
 
-console.log("\n======================")
+console.log("\n====================")
 console.log("📩 Dari:", from)
 
 // ===== TEXT =====
@@ -88,9 +73,7 @@ if(m.message.imageMessage){
    m,"buffer",{},{}
   )
 
- const file =
-  `img_${Date.now()}.jpg`
-
+ const file = `img_${Date.now()}.jpg`
  fs.writeFileSync(file,buffer)
 
  console.log("Tersimpan:", file)
@@ -105,7 +88,7 @@ if(m.message.locationMessage){
  console.log("Longitude:", loc.degreesLongitude)
 }
 
-// ===== BALAS MANUAL =====
+// ===== BALAS =====
 let reply =
  readline.question("Balas (enter = skip): ")
 
