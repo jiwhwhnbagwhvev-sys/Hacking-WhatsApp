@@ -1,92 +1,121 @@
- const {
-  default: makeWASocket,
-  useMultiFileAuthState,
-  fetchLatestBaileysVersion,
-  downloadMediaMessage
+const {
+ default: makeWASocket,
+ useMultiFileAuthState,
+ fetchLatestBaileysVersion,
+ DisconnectReason,
+ downloadMediaMessage
 } = require("@whiskeysockets/baileys")
 
-const fs = require("fs")
+const Pino = require("pino")
+const qrcode = require("qrcode-terminal")
 const readline = require("readline")
+const fs = require("fs")
 
-// ===== INPUT TERMINAL =====
 const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+ input: process.stdin,
+ output: process.stdout
 })
 
-// ===== START =====
-async function start() {
+async function start(){
 
-  const { state, saveCreds } = await useMultiFileAuthState("view-session")
-  const { version } = await fetchLatestBaileysVersion()
+ const { state, saveCreds } =
+  await useMultiFileAuthState("session_view")
 
-  const sock = makeWASocket({
-    auth: state,
-    version,
-    printQRInTerminal: true
-  })
+ const { version } =
+  await fetchLatestBaileysVersion()
 
-  sock.ev.on("creds.update", saveCreds)
+ const sock = makeWASocket({
+  auth: state,
+  version,
+  logger: Pino({level:"silent"})
+ })
 
-  sock.ev.on("connection.update", (u) => {
-    if (u.connection === "open") {
-      console.log("\n✅ WhatsApp Terhubung\n")
-    }
-  })
+// ===== QR =====
+sock.ev.on("connection.update", update=>{
+ const { connection, qr, lastDisconnect } = update
 
-  // ===== MESSAGE VIEWER =====
-  sock.ev.on("messages.upsert", async ({ messages }) => {
+ if(qr){
+  console.clear()
+  console.log("📱 SCAN QR DI WHATSAPP")
+  qrcode.generate(qr,{small:true})
+ }
 
-    const m = messages[0]
-    if (!m.message || m.key.fromMe) return
+ if(connection==="open"){
+  console.log("\n✅ TERHUBUNG KE WHATSAPP\n")
+ }
 
-    const from = m.key.remoteJid
+ if(connection==="close"){
+  const reason =
+   lastDisconnect?.error?.output?.statusCode
 
-    console.log("\n====================")
-    console.log("📩 Dari:", from)
+  if(reason!==DisconnectReason.loggedOut){
+   start()
+  } else {
+   console.log("❌ Logout, scan ulang")
+  }
+ }
+})
 
-    // ===== TEXT =====
-    let text =
-      m.message.conversation ||
-      m.message.extendedTextMessage?.text
+sock.ev.on("creds.update", saveCreds)
 
-    if (text) {
-      console.log("💬 Pesan:", text)
-    }
+// ===== MONITOR CHAT =====
+sock.ev.on("messages.upsert", async ({messages})=>{
 
-    // ===== IMAGE =====
-    if (m.message.imageMessage) {
-      console.log("🖼️ Gambar diterima")
+ const msg = messages[0]
+ if(!msg.message) return
 
-      const buffer = await downloadMediaMessage(
-        m,
-        "buffer",
-        {},
-        { }
-      )
+ const from = msg.key.remoteJid
 
-      const file = `img_${Date.now()}.jpg`
-      fs.writeFileSync(file, buffer)
-      console.log("📁 Disimpan:", file)
-    }
+// ===== TEXT =====
+ const text =
+  msg.message.conversation ||
+  msg.message.extendedTextMessage?.text
 
-    // ===== LOCATION =====
-    if (m.message.locationMessage) {
-      const loc = m.message.locationMessage
-      console.log("📍 Lokasi:")
-      console.log("Latitude:", loc.degreesLatitude)
-      console.log("Longitude:", loc.degreesLongitude)
-    }
+ if(text){
+  console.log(`\n📩 Dari ${from}`)
+  console.log(`💬 ${text}\n`)
+ }
 
-    // ===== REPLY =====
-    rl.question("Balas (enter = skip): ", async (jawab) => {
-      if (jawab) {
-        await sock.sendMessage(from, { text: jawab })
-        console.log("✅ Terkirim")
-      }
+// ===== FOTO =====
+ if(msg.message.imageMessage){
+  console.log(`\n🖼️ Foto diterima dari ${from}`)
+
+  const buffer = await downloadMediaMessage(
+    msg,
+    "buffer",
+    {},
+    { logger:Pino(), reuploadRequest:sock.updateMediaMessage }
+  )
+
+  const fileName = `foto_${Date.now()}.jpg`
+  fs.writeFileSync(fileName, buffer)
+
+  console.log(`✅ Foto disimpan: ${fileName}`)
+ }
+
+// ===== LOKASI =====
+ if(msg.message.locationMessage){
+  const loc = msg.message.locationMessage
+
+  console.log("\n📍 Lokasi diterima")
+  console.log("Latitude :", loc.degreesLatitude)
+  console.log("Longitude:", loc.degreesLongitude)
+ }
+
+// ===== BALAS =====
+ if(text){
+  rl.question("Balas? (y/n): ", ans=>{
+   if(ans==="y"){
+    rl.question("Ketik balasan: ", async reply=>{
+     await sock.sendMessage(from,{text:reply})
+     console.log("✅ Terkirim\n")
     })
-
+   }
   })
+ }
+
+})
+
 }
 
 start()
