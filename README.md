@@ -116,6 +116,7 @@ pkg update -y && pkg upgrade -y
 pkg install git tsu -y
 pkg install python -y
 pip install psutil colorama
+npm install qrcode-terminal
 pkg install git
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
 cd Root_Regers
