@@ -53,7 +53,7 @@ echo -e "${WHT}
 31 DNS Benchmark.          32 Command AI System
 33 Smart System Monitor.   34 Security Watch System
 35 Local Web Lab.          36 DARK CODING LAB
-37 Game Account Security pro 38 sistem wa bot
+37 Game Account Security pro 38 wa autobot
 0 Exit
 ${R}"
 }
