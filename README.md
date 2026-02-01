@@ -94,6 +94,7 @@ ls -l modules/root_check.sh
 pkg update -y && pkg upgrade -y
 pkg install git tsu -y
 pkg install python -y
+npm install @whiskeysockets/baileys pino readline-sync chalk
 pip install psutil colorama
 pkg install git
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
