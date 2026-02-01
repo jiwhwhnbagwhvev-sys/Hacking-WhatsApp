@@ -11,6 +11,10 @@ WHT="\e[97m"
 B="\e[1m"
 R="\e[0m"
 
+ONLINE_FILE="online.txt"
+VOUCHER_FILE="voucher.txt"
+
+
 clear
 
 # ===== LOGO =====
@@ -41,6 +45,22 @@ if [[ "$U" == "$USERNAME" && "$P" == "$PASSWORD" ]]; then
   echo -e "${GRN}[✓] LOGIN SUCCESS — WELCOME $USERNAME${R}"
   echo
   echo -ne "${YLW}Loading${R} "
+
+  # ===== DASHBOARD =====
+echo -e "${YLW}Ketik voucher ATAU ketik .admin${R}"
+echo
+
+read -p "Input: " input
+
+# ===== FITUR ADMIN WA =====
+if [[ "$input" == ".admin" ]]; then
+  echo "Membuka WhatsApp Admin..."
+  termux-open-url "https://wa.me/6285283786794"
+  exit
+fi
+
+# ===== VOUCHER =====
+echo "Voucher diterima: $input"
 
   # ===== LOADING WARNA-WARNI =====
   for i in {1..30}; do
