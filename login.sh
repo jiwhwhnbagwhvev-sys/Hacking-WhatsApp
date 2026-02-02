@@ -120,9 +120,14 @@ if [[ "$user" == "$USERNAME" && "$pass" == "$PASSWORD" ]]; then
   sed -i "/^$user$/d" "$ACTIVE_DB"
   echo "$user" >> "$ACTIVE_DB"
 
-  echo -e "${GREEN}Data user tersimpan sebagai aktif${WHITE}"
   sleep 1
 
-  exec ./main.sh   # ⬅️ INI WAJIB
+  exec ./main.sh   # masuk menu utama
 
 else
+  echo -e "${RED}Login salah!${WHITE}"
+  try=$((try+1))
+  sleep 2
+fi
+
+done
