@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ===== LOGIN =====
-bash ./login.sh || exit 1
+bash ./login.sh.gpg || exit 1
 
 # ===== LOADING =====
 loading() {
