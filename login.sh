@@ -1,77 +1,76 @@
 #!/bin/bash
 
+DB="users.db"
+MAX=3
+TRY=0
+
 # ===== WARNA =====
-B="\033[1;34m"
-G="\033[1;32m"
 R="\033[1;31m"
+G="\033[1;32m"
 Y="\033[1;33m"
+B="\033[1;34m"
 C="\033[1;36m"
-M="\033[1;35m"
+P="\033[1;35m"
 W="\033[0m"
 
-DB="users.db"
-
-# ===== AUTO BUAT DATABASE =====
-if [ ! -f $DB ]; then
-echo "user1:12345" > $DB
-echo "user2:54321" >> $DB
-fi
+while [ $TRY -lt $MAX ]
+do
 
 clear
 
-# ===== LOGO ROOT REGERS =====
-echo -e "$B"
-echo "██████╗  ██████╗  ██████╗ ████████╗"
-echo "██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝"
-echo "██████╔╝██║   ██║██║   ██║   ██║   "
-echo "██╔══██╗██║   ██║██║   ██║   ██║   "
-echo "██║  ██║╚██████╔╝╚██████╔╝   ██║   "
-echo "╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   "
-echo
-echo "██████╗ ███████╗ ██████╗ ███████╗██████╗ ███████╗"
-echo "██╔══██╗██╔════╝██╔════╝ ██╔════╝██╔══██╗██╔════╝"
-echo "██████╔╝█████╗  ██║  ███╗█████╗  ██████╔╝███████╗"
-echo "██╔══██╗██╔══╝  ██║   ██║██╔══╝  ██╔══██╗╚════██║"
-echo "██║  ██║███████╗╚██████╔╝███████╗██║  ██║███████║"
-echo "╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝"
-echo -e "$W"
+echo -e "${B}"
+echo "██████╗  ██████╗  ██████╗ "
+echo "██╔══██╗██╔═══██╗██╔══██╗"
+echo "██████╔╝██║   ██║██║   ██║"
+echo "██╔══██╗██║   ██║██║   ██║"
+echo "██║  ██║╚██████╔╝██████╔╝"
+echo "╚═╝  ╚═╝ ╚═════╝ ╚═════╝"
+echo -e "${W}"
 
-echo -e "${C}════ ROOT REGERS LOGIN ════${W}"
-echo -e "${Y}.admin WA: 085283786794${W}"
+echo -e "${C}=== LOGIN ROOT REGERS ===${W}"
 echo
 
-# ===== INFO USER =====
-TOTAL=$(wc -l < $DB)
-echo -e "${G}User terdaftar:${W} $TOTAL"
-echo -e "${G}Token aktif:${W} $TOTAL"
-echo
-
-# ===== INPUT LOGIN =====
-read -p "Username: " user
-read -p "Token: " token
+read -p "Username : " user
+read -p "Token    : " token
 
 # ===== VALIDASI =====
-if grep -q "$user:$token" $DB; then
+if grep -q "^$user:$token$" "$DB"; then
 
 echo
-echo -e "${G}Login valid!${W}"
+echo -e "${G}LOGIN BERHASIL${W}"
+echo
 
-# ===== LOADING WARNA =====
-for i in {1..6}
+# loading rainbow
+colors=($R $Y $G $C $B $P)
+for i in {1..25}
 do
-echo -e "${R}■${Y}■${G}■${C}■${M}■${B}■${W} Loading..."
-sleep 0.3
+rand=$((RANDOM % 6))
+echo -ne "${colors[$rand]}█${W}"
+sleep 0.05
 done
 
 echo
-echo -e "${C}✨ WELCOME $user ✨${W}"
+echo -e "${P}WELCOME $user 🚀${W}"
 sleep 1
 
-# ===== MASUK MENU =====
 ./main.sh
+exit
 
 else
 
-echo -e "${R}Login gagal!${W}"
+TRY=$((TRY+1))
+echo
+echo -e "${R}LOGIN SALAH!${W}"
+echo -e "${Y}Sisa percobaan: $((MAX-TRY))${W}"
 sleep 2
+
 fi
+
+done
+
+# ===== BLOKIR =====
+clear
+echo -e "${R}Terlalu banyak percobaan!${W}"
+echo -e "${R}Akses diblokir!${W}"
+sleep 3
+exit
