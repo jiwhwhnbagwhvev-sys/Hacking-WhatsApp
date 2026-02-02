@@ -1,7 +1,12 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-#===== LOGIN =====
-bash ./login.sh || exit 1
+#!/bin/bash
+clear
+echo "=== MENU UTAMA ==="
+echo "1. Menu A"
+echo "2. Menu B"
+echo "3. Exit"
+read -p "Pilih: " pilih
 
 # ===== LOADING =====
 loading() {
