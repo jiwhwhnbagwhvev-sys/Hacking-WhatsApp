@@ -17,7 +17,6 @@ colors=("$R" "$G" "$Y" "$B" "$P" "$C")
 ########################
 # LOGO GARUDA ASCII
 ########################
-
 logo_ascii() {
 echo "         ${B}           ,_         "
 echo "         ${B}        ,/|  \        "
@@ -36,22 +35,21 @@ echo "         ${B}     \/       \/       "
 echo -e "${W}"
 }
 
-# Animasi warna
+# Animasi warna Garuda
 for c in "${colors[@]}"
 do
-clear
-echo -e "$c"
-logo_ascii
-echo -e "$c======================================$W"
-echo -e "$c         ROOT REGERS ADMIN PANEL$W"
-echo -e "$c======================================$W"
-sleep 0.2
+  clear
+  echo -e "$c"
+  logo_ascii
+  echo -e "$c======================================$W"
+  echo -e "$c         ROOT REGERS ADMIN PANEL$W"
+  echo -e "$c======================================$W"
+  sleep 0.2
 done
 
 ########################
 # VERIFIKASI ADMIN
 ########################
-
 echo
 read -p "No HP Admin : " hp
 
@@ -70,8 +68,6 @@ sleep 1
 ########################
 # TAMBAH USER
 ########################
-
-# Buat DB kalau belum ada
 [ ! -f "$DB" ] && touch "$DB"
 
 echo
@@ -86,20 +82,25 @@ if [ -z "$user" ] || [ -z "$token" ]; then
 fi
 
 # CEK DUPLIKAT
-if grep -q "^$user:" "$DB"; then
-  echo -e "${R}User sudah ada!${W}"
+if grep -q "^$user:$token" "$DB"; then
+  echo -e "${R}User dan token sudah ada!${W}"
   exit
 fi
 
-# DAPATKAN DEVICE ID HP PERTAMA (LOCK)
-DEVICE=$(getprop ro.serialno || echo "NULL")
-
-# SIMPAN FORMAT: user:token:device
-echo "$user:$token:NULL" >> "$DB"
+# SIMPAN VOUCHER
+# FORMAT: user:token
+echo "$user:$token" >> "$DB"
 
 echo
 echo -e "${G}================================${W}"
 echo -e "${G} USER BERHASIL DITAMBAHKAN ✔${W}"
 echo -e "${G}================================${W}"
-echo -e "${Y}Device ID akan dikunci saat login pertama${W}"
+echo -e "${Y}Voucher bisa dipakai di device lain / user lain${W}"
 sleep 1
+
+# LANGSUNG BISA NYAMBUNG KE LOGIN.SH
+echo
+read -p "Apakah mau masuk ke login? (y/n): " go
+if [[ "$go" == "y" || "$go" == "Y" ]]; then
+  exec ./login.sh
+fi
