@@ -146,5 +146,4 @@ chmod +x auth_system.sh
 chmod +x auth_hidden.sh
 bash auth_hidden.sh
 chmod +x login_loader.sh
-chmod +x main.sh modules/*.sh
 bash login.sh
