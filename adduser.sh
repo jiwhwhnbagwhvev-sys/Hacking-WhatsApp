@@ -7,7 +7,7 @@ ADMIN_HP="085283786794"
 R="\033[1;31m"
 G="\033[1;32m"
 Y="\033[1;33m"
-B="\033[1;34m"
+B="\033[1;96m"
 P="\033[1;35m"
 C="\033[1;36m"
 W="\033[0m"
@@ -71,7 +71,8 @@ sleep 1
 # TAMBAH USER
 ########################
 
-touch "$DB"
+# Buat DB kalau belum ada
+[ ! -f "$DB" ] && touch "$DB"
 
 echo
 echo -e "${C}========== TAMBAH USER ==========${W}"
@@ -90,11 +91,15 @@ if grep -q "^$user:" "$DB"; then
   exit
 fi
 
-# SIMPAN
-echo "$user:$token" >> "$DB"
+# DAPATKAN DEVICE ID HP PERTAMA (LOCK)
+DEVICE=$(getprop ro.serialno || echo "NULL")
+
+# SIMPAN FORMAT: user:token:device
+echo "$user:$token:NULL" >> "$DB"
 
 echo
 echo -e "${G}================================${W}"
 echo -e "${G} USER BERHASIL DITAMBAHKAN ✔${W}"
 echo -e "${G}================================${W}"
+echo -e "${Y}Device ID akan dikunci saat login pertama${W}"
 sleep 1
