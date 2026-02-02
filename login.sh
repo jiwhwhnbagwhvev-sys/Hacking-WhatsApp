@@ -5,9 +5,9 @@
 ############################
 
 USERNAME="Rio2026"
-PASSWORD="Root_Rage 2026"
+PASSWORD="Root_Rage2026"
 
-ADMIN_NUM="085283786794"
+ADMIN_NUM="6285283786794"
 
 ACTIVE_DB="active_users.db"
 
@@ -37,7 +37,7 @@ echo "██████╔╝██║   ██║██║   ██║   █�
 echo "██╔══██╗██║   ██║██║   ██║   ██║"
 echo "██║  ██║╚██████╔╝██████╔╝   ██║"
 echo "╚═╝  ╚═╝ ╚═════╝ ╚═════╝    ╚═╝"
-echo " ROOT REGERS SYSTEM"
+echo "  ROOT REGERS SYSTEM"
 }
 
 # Animasi biru-merah
@@ -50,6 +50,21 @@ clear
 echo -e "$RED"; logo
 sleep 0.2
 done
+
+############################
+# LOADING ANIMATION
+############################
+
+loading(){
+echo
+echo -ne "Loading "
+for i in {1..10}
+do
+  echo -ne "■"
+  sleep 0.15
+done
+echo
+}
 
 ############################
 # COOLDOWN
@@ -66,7 +81,7 @@ echo
 }
 
 ############################
-# INFO USER AKTIF
+# USER AKTIF
 ############################
 
 show_active(){
@@ -102,7 +117,7 @@ read -p "Username : " user
 
 # COMMAND ADMIN
 if [ "$user" = ".admin" ]; then
-  termux-open-url "https://wa.me/62$ADMIN_NUM"
+  termux-open-url "https://wa.me/$ADMIN_NUM"
   continue
 fi
 
@@ -117,12 +132,23 @@ if [[ "$user" == "$USERNAME" && "$pass" == "$PASSWORD" ]]; then
 
   echo -e "${GREEN}LOGIN BERHASIL ✔${WHITE}"
 
+  # simpan user aktif
   sed -i "/^$user$/d" "$ACTIVE_DB"
   echo "$user" >> "$ACTIVE_DB"
 
-  sleep 1
+  loading
 
-  exec ./main.sh   # masuk menu utama
+  clear
+  echo -e "${GREEN}"
+  echo "=================================="
+  echo "        W E L C O M E 🎉"
+  echo "          $user"
+  echo "=================================="
+  echo -e "${WHITE}"
+
+  sleep 2
+
+  exec ./main.sh
 
 else
   echo -e "${RED}Login salah!${WHITE}"
