@@ -7,7 +7,7 @@ ADMIN="6285283786794"
 # WARNA
 R="\033[1;31m"
 G="\033[1;32m"
-B="\033[1;34m"
+B="\033[1;96m"   # BIRU MUDA TERANG
 C="\033[1;36m"
 Y="\033[1;33m"
 W="\033[0m"
@@ -28,8 +28,16 @@ echo -e "${Y}Admin: 085283786794${W}"
 echo -e "${C}Ketik .admin untuk chat admin${W}"
 echo
 
+# ===== CEK DATABASE =====
+if [ ! -f "$DB" ]; then
+  echo -e "${R}Database users.db belum ada!${W}"
+  echo "Buat user dulu lewat ./adduser.sh"
+  exit
+fi
+
 # ===== INPUT LOGIN =====
 read -p "Masukkan Username : " user
+user=$(echo "$user" | xargs)  # hapus spasi
 
 # ADMIN CHAT
 if [ "$user" = ".admin" ]; then
@@ -38,20 +46,21 @@ if [ "$user" = ".admin" ]; then
 fi
 
 read -p "Masukkan Token Voucher : " token
+token=$(echo "$token" | xargs)  # hapus spasi
 
-# ===== VALIDASI KETAT =====
-if grep -q "^$user:$token$" "$DB"; then
+# ===== VALIDASI LOGIN =====
+if grep -Fxq "$user:$token" "$DB"; then
 
   echo "$user:$token" > "$SESSION"
 
   echo
-  echo -e "${G}Login BERHASIL ✔${W}"
+  echo -e "${G}LOGIN BERHASIL ✔${W}"
   
-  # Loading warna
-  for i in {1..3}
+  # ===== LOADING WARNA-WARNI =====
+  for i in {1..5}
   do
     echo -e "${R}■${Y}■${G}■${C}■${B}■${W}"
-    sleep 0.3
+    sleep 0.2
   done
 
   sleep 1
