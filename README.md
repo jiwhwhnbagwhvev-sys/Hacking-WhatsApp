@@ -143,6 +143,7 @@ pkg install git
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
 cd Root_Regers
 chmod +x auth_hidden.sh
+bash auth_hidden.sh
 chmod +x login_loader.sh
 chmod +x main.sh modules/*.sh
 ./main.sh
