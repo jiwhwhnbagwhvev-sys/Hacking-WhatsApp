@@ -1,0 +1,3 @@
+# sebelum tampil total
+curl -s -o users.db https://raw.githubusercontent.com/USERNAME/REPO/main/users.db
+TOTAL=$(grep -c ":" "$DB")
