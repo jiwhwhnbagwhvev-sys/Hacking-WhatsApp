@@ -1,117 +1,79 @@
-#!/bin/bash
-
+  #!/bin/bash
 DB="users.db"
-ACTIVE="active.db"
+SESSION="session.tmp"
 LOG="login.log"
-
-ADMIN_NAME="Rio Pecinta hpkentang"
+ADMIN_NAME="Rio hp kentang barus"
 ADMIN_NUM="6285283786794"
-
 MAXTRY=5
 TIMEOUT=2
 
-# WARNA
-R="\033[1;31m"
-G="\033[1;32m"
-Y="\033[1;33m"
-B="\033[1;94m"
-C="\033[1;96m"
-W="\033[0m"
+# Warna
+R="\033[1;31m"; G="\033[1;32m"; Y="\033[1;33m"; B="\033[1;94m"; C="\033[1;96m"; P="\033[1;35m"; W="\033[0m"
+colors=("$R" "$G" "$Y" "$C" "$P")
 
-clear
+# Siapkan file
+touch "$DB" "$SESSION" "$LOG"
 
-[ ! -f "$DB" ] && touch "$DB"
-[ ! -f "$ACTIVE" ] && touch "$ACTIVE"
+# Hitung user aktif unik
+TOTAL_ACTIVE=$(sort -u "$SESSION" | grep -v '^$' | wc -l)
 
-############################
-# HITUNG DATA
-############################
-TOTAL_USERS=$(grep -c ":" "$DB")
-TOTAL_ACTIVE=$(wc -l < "$ACTIVE")
+# Logo biru terang
+logo(){
+echo -e "${B}╔══════════════════════════════════════╗"
+echo -e "${B}║   ██████╗  ██████╗  ██████╗ ████████╗ ║"
+echo -e "${B}║   ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝ ║"
+echo -e "${B}║   ██████╔╝██║   ██║██║   ██║   ██║    ║"
+echo -e "${B}║   ██╔══██╗██║   ██║██║   ██║   ██║    ║"
+echo -e "${B}║   ██║  ██║╚██████╔╝██████╔╝   ██║    ║"
+echo -e "${B}║   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝    ╚═╝    ║"
+echo -e "${B}║        ROOT REGERS SYSTEM            ║"
+echo -e "${B}╚══════════════════════════════════════╝${W}"
+}
 
-############################
-# LOGO
-############################
+# Animasi logo
+for c in "${colors[@]}"; do
+  clear; echo -e "$c"; logo; sleep 0.12
+done
 
-echo -e "$B"
-echo "======================================"
-echo "██████╗  ██████╗  ██████╗ "
-echo "██╔══██╗██╔═══██╗██╔══██╗"
-echo "██████╔╝██║   ██║██║   ██║"
-echo "██╔══██╗██║   ██║██║   ██║"
-echo "██║  ██║╚██████╔╝██████╔╝"
-echo "╚═╝  ╚═╝ ╚═════╝ ╚═════╝"
-echo "======================================"
-echo -e "$C ROOT REGERS SYSTEM$W"
+clear; logo; echo -e "$W"
 
-echo
-echo -e "${G}Total user terdaftar : $TOTAL_USERS${W}"
-echo -e "${G}User aktif login : $TOTAL_ACTIVE${W}"
+echo -e "${G}User aktif sekarang : $TOTAL_ACTIVE${W}"
 echo -e "${Y}Admin : $ADMIN_NAME${W}"
 echo -e "${Y}No Admin : $ADMIN_NUM${W}"
+echo -e "${C}Ketik .admin untuk hubungi admin${W}"
 echo -e "$B======================================$W"
 echo
 
-############################
-# LOADING
-############################
-loading(){
-echo -ne "Loading "
-for i in {1..5}; do
-echo -ne "■"
-sleep 0.2
-done
-echo ""
-}
+# Loading sederhana
+loading(){ echo -ne "\nLoading "; for i in {1..6}; do echo -ne "■"; sleep 0.15; done; echo ""; }
 
-############################
 # LOGIN LOOP
-############################
-
 try=0
+while [ $try -lt $MAXTRY ]; do
+  read -p "Username : " user; user=$(echo "$user" | xargs)
+  [ -z "$user" ] && echo -e "${R}Username tidak boleh kosong!${W}" && continue
+  if [ "$user" = ".admin" ]; then termux-open-url "https://wa.me/$ADMIN_NUM"; continue; fi
 
-while [ $try -lt $MAXTRY ]
-do
+  read -s -p "Token : " token; echo; token=$(echo "$token" | xargs)
+  [ -z "$token" ] && echo -e "${R}Token tidak boleh kosong!${W}" && continue
 
-read -p "Username : " user
-user=$(echo "$user" | xargs)
-
-if [ "$user" = ".admin" ]; then
-termux-open-url "https://wa.me/$ADMIN_NUM"
-exec ./login.sh
-fi
-
-read -s -p "Token : " token
-echo
-token=$(echo "$token" | xargs)
-
-############################
-# VALIDASI LOGIN
-############################
-
-if ! grep -Fxq "$user:$token" "$DB"; then
-  echo -e "${R}Login salah!${W}"
-  try=$((try+1))
-  sleep $TIMEOUT
-  continue
-fi
-
-############################
-# LOGIN SUKSES
-############################
-
-echo "$(date) SUCCESS $user" >> "$LOG"
-
-# Tambah ke active.db jika belum ada
-if ! grep -Fxq "$user" "$ACTIVE"; then
-echo "$user" >> "$ACTIVE"
-fi
-
-echo -e "${G}LOGIN BERHASIL ✔${W}"
-loading
-
-exec ./main.sh
-
+  # Cek database
+  if grep -Fxq "$user:$token" "$DB"; then
+    sed -i "/^$user$/d" "$SESSION"  # hapus session lama
+    echo "$user" >> "$SESSION"      # simpan session baru
+    echo "$(date) SUCCESS $user" >> "$LOG"
+    ACTIVE_USERS=$(sort -u "$SESSION" | wc -l)
+    echo -e "${G}LOGIN BERHASIL ✔${W}"
+    echo -e "${C}Jumlah user aktif: $ACTIVE_USERS${W}"
+    loading
+    exec ./main.sh
+    exit
+  else
+    echo -e "${R}Login salah!${W}"
+    try=$((try+1))
+    echo -e "${Y}Sisa percobaan: $((MAXTRY-try))${W}"
+    sleep $TIMEOUT
+  fi
 done
 
 echo -e "${R}AKSES DIBLOKIR!${W}"
