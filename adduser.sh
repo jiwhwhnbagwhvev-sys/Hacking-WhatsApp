@@ -1,30 +1,23 @@
 #!/bin/bash
 
 DB="users.db"
-ADMIN_PASS="admin123"
+ADMINPASS="Admind123"  # password admin
 
-echo "=== ADMIN TAMBAH USER ==="
-read -p "Password admin: " pass
+clear
+echo "===== ADMIN PANEL ====="
+echo
 
-if [ "$pass" != "$ADMIN_PASS" ]; then
-echo "Password salah!"
-exit
+read -p "Password Admin: " pass
+if [ "$pass" != "$ADMINPASS" ]; then
+  echo "Password salah!"
+  exit
 fi
 
-echo
-read -p "Masukkan username baru: " user
-read -p "Masukkan token/voucher: " token
+read -p "Username baru: " user
+read -p "Token voucher: " token
 
-# cek token sudah dipakai
-if grep -q ":$token$" $DB; then
-echo "Token sudah dipakai!"
-exit
-fi
+# Buat file DB kalau belum ada
+touch "$DB"
 
-echo "$user:$token" >> $DB
-
-TOTAL=$(wc -l < $DB)
-
-echo
+echo "$user:$token" >> "$DB"
 echo "User berhasil ditambahkan!"
-echo "Total user sekarang: $TOTAL"
