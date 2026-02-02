@@ -59,7 +59,8 @@ ip route dan harus ada imput ini
 - Account security scanner
 - wa autobot
 - scaning keamanan akun Game
-- Baca chating WhatsApp 
+- Baca chating WhatsApp
+- Radar kapal aktif 
 
 # Katasandi server kode
 - Hubungi admin untuk mendapatkan katasandi server nya
