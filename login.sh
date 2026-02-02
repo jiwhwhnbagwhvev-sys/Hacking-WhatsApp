@@ -7,153 +7,93 @@
 USERNAME="Rio2026"
 PASSWORD="Root_Rage2026"
 
-ADMIN_NUM="6285283786794"
-
-ACTIVE_DB="active_users.db"
-
-MAXTRY=5
-COOLDOWN=30
-
-touch "$ACTIVE_DB"
+ADMIN_NUM="085283786794"
+MAIN="./main.sh"
 
 ############################
 # WARNA
 ############################
 
-RED="\033[1;31m"
 BLUE="\033[1;96m"
+RED="\033[1;31m"
 GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
 WHITE="\033[0m"
 
 ############################
-# LOGO
+# LOGO BIRU MUDA
 ############################
 
 logo(){
-echo "██████╗  ██████╗  ██████╗ ████████╗"
-echo "██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝"
-echo "██████╔╝██║   ██║██║   ██║   ██║"
-echo "██╔══██╗██║   ██║██║   ██║   ██║"
-echo "██║  ██║╚██████╔╝██████╔╝   ██║"
-echo "╚═╝  ╚═╝ ╚═════╝ ╚═════╝    ╚═╝"
-echo "  ROOT REGERS SYSTEM"
+echo -e "${BLUE}"
+echo "╔══════════════════════════════╗"
+echo "║   ██████╗ ██████╗  ██████╗   ║"
+echo "║   ██╔══██╗██╔══██╗██╔═══██╗  ║"
+echo "║   ██████╔╝██████╔╝██║   ██║  ║"
+echo "║   ██╔══██╗██╔══██╗██║   ██║  ║"
+echo "║   ██║  ██║██║  ██║╚██████╔╝  ║"
+echo "║   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ║"
+echo "║      ROOT REGERS SYSTEM      ║"
+echo "╚══════════════════════════════╝"
+echo -e "${WHITE}"
 }
 
-# Animasi biru-merah
-for i in {1..3}
-do
-clear
-echo -e "$BLUE"; logo
-sleep 0.2
-clear
-echo -e "$RED"; logo
-sleep 0.2
-done
-
 ############################
-# LOADING ANIMATION
+# LOADING
 ############################
 
 loading(){
-echo
-echo -ne "Loading "
-for i in {1..10}
+echo -ne "${YELLOW}Loading "
+for i in {1..5}
 do
-  echo -ne "■"
-  sleep 0.15
+ echo -ne "■"
+ sleep 0.3
 done
-echo
-}
-
-############################
-# COOLDOWN
-############################
-
-cooldown(){
-echo -e "${RED}Terlalu banyak salah!${WHITE}"
-for ((i=$COOLDOWN;i>0;i--))
-do
-  echo -ne "\r${YELLOW}Coba lagi dalam $i detik...${WHITE}"
-  sleep 1
-done
-echo
-}
-
-############################
-# USER AKTIF
-############################
-
-show_active(){
-TOTAL=$(sort -u "$ACTIVE_DB" | wc -l)
-echo -e "${GREEN}User aktif: $TOTAL${WHITE}"
+echo -e "${WHITE}"
 }
 
 ############################
 # LOGIN LOOP
 ############################
 
-try=0
-
 while true
 do
 
 clear
-echo -e "$BLUE"
 logo
-echo -e "$WHITE"
 
-show_active
-echo
 echo "Ketik .admin untuk hubungi admin"
 echo
-
-if [ $try -ge $MAXTRY ]; then
-  cooldown
-  try=0
-fi
 
 read -p "Username : " user
 
 # COMMAND ADMIN
 if [ "$user" = ".admin" ]; then
-  termux-open-url "https://wa.me/$ADMIN_NUM"
-  continue
+    termux-open-url "https://wa.me/$ADMIN_NUM"
+    continue
 fi
 
 read -s -p "Password : " pass
 echo
 
-############################
-# CEK LOGIN
-############################
-
 if [[ "$user" == "$USERNAME" && "$pass" == "$PASSWORD" ]]; then
 
-  echo -e "${GREEN}LOGIN BERHASIL ✔${WHITE}"
+    echo -e "${GREEN}LOGIN BERHASIL ✔${WHITE}"
+    loading
+    echo -e "${GREEN}Welcome $user!${WHITE}"
+    sleep 1
 
-  # simpan user aktif
-  sed -i "/^$user$/d" "$ACTIVE_DB"
-  echo "$user" >> "$ACTIVE_DB"
-
-  loading
-
-  clear
-  echo -e "${GREEN}"
-  echo "=================================="
-  echo "        W E L C O M E 🎉"
-  echo "          $user"
-  echo "=================================="
-  echo -e "${WHITE}"
-
-  sleep 2
-
-  exec ./main.sh
+    if [ -f "$MAIN" ]; then
+        chmod +x "$MAIN"
+        exec "$MAIN"
+    else
+        echo -e "${RED}main.sh tidak ditemukan!${WHITE}"
+        exit
+    fi
 
 else
-  echo -e "${RED}Login salah!${WHITE}"
-  try=$((try+1))
-  sleep 2
+    echo -e "${RED}Login salah!${WHITE}"
+    sleep 2
 fi
 
 done
