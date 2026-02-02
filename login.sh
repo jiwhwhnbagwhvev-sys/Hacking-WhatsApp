@@ -6,7 +6,6 @@
 
 USERNAME="Rio2026"
 PASSWORD="Root_Rage2026"
-
 ADMIN_NUM="085283786794"
 MAIN="./main.sh"
 
@@ -21,10 +20,11 @@ YELLOW="\033[1;33m"
 WHITE="\033[0m"
 
 ############################
-# LOGO BIRU MUDA
+# LOGO
 ############################
 
 logo(){
+clear
 echo -e "${BLUE}"
 echo "╔══════════════════════════════╗"
 echo "║   ██████╗ ██████╗  ██████╗   ║"
@@ -44,10 +44,10 @@ echo -e "${WHITE}"
 
 loading(){
 echo -ne "${YELLOW}Loading "
-for i in {1..5}
+for i in {1..6}
 do
- echo -ne "■"
- sleep 0.3
+  echo -ne "■"
+  sleep 0.25
 done
 echo -e "${WHITE}"
 }
@@ -59,7 +59,6 @@ echo -e "${WHITE}"
 while true
 do
 
-clear
 logo
 
 echo "Ketik .admin untuk hubungi admin"
@@ -69,7 +68,7 @@ read -p "Username : " user
 
 # COMMAND ADMIN
 if [ "$user" = ".admin" ]; then
-    termux-open-url "https://wa.me/$ADMIN_NUM"
+    termux-open-url "https://wa.me/62$ADMIN_NUM"
     continue
 fi
 
@@ -83,13 +82,9 @@ if [[ "$user" == "$USERNAME" && "$pass" == "$PASSWORD" ]]; then
     echo -e "${GREEN}Welcome $user!${WHITE}"
     sleep 1
 
-    if [ -f "$MAIN" ]; then
-        chmod +x "$MAIN"
-        exec "$MAIN"
-    else
-        echo -e "${RED}main.sh tidak ditemukan!${WHITE}"
-        exit
-    fi
+    # MASUK MENU UTAMA
+    exec bash "$MAIN"
+    exit
 
 else
     echo -e "${RED}Login salah!${WHITE}"
