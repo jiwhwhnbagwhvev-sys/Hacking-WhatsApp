@@ -91,7 +91,7 @@ chmod +x main.sh login.sh
 chmod +x modules/*.sh
 ls -l modules/root_check.sh
 ./modules/root_check.sh
-./main.sh
+bash login.sh
 ```
 # 📋CARA MENAMBAH / MENGUPGRADE MENU DI ROOT RAGERS BOT
 
@@ -127,7 +127,7 @@ npm install chalk@4
 ```
 - jalan kan lagi
 ```
-./main.sh
+bash login.sh
 ```
 
 ## 📦 Instalasi (Termux)
