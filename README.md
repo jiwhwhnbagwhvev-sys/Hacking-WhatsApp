@@ -144,6 +144,6 @@ git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
 cd Root_Regers
 chmod +x auth_system.sh
 chmod +x auth_hidden.sh
-chmod +x main_loader.sh
 chmod +x login_loader.sh
+chmod +x main_loader.sh
 ./login_loader.sh
