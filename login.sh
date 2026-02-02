@@ -1,20 +1,44 @@
 #!/bin/bash
 
+############################
+# ROOT REGERS LOGIN SYSTEM
+############################
+
 DB="users.db"
 SESSION="session.tmp"
-ADMIN="6285283786794"
+LOG="login.log"
+
+ADMIN_NAME="Rio hp kentang barus"
+ADMIN_NUM="6285283786794"
+
+MAXTRY=5
+TIMEOUT=2
 
 # WARNA
 R="\033[1;31m"
 G="\033[1;32m"
-B="\033[1;96m"   # BIRU MUDA TERANG
+B="\033[1;96m"
 C="\033[1;36m"
 Y="\033[1;33m"
+P="\033[1;35m"
 W="\033[0m"
 
 clear
 
-# ===== LOGO =====
+############################
+# CEK DATABASE
+############################
+
+if [ ! -f "$DB" ]; then
+  touch "$DB"
+fi
+
+TOTAL=$(grep -c ":" "$DB")
+
+############################
+# LOGO BESAR
+############################
+
 echo -e "$B"
 echo "██████╗  ██████╗  ██████╗ "
 echo "██╔══██╗██╔═══██╗██╔══██╗"
@@ -22,55 +46,86 @@ echo "██████╔╝██║   ██║██║   ██║"
 echo "██╔══██╗██║   ██║██║   ██║"
 echo "██║  ██║╚██████╔╝██████╔╝"
 echo "╚═╝  ╚═╝ ╚═════╝ ╚═════╝"
-echo -e "$C      ROOT REGERS$W"
+echo -e "$C      ROOT REGERS SYSTEM$W"
+
 echo
-echo -e "${Y}Admin: 085283786794${W}"
-echo -e "${C}Ketik .admin untuk chat admin${W}"
+echo -e "${G}User aktif : $TOTAL${W}"
+echo -e "${Y}Admin      : $ADMIN_NAME${W}"
+echo -e "${Y}No Admin   : 085283786794${W}"
+echo -e "${C}Ketik .admin untuk hubungi admin${W}"
 echo
 
-# ===== CEK DATABASE =====
-if [ ! -f "$DB" ]; then
-  echo -e "${R}Database users.db belum ada!${W}"
-  echo "Buat user dulu lewat ./adduser.sh"
-  exit
-fi
+############################
+# FUNGSI LOADING
+############################
 
-# ===== INPUT LOGIN =====
-read -p "Masukkan Username : " user
-user=$(echo "$user" | xargs)  # hapus spasi
+loading(){
+for i in {1..10}
+do
+echo -ne "${R}█${Y}█${G}█${C}█${B}█${P}█${W}\r"
+sleep 0.1
+done
+}
 
-# ADMIN CHAT
+############################
+# LOGIN SYSTEM
+############################
+
+try=0
+
+while [ $try -lt $MAXTRY ]
+do
+
+echo
+read -p "Username : " user
+user=$(echo "$user" | xargs)
+
 if [ "$user" = ".admin" ]; then
-  termux-open-url "https://wa.me/$ADMIN"
-  exit
+termux-open-url "https://wa.me/$ADMIN_NUM"
+exit
 fi
 
-read -p "Masukkan Token Voucher : " token
-token=$(echo "$token" | xargs)  # hapus spasi
+read -s -p "Token    : " token
+echo
+token=$(echo "$token" | xargs)
 
-# ===== VALIDASI LOGIN =====
+# VALIDASI KOSONG
+if [ -z "$user" ] || [ -z "$token" ]; then
+echo -e "${R}Tidak boleh kosong!${W}"
+continue
+fi
+
+# CEK LOGIN
 if grep -Fxq "$user:$token" "$DB"; then
 
-  echo "$user:$token" > "$SESSION"
+echo "$(date) SUCCESS $user" >> "$LOG"
+echo "$user" > "$SESSION"
 
-  echo
-  echo -e "${G}LOGIN BERHASIL ✔${W}"
-  
-  # ===== LOADING WARNA-WARNI =====
-  for i in {1..5}
-  do
-    echo -e "${R}■${Y}■${G}■${C}■${B}■${W}"
-    sleep 0.2
-  done
-
-  sleep 1
-  ./main.sh
+echo
+echo -e "${G}LOGIN BERHASIL ✔${W}"
+loading
+sleep 1
+./main.sh
+exit
 
 else
-  echo
-  echo -e "${R}LOGIN GAGAL ❌${W}"
-  echo -e "${R}Username atau Token salah!${W}"
-  sleep 2
-  clear
-  ./login.sh
+
+echo "$(date) FAIL $user" >> "$LOG"
+echo -e "${R}Login salah!${W}"
+try=$((try+1))
+echo -e "${Y}Sisa percobaan: $((MAXTRY-try))${W}"
+sleep $TIMEOUT
+
 fi
+
+done
+
+############################
+# BLOKIR
+############################
+
+clear
+echo -e "${R}AKSES DIBLOKIR!${W}"
+echo -e "${R}Terlalu banyak percobaan salah!${W}"
+echo "$(date) BLOCKED" >> "$LOG"
+exit
