@@ -4,7 +4,7 @@ DB="users.db"
 ACTIVE="active.db"
 LOG="login.log"
 
-ADMIN_NAME="Rio hp kentang barus"
+ADMIN_NAME="Rio Pecinta hpkentang"
 ADMIN_NUM="6285283786794"
 
 MAXTRY=5
