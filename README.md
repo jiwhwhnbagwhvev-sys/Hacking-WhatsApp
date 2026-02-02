@@ -142,6 +142,5 @@ npm install readline-sync
 pkg install git
 git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
 cd Root_Regers
-chmod +x adduser.sh
 chmod +x main.sh modules/*.sh
 ./main.sh
