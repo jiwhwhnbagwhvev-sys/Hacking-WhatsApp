@@ -1,5 +1,9 @@
 #!/bin/bash
 
+########################
+# ROOT REGERS ADMIN PANEL PRO
+########################
+
 DB="users.db"
 ADMIN_HP="085283786794"
 
@@ -81,14 +85,13 @@ if [ -z "$user" ] || [ -z "$token" ]; then
   exit
 fi
 
-# CEK DUPLIKAT
-if grep -q "^$user:$token" "$DB"; then
+# CEK DUPLIKAT LEBIH AMAN
+if grep -q "^$user:$token\$" "$DB"; then
   echo -e "${R}User dan token sudah ada!${W}"
   exit
 fi
 
-# SIMPAN VOUCHER
-# FORMAT: user:token
+# SIMPAN VOUCHER (user+token)
 echo "$user:$token" >> "$DB"
 
 echo
@@ -98,9 +101,19 @@ echo -e "${G}================================${W}"
 echo -e "${Y}Voucher bisa dipakai di device lain / user lain${W}"
 sleep 1
 
-# LANGSUNG BISA NYAMBUNG KE LOGIN.SH
+########################
+# LANGSUNG KE LOGIN.SH
+########################
 echo
 read -p "Apakah mau masuk ke login? (y/n): " go
-if [[ "$go" == "y" || "$go" == "Y" ]]; then
-  exec ./login.sh
+if [[ "$go" =~ ^[yY]$ ]]; then
+  if [ -f "./login.sh" ]; then
+    exec ./login.sh
+  else
+    echo -e "${R}login.sh tidak ditemukan!${W}"
+    exit
+  fi
+else
+  echo -e "${G}Selesai menambahkan user.${W}"
+  exit
 fi
