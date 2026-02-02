@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############################
-# ROOT REGERS LOGIN SYSTEM
+# ROOT REGERS LOGIN SYSTEM PRO
 ############################
 
 DB="users.db"
@@ -25,15 +25,18 @@ W="\033[0m"
 
 clear
 
-############################
-# CEK DATABASE
-############################
 [ ! -f "$DB" ] && touch "$DB"
 
 TOTAL=$(grep -c ":" "$DB")
 
 ############################
-# LOGO BIRU KEREN
+# DEVICE ID
+############################
+
+DEVICE=$(getprop ro.serialno)
+
+############################
+# LOGO
 ############################
 
 echo -e "$B"
@@ -52,12 +55,11 @@ echo -e "${G}User aktif : $TOTAL${W}"
 echo -e "${Y}Admin      : $ADMIN_NAME${W}"
 echo -e "${Y}No Admin   : $ADMIN_NUM${W}"
 echo -e "${C}Ketik .admin untuk hubungi admin${W}"
-
 echo -e "$B======================================$W"
 echo
 
 ############################
-# LOADING ANIMASI
+# LOADING
 ############################
 
 loading(){
@@ -78,56 +80,57 @@ try=0
 while [ $try -lt $MAXTRY ]
 do
 
-echo
 read -p "Username : " user
 user=$(echo "$user" | xargs)
 
-################ ADMIN ################
-
 if [ "$user" = ".admin" ]; then
-echo -e "${C}Membuka WhatsApp admin...${W}"
 termux-open-url "https://wa.me/$ADMIN_NUM"
-sleep 2
-clear
 exec ./login.sh
 fi
-
-################ TOKEN ################
 
 read -s -p "Token    : " token
 echo
 token=$(echo "$token" | xargs)
 
-################ VALIDASI ################
+LINE=$(grep "^$user:$token:" "$DB")
 
-if [ -z "$user" ] || [ -z "$token" ]; then
-echo -e "${R}Tidak boleh kosong!${W}"
+if [ -z "$LINE" ]; then
+echo -e "${R}Login salah!${W}"
+try=$((try+1))
 continue
 fi
 
-################ CEK LOGIN ################
+SAVED_DEVICE=$(echo "$LINE" | cut -d ":" -f3)
 
-if grep -Fxq "$user:$token" "$DB"; then
+############################
+# LOCK DEVICE
+############################
+
+if [ "$SAVED_DEVICE" = "NULL" ]; then
+
+sed -i "s|$user:$token:NULL|$user:$token:$DEVICE|" "$DB"
+
+echo -e "${G}Voucher terkunci ke HP ini ✔${W}"
+
+elif [ "$SAVED_DEVICE" != "$DEVICE" ]; then
+
+echo -e "${R}Voucher sudah dipakai di HP lain!${W}"
+exit
+
+fi
+
+############################
+# SUCCESS LOGIN
+############################
 
 echo "$(date) SUCCESS $user" >> "$LOG"
 echo "$user" > "$SESSION"
 
-echo
 echo -e "${G}LOGIN BERHASIL ✔${W}"
 loading
 sleep 1
 ./main.sh
 exit
-
-else
-
-echo "$(date) FAIL $user" >> "$LOG"
-echo -e "${R}Login salah!${W}"
-try=$((try+1))
-echo -e "${Y}Sisa percobaan: $((MAXTRY-try))${W}"
-sleep $TIMEOUT
-
-fi
 
 done
 
@@ -135,11 +138,5 @@ done
 # BLOKIR
 ############################
 
-clear
-echo -e "${R}================================${W}"
-echo -e "${R}      AKSES DIBLOKIR!${W}"
-echo -e "${R}================================${W}"
-echo -e "${R}Terlalu banyak percobaan salah!${W}"
-
-echo "$(date) BLOCKED" >> "$LOG"
+echo -e "${R}AKSES DIBLOKIR!${W}"
 exit
