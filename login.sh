@@ -8,7 +8,7 @@ DB="users.db"
 SESSION="session.tmp"
 LOG="login.log"
 
-ADMIN_NAME="Rio Pecinta hpkentang"
+ADMIN_NAME="Rio hp kentang barus"
 ADMIN_NUM="6285283786794"
 
 MAXTRY=5
@@ -24,16 +24,12 @@ P="\033[1;35m"
 W="\033[0m"
 
 clear
-
 [ ! -f "$DB" ] && touch "$DB"
 
-TOTAL=$(grep -c ":" "$DB")
-
 ############################
-# DEVICE ID
+# USER AKTIF
 ############################
-
-DEVICE=$(getprop ro.serialno)
+TOTAL_ACTIVE=$(ps aux | grep "[m]ain.sh" | wc -l)
 
 ############################
 # LOGO
@@ -51,7 +47,7 @@ echo "======================================"
 echo -e "$C        ROOT REGERS SYSTEM$W"
 
 echo
-echo -e "${G}User aktif : $TOTAL${W}"
+echo -e "${G}User aktif sekarang : $TOTAL_ACTIVE${W}"
 echo -e "${Y}Admin      : $ADMIN_NAME${W}"
 echo -e "${Y}No Admin   : $ADMIN_NUM${W}"
 echo -e "${C}Ketik .admin untuk hubungi admin${W}"
@@ -63,10 +59,10 @@ echo
 ############################
 
 loading(){
-for i in {1..15}
+for i in {1..12}
 do
 printf "${R}■${Y}■${G}■${C}■${B}■${P}■${W}\r"
-sleep 0.1
+sleep 0.08
 done
 echo
 }
@@ -76,7 +72,6 @@ echo
 ############################
 
 try=0
-
 while [ $try -lt $MAXTRY ]
 do
 
@@ -92,44 +87,33 @@ read -s -p "Token    : " token
 echo
 token=$(echo "$token" | xargs)
 
-LINE=$(grep "^$user:$token:" "$DB")
-
-if [ -z "$LINE" ]; then
-echo -e "${R}Login salah!${W}"
-try=$((try+1))
-continue
+# CEK LOGIN DI DATABASE
+if ! grep -Fxq "$user:$token" "$DB"; then
+  echo -e "${R}Login salah!${W}"
+  try=$((try+1))
+  echo -e "${Y}Sisa percobaan: $((MAXTRY-try))${W}"
+  sleep $TIMEOUT
+  continue
 fi
 
-SAVED_DEVICE=$(echo "$LINE" | cut -d ":" -f3)
-
-############################
-# LOCK DEVICE
-############################
-
-if [ "$SAVED_DEVICE" = "NULL" ]; then
-
-sed -i "s|$user:$token:NULL|$user:$token:$DEVICE|" "$DB"
-
-echo -e "${G}Voucher terkunci ke HP ini ✔${W}"
-
-elif [ "$SAVED_DEVICE" != "$DEVICE" ]; then
-
-echo -e "${R}Voucher sudah dipakai di HP lain!${W}"
-exit
-
-fi
+# SIMPAN SESSION
+echo "$user:$token" >> "$SESSION"
 
 ############################
 # SUCCESS LOGIN
 ############################
 
 echo "$(date) SUCCESS $user" >> "$LOG"
-echo "$user" > "$SESSION"
+
+# UPDATE USER AKTIF
+ACTIVE_USERS=$(cat "$SESSION" | wc -l)
 
 echo -e "${G}LOGIN BERHASIL ✔${W}"
+echo -e "${C}Jumlah user aktif sekarang: $ACTIVE_USERS${W}"
 loading
-sleep 1
-./main.sh
+
+# MASUK MENU UTAMA
+exec ./main.sh
 
 done
 
