@@ -54,7 +54,7 @@ echo -e "${WHT}
 33 Smart System Monitor.   34 Security Watch System
 35 Local Web Lab.          36 DARK CODING LAB
 37 Game Account Security pro 38 wa autobot
-39 Hecking WhatsApp        40 
+39 Hecking WhatsApp        40 kapal radar
 0 Exit
 ${R}"
 }
@@ -105,6 +105,7 @@ while true; do
         37) bash modules/game_account_security_pro.sh ;;
         38) bash modules/wa_autobot.sh ;;
         39) bash modules/View_chatting_wa.sh ;;
+        40) bash modules/kapal-radar-v3.sh ;;
         0)  echo "[✓] Keluar..."; exit ;;
         *)  echo "[!] Pilihan salah"; sleep 1 ;;
     esac
