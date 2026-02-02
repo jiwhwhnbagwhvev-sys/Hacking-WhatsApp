@@ -145,6 +145,5 @@ cd Root_Regers
 chmod +x auth_system.sh
 chmod +x auth_hidden.sh
 chmod +x main_loader.sh
-bash auth_hidden.sh
 chmod +x login_loader.sh
 ./login_loader.sh
