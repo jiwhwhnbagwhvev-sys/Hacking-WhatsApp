@@ -8,7 +8,7 @@ DB="users.db"
 SESSION="session.tmp"
 LOG="login.log"
 
-ADMIN_NAME="Rio pecinta hp kentang "
+ADMIN_NAME="Rio pecinta hpkentang "
 ADMIN_NUM="6285283786794"
 
 MAXTRY=5
