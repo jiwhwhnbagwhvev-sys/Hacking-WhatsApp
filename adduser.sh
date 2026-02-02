@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ########################
-# ROOT REGERS ADMIN PANEL PRO
+# ROOT REGERS ADMIN PANEL PRO+
 ########################
 
 DB="users.db"
@@ -12,108 +12,103 @@ R="\033[1;31m"
 G="\033[1;32m"
 Y="\033[1;33m"
 B="\033[1;96m"
-P="\033[1;35m"
 C="\033[1;36m"
 W="\033[0m"
 
-colors=("$R" "$G" "$Y" "$B" "$P" "$C")
+clear
+[ ! -f "$DB" ] && touch "$DB"
 
 ########################
-# LOGO GARUDA ASCII
+# LOGIN ADMIN
 ########################
-logo_ascii() {
-echo "         ${B}           ,_         "
-echo "         ${B}        ,/|  \        "
-echo "         ${B}      ,/  |   \       "
-echo "         ${B}    ,/    |    \      "
-echo "         ${B}   /      |     \     "
-echo "         ${B}  /       |      \    "
-echo "         ${B} |        |       |   "
-echo "         ${B} |        |       |   "
-echo "         ${B} |        |       |   "
-echo "         ${B} |        |       |   "
-echo "         ${B}  \      / \     /    "
-echo "         ${B}   \    /   \   /     "
-echo "         ${B}    \  /     \ /      "
-echo "         ${B}     \/       \/       "
-echo -e "${W}"
-}
 
-# Animasi warna Garuda
-for c in "${colors[@]}"
-do
-  clear
-  echo -e "$c"
-  logo_ascii
-  echo -e "$c======================================$W"
-  echo -e "$c         ROOT REGERS ADMIN PANEL$W"
-  echo -e "$c======================================$W"
-  sleep 0.2
-done
-
-########################
-# VERIFIKASI ADMIN
-########################
-echo
 read -p "No HP Admin : " hp
 
 if [ "$hp" != "$ADMIN_HP" ]; then
-  echo -e "${R}================================${W}"
-  echo -e "${R}      AKSES DITOLAK!${W}"
-  echo -e "${R}================================${W}"
+  echo -e "${R}AKSES DITOLAK!${W}"
   exit
 fi
 
-echo -e "${G}================================${W}"
-echo -e "${G}   ADMIN TERVERIFIKASI ✔${W}"
-echo -e "${G}================================${W}"
+echo -e "${G}ADMIN TERVERIFIKASI ✔${W}"
 sleep 1
+
+########################
+# MENU ADMIN
+########################
+
+while true
+do
+clear
+
+TOTAL=$(grep -c ":" "$DB")
+
+echo -e "$B===== ADMIN PANEL =====$W"
+echo -e "${G}Total user: $TOTAL${W}"
+echo
+echo "1. Tambah User"
+echo "2. Lihat User"
+echo "3. Hapus User"
+echo "4. Keluar"
+echo
+
+read -p "Pilih menu: " pilih
 
 ########################
 # TAMBAH USER
 ########################
-[ ! -f "$DB" ] && touch "$DB"
+if [ "$pilih" = "1" ]; then
 
-echo
-echo -e "${C}========== TAMBAH USER ==========${W}"
-read -p "Username baru : " user
-read -p "Token voucher : " token
+read -p "Username : " user
+read -p "Token : " token
 
-# VALIDASI
 if [ -z "$user" ] || [ -z "$token" ]; then
-  echo -e "${R}Tidak boleh kosong!${W}"
-  exit
+echo -e "${R}Tidak boleh kosong!${W}"
+sleep 2
+continue
 fi
 
-# CEK DUPLIKAT LEBIH AMAN
-if grep -q "^$user:$token\$" "$DB"; then
-  echo -e "${R}User dan token sudah ada!${W}"
-  exit
+if grep -Fxq "$user:$token" "$DB"; then
+echo -e "${R}User+Token sudah ada!${W}"
+sleep 2
+continue
 fi
 
-# SIMPAN VOUCHER (user+token)
 echo "$user:$token" >> "$DB"
 
-echo
-echo -e "${G}================================${W}"
-echo -e "${G} USER BERHASIL DITAMBAHKAN ✔${W}"
-echo -e "${G}================================${W}"
-echo -e "${Y}Voucher bisa dipakai di device lain / user lain${W}"
-sleep 1
+echo -e "${G}USER BERHASIL DITAMBAHKAN ✔${W}"
+sleep 2
+fi
 
 ########################
-# LANGSUNG KE LOGIN.SH
+# LIHAT USER
 ########################
+if [ "$pilih" = "2" ]; then
 echo
-read -p "Apakah mau masuk ke login? (y/n): " go
-if [[ "$go" =~ ^[yY]$ ]]; then
-  if [ -f "./login.sh" ]; then
-    exec ./login.sh
-  else
-    echo -e "${R}login.sh tidak ditemukan!${W}"
-    exit
-  fi
-else
-  echo -e "${G}Selesai menambahkan user.${W}"
-  exit
+echo -e "$C=== DAFTAR USER ===$W"
+cat "$DB"
+echo
+read -p "Enter untuk kembali..."
 fi
+
+########################
+# HAPUS USER
+########################
+if [ "$pilih" = "3" ]; then
+
+read -p "Masukkan username: " udel
+
+grep -v "^$udel:" "$DB" > temp.db
+mv temp.db "$DB"
+
+echo -e "${G}User dihapus ✔${W}"
+sleep 2
+fi
+
+########################
+# KELUAR
+########################
+if [ "$pilih" = "4" ]; then
+exit
+fi
+
+done
