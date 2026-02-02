@@ -8,7 +8,7 @@ DB="users.db"
 SESSION="session.tmp"
 LOG="login.log"
 
-ADMIN_NAME="Rio hp kentang barus"
+ADMIN_NAME="Rio Pecinta hpkentang"
 ADMIN_NUM="6285283786794"
 
 MAXTRY=5
@@ -130,7 +130,6 @@ echo -e "${G}LOGIN BERHASIL ✔${W}"
 loading
 sleep 1
 ./main.sh
-exit
 
 done
 
