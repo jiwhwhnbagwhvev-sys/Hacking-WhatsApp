@@ -65,8 +65,12 @@ ip route dan harus ada imput ini
 # Katasandi server kode
 - Hubungi admin untuk mendapatkan katasandi server nya
 - https://wa.me/85283786794
-- 
 
+# buka kunci main.sh nya harus hubungi admin terlebih dahulu
+```
+gpg -d main.sh.gpg > main.sh
+chmod +x main.sh
+./main.sh
 # kalo kode nya eror
 jalanin perintah di bawah ini
 👇👇👇👇👇👇👇👇👇👇
