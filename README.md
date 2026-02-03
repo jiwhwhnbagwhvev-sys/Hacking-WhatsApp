@@ -153,7 +153,7 @@ chmod +x login_loader.sh
 chmod +x main_loader.sh
 ./login_loader.sh
 ```
-# selesai kali masukin username sama password nya di halaman login
+# selesai kalian masukin username sama password nya di halaman login
 kalian masukan kode ini untuk menjalankan main.sh
 ini fitur utama nya
 ```
