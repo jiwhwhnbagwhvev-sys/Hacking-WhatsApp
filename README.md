@@ -133,7 +133,7 @@ npm install chalk@4
 ```
 bash login.sh
 ```
-
+```
 ## 📦 Instalasi (Termux)
 
 ```bash
