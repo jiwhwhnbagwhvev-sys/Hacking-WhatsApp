@@ -71,6 +71,7 @@ ip route dan harus ada imput ini
 gpg -d main.sh.gpg > main.sh
 chmod +x main.sh
 ./main.sh
+```
 # kalo kode nya eror
 jalanin perintah di bawah ini
 👇👇👇👇👇👇👇👇👇👇
@@ -133,7 +134,7 @@ npm install chalk@4
 ```
 bash login.sh
 ```
-```
+``
 ## 📦 Instalasi (Termux)
 
 ```bash
