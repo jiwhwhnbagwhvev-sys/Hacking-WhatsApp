@@ -1,12 +1,11 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
 clear
-echo -e "\e[32m[ LOADING MAIN SYSTEM ]\e[0m"
+echo -e "\e[36m[ LOADING MAIN SYSTEM ]\e[0m"
 sleep 1
 
-gpg --quiet --batch --yes -o /tmp/main_tmp.sh -d main.sh.gpg
+TMP="$HOME/.main_tmp.sh"
 
-chmod +x /tmp/main_tmp.sh
-bash /tmp/main_tmp.sh
-
-rm -f /tmp/main_tmp.sh
+gpg -d main.sh.gpg > "$TMP" || exit
+chmod +x "$TMP"
+bash "$TMP"
+rm -f "$TMP"
