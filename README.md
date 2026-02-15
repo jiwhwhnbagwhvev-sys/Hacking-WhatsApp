@@ -1,4 +1,4 @@
-# Root_Regers
+# Hacking WhatsApp 
 
 ![Language](https://img.shields.io/badge/language-Bash-green)
 ![Framework](https://img.shields.io/badge/framework-Bash%20ID-green)
