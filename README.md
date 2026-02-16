@@ -72,7 +72,7 @@ ip route dan harus ada imput ini
 - Hacking akun WhatsApp 
 - Radar kapal aktif 
 
-# Katasandi server kode
+# Hubungi admin
 - Hubungi admin untuk mendapatkan katasandi server nya
 - https://wa.me/85283786794
 
