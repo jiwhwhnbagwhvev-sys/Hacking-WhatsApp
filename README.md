@@ -163,13 +163,15 @@ chmod +x login_loader.sh
 chmod +x main_loader.sh
 ./login_loader.sh
 ```
-# 𝙠𝙖𝙡𝙤 𝙚𝙧𝙤𝙧 𝙠𝙤𝙙𝙚 𝙣𝙮𝙖 𝙙𝙖𝙣 𝙠𝙖𝙡𝙞𝙖𝙣 𝙨𝙪𝙙𝙖𝙝 𝙢𝙖𝙨𝙪𝙠 𝙠𝙚 𝘾𝘿 𝙍𝙤𝙤𝙩_𝙍𝙚𝙜𝙚𝙧𝙨 𝙠𝙖𝙡𝙞𝙖𝙣 𝙟𝙖𝙡𝙖𝙣𝙠𝙖𝙣 𝙠𝙤𝙙𝙚 𝙞𝙣𝙞
+# kalo kode nya eror
+dan kalian sudah masuk ke menu 
+cd Root_Ragers kalian jalanin kode ini
 ```
 pkg update
 pkg upgrade
 pkg install gnupg
 ```
-𝘽𝙖𝙧𝙪 𝙠𝙖𝙡𝙞𝙖𝙣 𝙟𝙖𝙡𝙖𝙣𝙠𝙖𝙣 𝙡𝙖𝙜𝙞 𝙠𝙤𝙙𝙚 𝙞𝙣𝙞 𝙙𝙞 𝙩𝙚𝙧𝙢𝙪𝙭
+Baru kalian jalankan lagi kode ini di termux 
 ```
 ./login_loader.sh
  ```
