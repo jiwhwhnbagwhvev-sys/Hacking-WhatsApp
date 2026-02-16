@@ -14,7 +14,7 @@ Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang s
 
 ![gambar](Hacking_Whatsapp_menu.jpg)
 
-fitur Hacking Gmail ada 40 fitur dan fitur tersebut berfungsi semua dan pakai dengan bijak ya jangan di salahgunakan 
+fitur Hacking WhatsApp ada 40 fitur dan fitur tersebut berfungsi semua dan pakai dengan bijak ya jangan di salahgunakan 
 
 # ROOT POWER TOOLKIT ☠
 
