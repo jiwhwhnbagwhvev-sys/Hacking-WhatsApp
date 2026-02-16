@@ -9,8 +9,12 @@
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk/KernelSU). Menyediakan berbagai fitur nyata seperti CPU &amp; RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu tool modular berbasis CLI
 
 # Halaman Hacking-whatsApp
-![gambar](Hacking_Whatsapp_menu.jpg)
+
 ![gambar](Hacking_whatsapp_work2026.jpg)
+
+![gambar](Hacking_Whatsapp_menu.jpg)
+
+fitur Hacking Gmail ada 40 fitur dan fitur tersebut berfungsi semua dan pakai dengan bijak ya jangan di salahgunakan 
 
 # ROOT POWER TOOLKIT ☠
 
