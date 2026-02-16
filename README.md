@@ -1,4 +1,4 @@
-[✨ Tonton Video Tutorial](https://youtu.be/AixTElRNRDE)
+[![Tonton Video](https://img.youtube.com/vi/AixTElRNRDE/0.jpg)](https://youtu.be/AixTElRNRDE)
 
 # Hacking WhatsApp 
 
