@@ -180,9 +180,3 @@ ini fitur utama nya
 ./main_loader.sh
 
 ```
-WhatsApp
-automation
-python
-tutorial
-tools
-aman digunakan 
