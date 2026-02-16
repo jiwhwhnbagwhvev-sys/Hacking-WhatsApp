@@ -8,6 +8,9 @@
 # apa itu Root_Regers ???
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk/KernelSU). Menyediakan berbagai fitur nyata seperti CPU &amp; RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu tool modular berbasis CLI
 
+# Halaman Hacking-whatsApp
+![gambar](Screenshot_2026-02-16-07-55-06-13.jpg)
+
 # ROOT POWER TOOLKIT ☠
 
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk / KernelSU). Tool ini menyediakan berbagai fitur sistem tingkat lanjut seperti CPU & RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu CLI tool modular.
