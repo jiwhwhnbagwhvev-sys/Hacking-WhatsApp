@@ -1,19 +1,19 @@
-  #!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 clear
 
 # ===== WARNA =====
-RED="\e[1;31m"; GRN="\e[1;32m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
+RED="\e[1;31m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
 
-# ===== LOADING LOGIN =====
+# ===== LOADING =====
 loading() {
     clear
     text="LOGIN SUCCESS — WELCOME Rio2026"
     colors=(31 32 33 34 35 36)
     for i in {1..3}; do
-        for c in "${colors[@]}"; do
-            echo -ne "\033[${c}m$text\033[0m\r"
-            sleep 0.15
-        done
+      for c in "${colors[@]}"; do
+        echo -ne "\033[${c}m$text\033[0m\r"
+        sleep 0.15
+      done
     done
     echo
     sleep 0.8
@@ -23,7 +23,7 @@ loading
 
 # ===== LOGO =====
 logo() {
-    echo -e "${RED}${B}
+echo -e "${RED}${B}
 ██████╗  ██████╗  ██████╗ ████████╗
 ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝
 ██████╔╝██║   ██║██║   ██║   ██║
@@ -34,55 +34,63 @@ logo() {
 ${R}"
 }
 
-# ===== MENU UTAMA =====
+# ===== MENU UTAMA DUA KOLOM =====
 menu() {
-    echo -e "${WHT}
-1) Root Check
-2) System Info
-3) Mount RW
-4) Hosts Adblock
-5) CPU Performance
-6) GPU Boost
-7) RAM Cleaner
-8) Disable Thermal
-9) Freeze App
-10) Unfreeze App
-11) Battery Saver
-12) IO Tweak
-13) Network Boost
-14) SELinux Status
-15) SELinux Perm
-16) Basic Root Hide
-17) Service Manager
-18) Reboot Menu
-19) Storage Boost
-20) Package Manager
-21) Logcat Monitor
-22) Kernel Info
-23) Backup Apps
-24) Network Speed & IP Check
-25) WiFi Intruder Scanner
-26) Auto Spam Block Guard
-27) HP Security Guard
-28) LED BLE Control Center
-29) Network Learning Jaringan
-30) Network AI Launcher
-31) DNS Benchmark
-32) Command AI System
-33) Smart System Monitor
-34) Security Watch System
-35) Local Web Lab
-36) DARK CODING LAB
-37) Game Account Security Pro
-38) WA Autobot
-39) View Chatting WA
-40) Kapal Radar
-41) Brutall WhatsApp
-0) Exit
-${R}"
+    echo -e "${WHT}=== MENU UTAMA ===${R}"
+    echo
+
+    left=(
+        "1 Root Check" 
+        "2 System Info" 
+        "3 Mount RW" 
+        "4 Hosts Adblock" 
+        "5 CPU Performance" 
+        "6 GPU Boost" 
+        "7 RAM Cleaner" 
+        "8 Disable Thermal"
+        "9 Freeze App"
+        "10 Unfreeze App"
+        "11 Battery Saver"
+        "12 IO Tweak"
+        "13 Network Boost"
+        "14 SELinux Status"
+        "15 SELinux Perm"
+        "16 Basic Root Hide"
+    )
+
+    right=(
+        "17 Service Manager"
+        "18 Reboot Menu"
+        "19 Storage Boost"
+        "20 Package Manager"
+        "21 Logcat Monitor"
+        "22 Kernel Info"
+        "23 Backup Apps"
+        "24 Network Speed & IP Check"
+        "25 WiFi Intruder Scanner"
+        "26 Auto Spam Block Guard"
+        "27 HP Security Guard"
+        "28 LED BLE Control Center"
+        "29 Network Learning Jaringan"
+        "30 Network Sistem AI Launcher"
+        "31 DNS Benchmark"
+        "32 Command AI System"
+    )
+
+    for i in "${!left[@]}"; do
+        printf "%-30s %s\n" "${left[$i]}" "${right[$i]}"
+    done
+
+    # Menu tambahan manual
+    echo "33 Smart System Monitor         34 Security Watch System"
+    echo "35 Local Web Lab                36 DARK CODING LAB"
+    echo "37 Game Account Security pro    38 WA Autobot"
+    echo "39 Hecking WhatsApp             40 Kapal Radar"
+    echo "0 Exit"
+    echo -e "${R}"
 }
 
-# ===== LOOP MENU =====
+# ===== LOOP UTAMA =====
 while true; do
     clear
     logo
@@ -129,18 +137,58 @@ while true; do
         38) bash modules/wa_autobot.sh ;;
         39) bash modules/View_chatting_wa.sh ;;
         40) bash modules/kapal-radar-v3.sh ;;
-        41) 
-            echo "[*] Menjalankan Brutall WhatsApp..."
-            for script in modules/brutall_whatsapp/*.sh; do
-                echo "[*] Menjalankan $script..."
-                bash "$script"
-                echo
-                read -p "Tekan Enter untuk lanjut ke file berikutnya..."
-            done
-            echo "[✓] Selesai menjalankan semua script Brutall WhatsApp"
-            read -p "Tekan Enter untuk kembali ke menu utama..."
-            ;;
+        41)
+    echo "[*] Menjalankan Brutall WhatsApp..."
+
+    # Folder absolut
+    BRUTALL_DIR="$(cd "$(dirname "$0")/modules/brutall_whatsapp" && pwd)"
+
+    # 0️⃣ Jalankan make install dulu (compile + install deps)
+    if [ -f "$BRUTALL_DIR/Makefile" ]; then
+        echo "[*] Menjalankan make install di $BRUTALL_DIR..."
+        (cd "$BRUTALL_DIR" && make install)
+    else
+        echo "[!] Makefile tidak ditemukan, skipping install"
+    fi
+
+    # 1️⃣ Jalankan semua file .sh
+    FILES_FOUND=false
+    for script in "$BRUTALL_DIR"/*.sh; do
+        [ -f "$script" ] || continue
+        FILES_FOUND=true
+        echo "[*] Menjalankan $script..."
+        bash "$script"
+        echo
+        read -p "Tekan Enter untuk lanjut ke file berikutnya..."
+    done
+
+    if [ "$FILES_FOUND" = false ]; then
+        echo "[!] Tidak ada file .sh di $BRUTALL_DIR"
+    fi
+
+    # 2️⃣ Compile dan jalankan main.c
+    if [ -f "$BRUTALL_DIR/main.c" ]; then
+        echo "[*] Compile main.c..."
+        gcc "$BRUTALL_DIR/main.c" -o "$BRUTALL_DIR/main" && echo "[✓] main.c berhasil di-compile"
+
+        echo "[*] Menjalankan main..."
+        "$BRUTALL_DIR/main"
+    else
+        echo "[!] main.c tidak ditemukan"
+    fi
+
+    # 3️⃣ Jalankan npm install untuk package.json
+    if [ -f "$BRUTALL_DIR/package.json" ]; then
+        echo "[*] Menjalankan npm install untuk package.json..."
+        (cd "$BRUTALL_DIR" && npm install)
+    else
+        echo "[!] package.json tidak ditemukan"
+    fi
+
+    echo "[✓] Selesai menjalankan Brutall WhatsApp"
+    read -p "Tekan Enter untuk kembali ke menu utama..."
+    ;;
         0) echo "[✓] Keluar..."; exit ;;
         *) echo "[!] Pilihan salah"; sleep 1 ;;
     esac
-done      
+done
