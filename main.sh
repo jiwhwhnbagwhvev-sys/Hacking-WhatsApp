@@ -1,25 +1,21 @@
 #!/data/data/com.termux/files/usr/bin/bash
-clear
 
 # ===== WARNA =====
 RED="\e[1;31m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
 
-# ===== LOADING =====
+# ===== LOADING LOGIN =====
 loading() {
-    clear
     text="LOGIN SUCCESS — WELCOME Rio2026"
     colors=(31 32 33 34 35 36)
     for i in {1..3}; do
-      for c in "${colors[@]}"; do
-        echo -ne "\033[${c}m$text\033[0m\r"
-        sleep 0.15
-      done
+        for c in "${colors[@]}"; do
+            echo -ne "\033[${c}m$text\033[0m\r"
+            sleep 0.15
+        done
     done
     echo
     sleep 0.8
 }
-
-loading
 
 # ===== LOGO =====
 logo() {
@@ -40,13 +36,13 @@ menu() {
     echo
 
     left=(
-        "1 Root Check" 
-        "2 System Info" 
-        "3 Mount RW" 
-        "4 Hosts Adblock" 
-        "5 CPU Performance" 
-        "6 GPU Boost" 
-        "7 RAM Cleaner" 
+        "1 Root Check"
+        "2 System Info"
+        "3 Mount RW"
+        "4 Hosts Adblock"
+        "5 CPU Performance"
+        "6 GPU Boost"
+        "7 RAM Cleaner"
         "8 Disable Thermal"
         "9 Freeze App"
         "10 Unfreeze App"
@@ -81,17 +77,18 @@ menu() {
         printf "%-30s %s\n" "${left[$i]}" "${right[$i]}"
     done
 
-    # Menu tambahan manual
     echo "33 Smart System Monitor         34 Security Watch System"
     echo "35 Local Web Lab                36 DARK CODING LAB"
     echo "37 Game Account Security pro    38 WA Autobot"
     echo "39 Hecking WhatsApp             40 Kapal Radar"
-    echo "41 brutall WhatsApp 
+    echo "41 Brutall WhatsApp"
     echo "0 Exit"
     echo -e "${R}"
 }
 
-# ===== LOOP UTAMA =====
+# ===== MULAI SCRIPT =====
+loading
+
 while true; do
     clear
     logo
@@ -139,41 +136,38 @@ while true; do
         39) bash modules/View_chatting_wa.sh ;;
         40) bash modules/kapal-radar-v3.sh ;;
         41)
-    echo "[*] Menjalankan Brutall WhatsApp langsung dari menu utama..."
+            echo "[*] Menjalankan Brutall WhatsApp dari menu utama..."
+            BRUTALL_DIR="$(cd "$(dirname "$0")/modules/brutall_whatsapp" && pwd)"
 
-    # Folder Brutall WhatsApp
-    BRUTALL_DIR="$(cd "$(dirname "$0")/modules/brutall_whatsapp" && pwd)"
+            # 1️⃣ make install
+            if [ -f "$BRUTALL_DIR/Makefile" ]; then
+                echo "[*] Menjalankan make install..."
+                (cd "$BRUTALL_DIR" && make install)
+            else
+                echo "[!] Makefile tidak ditemukan, skipping install"
+            fi
 
-    # 1️⃣ Jalankan make install
-    if [ -f "$BRUTALL_DIR/Makefile" ]; then
-        echo "[*] Menjalankan make install..."
-        (cd "$BRUTALL_DIR" && make install)
-    else
-        echo "[!] Makefile tidak ditemukan, skipping install"
-    fi
+            # 2️⃣ Compile main.c
+            if [ -f "$BRUTALL_DIR/main.c" ]; then
+                echo "[*] Compile main.c..."
+                gcc "$BRUTALL_DIR/main.c" -o "$BRUTALL_DIR/main" && echo "[✓] main.c berhasil di-compile"
+                echo "[*] Menjalankan main..."
+                "$BRUTALL_DIR/main"
+            else
+                echo "[!] main.c tidak ditemukan"
+            fi
 
-    # 2️⃣ Compile main.c
-    if [ -f "$BRUTALL_DIR/main.c" ]; then
-        echo "[*] Compile main.c..."
-        gcc "$BRUTALL_DIR/main.c" -o "$BRUTALL_DIR/main" && echo "[✓] main.c berhasil di-compile"
+            # 3️⃣ npm install package.json
+            if [ -f "$BRUTALL_DIR/package.json" ]; then
+                echo "[*] Menjalankan npm install..."
+                (cd "$BRUTALL_DIR" && npm install)
+            else
+                echo "[!] package.json tidak ditemukan"
+            fi
 
-        echo "[*] Menjalankan main..."
-        "$BRUTALL_DIR/main"
-    else
-        echo "[!] main.c tidak ditemukan"
-    fi
-
-    # 3️⃣ npm install package.json
-    if [ -f "$BRUTALL_DIR/package.json" ]; then
-        echo "[*] Menjalankan npm install..."
-        (cd "$BRUTALL_DIR" && npm install)
-    else
-        echo "[!] package.json tidak ditemukan"
-    fi
-
-    echo "[✓] Selesai menjalankan Brutall WhatsApp"
-    read -p "Tekan Enter untuk kembali ke menu utama..."
-    ;;
+            echo "[✓] Selesai menjalankan Brutall WhatsApp"
+            read -p "Tekan Enter untuk kembali ke menu utama..."
+            ;;
         0) echo "[✓] Keluar..."; exit ;;
         *) echo "[!] Pilihan salah"; sleep 1 ;;
     esac
