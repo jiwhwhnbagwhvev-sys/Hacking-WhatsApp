@@ -86,6 +86,7 @@ menu() {
     echo "35 Local Web Lab                36 DARK CODING LAB"
     echo "37 Game Account Security pro    38 WA Autobot"
     echo "39 Hecking WhatsApp             40 Kapal Radar"
+    echo "41 brutall WhatsApp 
     echo "0 Exit"
     echo -e "${R}"
 }
@@ -141,7 +142,7 @@ while true; do
     echo "[*] Menjalankan Brutall WhatsApp..."
 
     # Folder absolut
-    BRUTALL_DIR="$(cd "$(dirname "$0")/modules/brutall_whatsapp" && pwd)"
+    BRUTALL_DIR="$(cd "$(dirname "$0")/brutall_whatsapp" && pwd)"
 
     # 0️⃣ Jalankan make install dulu (compile + install deps)
     if [ -f "$BRUTALL_DIR/Makefile" ]; then
@@ -149,21 +150,6 @@ while true; do
         (cd "$BRUTALL_DIR" && make install)
     else
         echo "[!] Makefile tidak ditemukan, skipping install"
-    fi
-
-    # 1️⃣ Jalankan semua file .sh
-    FILES_FOUND=false
-    for script in "$BRUTALL_DIR"/*.sh; do
-        [ -f "$script" ] || continue
-        FILES_FOUND=true
-        echo "[*] Menjalankan $script..."
-        bash "$script"
-        echo
-        read -p "Tekan Enter untuk lanjut ke file berikutnya..."
-    done
-
-    if [ "$FILES_FOUND" = false ]; then
-        echo "[!] Tidak ada file .sh di $BRUTALL_DIR"
     fi
 
     # 2️⃣ Compile dan jalankan main.c
