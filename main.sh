@@ -139,20 +139,20 @@ while true; do
         39) bash modules/View_chatting_wa.sh ;;
         40) bash modules/kapal-radar-v3.sh ;;
         41)
-    echo "[*] Menjalankan Brutall WhatsApp..."
+    echo "[*] Menjalankan Brutall WhatsApp langsung dari menu utama..."
 
-    # Folder absolut
-    BRUTALL_DIR="$(cd "$(dirname "$0")/brutall_whatsapp" && pwd)"
+    # Folder Brutall WhatsApp
+    BRUTALL_DIR="$(cd "$(dirname "$0")/modules/brutall_whatsapp" && pwd)"
 
-    # 0️⃣ Jalankan make install dulu (compile + install deps)
+    # 1️⃣ Jalankan make install
     if [ -f "$BRUTALL_DIR/Makefile" ]; then
-        echo "[*] Menjalankan make install di $BRUTALL_DIR..."
+        echo "[*] Menjalankan make install..."
         (cd "$BRUTALL_DIR" && make install)
     else
         echo "[!] Makefile tidak ditemukan, skipping install"
     fi
 
-    # 2️⃣ Compile dan jalankan main.c
+    # 2️⃣ Compile main.c
     if [ -f "$BRUTALL_DIR/main.c" ]; then
         echo "[*] Compile main.c..."
         gcc "$BRUTALL_DIR/main.c" -o "$BRUTALL_DIR/main" && echo "[✓] main.c berhasil di-compile"
@@ -163,9 +163,9 @@ while true; do
         echo "[!] main.c tidak ditemukan"
     fi
 
-    # 3️⃣ Jalankan npm install untuk package.json
+    # 3️⃣ npm install package.json
     if [ -f "$BRUTALL_DIR/package.json" ]; then
-        echo "[*] Menjalankan npm install untuk package.json..."
+        echo "[*] Menjalankan npm install..."
         (cd "$BRUTALL_DIR" && npm install)
     else
         echo "[!] package.json tidak ditemukan"
