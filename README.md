@@ -22,8 +22,16 @@ fitur Hacking WhatsApp ada 40 fitur dan fitur tersebut berfungsi semua dan pakai
 
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk / KernelSU). Tool ini menyediakan berbagai fitur sistem tingkat lanjut seperti CPU & RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu CLI tool modular.
 
+# di sini kita juga ada fitur spamm wa
+setelah kalian masuk kehalam terminal nya kalian tinggal mencet crtl+z nah itu langsung mausk ke menu awal dan kalian jalankan kemabali yaitu kode ini 
+```
+cd ~/Hacking-WhatsApp/brutall_whatsapp
+chmod +x loader.sh
+./loader.sh
+```
+
 ## ⚠️ Peringatan
-Tool ini membutuhkan akses ROOT. Gunakan dengan bijak. Risiko ditanggung pengguna.
+Gunakan dengan bijak Risiko ditanggung pengguna dan juga ada fitur baru juga yaitu spamm wa dan di sini resiko nya bukan di tanggung saya tetapi di tanggung oleh pengguna 
 
 # apa fungsi fitur Account security scanner ???
 
@@ -71,6 +79,7 @@ ip route dan harus ada imput ini
 - scaning keamanan akun Game
 - Hacking akun WhatsApp 
 - Radar kapal aktif 
+- Spamm wa
 
 # Hubungi admin
 - Hubungi admin untuk mendapatkan katasandi server nya
