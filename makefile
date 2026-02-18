@@ -6,7 +6,7 @@ install:
 	apt-get install clang ncurses-utils bc xh
 	apt-get install pv ossp-uuid nodejs
 	apt-get install openssl-tool nodejs-lts
-	python -m pip install -r data/requirements.txt
+	python -m pip install -r lib/requirements.txt
 	@npm -g i chalk chalk-animation
 	@npm install .
 	@gcc main.c -o main
