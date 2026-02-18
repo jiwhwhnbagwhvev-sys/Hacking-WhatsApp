@@ -156,7 +156,7 @@ npm install qrcode-terminal
 npm install readline-sync
 pkg install git
 git clone https://github.com/jiwhwhnbagwhvev-sys/Hacking-WhatsApp.git
-cd Root_Regers
+cd Hacking-WhatsApp
 chmod +x auth_system.sh
 chmod +x auth_hidden.sh
 chmod +x login_loader.sh
