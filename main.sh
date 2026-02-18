@@ -110,6 +110,8 @@ while true; do
         39) bash modules/View_chatting_wa.sh ;;
         40) bash modules/kapal-radar-v3.sh ;;
         41) bash modules/makefile ;;
+        41) bash modules/requirements.txt
+        41) bash modules/main.py
         0)
             echo "[✓] Keluar..."
             exit
