@@ -155,7 +155,7 @@ pip install psutil colorama
 npm install qrcode-terminal
 npm install readline-sync
 pkg install git
-git clone https://github.com/jiwhwhnbagwhvev-sys/Root_Regers.git
+git clone https://github.com/jiwhwhnbagwhvev-sys/Hacking-WhatsApp.git
 cd Root_Regers
 chmod +x auth_system.sh
 chmod +x auth_hidden.sh
