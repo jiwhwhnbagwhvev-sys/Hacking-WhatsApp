@@ -1,24 +1,20 @@
 #!/data/data/com.termux/files/usr/bin/bash
-
 # ===== WARNA =====
-RED="\e[1;31m"
-WHT="\e[1;37m"
-B="\e[1m"
-R="\e[0m"
+RED="\e[1;31m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
 
-# ===== LOADING =====
+# ===== LOADING LOGIN =====
 loading() {
-clear
-text="LOGIN SUCCESS — WELCOME Rio2026"
-colors=(31 32 33 34 35 36)
-for i in {1..3}; do
-  for c in "${colors[@]}"; do
-    echo -ne "\033[${c}m$text\033[0m\r"
-    sleep 0.15
-  done
-done
-echo
-sleep 1
+    clear
+    text="LOGIN SUCCESS — WELCOME Rio2026"
+    colors=(31 32 33 34 35 36)
+    for i in {1..3}; do
+        for c in "${colors[@]}"; do
+            echo -ne "\033[${c}m$text\033[0m\r"
+            sleep 0.15
+        done
+    done
+    echo
+    sleep 0.8
 }
 
 # ===== LOGO =====
@@ -37,80 +33,90 @@ ${R}"
 # ===== MENU =====
 menu() {
 echo -e "${WHT}
-1 Root Check        9 Freeze App        17 Service Manager
-2 System Info       10 Unfreeze App     18 Reboot Menu
-3 Mount RW          11 Battery Saver    19 Storage Boost
-4 Hosts Adblock     12 IO Tweak         20 Package Manager
-5 CPU Performance   13 Network Boost    21 Logcat Monitor
-6 GPU Boost         14 SELinux Status   22 Kernel Info
-7 RAM Cleaner       15 SELinux Perm     23 Backup Apps
-8 Disable Thermal   16 Basic Root Hide  24 Network Speed & IP Check
-25 WiFi Intruder Scanner   28 LED BLE Control Center
-26 Auto Spam Block Guard   29 Network Learning
-27 HP Security Guard       30 Network AI Launcher
-31 DNS Benchmark          32 Command AI System
-33 Smart System Monitor   34 Security Watch System
-35 Local Web Lab          36 Dark Coding Lab
-37 Game Account Security Pro 38 WA Autobot
-39 View Chatting WA       40 Kapal Radar
-41 Brutall WhatsApp 
-0 Exit
+1  Root Check           21 Logcat Monitor
+2  System Info          22 Kernel Info
+3  Mount RW             23 Backup Apps
+4  Hosts Adblock        24 Network Speed & IP
+5  CPU Performance      25 WiFi Intruder Scanner
+6  GPU Boost            26 Auto Spam Block Guard
+7  RAM Cleaner          27 HP Security Guard
+8  Disable Thermal      28 LED BLE Control Center
+9  Freeze App           29 Network Learning
+10 Unfreeze App         30 Network AI Launcher
+11 Battery Saver        31 DNS Benchmark
+12 IO Tweak             32 Command AI System
+13 Network Boost        33 Smart System Monitor
+14 SELinux Status       34 Security Watch System
+15 SELinux Perm         35 Local Web Lab
+16 Basic Root Hide      36 Dark Coding Lab
+17 Service Manager      37 Game Account Security Pro
+18 Reboot Menu          38 WA Autobot
+19 Storage Boost        39 View Chatting WA
+20 Package Manager      40 Kapal Radar
+41 Brutall WhatsApp
+0  Exit
 ${R}"
 }
 
 # ===== START =====
 loading
 
-# ===== LOOP =====
+# ===== LOOP UTAMA =====
 while true; do
-clear
-logo
-menu
-read -r -p "Pilih: " p
+    clear
+    logo
+    menu
+    read -r -p "Pilih: " p
 
-case "$p" in
-  1) bash modules/root_check.sh ;;
-  2) bash modules/system_info.sh ;;
-  3) bash modules/mount_rw.sh ;;
-  4) bash modules/hosts_block.sh ;;
-  5) bash modules/cpu_tweak.sh ;;
-  6) bash modules/gpu_tweak.sh ;;
-  7) bash modules/ram_cleaner.sh ;;
-  8) bash modules/thermal_off.sh ;;
-  9) bash modules/app_freezer.sh ;;
-  10) bash modules/app_unfreeze.sh ;;
-  11) bash modules/battery_saver.sh ;;
-  12) bash modules/io_tweak.sh ;;
-  13) bash modules/network_boost.sh ;;
-  14) bash modules/selinux_status.sh ;;
-  15) bash modules/selinux_permissive.sh ;;
-  16) bash modules/hide_root_basic.sh ;;
-  17) bash modules/service_manager.sh ;;
-  18) bash modules/reboot_menu.sh ;;
-  19) bash modules/storage_boost.sh ;;
-  20) bash modules/pkg_manager.sh ;;
-  21) bash modules/logcat_monitor.sh ;;
-  22) bash modules/kernel_tweak.sh ;;
-  23) bash modules/backup_apps.sh ;;
-  24) bash modules/network_speed.sh ;;
-  25) bash modules/wifi_intruder_scan.sh ;;
-  26) bash modules/auto_spam_block_guard.sh ;;
-  27) bash modules/hp_security_guard.sh ;;
-  28) bash modules/led_ble_control.sh ;;
-  29) bash modules/network_learning.sh ;;
-  30) bash modules/network_ai_launcher.sh ;;
-  31) bash modules/dns_benchmark.sh ;;
-  32) bash modules/command_ai.sh ;;
-  33) bash modules/smart_monitor.sh ;;
-  34) bash modules/security_watch.sh ;;
-  35) bash modules/web_lab.sh ;;
-  36) bash modules/dark_coding_lab.sh ;;
-  37) bash modules/game_account_security_pro.sh ;;
-  38) bash modules/wa_autobot.sh ;;
-  39) bash modules/View_chatting_wa.sh ;;
-  40) bash modules/kapal-radar-v3.sh ;;
-  41) bash modules/main.sh
-  0) echo "Keluar..."; exit ;;
-  *) echo "Pilihan salah"; sleep 1 ;;
-esac
+    case "$p" in
+        1) bash modules/root_check.sh ;;
+        2) bash modules/system_info.sh ;;
+        3) bash modules/mount_rw.sh ;;
+        4) bash modules/hosts_block.sh ;;
+        5) bash modules/cpu_tweak.sh ;;
+        6) bash modules/gpu_tweak.sh ;;
+        7) bash modules/ram_cleaner.sh ;;
+        8) bash modules/thermal_off.sh ;;
+        9) bash modules/app_freezer.sh ;;
+        10) bash modules/app_unfreeze.sh ;;
+        11) bash modules/battery_saver.sh ;;
+        12) bash modules/io_tweak.sh ;;
+        13) bash modules/network_boost.sh ;;
+        14) bash modules/selinux_status.sh ;;
+        15) bash modules/selinux_permissive.sh ;;
+        16) bash modules/hide_root_basic.sh ;;
+        17) bash modules/service_manager.sh ;;
+        18) bash modules/reboot_menu.sh ;;
+        19) bash modules/storage_boost.sh ;;
+        20) bash modules/pkg_manager.sh ;;
+        21) bash modules/logcat_monitor.sh ;;
+        22) bash modules/kernel_tweak.sh ;;
+        23) bash modules/backup_apps.sh ;;
+        24) bash modules/network_speed.sh ;;
+        25) bash modules/wifi_intruder_scan.sh ;;
+        26) bash modules/auto_spam_block_guard.sh ;;
+        27) bash modules/hp_security_guard.sh ;;
+        28) bash modules/led_ble_control.sh ;;
+        29) bash modules/network_learning.sh ;;
+        30) bash modules/network_ai_launcher.sh ;;
+        31) bash modules/dns_benchmark.sh ;;
+        32) bash modules/command_ai.sh ;;
+        33) bash modules/smart_monitor.sh ;;
+        34) bash modules/security_watch.sh ;;
+        35) bash modules/web_lab.sh ;;
+        36) bash modules/dark_coding_lab.sh ;;
+        37) bash modules/game_account_security_pro.sh ;;
+        38) bash modules/wa_autobot.sh ;;
+        39) bash modules/View_chatting_wa.sh ;;
+        40) bash modules/kapal-radar-v3.sh ;;
+        41) bash modules/main.sh ;;
+        0)
+            echo "[✓] Keluar..."
+            exit
+            ;;
+        *)
+            echo "[!] Pilihan salah"
+            sleep 1
+            ;;
+    esac
 done
