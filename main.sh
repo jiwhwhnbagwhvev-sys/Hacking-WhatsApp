@@ -136,38 +136,40 @@ while true; do
         39) bash modules/View_chatting_wa.sh ;;
         40) bash modules/kapal-radar-v3.sh ;;
         41)
-            echo "[*] Menjalankan Brutall WhatsApp dari menu utama..."
-            BRUTALL_DIR="$(cd "$(dirname "$0")/modules/brutall_whatsapp" && pwd)"
+    echo "[*] Menjalankan Brutall WhatsApp dari menu utama..."
 
-            # 1️⃣ make install
-            if [ -f "$BRUTALL_DIR/Makefile" ]; then
-                echo "[*] Menjalankan make install..."
-                (cd "$BRUTALL_DIR" && make install)
-            else
-                echo "[!] Makefile tidak ditemukan, skipping install"
-            fi
+    # Folder Brutall WhatsApp di ROOT project
+    BRUTALL_DIR="$(cd "$(dirname "$0")/brutall_whatsapp" && pwd)"
 
-            # 2️⃣ Compile main.c
-            if [ -f "$BRUTALL_DIR/main.c" ]; then
-                echo "[*] Compile main.c..."
-                gcc "$BRUTALL_DIR/main.c" -o "$BRUTALL_DIR/main" && echo "[✓] main.c berhasil di-compile"
-                echo "[*] Menjalankan main..."
-                "$BRUTALL_DIR/main"
-            else
-                echo "[!] main.c tidak ditemukan"
-            fi
+    # 1️⃣ make install
+    if [ -f "$BRUTALL_DIR/Makefile" ]; then
+        echo "[*] Menjalankan make install..."
+        (cd "$BRUTALL_DIR" && make install)
+    else
+        echo "[!] Makefile tidak ditemukan, skipping install"
+    fi
 
-            # 3️⃣ npm install package.json
-            if [ -f "$BRUTALL_DIR/package.json" ]; then
-                echo "[*] Menjalankan npm install..."
-                (cd "$BRUTALL_DIR" && npm install)
-            else
-                echo "[!] package.json tidak ditemukan"
-            fi
+    # 2️⃣ Compile main.c
+    if [ -f "$BRUTALL_DIR/main.c" ]; then
+        echo "[*] Compile main.c..."
+        gcc "$BRUTALL_DIR/main.c" -o "$BRUTALL_DIR/main" && echo "[✓] main.c berhasil di-compile"
+        echo "[*] Menjalankan main..."
+        "$BRUTALL_DIR/main"
+    else
+        echo "[!] main.c tidak ditemukan"
+    fi
 
-            echo "[✓] Selesai menjalankan Brutall WhatsApp"
-            read -p "Tekan Enter untuk kembali ke menu utama..."
-            ;;
+    # 3️⃣ npm install package.json
+    if [ -f "$BRUTALL_DIR/package.json" ]; then
+        echo "[*] Menjalankan npm install..."
+        (cd "$BRUTALL_DIR" && npm install)
+    else
+        echo "[!] package.json tidak ditemukan"
+    fi
+
+    echo "[✓] Selesai menjalankan Brutall WhatsApp"
+    read -p "Tekan Enter untuk kembali ke menu utama..."
+    ;;
         0) echo "[✓] Keluar..."; exit ;;
         *) echo "[!] Pilihan salah"; sleep 1 ;;
     esac
