@@ -1,6 +1,8 @@
-#!/data/data/com.termux/files/usr/bin/bash
+  #!/bin/bash
+clear
+
 # ===== WARNA =====
-RED="\e[1;31m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
+RED="\e[1;31m"; GRN="\e[1;32m"; WHT="\e[1;37m"; B="\e[1m"; R="\e[0m"
 
 # ===== LOADING LOGIN =====
 loading() {
@@ -17,9 +19,11 @@ loading() {
     sleep 0.8
 }
 
+loading
+
 # ===== LOGO =====
 logo() {
-echo -e "${RED}${B}
+    echo -e "${RED}${B}
 ██████╗  ██████╗  ██████╗ ████████╗
 ██╔══██╗██╔═══██╗██╔═══██╗╚══██╔══╝
 ██████╔╝██║   ██║██║   ██║   ██║
@@ -30,44 +34,60 @@ echo -e "${RED}${B}
 ${R}"
 }
 
-# ===== MENU =====
+# ===== MENU UTAMA =====
 menu() {
-echo -e "${WHT}
-1  Root Check           21 Logcat Monitor
-2  System Info          22 Kernel Info
-3  Mount RW             23 Backup Apps
-4  Hosts Adblock        24 Network Speed & IP
-5  CPU Performance      25 WiFi Intruder Scanner
-6  GPU Boost            26 Auto Spam Block Guard
-7  RAM Cleaner          27 HP Security Guard
-8  Disable Thermal      28 LED BLE Control Center
-9  Freeze App           29 Network Learning
-10 Unfreeze App         30 Network AI Launcher
-11 Battery Saver        31 DNS Benchmark
-12 IO Tweak             32 Command AI System
-13 Network Boost        33 Smart System Monitor
-14 SELinux Status       34 Security Watch System
-15 SELinux Perm         35 Local Web Lab
-16 Basic Root Hide      36 Dark Coding Lab
-17 Service Manager      37 Game Account Security Pro
-18 Reboot Menu          38 WA Autobot
-19 Storage Boost        39 View Chatting WA
-20 Package Manager      40 Kapal Radar
-41 Brutall WhatsApp
-0  Exit
+    echo -e "${WHT}
+1) Root Check
+2) System Info
+3) Mount RW
+4) Hosts Adblock
+5) CPU Performance
+6) GPU Boost
+7) RAM Cleaner
+8) Disable Thermal
+9) Freeze App
+10) Unfreeze App
+11) Battery Saver
+12) IO Tweak
+13) Network Boost
+14) SELinux Status
+15) SELinux Perm
+16) Basic Root Hide
+17) Service Manager
+18) Reboot Menu
+19) Storage Boost
+20) Package Manager
+21) Logcat Monitor
+22) Kernel Info
+23) Backup Apps
+24) Network Speed & IP Check
+25) WiFi Intruder Scanner
+26) Auto Spam Block Guard
+27) HP Security Guard
+28) LED BLE Control Center
+29) Network Learning Jaringan
+30) Network AI Launcher
+31) DNS Benchmark
+32) Command AI System
+33) Smart System Monitor
+34) Security Watch System
+35) Local Web Lab
+36) DARK CODING LAB
+37) Game Account Security Pro
+38) WA Autobot
+39) View Chatting WA
+40) Kapal Radar
+41) Brutall WhatsApp
+0) Exit
 ${R}"
 }
 
-# ===== START =====
-loading
-
-# ===== LOOP UTAMA =====
+# ===== LOOP MENU =====
 while true; do
     clear
     logo
     menu
-    read -r -p "Pilih: " p
-
+    read -r -p "Pilih menu: " p
     case "$p" in
         1) bash modules/root_check.sh ;;
         2) bash modules/system_info.sh ;;
@@ -109,14 +129,18 @@ while true; do
         38) bash modules/wa_autobot.sh ;;
         39) bash modules/View_chatting_wa.sh ;;
         40) bash modules/kapal-radar-v3.sh ;;
-        41) bash modules/makefile ;;
-        0)
-            echo "[✓] Keluar..."
-            exit
+        41) 
+            echo "[*] Menjalankan Brutall WhatsApp..."
+            for script in modules/brutall_whatsapp/*.sh; do
+                echo "[*] Menjalankan $script..."
+                bash "$script"
+                echo
+                read -p "Tekan Enter untuk lanjut ke file berikutnya..."
+            done
+            echo "[✓] Selesai menjalankan semua script Brutall WhatsApp"
+            read -p "Tekan Enter untuk kembali ke menu utama..."
             ;;
-        *)
-            echo "[!] Pilihan salah"
-            sleep 1
-            ;;
+        0) echo "[✓] Keluar..."; exit ;;
+        *) echo "[!] Pilihan salah"; sleep 1 ;;
     esac
-done
+done      
