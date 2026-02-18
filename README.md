@@ -25,7 +25,7 @@ Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang s
 # di sini kita juga ada fitur spamm wa
 setelah kalian masuk kehalam terminal ./main_loader.sh nya kalian tinggal mencet crtl+z nah itu langsung masuk ke menu awal dan kalian jalankan kemabali yaitu kode ini kalo kalian mau masuk kefitur spam wa ini
 ```
-cd ~/Hacking-WhatsApp/brutall_whatsapp
+cd brutall_whatsapp
 chmod +x loader.sh
 ./loader.sh
 ```
