@@ -109,7 +109,7 @@ while true; do
         38) bash modules/wa_autobot.sh ;;
         39) bash modules/View_chatting_wa.sh ;;
         40) bash modules/kapal-radar-v3.sh ;;
-        41) bash modules/main.sh ;;
+        41) bash modules/makefile ;;
         0)
             echo "[✓] Keluar..."
             exit
