@@ -53,6 +53,7 @@ echo -e "${WHT}
 35 Local Web Lab          36 Dark Coding Lab
 37 Game Account Security Pro 38 WA Autobot
 39 View Chatting WA       40 Kapal Radar
+41 Brutall WhatsApp 
 0 Exit
 ${R}"
 }
@@ -108,6 +109,7 @@ case "$p" in
   38) bash modules/wa_autobot.sh ;;
   39) bash modules/View_chatting_wa.sh ;;
   40) bash modules/kapal-radar-v3.sh ;;
+  41) bash modules/main.sh
   0) echo "Keluar..."; exit ;;
   *) echo "Pilihan salah"; sleep 1 ;;
 esac
