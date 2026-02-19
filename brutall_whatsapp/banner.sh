@@ -24,7 +24,7 @@ echo "----------------------------------"
 echo -e "${yellow}* Creator  : Sanz${reset}"
 echo -e "${yellow}* Youtube  : FREE TUTORIAL${reset}"
 echo -e "${yellow}* Youtube  : Pecinta hpkentang${reset}"
-echo -e "${green}* Github : github.com/jiwhwhnbagwhvev-sys${reset
+echo -e "${green}* Github : github.com/jiwhwhnbagwhvev-sys${reset}"
 echo -e "${green}* Github   : github.com/Sxp-ID${reset}"
 echo -e "${green}* Support  : sociabuzz.com/sanzexde${reset}"
 
