@@ -35,6 +35,25 @@ cd brutall_whatsapp
 chmod +x loader.sh
 ./loader.sh
 ```
+# kalo pas masukin pasword nya eror
+ketik ini dulu CD $home lalu
+ketik lagi cd Hacking-WhatsApp
+
+dan kalian masuk ke halaman cd ini
+Hacking-WhatsApp 
+intaling code nya di halaman cd Hacking-WhatsApp ini
+jalankan perintah di bawah ini
+```
+pkg install python
+pip install requests
+python --version
+pip install fake-useragent
+./loader.sh
+```
+kalo pas masuk pasword nya kayak gitu lagi tulisan nya langsung masuk ke CD~/Hacking-WhatsApp/brutall_whatsapp  jalankan di bawah ini 
+```
+python -m pip install -r data/requirements.txt
+```
 
 ## ⚠️ Peringatan
 Gunakan dengan bijak Risiko ditanggung pengguna dan juga ada fitur baru juga yaitu spamm wa dan di sini resiko nya bukan di tanggung saya tetapi di tanggung oleh pengguna 
