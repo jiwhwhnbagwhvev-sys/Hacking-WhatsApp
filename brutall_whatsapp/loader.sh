@@ -3,6 +3,11 @@
 
 BRUTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# 🔥 TAMPILKAN BANNER
+if [ -f "$BRUTALL_DIR/banner.sh" ]; then
+    bash "$BRUTALL_DIR/banner.sh"
+fi
+
 # Minta password user
 read -sp "Masukkan passphrase untuk main.c.gpg: " PASS
 echo
