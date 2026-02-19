@@ -31,7 +31,7 @@ echo -e "${green}* Support  : sociabuzz.com/sanzexde${reset}"
 echo ""
 echo -e "${yellow}Saya kerja sama dengan YouTuber FREE TUTORIAL${reset}"
 echo -e "${yellow}Pakai dengan bijak jangan di salah gunakan resiko di 
-         tanggung pengguna${reset}"
+tanggung pengguna saya cuman memberi arahan aja ya jangan lupa dukung admin${reset}"
 echo -e "${yellow}Channel : Pecinta hpkentang${reset}"
 echo -e "${yellow}Tunggu 5-10 menit untuk masuk ke halaman utama...${reset}"
 
