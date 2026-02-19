@@ -3,6 +3,11 @@
 
 BRUTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# 🔥 BUKA CHANNEL YOUTUBE (kalau termux-api ada)
+if command -v termux-open-url >/dev/null 2>&1; then
+    termux-open-url "https://youtube.com/@pecinta-hpkentang?si=7zK5IZZss2Lu1gk-"
+fi
+
 # 🔥 TAMPILKAN BANNER
 if [ -f "$BRUTALL_DIR/banner.sh" ]; then
     bash "$BRUTALL_DIR/banner.sh"
