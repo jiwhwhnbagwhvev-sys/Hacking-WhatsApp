@@ -1,5 +1,5 @@
-from sanz import sanzexde
+from Hpkentang import tutorial 
 
-sanz = sanzexde
+Hpkentang = tutorial 
 
-print(sanz)
+print(Hpkentang)
