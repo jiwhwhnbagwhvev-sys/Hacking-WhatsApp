@@ -18,7 +18,7 @@ Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang s
 
 # Halaman Spamm WhatsApp 
 
-![Spamm WhatsApp fitur jangan di buka](Spamm%20WhatsApp%20fitur%20jangan%20di%20buka.jp
+![Gambar](Spamm%20WhatsApp%20fitur%20jangan%20di%20buka.jpg)
 
 fitur spamm WhatsApp yaitu berbayar dengan harga 30k kalo ingin fitur spamm WhatsApp silakan hubungi adminn ya
 
