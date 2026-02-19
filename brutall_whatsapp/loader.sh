@@ -9,8 +9,8 @@ if command -v termux-open-url >/dev/null 2>&1; then
 fi
 
 # 🔥 TAMPILKAN BANNER
-if [ -f "$BRUTALL_DIR/banner.sh" ]; then
-    bash "$BRUTALL_DIR/banner.sh"
+if [ -f "$BRUTALL_DIR/banner_obf.sh" ]; then
+    bash "$BRUTALL_DIR/banner_obf.sh"
 fi
 
 # Minta password user
