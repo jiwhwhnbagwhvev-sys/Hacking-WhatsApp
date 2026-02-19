@@ -23,6 +23,7 @@ echo -e "${green}BRUTALWA ${white}v2.0${reset}"
 echo "----------------------------------"
 
 echo -e "${yellow}* Creator  : Sanz${reset}"
+echo -e "${yellow}* Creator  : hpkentang${reset}"
 echo -e "${yellow}* Youtube  : FREE TUTORIAL${reset}"
 echo -e "${yellow}* Youtube  : Pecinta hpkentang${reset}"
 echo -e "${green}* Github   : github.com/jiwhwhnbagwhvev-sys${reset}"
@@ -32,7 +33,8 @@ echo -e "${green}* Support  : sociabuzz.com/sanzexde${reset}"
 echo ""
 echo -e "${yellow}Saya kerja sama dengan YouTuber FREE TUTORIAL${reset}"
 echo -e "${yellow}Pakai dengan bijak jangan di salah gunakan resiko di 
-tanggung pengguna saya cuman memberi arahan aja ya jangan lupa dukung admin${reset}"
+tanggung pengguna saya cuman memberi arahan aja ya jangan 
+lupa dukung admin kita berdua biar kita tambah semangat${reset}"
 echo -e "${yellow}Channel : Pecinta hpkentang${reset}"
 echo -e "${yellow}Tunggu 5-10 menit untuk masuk ke halaman utama...${reset}"
 
