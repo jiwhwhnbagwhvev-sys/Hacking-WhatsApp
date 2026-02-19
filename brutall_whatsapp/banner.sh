@@ -5,6 +5,7 @@ clear
 green='\033[1;32m'
 yellow='\033[1;33m'
 purple='\033[1;35m'
+white='\033[1;37m'
 reset='\033[0m'
 
 echo -e "${purple}"
@@ -18,7 +19,7 @@ echo "  /|     |\\"
 echo " /_|_____|_\\"
 echo -e "${reset}"
 
-echo -e "${green}BRUTALWA${reset}"
+echo -e "${green}BRUTALWA ${white}v2.0${reset}"
 echo "----------------------------------"
 
 echo -e "${yellow}* Creator  : Sanz${reset}"
