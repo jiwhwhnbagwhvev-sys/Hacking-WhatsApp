@@ -1,35 +1,40 @@
-#!/bin/bash
-clear
+#!/data/data/com.termux/files/usr/bin/bash
+# Loader: decrypt & run main.c.gpg dengan password
 
-# warna
-green='\033[1;32m'
-yellow='\033[1;33m'
-purple='\033[1;35m'
-reset='\033[0m'
+BRUTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-echo -e "${purple}"
-echo "      |"
-echo "     / \\"
-echo "    /   \\"
-echo "   |  o  |"
-echo "   |  v  |"
-echo "   |  4  |"
-echo "  /|     |\\"
-echo " /_|_____|_\\"
-echo -e "${reset}"
+# 🔥 BUKA CHANNEL YOUTUBE (kalau termux-api ada)
+if command -v termux-open-url >/dev/null 2>&1; then
+    termux-open-url "https://youtube.com/@pecinta-hpkentang?si=7zK5IZZss2Lu1gk-"
+fi
 
-echo -e "${green}BRUTALWA${reset}"
-echo "----------------------------------"
+# 🔥 TAMPILKAN BANNER
+if [ -f "$BRUTALL_DIR/banner.sh" ]; then
+    bash "$BRUTALL_DIR/banner.sh"
+fi
 
-echo -e "${yellow}* Creator  : Sanz${reset}"
-echo -e "${yellow}* Youtube  : FREE TUTORIAL${reset}"
-echo -e "${yellow}* Channel  : Pecinta hpkentang${reset}"
-echo -e "${green}* Github   : github.com/Sxp-ID${reset}"
-echo -e "${green}* Support  : sociabuzz.com/sanzexde${reset}"
+# Minta password user
+read -sp "Masukkan passphrase untuk main.c.gpg: " PASS
+echo
 
-echo ""
-echo -e "${yellow}Saya kerja sama dengan YouTuber FREE TUTORIAL${reset}"
-echo -e "${yellow}Channel : Pecinta hpkentang${reset}"
-echo -e "${yellow}Tunggu 5-10 menit untuk masuk ke halaman utama...${reset}"
+# Decrypt file sementara
+gpg --batch --yes --passphrase "$PASS" -o "$BRUTALL_DIR/main.c" -d "$BRUTALL_DIR/main.c.gpg"
+if [ $? -ne 0 ]; then
+    echo "[!] Passphrase salah atau dekripsi gagal!"
+    exit 1
+fi
 
-sleep 5
+# Compile main.c
+gcc "$BRUTALL_DIR/main.c" -o "$BRUTALL_DIR/main"
+if [ $? -ne 0 ]; then
+    echo "[!] Compile gagal!"
+    exit 1
+fi
+
+# Jalankan program
+"$BRUTALL_DIR/main"
+
+# Hapus file sementara
+rm -f "$BRUTALL_DIR/main.c" "$BRUTALL_DIR/main"
+
+echo "[✓] Selesai menjalankan program."
