@@ -46,8 +46,8 @@ clear
 
 echo -e "${GREEN}Welcome, $username${NC}"
 echo ""
-echo -e "${CYAN}[1] Messaging Module${NC}"
-echo -e "${CYAN}[2] Call Module${NC}"
+echo -e "${CYAN}[1] Spamm wa${NC}"
+echo -e "${CYAN}[2] Spamm call${NC}"
 echo -e "${CYAN}[0] Exit${NC}"
 echo ""
 
@@ -61,9 +61,9 @@ case "$pilih" in
 clear
 
 if [ "$pilih" = "1" ]; then
-    MODULE="Messaging Module"
+    MODULE="Spamm wa"
 else
-    MODULE="Call Module"
+    MODULE="Spamm call"
 fi
 
 # ===== VALIDASI NOMOR =====
