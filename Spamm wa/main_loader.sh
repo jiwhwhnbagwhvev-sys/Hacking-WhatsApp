@@ -46,4 +46,4 @@ do
 done
 
 sleep 1
-bash menu.sh
+bash menu.sh.gpg
