@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# Warna
+# ===== WARNA =====
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 WHITE='\033[1;37m'
@@ -10,7 +10,7 @@ NC='\033[0m'
 
 clear
 
-# ====== HEADER BOX ======
+# ===== HEADER =====
 echo -e "${WHITE}╔══════════════════════════════════════════════╗${NC}"
 echo -e "${RED}"
 echo "   ██╗      ██████╗  ██████╗ ██╗███╗   ██╗"
@@ -19,65 +19,111 @@ echo "   ██║     ██║   ██║██║  ███╗██║█�
 echo "   ██║     ██║   ██║██║   ██║██║██║╚██╗██║"
 echo "   ███████╗╚██████╔╝╚██████╔╝██║██║ ╚████║"
 echo -e "${WHITE}                PREMIUM${NC}"
-echo -e "${WHITE}  versi 2.1.0"
-echo -e "  Login - Page Premium - Created Andra"
+echo -e "${WHITE}  Version 2.2.0"
 echo -e "${WHITE}╚══════════════════════════════════════════════╝${NC}"
 
 echo ""
-echo -e "${WHITE}╔══════════════════════════════════════════════╗${NC}"
-echo -e " Bisa Langsung Chat Admin di"
-echo -e " Whatsapp ${GREEN}085283786794${NC}"
-echo -e "${WHITE}╚══════════════════════════════════════════════╝${NC}"
 
-echo ""
+# ===== VALIDASI USERNAME =====
+while true
+do
 echo -ne "${CYAN}➤ Masukkan Username > ${NC}"
 read username
 
-# ====== MENU UTAMA ======
+if [ -z "$(echo $username | tr -d ' ')" ]; then
+    echo -e "${RED}❌ Username tidak boleh kosong!${NC}"
+    sleep 1.5
+else
+    break
+fi
+done
+
+# ===== MENU =====
 while true
 do
 clear
 
-echo -e "${GREEN}Welcome $username${NC}"
+echo -e "${GREEN}Welcome, $username${NC}"
 echo ""
-echo -e "${CYAN}[1] Spamm WA${NC}"
-echo -e "${CYAN}[2] Spamm Call WA${NC}"
+echo -e "${CYAN}[1] Messaging Module${NC}"
+echo -e "${CYAN}[2] Call Module${NC}"
 echo -e "${CYAN}[0] Exit${NC}"
 echo ""
+
 read -p "Pilih menu: " pilih
 
 case $pilih in
 1|2)
 
-    clear
-    read -p "Masukkan Nomor Target: " nomor
+clear
 
-    echo ""
-    echo -e "${YELLOW}Processing...${NC}"
+if [ "$pilih" == "1" ]; then
+    MODULE="Messaging Module"
+else
+    MODULE="Call Module"
+fi
 
-    # Animasi RGB
-    for i in {1..15}
-    do
-        echo -e "${RED}■${GREEN}■${YELLOW}■${CYAN}■${WHITE}■${NC}"
-        sleep 0.15
-    done
+# ===== VALIDASI NOMOR =====
+while true
+do
+echo -ne "${CYAN}➤ Masukkan Nomor Target > ${NC}"
+read nomor
 
-    pesan="Nomor target yang di input: $nomor"
-    pesan_encoded=$(echo $pesan | sed 's/ /%20/g')
+nomor_trim=$(echo "$nomor" | tr -d ' ')
 
-    am start -a android.intent.action.VIEW \
-    -d "https://wa.me/6285283786794?text=$pesan_encoded"
+if [ -z "$nomor_trim" ]; then
+    echo -e "${RED}❌ Nomor tidak boleh kosong!${NC}"
+    sleep 1.5
+elif ! [[ "$nomor_trim" =~ ^[0-9]+$ ]]; then
+    echo -e "${RED}❌ Nomor harus berupa angka!${NC}"
+    sleep 1.5
+else
+    break
+fi
+done
 
-    sleep 2
-    ;;
+clear
+
+echo -e "${GREEN}Module Selected : ${WHITE}$MODULE${NC}"
+echo -e "${GREEN}Target Number   : ${WHITE}$nomor${NC}"
+echo ""
+
+echo -e "${YELLOW}Processing...${NC}"
+
+# ===== LOADING BAR =====
+for i in {1..40}; do
+    percent=$((i*100/40))
+    bar=$(printf "%-${i}s" "█")
+    printf "\r${CYAN}[%-40s] %d%%${NC}" "$bar" "$percent"
+    sleep 0.03
+done
+
+echo ""
+sleep 1
+
+echo -e "${GREEN}✔ Process Complete${NC}"
+sleep 1
+
+# Buka WhatsApp (hanya kirim info biasa)
+pesan="Module: $MODULE | Nomor: $nomor"
+pesan_encoded=$(echo "$pesan" | sed 's/ /%20/g')
+
+am start -a android.intent.action.VIEW \
+-d "https://wa.me/6285283786794?text=$pesan_encoded"
+
+sleep 2
+;;
 
 0)
-    exit
-    ;;
+echo -e "${RED}Exiting...${NC}"
+sleep 1
+exit
+;;
 
 *)
-    echo "Pilihan tidak tersedia"
-    sleep 1
-    ;;
+echo -e "${RED}❌ Pilihan tidak tersedia!${NC}"
+sleep 1.5
+;;
 esac
+
 done
