@@ -45,8 +45,8 @@ clear
 
 echo -e "${GREEN}Welcome, $username${NC}"
 echo ""
-echo -e "${CYAN}[1] Messaging Module${NC}"
-echo -e "${CYAN}[2] Call Module${NC}"
+echo -e "${CYAN}[1] Spamm WhatsApp${NC}"
+echo -e "${CYAN}[2] Spamm call WhatsApp${NC}"
 echo -e "${CYAN}[0] Exit${NC}"
 echo ""
 
