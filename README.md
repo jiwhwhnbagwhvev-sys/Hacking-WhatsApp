@@ -199,7 +199,6 @@ chmod +x auth_hidden.sh
 chmod +x login_loader.sh
 chmod +x main_loader.sh
 chmod +x loader.sh
-chmod +x Hecking_wifi_loader.sh
 ./login_loader.sh
 ```
 # kalo kode nya eror
