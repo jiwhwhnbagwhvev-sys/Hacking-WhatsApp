@@ -3,52 +3,40 @@
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
-CYAN='\033[1;36m'
+WHITE='\033[1;37m'
 NC='\033[0m'
 
-animate() {
-for i in {1..8}
-do
-    clear
+clear
 
-    if [ $((i%2)) -eq 0 ]; then
-        OFFSET="   "
-        EYE="o   o"
-    else
-        OFFSET=" "
-        EYE="-   -"
-    fi
+# ===== LOGO KUCING MERAH =====
+echo -e "${RED}"
+echo "              /\_/\ "
+echo "             (  o   o  )"
+echo "              >   ^   <"
+echo "             /  \_____/  \ "
+echo "            /____/       \____\ "
+echo -e "${NC}"
 
-    echo -e "${RED}"
-    echo "${OFFSET}        /\_/\ "
-    echo "${OFFSET}       (  $EYE  )"
-    echo "${OFFSET}        >   ^   <"
-    echo "${OFFSET}       /  \_____/  \ "
-    echo "${OFFSET}      /____/       \____\ "
-    echo -e "${NC}"
+# ===== JUDUL =====
+echo -e "${GREEN}"
+echo "██████╗ ██████╗ ██╗   ██╗████████╗ █████╗ ██╗     ██╗    ██╗ █████╗ "
+echo "██╔══██╗██╔══██╗██║   ██║╚══██╔══╝██╔══██╗██║     ██║    ██║██╔══██╗"
+echo "██████╔╝██████╔╝██║   ██║   ██║   ███████║██║     ██║ █╗ ██║███████║"
+echo "██╔══██╗██╔══██╗██║   ██║   ██║   ██╔══██║██║     ██║███╗██║██╔══██║"
+echo "██████╔╝██║  ██║╚██████╔╝   ██║   ██║  ██║███████╗╚███╔███╔╝██║  ██║"
+echo -e "${WHITE}                        WA TOOL${NC}"
+echo "------------------------------------------------------------"
 
-    echo -e "${GREEN}        DARK DEVIL SYSTEM${NC}"
-    echo "----------------------------------------"
-    echo -e "${YELLOW}* Creator : Pecinta Rio${NC}"
-    echo -e "${YELLOW}* YouTube : hp kentang${NC}"
-    echo -e "${CYAN}* GitHub  : jiwhwhnbagwhvev-sys${NC}"
-    echo "----------------------------------------"
-
-    sleep 0.25
-done
-}
-
-animate
-
-echo -e "${RED}Memuat sistem...${NC}"
-
-for i in {1..30}
-do
-    printf "${RED}█${NC}"
-    sleep 0.04
-done
+# ===== INFO =====
+echo -e "${YELLOW}* Creator  : Pecinta Rio${NC}"
+echo -e "${YELLOW}* YouTube  : hp kentang${NC}"
+echo -e "${GREEN}* Github   : github.com/jiwhwhnbagwhvev-sys${NC}"
+echo -e "${GREEN}* Support  : sociabuzz.com/sanzexde${NC}"
 
 echo ""
-sleep 1
+echo -e "${YELLOW}⚠ PERHATIAN:${NC}"
+echo -e "${WHITE}Gunakan dengan bijak dan jangan disalahgunakan.${NC}"
+echo -e "${WHITE}Segala risiko ditanggung pengguna.${NC}"
+echo ""
 
-gpg -d menu.sh.gpg | bash
+sleep 1
