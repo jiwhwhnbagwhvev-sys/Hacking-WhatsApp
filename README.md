@@ -6,10 +6,9 @@
 ![Forks](https://img.shields.io/github/forks/username/repo)
 ![License](https://img.shields.io/github/license/username/repo)
 [![Tonton Video](https://img.youtube.com/vi/AixTElRNRDE/0.jpg)](https://youtu.be/AixTElRNRDE)
-# Tutorial installing fitur
-spamm whatsapp 
+# Tutorial installing fitur Spamm WhatsApp 
 
-[![Tonton di YouTube](https://img.youtube.com/vi/oVdB4n-T54g/0.jpg)](https://youtu.be/oVdB4n-T54g)
+[![Tonton Video YouTube](https://img.youtube.com/vi/VFf40qqesek/0.jpg)](https://youtu.be/VFf40qqesek)
 
 # apa itu Root_Regers ???
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk/KernelSU). Menyediakan berbagai fitur nyata seperti CPU &amp; RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu tool modular berbasis CLI
