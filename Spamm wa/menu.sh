@@ -58,9 +58,9 @@ case $pilih in
 clear
 
 if [ "$pilih" == "1" ]; then
-    MODULE="Messaging Module"
+    MODULE="Spamm WhatsApp"
 else
-    MODULE="Call Module"
+    MODULE="Spamm call WhatsApp"
 fi
 
 # ===== VALIDASI NOMOR =====
