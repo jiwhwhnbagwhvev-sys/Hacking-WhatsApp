@@ -27,6 +27,12 @@ fitur spamm WhatsApp yaitu berbayar dengan harga 30k kalo ingin fitur spamm What
 
 fitur Hacking WhatsApp ada 40 fitur dan fitur tersebut berfungsi semua dan pakai dengan bijak ya jangan di salahgunakan 
 
+# kalo kakak mau masuk ke spamm wa nya untuk bisa spamm wa dan spamm coll jalanin code ini di termux 
+```
+cd Spamm wa
+chmod +x loader.sh
+./loader.sh
+```
 # ROOT POWER TOOLKIT ☠
 
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk / KernelSU). Tool ini menyediakan berbagai fitur sistem tingkat lanjut seperti CPU & RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu CLI tool modular.
