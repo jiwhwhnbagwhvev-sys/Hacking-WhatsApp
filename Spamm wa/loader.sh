@@ -1,61 +1,39 @@
-#!/data/data/com.termux/files/usr/bin/bash
-# Secure Loader → menu.sh.gpg
-
-SYSTEM_DIR="$(cd "$(dirname "$0")" && pwd)"
-
-RED='\033[1;31m'
-GREEN='\033[1;32m'
-CYAN='\033[1;36m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+#!/bin/bash
 
 clear
 
-# 🔥 TAMPILKAN BANNER DULU
-if [ -f "$SYSTEM_DIR/banner.sh" ]; then
-    bash "$SYSTEM_DIR/banner.sh"
-fi
+# Warna
+ungu='\033[1;35m'
+hijau='\033[1;32m'
+kuning='\033[1;33m'
+putih='\033[1;37m'
+reset='\033[0m'
 
-# 🔍 Cek file terenkripsi
-if [ ! -f "$SYSTEM_DIR/menu_aman.gpg" ]; then
-    echo -e "${RED}[!] File menu_aman.gpg tidak ditemukan!${NC}"
-    exit 1
-fi
+# Logo kiri + Judul kanan
+echo -e "${ungu}\
+      /\_/\              ${hijau}██     ██ ██   ██  █████  ███████ ███████  █████  ██████${reset}
+${ungu}     ( o.o )             ${hijau}██     ██ ██   ██ ██   ██    ███  ██      ██   ██ ██   ██${reset}
+${ungu}      >  ^  <             ${hijau}██  █  ██ ███████ ███████   ███   █████   ███████ ██████${reset}
+${ungu}     /       \            ${hijau}██ ███ ██ ██   ██ ██   ██  ███    ██      ██   ██ ██${reset}
+${ungu}    /|       |\           ${hijau} ███ ███  ██   ██ ██   ██ ███████ ███████ ██   ██ ██${reset}
+${ungu}   /_|_______|_\${reset}"
 
-ATTEMPT=0
-MAX_ATTEMPT=3
+echo -e "${putih}--------------------------------------------------${reset}"
 
-while [ $ATTEMPT -lt $MAX_ATTEMPT ]
-do
-    echo ""
-    read -sp "Masukkan passphrase untuk menu.sh.gpg: " PASS
-    echo ""
+# Tulisan kuning di bawah
+echo -e "${kuning}* Creator  : Sanz"
+echo "* Creator  : hpkentang"
+echo "* Youtube  : FREE TUTORIAL"
+echo "* Youtube  : Pecinta hpkentang${reset}"
 
-    TEMP_FILE=$(mktemp)
+# Tulisan hijau
+echo -e "${hijau}* Github   : github.com/username"
+echo "* Support  : supportkamu.com${reset}"
 
-    # Decrypt aman
-    echo "$PASS" | gpg --batch --yes --passphrase-fd 0 \
-        -o "$TEMP_FILE" \
-        -d "$SYSTEM_DIR/menu_aman.gpg" 2>/dev/null
+echo ""
+echo -e "${kuning}Gunakan dengan bijak, resiko ditanggung pengguna.${reset}"
+echo ""
+sleep 2
 
-    if [ $? -eq 0 ]; then
-        chmod +x "$TEMP_FILE"
-
-        echo -e "${GREEN}[✓] Access Granted${NC}"
-        sleep 1
-
-        # Jalankan menu
-        bash "$TEMP_FILE"
-
-        rm -f "$TEMP_FILE"
-        exit 0
-    else
-        rm -f "$TEMP_FILE"
-        ATTEMPT=$((ATTEMPT+1))
-        echo -e "${RED}[!] Password salah (${ATTEMPT}/${MAX_ATTEMPT})${NC}"
-        sleep 2
-    fi
-done
-
-echo -e "${RED}Terlalu banyak percobaan gagal!${NC}"
-exit 1
+# Jalankan menu terenkripsi
+gpg -d menu_main.gpg | bash
