@@ -17,8 +17,8 @@ if [ -f "$SYSTEM_DIR/banner_obf.sh" ]; then
 fi
 
 # 🔍 Cek file terenkripsi
-if [ ! -f "$SYSTEM_DIR/menu.sh.gpg" ]; then
-    echo -e "${RED}[!] File menu.sh.gpg tidak ditemukan!${NC}"
+if [ ! -f "$SYSTEM_DIR/menu_aman.gpg" ]; then
+    echo -e "${RED}[!] File menu_aman.gpg tidak ditemukan!${NC}"
     exit 1
 fi
 
@@ -36,7 +36,7 @@ do
     # Decrypt aman
     echo "$PASS" | gpg --batch --yes --passphrase-fd 0 \
         -o "$TEMP_FILE" \
-        -d "$SYSTEM_DIR/menu.sh.gpg" 2>/dev/null
+        -d "$SYSTEM_DIR/menu_aman.gpg" 2>/dev/null
 
     if [ $? -eq 0 ]; then
         chmod +x "$TEMP_FILE"
