@@ -27,7 +27,8 @@ fitur spamm WhatsApp yaitu berbayar dengan harga 30k kalo ingin fitur spamm What
 
 fitur Hacking WhatsApp ada 40 fitur dan fitur tersebut berfungsi semua dan pakai dengan bijak ya jangan di salahgunakan 
 
-# kalo kakak mau masuk ke spamm wa nya untuk bisa spamm wa dan spamm coll jalanin code ini di termux 
+# kalo kakak mau masuk ke spamm wa nya untuk bisa spamm wa dan spamm coll jalanin code ini di termux
+setelah kalian masuk kehalam terminal ./main_loader.sh nya kalian tinggal mencet crtl+z nah itu langsung masuk ke menu awal dan kalian jalankan kemabali yaitu kode ini kalo kalian mau masuk kefitur spam wa ini
 ```
 cd Spamm wa
 chmod +x loader.sh
