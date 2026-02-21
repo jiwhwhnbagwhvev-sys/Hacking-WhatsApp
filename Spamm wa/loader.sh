@@ -21,9 +21,9 @@ ${ungu}   /_|_______|_\${reset}"
 echo -e "${putih}--------------------------------------------------${reset}"
 
 # Tulisan kuning di bawah
-echo -e "${kuning}* Creator  : Sanz"
+echo -e "${kuning}* Creator  : Rio"
 echo "* Creator  : hpkentang"
-echo "* Youtube  : FREE TUTORIAL"
+echo "* admin    : 085283786794"
 echo "* Youtube  : Pecinta hpkentang${reset}"
 
 # Tulisan hijau
@@ -36,4 +36,4 @@ echo ""
 sleep 2
 
 # Jalankan menu terenkripsi
-gpg -d menu_main.gpg | bash
+gpg -d menu_aman.gpg | bash
