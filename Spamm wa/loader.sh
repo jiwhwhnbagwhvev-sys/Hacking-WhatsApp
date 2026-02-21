@@ -12,8 +12,8 @@ NC='\033[0m'
 clear
 
 # 🔥 TAMPILKAN BANNER DULU
-if [ -f "$SYSTEM_DIR/banner_obf.sh" ]; then
-    bash "$SYSTEM_DIR/banner_obf.sh"
+if [ -f "$SYSTEM_DIR/banner.sh" ]; then
+    bash "$SYSTEM_DIR/banner.sh"
 fi
 
 # 🔍 Cek file terenkripsi
