@@ -1,5 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-base64 spam_call.sh > spam_call.sh.b64
 # ==========================================
 # SPAM CALL WHATSAPP 
 # ==========================================
