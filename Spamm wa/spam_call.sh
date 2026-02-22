@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+
 # ==========================================
 # SPAM CALL WHATSAPP 
 # ==========================================
