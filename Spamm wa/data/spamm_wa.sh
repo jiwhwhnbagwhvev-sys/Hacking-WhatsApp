@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ==========================================
-# SPAM CHAT WHATSAPP MODULE - FITUR 2
+# SPAM CHAT WHATSAPP
 # ==========================================
 
 RED='\033[1;31m'
@@ -23,7 +23,7 @@ echo "                  (   \"   )                  "
 echo "                   \~(*)~/                   "
 echo "                    - ^ -                    "
 echo ""
-echo "              CAT UNIVERSAL TOOL             "
+echo "              WhatsApp Tools           "
 echo -e "${NC}"
 }
 
