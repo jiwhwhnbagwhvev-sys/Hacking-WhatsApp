@@ -39,6 +39,9 @@ cd cd 'Spamm wa'
 chmod +x loader.sh
 ./loader.sh
 ```
+# update spamm call WhatsApp 
+
+![Spam WhatsApp](Spamm%20WhatsApp%20halaman.jpg)
 # ROOT POWER TOOLKIT ☠
 
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk / KernelSU). Tool ini menyediakan berbagai fitur sistem tingkat lanjut seperti CPU & RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu CLI tool modular.
