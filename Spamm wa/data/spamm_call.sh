@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ==========================================
-# SPAM CALL WHATSAPP MODULE - FITUR 2
+# SPAM CALL WHATSAPP 
 # ==========================================
 
 RED='\033[1;31m'
