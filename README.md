@@ -39,6 +39,10 @@ cd 'Spamm wa'
 chmod +x loader.sh
 ./loader.sh
 ```
+# cara penginstalan nya 
+
+[![Lihat Video](https://img.youtube.com/vi/dPtMk5Bwnwo/0.jpg)](https://youtu.be/dPtMk5Bwnwo?si=f2Eiybge5UkefVA8)
+
 # update spamm v2.0 vitur baru
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20halaman.jpg)
