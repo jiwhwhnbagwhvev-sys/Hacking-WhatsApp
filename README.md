@@ -1,10 +1,6 @@
 
 # Hacking WhatsApp 
 
-# Welcome
-
-[![Spamm versi terbaru](Spamm%20versi%20terbaru.jpg)](Spamm%20versi%20terbaru.mp4)
-
 ![Language](https://img.shields.io/badge/language-Bash-green)
 ![Framework](https://img.shields.io/badge/framework-Bash%20ID-green)
 ![Forks](https://img.shields.io/github/forks/username/repo)
