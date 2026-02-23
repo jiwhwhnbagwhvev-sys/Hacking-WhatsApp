@@ -43,6 +43,8 @@ chmod +x loader.sh
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20halaman.jpg)
 
+![Spamm WhatsApp v2o](images/Spamm%20WhatsApp%20vitur%20terbaru%20v2o.jpg)
+
 ![Update Fitur Terbaru](update%20fitur%20terbaru.jpg)
 
 # ROOT POWER TOOLKIT ☠
