@@ -47,6 +47,8 @@ chmod +x loader.sh
 
 ![Update Fitur Terbaru](update%20fitur%20terbaru.jpg)
 
+![Spam WhatsApp](Spamm%20WhatsApp%20kode%20otp%20tanpa%20batas.jpg)
+
 # ROOT POWER TOOLKIT ☠
 
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk / KernelSU). Tool ini menyediakan berbagai fitur sistem tingkat lanjut seperti CPU & RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu CLI tool modular.
