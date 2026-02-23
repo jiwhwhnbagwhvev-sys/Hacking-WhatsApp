@@ -1,18 +1,12 @@
 <div align="center">
 
-<br>
+# Welcome
 
-<h1 style="font-size:45px; font-weight:600;">Welcome</h1>
+---
 
-<hr style="width:70%; border:1px solid #2f3337;">
-
-<br>
-
-<video width="850" controls style="border-radius:10px;">
-  <source src="Spamm%20versi%20terbaru.mp4" type="video/mp4">
-</video>
-
-<br><br>
+<a href="Spamm%20versi%20terbaru.mp4">
+  <img src="https://via.placeholder.com/900x400/0d1117/58a6ff?text=CLICK+TO+PLAY+VIDEO" width="900">
+</a>
 
 </div>
 
