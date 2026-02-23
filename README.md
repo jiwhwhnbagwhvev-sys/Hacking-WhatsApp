@@ -1,13 +1,6 @@
-<div align="center">
-
-# Welcome
-
-<hr>
-
-<video src="Spamm%20versi%20terbaru.mp4" width="800" controls>
+<video width="800" controls>
+  <source src="Spamm%20versi%20terbaru.mp4" type="video/mp4">
 </video>
-
-</div>
 # Hacking WhatsApp 
 
 ![Language](https://img.shields.io/badge/language-Bash-green)
