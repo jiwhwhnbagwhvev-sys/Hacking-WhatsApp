@@ -1,6 +1,5 @@
-<video width="800" controls>
-  <source src="Spamm%20versi%20terbaru.mp4" type="video/mp4">
-</video>
+https://github.com/USERNAME/REPO/blob/main/Spamm%20versi%20terbaru.mp4
+
 # Hacking WhatsApp 
 
 ![Language](https://img.shields.io/badge/language-Bash-green)
