@@ -1,12 +1,16 @@
 <div align="center">
 
-<h1 style="color:#58a6ff;">Welcome</h1>
+<h1>Welcome</h1>
 
-<hr style="width:80%; border:1px solid #30363d;">
+<hr style="width:60%; border:1px solid #30363d;">
 
-<video width="900" controls style="border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.6);">
+<br>
+
+<video width="900" controls>
   <source src="Spamm%20versi%20terbaru.mp4" type="video/mp4">
 </video>
+
+<br><br>
 
 </div>
 
