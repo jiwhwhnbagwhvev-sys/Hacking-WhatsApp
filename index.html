@@ -1,53 +1,26 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SPAM WA TOOL</title>
-
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    background: black;
-    color: white;
-    font-family: 'Courier New', monospace;
-    text-align: center;
+body{
+    background:black;
+    color:white;
+    text-align:center;
+    font-family:monospace;
 }
-
-h1 {
-    margin-top: 30px;
-    font-size: 40px;
-    letter-spacing: 3px;
+h1{
+    margin-top:30px;
 }
-
-.clock-box {
-    margin-top: 30px;
-    font-size: 22px;
-    font-weight: bold;
-    line-height: 2;
+#clock{
+    font-size:30px;
+    margin-top:20px;
 }
-
-.status-box {
-    margin-top: 25px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.version {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-}
-
-.admin {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-.glow {
-    text-shadow: 0 0 10px currentColor;
+#status{
+    font-size:22px;
+    margin-top:20px;
+    font-weight:bold;
 }
 </style>
 </head>
@@ -55,39 +28,43 @@ h1 {
 
 <h1>SPAM WA TOOL</h1>
 
-<div class="clock-box glow">
-    <div id="wib"></div>
-    <div id="wita"></div>
-    <div id="wit"></div>
-</div>
-
-<div class="status-box glow" id="status"></div>
-<div class="admin glow" id="admin"></div>
-
-<div class="version">Versi Terbaru v2.0</div>
+<div id="clock">Loading Jam...</div>
+<div id="status"></div>
 
 <script>
-function getTime(zone) {
-    return new Date().toLocaleTimeString("id-ID", {
-        timeZone: zone,
-        hour12: false
-    });
+function updateJam() {
+
+    // Ambil waktu WIB
+    const now = new Date();
+    const options = { timeZone: "Asia/Jakarta", hour12: false };
+    const timeString = now.toLocaleTimeString("id-ID", options);
+
+    document.getElementById("clock").innerHTML = "WIB : " + timeString;
+
+    // Ambil jam & menit untuk cek status
+    const wib = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Jakarta" }));
+    const jam = wib.getHours();
+    const menit = wib.getMinutes();
+
+    const status = document.getElementById("status");
+
+    // AKTIF 04:00 - 21:50
+    if (
+        (jam > 4 && jam < 21) ||
+        (jam === 4) ||
+        (jam === 21 && menit <= 50)
+    ){
+        status.innerHTML = "Fitur Spamm WhatsApp : AKTIF";
+        status.style.color = "lime";
+    } else {
+        status.innerHTML = "Fitur Spamm WhatsApp DINONAKTIFKAN<br>Hubungi Admin : 085283786794";
+        status.style.color = "red";
+    }
 }
 
-function rainbowColor() {
-    const colors = [
-        "#ff0000", "#ff7f00", "#ffff00",
-        "#00ff00", "#00ffff", "#0000ff",
-        "#8b00ff"
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
+setInterval(updateJam,1000);
+updateJam();
+</script>
 
-function updateClock() {
-
-    // Ambil waktu dari masing-masing zona
-    const wibTime = getTime("Asia/Jakarta");
-    const witaTime = getTime("Asia/Makassar");
-    const witTime = getTime("Asia/Jayapura");
-
-    // T
+</body>
+</html>
