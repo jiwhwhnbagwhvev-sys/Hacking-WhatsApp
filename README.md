@@ -1,3 +1,14 @@
+<div align="center">
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=50&duration=2000&pause=500&color=FF0000&center=true&vCenter=true&width=800&lines=Welcome;To+My+Repository;Enjoy+The+Video!" />
+
+---
+
+<a href="Spamm%20versi%20terbaru.mp4">
+  <img src="https://i.imgur.com/7b1FQH6.png" width="850">
+</a>
+
+</div>
 
 # Hacking WhatsApp 
 
