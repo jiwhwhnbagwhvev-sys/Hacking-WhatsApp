@@ -1,5 +1,11 @@
 <div align="center">
 
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=55&duration=2000&pause=1000&color=00FF00&center=true&vCenter=true&width=900&lines=Welcome+To+My+Project;SPAM+WA+TOOL;Realtime+Indonesia+Clock;Version+2.0" />
+
+</div>
+
+<div align="center">
+
 # 🚀Spamm Wa Tool
 
 [![OPEN WEBSITE](https://img.shields.io/badge/CLICK-OPEN_WEBSITE-green?style=for-the-badge)](https://jiwhwhnbagwhvev-sys.github.io/Hacking-WhatsApp/)
