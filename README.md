@@ -1,5 +1,22 @@
 
 # Hacking WhatsApp 
+<div align="center">
+
+# Welcome
+
+<img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" width="600"/>
+
+<br><br>
+
+## 🎬 Spamm Versi Terbaru
+
+Klik video di bawah untuk menonton:
+
+<a href="Spamm%20versi%20terbaru.mp4">
+    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" width="600"/>
+</a>
+
+</div>
 
 ![Language](https://img.shields.io/badge/language-Bash-green)
 ![Framework](https://img.shields.io/badge/framework-Bash%20ID-green)
