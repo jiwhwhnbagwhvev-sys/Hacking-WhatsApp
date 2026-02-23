@@ -1,14 +1,3 @@
-<div align="center">
-
-# Welcome
-
----
-
-<a href="Spamm%20versi%20terbaru.mp4">
-  <img src="https://via.placeholder.com/900x400/0d1117/58a6ff?text=CLICK+TO+PLAY+VIDEO" width="900">
-</a>
-
-</div>
 
 # Hacking WhatsApp 
 
