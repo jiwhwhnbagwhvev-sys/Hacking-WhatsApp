@@ -4,6 +4,78 @@
 
 </div>
 
+<h1 align="center">SPAM WA TOOL</h1>
+
+<p align="center">
+  <span id="clockWIB" style="font-size:18px; font-weight:bold;"></span><br>
+  <span id="clockWITA" style="font-size:18px; font-weight:bold;"></span><br>
+  <span id="clockWIT" style="font-size:18px; font-weight:bold;"></span>
+</p>
+
+<p align="center">
+  <span id="status" style="font-size:22px; font-weight:bold;"></span>
+</p>
+
+<p align="center" style="color:white; font-weight:bold; font-size:18px;">
+  Versi Terbaru v2.0
+</p>
+
+<script>
+function getTime(timezone) {
+  return new Date().toLocaleTimeString("id-ID", {
+    timeZone: timezone,
+    hour12: false
+  });
+}
+
+function rainbowColor() {
+  const colors = ["red","orange","yellow","lime","cyan","blue","magenta"];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function updateClock() {
+  const wib = getTime("Asia/Jakarta");
+  const wita = getTime("Asia/Makassar");
+  const wit = getTime("Asia/Jayapura");
+
+  const wibElement = document.getElementById("clockWIB");
+  const witaElement = document.getElementById("clockWITA");
+  const witElement = document.getElementById("clockWIT");
+
+  wibElement.innerText = "WIB  : " + wib;
+  witaElement.innerText = "WITA : " + wita;
+  witElement.innerText = "WIT  : " + wit;
+
+  wibElement.style.color = rainbowColor();
+  witaElement.style.color = rainbowColor();
+  witElement.style.color = rainbowColor();
+
+  // Status berdasarkan WIB
+  const nowWIB = new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
+  const date = new Date(nowWIB);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  const status = document.getElementById("status");
+
+  // Aktif 04:00 - 21:29
+  if (
+    (hours > 4 && hours < 21) ||
+    (hours === 4) ||
+    (hours === 21 && minutes < 30)
+  ) {
+    status.innerText = "Fitur Spamm WhatsApp: AKTIF";
+    status.style.color = "lime";
+  } else {
+    status.innerHTML = "Fitur Spamm WhatsApp Dinonaktifkan<br>Hubungi Admin<br>085283786794";
+    status.style.color = "red";
+  }
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
 # Hacking WhatsApp 
 
 ![Language](https://img.shields.io/badge/language-Bash-green)
