@@ -1,7 +1,7 @@
 <div align="center">
 
 <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=55&duration=1500&pause=800&color=00FF00&center=true&vCenter=true&width=1000&lines=WELCOME;MYPROJEK;SPAM+WA+TOOL;Version+2.0;+YouTube+Pecinta+Hpkentang" />
-
+</div>
 
 ![Sapamm Hecker](Sapamm%20hecker%20updtate.png)
 
