@@ -1,6 +1,28 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=60&duration=2000&pause=1000&color=FF0000&center=true&vCenter=true&width=800&lines=Welcome" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=55&duration=2000&pause=800&color=FF0000&center=true&vCenter=true&width=800&lines=WELCOME" />
+
+<br>
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=55&duration=2000&pause=800&color=FFFFFF&center=true&vCenter=true&width=800&lines=WELCOME" />
+
+<br><br>
+
+<table align="center">
+<tr>
+<td>
+<img src="https://media.giphy.com/media/l0HlQ7LRalQqdWfao/giphy.gif" width="140">
+</td>
+
+<td>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Garuda_Pancasila%2C_Coat_of_Arms_of_Indonesia.svg" width="220">
+</td>
+
+<td>
+<img src="https://media.giphy.com/media/l0HlQ7LRalQqdWfao/giphy.gif" width="140">
+</td>
+</tr>
+</table>
 
 </div>
 
