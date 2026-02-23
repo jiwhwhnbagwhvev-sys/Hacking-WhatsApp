@@ -3,14 +3,8 @@
 <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=55&duration=1500&pause=800&color=00FF00&center=true&vCenter=true&width=1000&lines=WELCOME;SPAM+WA+TOOL;Version+2.0;Channel+YouTube+Pecinta+Hpkentang" />
 
 <br><br>
-
-<h2>SUBSCRIBE CHANNEL YOUTUBE</h2>
-<h3>Pecinta Hpkentang</h3>
-
 </div>
-
 </div>
-
 <div align="center">
 
 # 🚀Spamm Wa Tool
