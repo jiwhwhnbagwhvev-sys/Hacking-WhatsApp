@@ -35,7 +35,7 @@ fitur Hacking WhatsApp ada 40 fitur dan fitur tersebut berfungsi semua dan pakai
 # kalo kakak mau masuk ke spamm wa nya untuk bisa spamm wa dan spamm coll jalanin code ini di termux
 setelah kalian masuk kehalam terminal ./main_loader.sh nya kalian tinggal mencet crtl+z nah itu langsung masuk ke menu awal dan kalian jalankan kemabali yaitu kode ini kalo kalian mau masuk kefitur spam wa ini
 ```
-cd cd 'Spamm wa'
+cd 'Spamm wa'
 chmod +x loader.sh
 ./loader.sh
 ```
