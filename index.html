@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPAM WA TOOL</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+.clock-box {
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 2;
+}
+
+.status-box {
+    margin-top: 25px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.version {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.admin {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.glow {
+    text-shadow: 0 0 10px currentColor;
+}
+</style>
+</head>
+<body>
+
+<h1>SPAM WA TOOL</h1>
+
+<div class="clock-box glow">
+    <div id="wib"></div>
+    <div id="wita"></div>
+    <div id="wit"></div>
+</div>
+
+<div class="status-box glow" id="status"></div>
+<div class="admin glow" id="admin"></div>
+
+<div class="version">Versi Terbaru v2.0</div>
+
+<script>
+function getTime(zone) {
+    return new Date().toLocaleTimeString("id-ID", {
+        timeZone: zone,
+        hour12: false
+    });
+}
+
+function rainbowColor() {
+    const colors = [
+        "#ff0000", "#ff7f00", "#ffff00",
+        "#00ff00", "#00ffff", "#0000ff",
+        "#8b00ff"
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function updateClock() {
+
+    // Ambil waktu dari masing-masing zona
+    const wibTime = getTime("Asia/Jakarta");
+    const witaTime = getTime("Asia/Makassar");
+    const witTime = getTime("Asia/Jayapura");
+
+    // T
