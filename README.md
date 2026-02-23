@@ -1,15 +1,12 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=60&duration=2000&pause=1000&color=FF0000&center=true&vCenter=true&width=800&lines=Welcome" />
-
 <h1>SPAM WA TOOL</h1>
 
-<div id="clock" style="font-size:20px; font-weight:bold; line-height:1.8;"></div>
-
+<div id="clock" style="font-size:20px; font-weight:bold;"></div>
 <div id="status" style="font-size:22px; font-weight:bold; margin-top:10px;"></div>
 
 <div style="color:white; font-weight:bold; font-size:18px; margin-top:10px;">
-  Versi Terbaru v2.0
+Versi Terbaru v2.0
 </div>
 
 </div>
@@ -22,22 +19,9 @@ function getTime(zone) {
   });
 }
 
-function rainbow() {
-  const colors = ["red","orange","yellow","lime","cyan","blue","magenta"];
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-
 function updateClock() {
   const wib = getTime("Asia/Jakarta");
-  const wita = getTime("Asia/Makassar");
-  const wit = getTime("Asia/Jayapura");
-
-  const clockDiv = document.getElementById("clock");
-  clockDiv.innerHTML = `
-    <span style="color:${rainbow()}">WIB  : ${wib}</span><br>
-    <span style="color:${rainbow()}">WITA : ${wita}</span><br>
-    <span style="color:${rainbow()}">WIT  : ${wit}</span>
-  `;
+  document.getElementById("clock").innerHTML = "WIB : " + wib;
 
   const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
   const date = new Date(now);
@@ -46,10 +30,11 @@ function updateClock() {
 
   const status = document.getElementById("status");
 
+  // AKTIF 04:00 - 21:50
   if (
     (hours > 4 && hours < 21) ||
     (hours === 4) ||
-    (hours === 21 && minutes < 30)
+    (hours === 21 && minutes <= 50)
   ) {
     status.innerHTML = "Fitur Spamm WhatsApp: AKTIF";
     status.style.color = "lime";
