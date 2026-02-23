@@ -2,33 +2,27 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=60&duration=2000&pause=1000&color=FF0000&center=true&vCenter=true&width=800&lines=Welcome" />
 
+<h1>SPAM WA TOOL</h1>
+
+<div id="clock" style="font-size:20px; font-weight:bold; line-height:1.8;"></div>
+
+<div id="status" style="font-size:22px; font-weight:bold; margin-top:10px;"></div>
+
+<div style="color:white; font-weight:bold; font-size:18px; margin-top:10px;">
+  Versi Terbaru v2.0
 </div>
 
-<h1 align="center">SPAM WA TOOL</h1>
-
-<p align="center">
-  <span id="clockWIB" style="font-size:18px; font-weight:bold;"></span><br>
-  <span id="clockWITA" style="font-size:18px; font-weight:bold;"></span><br>
-  <span id="clockWIT" style="font-size:18px; font-weight:bold;"></span>
-</p>
-
-<p align="center">
-  <span id="status" style="font-size:22px; font-weight:bold;"></span>
-</p>
-
-<p align="center" style="color:white; font-weight:bold; font-size:18px;">
-  Versi Terbaru v2.0
-</p>
+</div>
 
 <script>
-function getTime(timezone) {
+function getTime(zone) {
   return new Date().toLocaleTimeString("id-ID", {
-    timeZone: timezone,
+    timeZone: zone,
     hour12: false
   });
 }
 
-function rainbowColor() {
+function rainbow() {
   const colors = ["red","orange","yellow","lime","cyan","blue","magenta"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
@@ -38,36 +32,33 @@ function updateClock() {
   const wita = getTime("Asia/Makassar");
   const wit = getTime("Asia/Jayapura");
 
-  const wibElement = document.getElementById("clockWIB");
-  const witaElement = document.getElementById("clockWITA");
-  const witElement = document.getElementById("clockWIT");
+  const clockDiv = document.getElementById("clock");
+  clockDiv.innerHTML = `
+    <span style="color:${rainbow()}">WIB  : ${wib}</span><br>
+    <span style="color:${rainbow()}">WITA : ${wita}</span><br>
+    <span style="color:${rainbow()}">WIT  : ${wit}</span>
+  `;
 
-  wibElement.innerText = "WIB  : " + wib;
-  witaElement.innerText = "WITA : " + wita;
-  witElement.innerText = "WIT  : " + wit;
-
-  wibElement.style.color = rainbowColor();
-  witaElement.style.color = rainbowColor();
-  witElement.style.color = rainbowColor();
-
-  // Status berdasarkan WIB
-  const nowWIB = new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
-  const date = new Date(nowWIB);
+  const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" });
+  const date = new Date(now);
   const hours = date.getHours();
   const minutes = date.getMinutes();
 
   const status = document.getElementById("status");
 
-  // Aktif 04:00 - 21:29
   if (
     (hours > 4 && hours < 21) ||
     (hours === 4) ||
     (hours === 21 && minutes < 30)
   ) {
-    status.innerText = "Fitur Spamm WhatsApp: AKTIF";
+    status.innerHTML = "Fitur Spamm WhatsApp: AKTIF";
     status.style.color = "lime";
   } else {
-    status.innerHTML = "Fitur Spamm WhatsApp Dinonaktifkan<br>Hubungi Admin<br>085283786794";
+    status.innerHTML = `
+      Fitur Spamm WhatsApp Dinonaktifkan<br>
+      Hubungi Admin<br>
+      085283786794
+    `;
     status.style.color = "red";
   }
 }
