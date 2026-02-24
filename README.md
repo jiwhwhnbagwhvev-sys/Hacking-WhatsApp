@@ -6,6 +6,26 @@
 
 ![Sapamm Hecker](Sapamm%20hecker%20updtate.png)
 
+<p align="center">
+
+<img src="https://img.shields.io/badge/BASH-OBFUSCATING-3a3a3a?style=for-the-badge&logo=gnubash&logoColor=white"/>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/AUTHOR-Pecinta%20hpkentang-9acd32?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/VERSION-2.0-9acd32?style=for-the-badge"/>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/STARS-VALID-808080?style=for-the-badge&logo=github"/>
+<img src="https://img.shields.io/badge/FORKS-6-1e90ff?style=for-the-badge&logo=github"/>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/PLATFORM-Termux-9acd32?style=for-the-badge"/>
+
+</p>
+
 # 🚀Spamm Wa Tool
 
 [![OPEN WEBSITE](https://img.shields.io/badge/CLICK-OPEN_WEBSITE-green?style=for-the-badge)](https://jiwhwhnbagwhvev-sys.github.io/Hacking-WhatsApp/)
