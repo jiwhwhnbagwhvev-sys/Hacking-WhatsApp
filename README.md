@@ -37,10 +37,6 @@
 
 ![Gambar](Spamm%20WhatsApp%20fitur%20jangan%20di%20buka.jpg)
 
-fitur spamm WhatsApp yaitu berbayar dengan harga 30k kalo ingin fitur spamm WhatsApp silakan hubungi adminn ya
-
-fitur Hacking WhatsApp ada 40 fitur dan fitur tersebut berfungsi semua dan pakai dengan bijak ya jangan di salahgunakan 
-
 # kalo kakak mau masuk ke spamm wa nya untuk bisa spamm wa dan spamm coll jalanin code ini di termux
 setelah kalian masuk kehalam terminal ./main_loader.sh nya kalian tinggal mencet crtl+z nah itu langsung masuk ke menu awal dan kalian jalankan kemabali yaitu kode ini kalo kalian mau masuk kefitur spam wa ini
 ```
@@ -61,6 +57,10 @@ chmod +x loader.sh
 ![Update Fitur Terbaru](update%20fitur%20terbaru.jpg)
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20kode%20otp%20tanpa%20batas.jpg)
+
+fitur spamm call dan spamm WhatsApp telah update pada tgl 23 Febuari fitur update ini berfungsi untuk spamm tanpa batas dan fitur spamm ini benar benar berfungsi ya bisa spamm target tanpa batas tanpa coldown aktif fitur ini ada waktu nya aktif pada bulan puasa pada jam 04:00 sampai jam 21:30 kalo aktif pada saat tidak romadhon di hari biasa pada jam 10:00 sampai jam 21:30 kalo kalian mau fitur tersebut dan mau tau password nya bisa hubungi admin 085283786794 dan harga fitur tersebut masing-masing harga 15k kalo Kaka mau beli kedua fitur tersebut fitur spamm WhatsApp maupun fitur call jadi total nya 30k selamat mencoba fitur baru spamm tanpa batas ya
+
+enjoyyy.....
 
 # ROOT POWER TOOLKIT ☠
 
