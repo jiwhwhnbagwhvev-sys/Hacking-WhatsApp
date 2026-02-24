@@ -214,6 +214,7 @@ bash login.sh
 
 ```bash
 pkg update -y && pkg upgrade -y
+pkg install gnupg
 pkg install git tsu -y
 pkg install python -y
 pip install psutil colorama
