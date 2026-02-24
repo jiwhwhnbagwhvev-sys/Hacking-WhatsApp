@@ -4,7 +4,6 @@
 
 </div>
 
-
 ![Sapamm Hecker](Sapamm%20hecker%20updtate.png)
 
 # 🚀Spamm Wa Tool
