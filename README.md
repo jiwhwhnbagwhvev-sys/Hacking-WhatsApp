@@ -57,8 +57,6 @@ chmod +x loader.sh
 
 fitur spamm call dan spamm WhatsApp telah update pada tgl 23 Febuari fitur update ini berfungsi untuk spamm tanpa batas dan fitur spamm ini benar benar berfungsi ya bisa spamm target tanpa batas tanpa coldown aktif fitur ini ada waktu nya aktif pada bulan puasa pada jam 04:00 sampai jam 21:30 kalo aktif pada saat tidak romadhon di hari biasa pada jam 10:00 sampai jam 21:30 kalo kalian mau fitur tersebut dan mau tau password nya bisa hubungi admin 085283786794 dan harga fitur tersebut masing-masing harga 15k kalo Kaka mau beli kedua fitur tersebut fitur spamm WhatsApp maupun fitur call jadi total nya 30k selamat mencoba fitur baru spamm tanpa batas ya
 
-enjoyyy.....
-
 # ROOT POWER TOOLKIT ☠
 
 Root Power Toolkit adalah toolkit berbasis Termux untuk perangkat Android yang sudah di‑root (Magisk / KernelSU). Tool ini menyediakan berbagai fitur sistem tingkat lanjut seperti CPU & RAM tweak, thermal control, SELinux manager, app freezer, network dan storage optimization dalam satu CLI tool modular.
