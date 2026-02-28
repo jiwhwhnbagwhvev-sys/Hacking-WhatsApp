@@ -1,15 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ==========================================
-# CAT UNIVERSAL TOOL
+# Spamm call WhatsApp 
 # ==========================================
 
 RED='\033[1;31m'
 GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
 CYAN='\033[1;36m'
-WHITE='\033[1;37m'
 PINK='\033[1;95m'
+WHITE='\033[1;37m'
 NC='\033[0m'
 
 ADMIN="6285283786794"
@@ -28,23 +27,26 @@ echo -e "${NC}"
 }
 
 logo
-echo -e "${CYAN}WHATSAPP TOOL${NC}"
+echo -e "${CYAN}SPAM CALL WHATSAPP - FITUR 1${NC}"
 echo ""
 
-echo -ne "${YELLOW}Masukkan Nomor Target : ${WHITE}"
-read n1
+echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
+read input
 
-# validasi
-if [[ -z "$n1" ]]; then
+# validasi kosong
+if [[ -z "$input" ]]; then
 echo -e "${RED}Nomor tidak boleh kosong!${NC}"
 exit
 fi
 
+# format ke 62
+nomor="62$input"
+
 echo ""
-echo -e "${CYAN}Menghubungkan ke server...${NC}"
+echo -e "${CYAN}Menghubungkan ke server WhatsApp...${NC}"
 sleep 1
 
-# animasi progress
+# progress bar
 bar="□□□□□□□□□□□□□□"
 for i in {1..14}; do
 bar=$(echo "$bar" | sed 's/□/■/')
@@ -55,9 +57,12 @@ done
 echo ""
 sleep 1
 
-# kirim ke WhatsApp admin
-TEXT="Fitur 1 | Target:$n1"
-ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
+# pesan WhatsApp
+TEXT="Spamm Call Fitur 1
+
+Nomor Target: $nomor"
+
+ENCODE=$(echo "$TEXT" | sed 's/ /%20/g' | sed ':a;N;$!ba;s/\n/%0A/g')
 
 echo -e "${CYAN}Membuka WhatsApp Admin...${NC}"
 
@@ -68,19 +73,28 @@ sleep 6
 
 logo
 
-echo -e "${WHITE}Menu     : WhatsApp Tool${NC}"
-echo -e "${WHITE}Target   : $n1${NC}"
+echo -e "${WHITE}Menu   : Spamm Call Fitur 1${NC}"
+echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
 echo -e "${GREEN}Engine Aktif...${NC}"
-sleep 1
+echo ""
 
-# loop engine
 count=1
+
 while true
 do
 
-printf "${YELLOW}[%d] memproses nomor %s ...${NC}\n" "$count" "$n1"
+case $((count % 5)) in
+0) color=$RED ;;
+1) color=$GREEN ;;
+2) color=$CYAN ;;
+3) color=$PINK ;;
+4) color=$WHITE ;;
+esac
+
+printf "${color}[%d] Mencoba Spamm kenomor %s ...${NC}\n" "$count" "$nomor"
+
 sleep 0.05
 
 count=$((count+1))
