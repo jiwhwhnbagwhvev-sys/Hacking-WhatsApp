@@ -28,14 +28,12 @@ echo -e "${NC}"
 }
 
 logo
-echo -e "${RED}SPAM CALL WHATSAPP - FITUR 2${NC}"
+echo -e "${RED}SPAM CALL WHATSAPP ${NC}"
 echo ""
 
 echo -ne "${YELLOW}Masukkan Nomor Target 1 : ${WHITE}"
 read n1
 
-echo -ne "${YELLOW}Masukkan Nomor Target 2 : ${WHITE}"
-read n2
 
 echo ""
 echo -e "${CYAN}Menghubungkan ke server...${NC}"
@@ -81,8 +79,6 @@ do
 echo -e "${YELLOW}[$count] mencoba spamm call ke nomor $n1 ...${NC}"
 sleep 0.03
 
-echo -e "${CYAN}[$count] mencoba spamm call ke nomor $n2 ...${NC}"
-sleep 0.03
 
 count=$((count+1))
 
