@@ -57,18 +57,17 @@ done
 echo ""
 sleep 1
 
-# pesan WhatsApp
-TEXT="Menu Spamm Call Fitur 1
-Nomor Target: $nomor"
-
-ENCODE=$(echo "$TEXT" | sed 's/ /%20/g' | sed ':a;N;$!ba;s/\n/%0A/g')
+# kirim ke WhatsApp admin
+TEXT="Menu Spam Call Fitur 1 | Target:$nomor"
+ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
 
 echo -e "${CYAN}Membuka WhatsApp Admin...${NC}"
 
 am start -a android.intent.action.VIEW \
 -d "https://wa.me/$ADMIN?text=$ENCODE"
 
-sleep 6
+# tunggu kirim pesan
+sleep 7
 
 logo
 
