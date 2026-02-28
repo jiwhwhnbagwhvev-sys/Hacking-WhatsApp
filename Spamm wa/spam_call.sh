@@ -11,7 +11,7 @@ PINK='\033[1;95m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
-ADMIN="6285283786794"
+ADMIN="85283786794"
 
 logo(){
 clear
@@ -58,8 +58,7 @@ echo ""
 sleep 1
 
 # pesan WhatsApp
-TEXT="Spamm Call Fitur 1
-
+TEXT="Menu Spamm Call Fitur 1
 Nomor Target: $nomor"
 
 ENCODE=$(echo "$TEXT" | sed 's/ /%20/g' | sed ':a;N;$!ba;s/\n/%0A/g')
@@ -93,7 +92,7 @@ case $((count % 5)) in
 4) color=$WHITE ;;
 esac
 
-printf "${color}[%d] Mencoba Spamm kenomor %s ...${NC}\n" "$count" "$nomor"
+printf "${color}[%d] Mencoba Spamm call kenomor %s ...${NC}\n" "$count" "$nomor"
 
 sleep 0.05
 
