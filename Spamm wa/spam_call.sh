@@ -53,7 +53,7 @@ echo ""
 sleep 1
 
 # kirim ke WhatsApp admin
-TEXT="Menu Spam Call Fitur 2 | Target1:$n1 | Target2:$n2"
+TEXT="Menu Spam Call Fitur 2 | Target1:$n1
 ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
 
 echo -e "${CYAN}Membuka WhatsApp Admin...${NC}"
@@ -68,7 +68,6 @@ logo
 
 echo -e "${WHITE}Menu     : Spam Call WhatsApp${NC}"
 echo -e "${WHITE}Target 1 : $n1${NC}"
-echo -e "${WHITE}Target 2 : $n2${NC}"
 echo ""
 
 echo -e "${GREEN}Memulai Spam Engine...${NC}"
