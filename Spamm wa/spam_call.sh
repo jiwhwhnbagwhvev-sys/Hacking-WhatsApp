@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 # ==========================================
-# CAT UNIVERSAL TOOL - ENGINE UPDATE
+# Spamm call WhatsApp 
 # ==========================================
 
 RED='\033[1;31m'
