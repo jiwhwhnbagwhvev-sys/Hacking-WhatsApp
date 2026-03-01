@@ -1,18 +1,30 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # ==========================================================
-#                 WhatsApp tolls Banner
+#                 WhatsApp tools Banner v3.5
 # ==========================================================
 
-GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
-PINK='\033[1;95m'
-WHITE='\033[1;37m'
-CYAN='\033[1;36m'
 RED='\033[1;31m'
+WHITE='\033[1;37m'
+PINK='\033[1;95m'
+CYAN='\033[1;36m'
+YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
 NC='\033[0m'
+
+# ===== AMBIL IP HP =====
+IP_ADDR=$(hostname -I 2>/dev/null | awk '{print $1}')
+[ -z "$IP_ADDR" ] && IP_ADDR="Tidak terdeteksi"
 
 clear
 
+# ===== BUKA CHANNEL YOUTUBE =====
+echo -e "${CYAN}[•] Opening official channel...${NC}"
+sleep 1
+termux-open-url "https://youtube.com/@pecinta-hpkentang?si=ex1fCPWSNS8n5XrK" 2>/dev/null
+
+clear
+
+# ===== LOGO =====
 echo -e "${PINK}"
 echo "                               /\_/\                                "
 echo "                              /  o o  \                              "
@@ -23,25 +35,26 @@ echo "                          /______/        \______\                    "
 echo "                             /                    \                   "
 echo "                            /                      \                  "
 echo "                           /______/            \______\               "
-echo "                              WhatsApp tolls                          "
 echo -e "${NC}"
 
 echo -e "${WHITE}==========================================================================================${NC}"
-echo -e "${GREEN}██╗    ██╗██╗  ██╗ █████╗ ████████╗ █████╗ ██████╗ ██████╗  █████╗ ██╗     ██╗          ${NC}"
-echo -e "${GREEN}██║    ██║██║  ██║██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║     ██║          ${NC}"
-echo -e "${GREEN}██║ █╗ ██║███████║███████║   ██║   ███████║██████╔╝██████╔╝███████║██║     ██║          ${NC}"
-echo -e "${GREEN}██║███╗██║██╔══██║██╔══██║   ██║   ██╔══██║██╔═══╝ ██╔═══╝ ██╔══██║██║     ██║          ${NC}"
-echo -e "${GREEN}╚███╔███╔╝██║  ██║██║  ██║   ██║   ██║  ██║██║     ██║     ██║  ██║███████╗███████╗     ${NC}"
-echo -e "${GREEN} ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝     ${NC}"
+
+# ===== TITLE MERAH PUTIH =====
+echo -e "${RED}██╗    ██╗██╗  ██╗ █████╗ ████████╗███████╗${WHITE} █████╗ ██████╗ ██████╗ ${NC}"
+echo -e "${RED}██║    ██║██║  ██║██╔══██╗╚══██╔══╝██╔════╝${WHITE}██╔══██╗██╔══██╗██╔══██╗${NC}"
+echo -e "${RED}██║ █╗ ██║███████║███████║   ██║   ███████╗${WHITE}███████║██████╔╝██████╔╝${NC}"
+echo -e "${RED}██║███╗██║██╔══██║██╔══██║   ██║   ╚════██║${WHITE}██╔══██║██╔═══╝ ██╔═══╝ ${NC}"
+echo -e "${RED}╚███╔███╔╝██║  ██║██║  ██║   ██║   ███████║${WHITE}██║  ██║██║     ██║     ${NC}"
+echo -e "${RED} ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝${WHITE}╚═╝  ╚═╝╚═╝     ╚═╝     ${NC}"
+
 echo -e "${WHITE}==========================================================================================${NC}"
 
 echo -e "${YELLOW}* Creator        : Rio${NC}"
 echo -e "${YELLOW}* YouTube        : Pecinta hpkentang${NC}"
-echo -e "${YELLOW}* Version        : 2.0 Extended${NC}"
+echo -e "${YELLOW}* Version        : 3.5${NC}"
 echo -e "${YELLOW}* Build          : Stable Release${NC}"
-echo -e "${YELLOW}* Core Engine    : WhatsApp tolls Engine${NC}"
-echo -e "${YELLOW}* Security Mode  : Active${NC}"
 echo -e "${YELLOW}* Runtime        : Termux Environment${NC}"
+echo -e "${YELLOW}* Device IP      : ${IP_ADDR}${NC}"
 
 echo -e "${WHITE}==========================================================================================${NC}"
 echo ""
@@ -70,14 +83,7 @@ echo -e "${GREEN}Engine Status      : ONLINE ✔${NC}"
 echo -e "${WHITE}==========================================================================================${NC}"
 
 echo ""
-echo -e "${YELLOW}Selamat datang di WhatsApp tolls.${NC}"
-echo -e "${YELLOW}Tool ini dibuat dan dikembangkan oleh Rio.${NC}"
-echo -e "${YELLOW}Support channel YouTube Pecinta hpkentang untuk update terbaru.${NC}"
-echo -e "${YELLOW}Pastikan Anda menggunakan tool dengan bijak.${NC}"
+echo -e "${YELLOW}Selamat datang di WhatsApp tools.${NC}"
 echo ""
-
-echo -e "${WHITE}==========================================================================================${NC}"
-echo -e "${GREEN}Loading complete. System ready to continue...${NC}"
-echo -e "${WHITE}==========================================================================================${NC}"
 
 sleep 2
