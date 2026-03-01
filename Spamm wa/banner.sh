@@ -13,6 +13,13 @@ NC='\033[0m'
 
 clear
 
+# ===== OPEN YOUTUBE =====
+echo -e "${CYAN}[•] Pecinta hpkentang...${NC}"
+sleep 1
+termux-open-url "https://youtube.com/@pecinta-hpkentang?si=ex1fCPWSNS8n5XrK" 2>/dev/null
+
+clear
+
 echo -e "${PINK}"
 echo "                               /\_/\                                "
 echo "                              /  o o  \                              "
