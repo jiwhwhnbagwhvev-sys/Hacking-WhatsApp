@@ -51,7 +51,7 @@ chmod +x Run
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20vitur%20terbaru%20v2o.jpg)
 
-![Spam WhatsApp](Spamm%20wa%20update%203.1.jpg)
+![Spam WhatsApp](3.1%20Spamm%20WhatsApp%20update%203.1.jpg)
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20kode%20otp%20tanpa%20batas.jpg)
 
