@@ -21,7 +21,7 @@ echo "=============================================================="
 echo "                 PRIVATE POLICE v3.1"
 echo "=============================================================="
 echo "Fitur ini sudah di update"
-echo "Diperbarui versi 3.1 pada tgl 3 Maret 2026"
+echo "Diperbarui versi 3.0 pada tgl 3 Maret 2026"
 echo "[ Perjanjian konsument terhadap developer ]
 dengan ini saya menyetujui untuk memtuhi aturan dari creato r atau developer
 dengan menggunakan nya sesuai posisi sebagai user atau kons ument
