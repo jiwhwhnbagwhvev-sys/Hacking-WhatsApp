@@ -48,14 +48,16 @@ sleep 3
 
 clear
 echo "[?] Memulai kompilasi mohon tunggu.."
-sleep 2
+sleep 40
 
 echo ""
 echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
-sleep 2
+sleep 40
 
 echo "[$(date)] Proses biasanya memakan waktu 5-10 menit mohon untuk bersabar demi keamanan"
-sleep 2
+
+WAIT=$((RANDOM % 301 + 300))  # random 300-600 detik
+sleep $WAIT
 
 echo ""
 echo "[>] Menjalankan script...."
