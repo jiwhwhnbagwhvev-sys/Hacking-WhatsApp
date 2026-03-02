@@ -45,7 +45,7 @@ chmod +x Run
 
 [![Lihat Video](https://img.youtube.com/vi/dPtMk5Bwnwo/0.jpg)](https://youtu.be/dPtMk5Bwnwo?si=f2Eiybge5UkefVA8)
 
-# update spamm v3.1 vitur baru
+# update spamm v3.0 vitur baru
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20halaman.jpg)
 
