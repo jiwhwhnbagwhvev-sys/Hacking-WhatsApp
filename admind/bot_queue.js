@@ -1,89 +1,42 @@
-const {
-  default: makeWASocket,
-  useMultiFileAuthState,
-  fetchLatestBaileysVersion,
-  DisconnectReason
-} = require("@whiskeysockets/baileys")
+// ===== MEMORY USER =====
+const lastRequest = {}
 
-const Pino = require("pino")
-const qrcode = require("qrcode-terminal")
+sock.ev.on("messages.upsert", async ({ messages }) => {
+  const msg = messages[0]
+  if (!msg.message) return
 
-// ===== DELAY FUNCTION =====
-const delay = ms => new Promise(res => setTimeout(res, ms))
+  const from = msg.key.remoteJid
+  const text =
+    msg.message.conversation ||
+    msg.message.extendedTextMessage?.text
 
-async function start() {
+  if (!text) return
 
-  const { state, saveCreds } =
-    await useMultiFileAuthState("session_bot")
+  // ambil angka dari pesan
+  const nomor = text.replace(/[^0-9]/g, "")
 
-  const { version } =
-    await fetchLatestBaileysVersion()
+  // ===== JIKA ADA NOMOR =====
+  if (nomor.length >= 10) {
 
-  const sock = makeWASocket({
-    auth: state,
-    version,
-    logger: Pino({ level: "silent" })
-  })
-
-  // ===== QR LOGIN =====
-  sock.ev.on("connection.update", ({ connection, qr, lastDisconnect }) => {
-
-    if (qr) {
-      console.clear()
-      console.log("📱 Scan QR di WhatsApp kamu")
-      qrcode.generate(qr, { small: true })
+    // 🚫 jika nomor sama dengan sebelumnya → abaikan
+    if (lastRequest[from] === nomor) {
+      return
     }
 
-    if (connection === "open") {
-      console.log("✅ WhatsApp terhubung")
-    }
+    // simpan nomor terakhir
+    lastRequest[from] = nomor
 
-    if (connection === "close") {
-      const reason =
-        lastDisconnect?.error?.output?.statusCode
+    // pesan awal
+    await sock.sendMessage(from, {
+      text: "⏳ Server sedang membaca, tunggu 5-10 menit..."
+    })
 
-      if (reason !== DisconnectReason.loggedOut) {
-        start()
-      }
-    }
-  })
+    // delay (ubah bebas)
+    await new Promise(r => setTimeout(r, 15000))
 
-  sock.ev.on("creds.update", saveCreds)
-
-  // ===== HANDLE PESAN =====
-  sock.ev.on("messages.upsert", async ({ messages }) => {
-    const msg = messages[0]
-    if (!msg.message) return
-
-    const from = msg.key.remoteJid
-    const text =
-      msg.message.conversation ||
-      msg.message.extendedTextMessage?.text
-
-    if (!text) return
-
-    // ambil angka dari pesan
-    const nomor = text.replace(/[^0-9]/g, "")
-
-    // ===== JIKA ADA NOMOR =====
-    if (nomor.length >= 10) {
-
-      // pesan pertama
-      await sock.sendMessage(from, {
-        text: "⏳ Server sedang membaca, tunggu 5-10 menit..."
-      })
-
-      // tunggu (demo: 15 detik, ubah bebas)
-      await delay(15000)
-
-      // pesan kedua
-      await sock.sendMessage(from, {
-        text: `✅ Server sudah berhasil menjalankan proses ke nomor ${nomor}`
-      })
-    }
-
-    // jika tidak ada nomor → diam
-  })
-}
-
-start()
+    // pesan sukses
+    await sock.sendMessage(from, {
+      text: `✅ Server sudah berhasil menjalankan proses ke nomor ${nomor}`
+    })
+  }
+})
