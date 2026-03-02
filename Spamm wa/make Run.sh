@@ -11,11 +11,25 @@ NC='\033[0m'
 TOOLS_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # ==============================
+# JALANKAN SERVER UPDATE DULU
+# ==============================
+
+if [ -f "$TOOLS_DIR/server.sh" ]; then
+    bash "$TOOLS_DIR/server.sh"
+else
+    echo -e "${RED}[!] server.sh tidak ditemukan!${NC}"
+    sleep 2
+fi
+
+# ==============================
 # TAMPILKAN BANNER
 # ==============================
 
 if [ -f "$TOOLS_DIR/banner.sh" ]; then
     bash "$TOOLS_DIR/banner.sh"
+else
+    echo -e "${RED}[!] banner.sh tidak ditemukan!${NC}"
+    sleep 2
 fi
 
 # ==============================
