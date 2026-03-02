@@ -228,7 +228,6 @@ chmod +x auth_hidden.sh
 chmod +x login_loader.sh
 chmod +x server.sh
 chmod +x main_loader.sh
-chmod +x Run
 chmod +x loader.sh
 ./login_loader.sh
 ```
