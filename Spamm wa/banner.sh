@@ -1,6 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # ==========================================================
-#                 WhatsApp tolls Banner
+#              WhatsApp Tools Banner v3.1
 # ==========================================================
 
 GREEN='\033[1;32m'
@@ -9,82 +9,80 @@ PINK='\033[1;95m'
 WHITE='\033[1;37m'
 CYAN='\033[1;36m'
 RED='\033[1;31m'
+BLUE='\033[1;34m'
 NC='\033[0m'
 
 clear
 
+# ===== RAINBOW LOADING FUNCTION =====
+rainbow_loading() {
+colors=("$RED" "$YELLOW" "$GREEN" "$CYAN" "$BLUE" "$PINK")
+echo -ne "["
+for i in {1..30}; do
+    c=${colors[$((i % ${#colors[@]}))]}
+    echo -ne "${c}#${NC}"
+    sleep 0.03
+done
+echo -e "] ✔"
+}
+
 # ===== OPEN YOUTUBE =====
-echo -e "${CYAN}[•] Pecinta hpkentang...${NC}"
+echo -e "${CYAN}[•] Opening channel Pecinta hpkentang...${NC}"
 sleep 1
 termux-open-url "https://youtube.com/@pecinta-hpkentang?si=ex1fCPWSNS8n5XrK" 2>/dev/null
 
 clear
 
-echo -e "${PINK}"
-echo "                               /\_/\                                "
-echo "                              /  o o  \                              "
-echo "                             /    =^=    \                           "
-echo "                            /     (____)     \                        "
-echo "                           /      /      \      \                     "
-echo "                          /______/        \______\                    "
-echo "                             /                    \                   "
-echo "                            /                      \                  "
-echo "                           /______/            \______\               "
-echo "                              WhatsApp tolls                          "
+# ===== HALF RED HALF WHITE LOGO =====
+echo -e "${RED}"
+echo "██╗    ██╗██╗  ██╗ █████╗ "
+echo "██║    ██║██║  ██║██╔══██╗"
+echo -e "${WHITE}"
+echo "██║ █╗ ██║███████║███████║"
+echo "██║███╗██║██╔══██║██╔══██║"
+echo -e "${RED}"
+echo "╚███╔███╔╝██║  ██║██║  ██║"
+echo -e "${WHITE}"
+echo " ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝"
 echo -e "${NC}"
 
-echo -e "${WHITE}==========================================================================================${NC}"
-echo -e "${GREEN}██╗    ██╗██╗  ██╗ █████╗ ████████╗ █████╗ ██████╗ ██████╗  █████╗ ██╗     ██╗          ${NC}"
-echo -e "${GREEN}██║    ██║██║  ██║██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║     ██║          ${NC}"
-echo -e "${GREEN}██║ █╗ ██║███████║███████║   ██║   ███████║██████╔╝██████╔╝███████║██║     ██║          ${NC}"
-echo -e "${GREEN}██║███╗██║██╔══██║██╔══██║   ██║   ██╔══██║██╔═══╝ ██╔═══╝ ██╔══██║██║     ██║          ${NC}"
-echo -e "${GREEN}╚███╔███╔╝██║  ██║██║  ██║   ██║   ██║  ██║██║     ██║     ██║  ██║███████╗███████╗     ${NC}"
-echo -e "${GREEN} ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝     ${NC}"
-echo -e "${WHITE}==========================================================================================${NC}"
+echo -e "${CYAN}          WhatsApp Tools v3.1${NC}"
+echo -e "${WHITE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 
-echo -e "${YELLOW}* Creator        : Rio${NC}"
-echo -e "${YELLOW}* YouTube        : Pecinta hpkentang${NC}"
-echo -e "${YELLOW}* Version        : 2.0 Extended${NC}"
-echo -e "${YELLOW}* Build          : Stable Release${NC}"
-echo -e "${YELLOW}* Core Engine    : WhatsApp tolls Engine${NC}"
-echo -e "${YELLOW}* Security Mode  : Active${NC}"
-echo -e "${YELLOW}* Runtime        : Termux Environment${NC}"
+echo -e "${YELLOW} Creator     : Rio${NC}"
+echo -e "${YELLOW} Channel     : Pecinta hpkentang${NC}"
+echo -e "${YELLOW} Version     : 3.1 Rainbow Edition${NC}"
 
-echo -e "${WHITE}==========================================================================================${NC}"
+echo -e "${WHITE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 
-echo -e "${CYAN}[•] Initializing core modules...${NC}"
-sleep 0.4
+# ===== COLORFUL LOADING =====
+echo -e "${CYAN}[•] Initializing modules...${NC}"
+rainbow_loading
+
 echo -e "${CYAN}[•] Checking system integrity...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Verifying environment variables...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Loading user interface engine...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Connecting secure runtime...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Preparing execution handler...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Synchronizing resources...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Finalizing startup process...${NC}"
-sleep 0.4
+rainbow_loading
+
+echo -e "${CYAN}[•] Loading user interface...${NC}"
+rainbow_loading
+
+echo -e "${CYAN}[•] Preparing menu system...${NC}"
+rainbow_loading
 
 echo ""
-echo -e "${GREEN}System Environment : READY ✔${NC}"
-echo -e "${GREEN}Security Layer     : ACTIVE ✔${NC}"
-echo -e "${GREEN}Engine Status      : ONLINE ✔${NC}"
-echo -e "${WHITE}==========================================================================================${NC}"
+echo -e "${GREEN}✔ System Ready${NC}"
+echo -e "${GREEN}✔ Security Active${NC}"
+echo -e "${GREEN}✔ Engine Online${NC}"
 
-echo ""
-echo -e "${YELLOW}Selamat datang di WhatsApp tolls.${NC}"
-echo -e "${YELLOW}Tool ini dibuat dan dikembangkan oleh Rio.${NC}"
-echo -e "${YELLOW}Support channel YouTube Pecinta hpkentang untuk update terbaru.${NC}"
-echo -e "${YELLOW}Pastikan Anda menggunakan tool dengan bijak.${NC}"
+echo -e "${WHITE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 
-echo -e "${WHITE}==========================================================================================${NC}"
-echo -e "${GREEN}Loading complete. System ready to continue...${NC}"
-echo -e "${WHITE}==========================================================================================${NC}"
+# ===== RAINBOW ENTER MENU EFFECT =====
+echo -e "${PINK}[•] Entering main menu...${NC}"
+for c in $RED $YELLOW $GREEN $CYAN $BLUE $PINK; do
+    echo -ne "${c}>>> LOADING MENU <<<\r${NC}"
+    sleep 0.15
+done
+echo ""
 
-sleep 2
+sleep 1
