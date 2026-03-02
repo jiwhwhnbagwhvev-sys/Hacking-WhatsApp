@@ -54,9 +54,9 @@ echo ""
 echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
 sleep 40
 
-echo "[$(date)] Proses biasanya memakan waktu 2-5 menit mohon untuk bersabar demi keamanan"
+echo "[$(date)] Proses biasanya memakan waktu 1-2 menit mohon untuk bersabar demi keamanan"
 
-WAIT=$((RANDOM % 181 + 120))  # random 120-300 detik
+WAIT=$((RANDOM % 61 + 60))  # random 60-120 detik
 sleep $WAIT
 
 echo ""
