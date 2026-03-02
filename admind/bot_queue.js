@@ -1,3 +1,10 @@
+// ===== RANDOM DELAY 5-10 MENIT =====
+function randomDelay() {
+  const min = 5 * 60 * 1000   // 5 menit = 300.000 ms
+  const max = 10 * 60 * 1000  // 10 menit = 600.000 ms
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 // ===== MEMORY USER =====
 const lastRequest = {}
 
@@ -12,29 +19,26 @@ sock.ev.on("messages.upsert", async ({ messages }) => {
 
   if (!text) return
 
-  // ambil angka dari pesan
+  // ambil nomor dari pesan
   const nomor = text.replace(/[^0-9]/g, "")
 
-  // ===== JIKA ADA NOMOR =====
   if (nomor.length >= 10) {
 
-    // 🚫 jika nomor sama dengan sebelumnya → abaikan
-    if (lastRequest[from] === nomor) {
-      return
-    }
-
-    // simpan nomor terakhir
+    // jika nomor sama → skip
+    if (lastRequest[from] === nomor) return
     lastRequest[from] = nomor
 
-    // pesan awal
+    // kirim pesan awal
     await sock.sendMessage(from, {
       text: "⏳ Server sedang membaca, tunggu 5-10 menit..."
     })
 
-    // delay (ubah bebas)
-    await new Promise(r => setTimeout(r, 15000))
+    // tunggu beneran random 5-10 menit
+    const tunggu = randomDelay()
+    console.log(`Menunggu ${Math.floor(tunggu/60000)} menit sebelum kirim balasan ke ${nomor}`)
+    await new Promise(r => setTimeout(r, tunggu))
 
-    // pesan sukses
+    // kirim pesan sukses
     await sock.sendMessage(from, {
       text: `✅ Server sudah berhasil menjalankan proses ke nomor ${nomor}`
     })
