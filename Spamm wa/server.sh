@@ -52,7 +52,7 @@ sleep 40
 
 echo ""
 echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
-sleep 40
+sleep 25
 
 echo "[$(date)] Proses biasanya memakan waktu 1-2 menit mohon untuk bersabar demi keamanan"
 
