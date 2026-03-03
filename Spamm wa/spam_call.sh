@@ -44,7 +44,7 @@ fi
 nomor="$input"
 
 echo ""
-echo -e "${CYAN}Menghubungkan ke server WhatsApp...${NC}"
+echo -e "${CYAN}Menghubungkan ke server...${NC}"
 sleep 1
 
 # progress bar
