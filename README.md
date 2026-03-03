@@ -141,7 +141,7 @@ ip route dan harus ada imput ini
 
 # Hubungi admin
 - Hubungi admin untuk mendapatkan katasandi server nya
-- https://wa.me/85283786794
+- https://wa.me/81385998324
 
 # buka kunci main.sh nya harus hubungi admin terlebih dahulu
 ```
