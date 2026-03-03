@@ -47,6 +47,8 @@ chmod +x Run
 
 # update spamm v3.0 vitur baru
 
+![Spam WhatsApp](Spamm%20WhatsApp%20private%20v3.0.jpg)
+
 ![Spam WhatsApp](Spamm%20WhatsApp%20halaman.jpg)
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20vitur%20terbaru%20v2o.jpg)
