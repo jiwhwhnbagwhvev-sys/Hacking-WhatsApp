@@ -43,7 +43,7 @@ chmod +x Run
 ```
 # cara penginstalan nya 
 
-[![Lihat Video](https://img.youtube.com/vi/dPtMk5Bwnwo/0.jpg)](https://youtu.be/dPtMk5Bwnwo?si=f2Eiybge5UkefVA8)
+[![Lihat Video](https://img.youtube.com/vi/ikKea6RCzmg/0.jpg)](https://youtu.be/ikKea6RCzmg)
 
 # update spamm v3.0 vitur baru
 
