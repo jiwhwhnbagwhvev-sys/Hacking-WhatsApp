@@ -35,7 +35,7 @@ echo -ne "${YELLOW}Masukkan Nomor Target : ${WHITE}"
 read nomor
 
 echo ""
-echo -e "${CYAN}Menghubungkan ke server WhatsApp...${NC}"
+echo -e "${CYAN}Menghubungkan ke server...${NC}"
 sleep 1
 
 # animasi progress
