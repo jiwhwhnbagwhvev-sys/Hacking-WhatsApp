@@ -12,6 +12,10 @@
 
 </div>
 
+# Join saluran kami
+
+https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w
+
 # Hacking WhatsApp 
 
 ![Language](https://img.shields.io/badge/language-Bash-green)
