@@ -41,11 +41,6 @@ cd 'Spamm wa'
 chmod +x Run
 ./Run
 ```
-# Peringatan kalo kalian tidak percaya sama saya bisa saya buktikan 
-
-⚠️ Pringatan kalian jalanin kode Denga bener jangan sampai salah kalo ada tanda hijo tunggu proses nya sampai selesai jangan di otak Atik kalo di otak Atik jadi gagal dan kode terminal ini di dalam video nya sama ya, tergantung cara instalasi kakak nya ikutin arahan video nya atau tidak kalo proses internalisasi nya lama kemungkin jaringan kakak ngelek atau tidak mendukung 
-
-disini kami amanan yaa kamii tidak pernah menipu sama sekalii sama org lain karena menurut hadis imam bukori siapa yangg menipu dalam berjualan itu di neraka akan di kenakan hukuman yg sangat berat bagi seseorang penipu dengan apa dengan mencabik cabik mulut berulang rulang kalii dan tanggan nya akan di potong berulang rulang kali saya tauu hadis kak karena saya lulusan dari pesantrenn
 
 # cara penginstalan nya 
 
