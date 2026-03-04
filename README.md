@@ -47,10 +47,6 @@ chmod +x Run
 
 disini kami amanan yaa kamii tidak pernah menipu sama sekalii sama org lain karena menurut hadis imam bukori siapa yangg menipu dalam berjualan itu di neraka akan di kenakan hukuman yg sangat berat bagi seseorang penipu dengan apa dengan mencabik cabik mulut berulang rulang kalii dan tanggan nya akan di potong berulang rulang kali saya tauu hadis kak karena saya lulusan dari pesantrenn
 
-
-untuk fitur nya di sini wa admind aja no admind ada di bawah 
-81385998324
-
 # cara penginstalan nya 
 
 [![Lihat Video](https://img.youtube.com/vi/ikKea6RCzmg/0.jpg)](https://youtu.be/ikKea6RCzmg)
