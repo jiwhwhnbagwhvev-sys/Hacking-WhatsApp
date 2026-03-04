@@ -49,7 +49,7 @@ chmod +x Run
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20private%20v3.0.jpg)
 
-![Spam WhatsApp](img/Spamm%20WhatsApp%20tanpa%20batas%20terbaru%20terminal.jpg)
+![Spam WhatsApp](Spamm%20WhatsApp%20tanpa%20batas%20terbaru%20terminal.jpg)
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20vitur%20terbaru%20v2o.jpg)
 
