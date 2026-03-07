@@ -45,7 +45,7 @@ pkg update && pkg upgrade -y
 pkg install git -y
 git clone https://github.com/jiwhwhnbagwhvev-sys/Hacking-WhatsApp.git
 cd Hacking-WhatsApp
-cd Termux tools
+cd 'Termux tools'
 bash start.sh
 ```
 # halaman Termux Tools nya
