@@ -44,7 +44,7 @@ fitur Termux tools yang bisa mendektasi ip dan make hp merek apa dan bida menget
 
 # halaman Termux Tools nya
 
-![Termux tools](Termux-tools.jpg)
+![Termux tools](termux-tools.jpg)
 
 # kalo kakak mau masuk ke spamm    wa nya 
 untuk bisa spamm wa dan spamm coll jalanin code ini di termux
