@@ -44,10 +44,9 @@ fitur Termux tools yang bisa mendektasi ip dan make hp merek apa dan bida menget
 pkg update && pkg upgrade -y
 pkg install git -y
 git clone https://github.com/jiwhwhnbagwhvev-sys/Hacking-WhatsApp.git
-cd Hacking-WhatsApp
-cd "Termux tools"
-pkg install neofetch
-neofetch
+cd Hacking-whatsApp
+cd Termux-tools
+bash start.sh
 ```
 # halaman Termux Tools nya
 
