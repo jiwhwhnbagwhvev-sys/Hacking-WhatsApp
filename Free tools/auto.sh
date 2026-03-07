@@ -1,0 +1,2 @@
+clear
+bash ~/logo.sh
