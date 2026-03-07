@@ -40,8 +40,13 @@ https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w
 # fitur baruu 
 kita di sini ada fitur baru yaitu 
 fitur Termux tools yang bisa mendektasi ip dan make hp merek apa dan bida mengetahui storage memori nya tinggal berapa 
-
-
+```
+pkg update && pkg upgrade -y
+pkg install git -y
+git clone https://github.com/jiwhwhnbagwhvev-sys/Hacking-WhatsApp.git
+cd Hacking-WhatsApp
+ls
+```
 # halaman Termux Tools nya
 
 ![Termux tools](Termux%20tools.jpg)
