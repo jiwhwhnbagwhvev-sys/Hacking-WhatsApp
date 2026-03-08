@@ -1,0 +1,23 @@
+{
+  "name": "HPKentang Tool",
+  "version": "1.0",
+  "author": "Pecinta HPKentang",
+  "description": "Tool Termux sederhana untuk cek IP dan info HP",
+  "menu": [
+    {
+      "id": 1,
+      "name": "Cek IP Address",
+      "file": "cekip.sh"
+    },
+    {
+      "id": 2,
+      "name": "Info HP Android",
+      "file": "infohp.sh"
+    },
+    {
+      "id": 3,
+      "name": "Info Jaringan",
+      "file": "jaringan.sh"
+    }
+  ]
+}
