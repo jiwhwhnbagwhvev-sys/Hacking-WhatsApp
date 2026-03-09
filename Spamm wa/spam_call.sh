@@ -17,13 +17,13 @@ ADMIN="6281385998324"
 logo(){
 clear
 echo -e "${PINK}"
-echo "                    /\_/\                    "
-echo "                   / o o \                   "
-echo "                  (   \"   )                  "
-echo "                   \~(*)~/                   "
-echo "                    - ^ -                    "
+echo "                     /\_/\                    "
+echo "                    / o o \                   "
+echo "                   (   \"   )                  "
+echo "                    \~(*)~/                   "
+echo "                     - ^ -                    "
 echo ""
-echo "              CAT UNIVERSAL TOOL             "
+echo "             Spamm WhatsApp Call v4.0            "
 echo -e "${NC}"
 }
 
