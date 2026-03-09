@@ -1,90 +1,96 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# ==========================================================
-#                 WhatsApp tolls Banner
-# ==========================================================
 
 GREEN='\033[1;32m'
-YELLOW='\033[1;33m'
-PINK='\033[1;95m'
+BLUE='\033[1;34m'
+RED='\033[1;31m'
 WHITE='\033[1;37m'
 CYAN='\033[1;36m'
-RED='\033[1;31m'
+YELLOW='\033[1;33m'
 NC='\033[0m'
 
 clear
 
-# ===== OPEN YOUTUBE =====
-echo -e "${CYAN}[•] Pecinta hpkentang...${NC}"
-sleep 1
-termux-open-url "https://youtube.com/@pecinta-hpkentang?si=ex1fCPWSNS8n5XrK" 2>/dev/null
-
-clear
-
-echo -e "${PINK}"
-echo "                               /\_/\                                "
-echo "                              /  o o  \                              "
-echo "                             /    =^=    \                           "
-echo "                            /     (____)     \                        "
-echo "                           /      /      \      \                     "
-echo "                          /______/        \______\                    "
-echo "                             /                    \                   "
-echo "                            /                      \                  "
-echo "                           /______/            \______\               "
-echo "                              WhatsApp tolls                          "
-echo -e "${NC}"
-
-echo -e "${WHITE}==========================================================================================${NC}"
-echo -e "${RED}██╗    ██╗██╗  ██╗ █████╗ ████████╗ █████╗ ██████╗ ██████╗  █████╗ ██╗     ██╗          ${NC}"
-echo -e "${RED}██║    ██║██║  ██║██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗██║     ██║          ${NC}"
-echo -e "${RED}██║ █╗ ██║███████║███████║   ██║   ███████║██████╔╝██████╔╝███████║██║     ██║          ${NC}"
-echo -e "${RED}██║███╗██║██╔══██║██╔══██║   ██║   ██╔══██║██╔═══╝ ██╔═══╝ ██╔══██║██║     ██║          ${NC}"
-echo -e "${RED}╚███╔███╔╝██║  ██║██║  ██║   ██║   ██║  ██║██║     ██║     ██║  ██║███████╗███████╗     ${NC}"
-echo -e "${RED} ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝     ${NC}"
-echo -e "${WHITE}==========================================================================================${NC}"
-
-echo -e "${YELLOW}* Creator        : Rio${NC}"
-echo -e "${YELLOW}* YouTube        : Pecinta hpkentang${NC}"
-echo -e "${YELLOW}* Version        : 3.0 Extended${NC}"
-echo -e "${YELLOW}* Build          : Stable Release${NC}"
-echo -e "${YELLOW}* Core Engine    : WhatsApp tolls Engine${NC}"
-echo -e "${YELLOW}* Security Mode  : Active${NC}"
-echo -e "${YELLOW}* Runtime        : Termux Environment${NC}"
-
-echo -e "${WHITE}==========================================================================================${NC}"
+echo -e "${YELLOW}Version : 4.0${NC}"
 echo ""
 
-echo -e "${CYAN}[•] Initializing core modules...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Checking system integrity...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Verifying environment variables...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Loading user interface engine...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Connecting secure runtime...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Preparing execution handler...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Synchronizing resources...${NC}"
-sleep 0.4
-echo -e "${CYAN}[•] Finalizing startup process...${NC}"
-sleep 0.4
+echo -e "${GREEN}██╗    ██╗██╗  ██╗ █████╗ ████████╗${NC}"
+echo -e "${GREEN}██║    ██║██║  ██║██╔══██╗╚══██╔══╝${NC}"
+echo -e "${GREEN}██║ █╗ ██║███████║███████║   ██║   ${NC}"
+echo -e "${GREEN}██║███╗██║██╔══██║██╔══██║   ██║   ${NC}"
+echo -e "${GREEN}╚███╔███╔╝██║  ██║██║  ██║   ██║   ${NC}"
+
+echo -ne "${GREEN}WHAT"
+echo -e "${BLUE}SAPP${NC}"
 
 echo ""
-echo -e "${GREEN}System Environment : READY ✔${NC}"
-echo -e "${GREEN}Security Layer     : ACTIVE ✔${NC}"
-echo -e "${GREEN}Engine Status      : ONLINE ✔${NC}"
-echo -e "${WHITE}==========================================================================================${NC}"
+echo -e "${WHITE}by HP Kentang${NC}"
 
 echo ""
-echo -e "${YELLOW}Selamat datang di WhatsApp tolls.${NC}"
-echo -e "${YELLOW}Tool ini dibuat dan dikembangkan oleh Rio.${NC}"
-echo -e "${YELLOW}Support channel YouTube Pecinta hpkentang untuk update terbaru.${NC}"
-echo -e "${YELLOW}Pastikan Anda menggunakan tool dengan bijak.${NC}"
+echo -e "${CYAN}================================================${NC}"
+echo -e "${CYAN}                LOGIN PANEL                     ${NC}"
+echo -e "${CYAN}================================================${NC}"
 echo ""
 
-echo -e "${WHITE}==========================================================================================${NC}"
-echo -e "${GREEN}Loading complete. System ready to continue...${NC}"
-echo -e "${WHITE}==========================================================================================${NC}"
+echo -ne "${GREEN}Username > ${NC}"
+read user
 
-sleep 2
+echo -ne "${GREEN}Token    > ${NC}"
+read token
+
+echo ""
+
+# animasi verifikasi
+for i in {1..25}
+do
+printf "\r${GREEN}<------->${RED}<------->${GREEN}<------->${NC} Verifying..."
+sleep 0.1
+done
+
+echo ""
+echo ""
+
+data=$(grep "$user" token.db)
+
+if [ -z "$data" ]; then
+echo -e "${RED}Token : INVALID${NC}"
+exit
+fi
+
+dbuser=$(echo $data | cut -d "|" -f1)
+dbtype=$(echo $data | cut -d "|" -f2)
+dbtoken=$(echo $data | cut -d "|" -f3)
+
+if [[ "$token" != "$dbtoken" ]]; then
+echo -e "${RED}Token : INVALID${NC}"
+exit
+fi
+
+echo -e "${WHITE}Token      : ${GREEN}VALID${NC}"
+
+if [[ "$dbtype" == "trial" ]]; then
+
+echo -e "${WHITE}Masa Aktif : 1 Bulan${NC}"
+echo -e "${WHITE}Berakhir   : $(date -d '+30 days') 00:00 WIB${NC}"
+
+else
+
+echo -e "${WHITE}Masa Aktif : Seumur Hidup${NC}"
+
+fi
+
+echo ""
+echo -e "${CYAN}System Status : ONLINE${NC}"
+echo -e "${CYAN}Database User : ACTIVE${NC}"
+
+echo ""
+echo -e "${YELLOW}Ketik .admin untuk kontak admin${NC}"
+
+read cmd
+
+if [[ "$cmd" == ".admin" ]]
+then
+
+am start -a android.intent.action.VIEW \
+-d "https://wa.me/6285283786794?text=min%20order%20berapa%20ya%20min"
+
+fi
