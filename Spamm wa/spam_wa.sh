@@ -76,7 +76,7 @@ while true
 do
 
 if ((count % 2 == 0)); then
-color=$GREEN
+color=$RED
 else
 color=$YELLOW
 fi
