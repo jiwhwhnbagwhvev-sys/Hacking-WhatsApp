@@ -75,8 +75,14 @@ count=1
 while true
 do
 
-echo -e "${YELLOW}[$count] mencoba spamm chat ke nomor $nomor ...${NC}"
-sleep 0.03
+if ((count % 2 == 0)); then
+color=$GREEN
+else
+color=$YELLOW
+fi
+
+printf "${color}[%d] mencoba spamm chat ke nomor %s ...${NC}\n" "$count" "$nomor"
+
 
 count=$((count+1))
 
