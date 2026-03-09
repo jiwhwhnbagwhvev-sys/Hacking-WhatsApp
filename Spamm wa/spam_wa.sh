@@ -75,7 +75,7 @@ count=1
 while true
 do
 
-echo -e "${GREEN}[$count] mencoba spamm chat ke nomor $nomor ...${NC}"
+echo -e "${RED}[$count] mencoba spamm chat ke nomor $nomor ...${NC}"
 sleep 0.03
 
 count=$((count+1))
