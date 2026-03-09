@@ -17,13 +17,13 @@ ADMIN="6281385998324"
 logo(){
 clear
 echo -e "${PINK}"
-echo "                    /\_/\                    "
-echo "                   / o o \                   "
-echo "                  (   \"   )                  "
-echo "                   \~(*)~/                   "
-echo "                    - ^ -                    "
+echo "                     /\_/\                    "
+echo "                    / o o \                   "
+echo "                   (   \"   )                  "
+echo "                    \~(*)~/                   "
+echo "                     - ^ -                    "
 echo ""
-echo "              WhatsApp Tools           "
+echo "              Sepamm Chat WhatsApp v4.0     "
 echo -e "${NC}"
 }
 
@@ -75,7 +75,7 @@ count=1
 while true
 do
 
-echo -e "${YELLOW}[$count] mencoba spamm chat ke nomor $nomor ...${NC}"
+echo -e "${GREEN}[$count] mencoba spamm chat ke nomor $nomor ...${NC}"
 sleep 0.03
 
 count=$((count+1))
