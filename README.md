@@ -60,7 +60,7 @@ chmod +x Run
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20update%203.0.jpg)
 
-![Spam WhatsApp](Spamm%20wa%20versi%203.0.jpg)
+![Spam WhatsApp](Spamm%20tanpa%20batas%20yang%20terbaru%20nit.jpg)
 
 # ROOT POWER TOOLKIT ☠
 
