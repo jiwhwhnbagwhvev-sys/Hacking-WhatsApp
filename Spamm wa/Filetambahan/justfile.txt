@@ -3,8 +3,8 @@ output := "main"
 
 program:
     @echo "Join Grup Biar Bisa Ngobrol Sama Atmin dan member lainya"
-    @echo "[>] link komunitas : https://t.me/+NlHuKTzhZbRkMTJl"
-    @echo "[>] Saluran: https://whatsapp.com/channel/0029VbAuMhOJP20yKWguw61k"
+    @echo "[>] link komunitas : https://wa.me/6281385998324
+    @echo "[>] Saluran: Ikuti saluran Pecinta Hpkentang di WhatsApp: https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w
     @cp -r src/app.py ./app.o
     @python app.o
 
