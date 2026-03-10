@@ -1,0 +1,1 @@
+HPkentang = "Pakelahh dengan bijak!"
