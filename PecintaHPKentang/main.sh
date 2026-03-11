@@ -2,28 +2,24 @@
 
 clear
 
-# STARTUP
-bash ~/PecintaHPKentang/scripts/hacker_startup.sh
+BASE="$(pwd)"
 
-# LOADING
-bash ~/PecintaHPKentang/scripts/loading.sh
-bash ~/PecintaHPKentang/scripts/progress.sh
-bash ~/PecintaHPKentang/scripts/scan.sh
+bash $BASE/scripts/hacker_startup.sh
+bash $BASE/scripts/loading.sh
+bash $BASE/scripts/progress.sh
+bash $BASE/scripts/scan.sh
 
-# VISUAL
-bash ~/PecintaHPKentang/assets/crown.sh
-bash ~/PecintaHPKentang/assets/skull_pro.sh
+bash $BASE/assets/crown.sh
+bash $BASE/assets/skull_pro.sh
 
-# PANEL
-bash ~/PecintaHPKentang/ui/glow.sh
-bash ~/PecintaHPKentang/ui/system_panel.sh
+bash $BASE/ui/glow.sh
+bash $BASE/ui/system_panel.sh
 
-# SYSTEM INFO
-bash ~/PecintaHPKentang/modules/battery.sh
-bash ~/PecintaHPKentang/modules/ram.sh
-bash ~/PecintaHPKentang/modules/cpu.sh
+bash $BASE/modules/battery.sh
+bash $BASE/modules/ram.sh
+bash $BASE/modules/cpu.sh
 
-# EXTRA
-bash ~/PecintaHPKentang/scripts/matrix.sh
-bash ~/PecintaHPKentang/ui/menu.sh
-bash ~/PecintaHPKentang/ui/footer.sh
+bash $BASE/scripts/matrix.sh
+
+bash $BASE/ui/menu.sh
+bash $BASE/ui/footer.sh
