@@ -23,7 +23,7 @@ current_hour=$(date +"%H")
 if [ "$current_hour" -lt 4 ]; then
     echo ""
     echo "======================================"
-    echo "   TOOL BELUM BISA DIGUNAKAN"
+    echo "   FITUR BELUM BISA DIGUNAKAN"
     echo "   Tool online mulai jam 04:00"
     echo "   Silakan tunggu sampai subuh."
     echo "======================================"
@@ -35,7 +35,7 @@ fi
 if [ "$current_hour" -ge 19 ]; then
     echo ""
     echo "======================================"
-    echo "   ERROR : TOOL SUDAH TUTUP"
+    echo "   ERROR : Fitur sedang offline"
     echo "   Waktu penggunaan hanya sampai 19:00"
     echo "   Silakan gunakan kembali besok."
     echo "======================================"
