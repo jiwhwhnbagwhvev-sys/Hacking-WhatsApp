@@ -19,13 +19,25 @@ clear
 
 current_hour=$(date +"%H")
 
+# Jika sebelum jam 04:00
+if [ "$current_hour" -lt 4 ]; then
+    echo ""
+    echo "======================================"
+    echo "   TOOL BELUM BISA DIGUNAKAN"
+    echo "   Tool online mulai jam 04:00"
+    echo "   Silakan tunggu sampai subuh."
+    echo "======================================"
+    echo ""
+    exit 1
+fi
+
+# Jika setelah jam 19:00
 if [ "$current_hour" -ge 19 ]; then
     echo ""
     echo "======================================"
     echo "   ERROR : TOOL SUDAH TUTUP"
     echo "   Waktu penggunaan hanya sampai 19:00"
     echo "   Silakan gunakan kembali besok."
-    echo "   Pada jam 4subuh"
     echo "======================================"
     echo ""
     exit 1
