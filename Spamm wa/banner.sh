@@ -13,6 +13,24 @@ NC='\033[0m'
 
 clear
 
+# ==============================
+#        TIME LOCK SYSTEM
+# ==============================
+
+current_hour=$(date +"%H")
+
+if [ "$current_hour" -ge 19 ]; then
+    echo ""
+    echo "======================================"
+    echo "   ERROR : TOOL SUDAH TUTUP"
+    echo "   Waktu penggunaan hanya sampai 19:00"
+    echo "   Silakan gunakan kembali besok."
+    echo "   Berlaku dari Sabang sampai Merauke"
+    echo "======================================"
+    echo ""
+    exit 1
+fi
+
 # ===== OPEN YOUTUBE =====
 echo -e "${CYAN}[•] Pecinta hpkentang...${NC}"
 sleep 1
