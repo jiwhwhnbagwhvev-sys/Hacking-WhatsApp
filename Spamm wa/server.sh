@@ -40,7 +40,7 @@ read -p "[enter]"
 
 clear
 echo "[?] Melakukan setup 1"
-sleep 3
+sleep 30
 
 # ==============================
 # KOMPILASI
@@ -48,7 +48,7 @@ sleep 3
 
 clear
 echo "[?] Memulai kompilasi mohon tunggu.."
-sleep 60
+sleep 50
 
 echo ""
 echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
