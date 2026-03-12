@@ -88,3 +88,5 @@ echo -e "${GREEN}Loading complete. System ready to continue...${NC}"
 echo -e "${WHITE}==========================================================================================${NC}"
 
 sleep 2
+
+bash Peringatan.sh
