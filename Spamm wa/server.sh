@@ -48,11 +48,11 @@ sleep 3
 
 clear
 echo "[?] Memulai kompilasi mohon tunggu.."
-sleep 40
+sleep 60
 
 echo ""
 echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
-sleep 35
+sleep 45
 
 echo "[$(date)] Proses biasanya memakan waktu 1-2 menit mohon untuk bersabar demi keamanan"
 
