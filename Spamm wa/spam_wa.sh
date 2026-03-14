@@ -27,6 +27,50 @@ echo "              Sepamm Chat WhatsApp v4.0     "
 echo -e "${NC}"
 }
 
+# ===============================
+# DETEKSI WAKTU
+# ===============================
+
+jam=$(date +"%H")
+
+if [ $jam -ge 5 ] && [ $jam -lt 11 ]; then
+salam="Selamat Pagi ☀️ Awan ceria!"
+elif [ $jam -ge 11 ] && [ $jam -lt 17 ]; then
+salam="Selamat Siang ☀️ Matahari terang!"
+else
+salam="Selamat Malam 🌙 Bulan gelap!"
+fi
+
+# ===============================
+# DETEKSI OPERATOR
+# ===============================
+
+deteksi_operator(){
+
+prefix=${1:0:4}
+
+case $prefix in
+0811|0812|0813|0821|0822|0823|0852|0853)
+echo "Telkomsel"
+;;
+0817|0818|0819|0859|0877|0878)
+echo "XL"
+;;
+0831|0832|0833|0838)
+echo "Axis"
+;;
+0856|0857)
+echo "Indosat"
+;;
+0881|0882|0883|0887|0888)
+echo "Smartfren"
+;;
+*)
+echo "Operator tidak diketahui"
+;;
+esac
+}
+
 logo
 echo -e "${RED}SPAM CHAT WHATSAPP - FITUR 2${NC}"
 echo ""
