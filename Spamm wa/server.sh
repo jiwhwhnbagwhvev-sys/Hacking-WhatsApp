@@ -1,5 +1,34 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+# ==============================
+# CEK JAM NASIONAL INDONESIA (ANTI UBAH JAM HP)
+# ==============================
+
+server_time=$(curl -sI https://google.com | grep -i Date | cut -d' ' -f5)
+wib_time=$(TZ=Asia/Jakarta date -d "$server_time" +%H%M)
+
+# jika waktu >= 19:00 atau < 04:00 maka OFFLINE
+if [ "$wib_time" -ge 1900 ] || [ "$wib_time" -lt 0400 ]; then
+    clear
+    echo "=============================================================="
+    echo "                     SISTEM SEDANG OFFLINE"
+    echo ""
+    echo " Jam operasional sistem :"
+    echo " 04:00 WIB - 19:00 WIB"
+    echo ""
+    echo " Silakan buka kembali pada pukul 04:00 WIB"
+    echo "=============================================================="
+    exit
+fi
+
+# ==============================
+# SCRIPT DIMULAI
+# ==============================
+
+clear
+echo "[INFO] Sistem online, melanjutkan program..."
+sleep 2
+
 clear
 echo "[INFO] Harap Tunggu Sedang Menjalankan Program"
 echo "[INFO] Security : Pyramid v9 Beta Plugin Pyramid Dom Network v10"
@@ -22,15 +51,12 @@ echo "                 PRIVATE POLICE v3.1"
 echo "=============================================================="
 echo "Fitur ini sudah di update"
 echo "Diperbarui versi 3.0 pada tgl 3 Maret 2026"
-echo "[ Perjanjian konsument terhadap developer ]
-dengan ini saya menyetujui untuk memtuhi aturan dari creato r atau developer
-dengan menggunakan nya sesuai posisi sebagai user atau kons ument
-saya tidak akan melakukan percobaan crack, reverse, deobfus
-cate atau sejenis nya yang akan
-merugikan developer, jika ini saya langgar maka saya siap m enerima semua resiko dari mekanisme pyramid encient killer.
-DAN SAYA TIDAK AKAN MENYALAHKAN DEVELOPER DI KARENAKAN INI KARENA KESERAKAHAN
-DAN TINDAKAN SAYA YANG LANCANG MAKA SAYA SIAP MENERIMA APAP UN RESIKO NYA DAN TIDAK AKAN MENUNTUT
-echo"
+
+echo ""
+echo "[ Perjanjian konsument terhadap developer ]"
+echo "Dengan ini saya menyetujui untuk mematuhi aturan dari creator atau developer."
+echo "Saya tidak akan melakukan percobaan crack, reverse, atau deobfuscate."
+echo "Jika melanggar maka saya siap menerima semua resiko."
 
 read -p "[enter]"
 
@@ -51,12 +77,12 @@ echo "[?] Memulai kompilasi mohon tunggu.."
 sleep 55
 
 echo ""
-echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
+echo "[$(date)] Mengecek status mencurigakan ... (Security v10)"
 sleep 55
 
 echo "[$(date)] Proses biasanya memakan waktu 1-5 menit mohon untuk bersabar demi keamanan"
 
-WAIT=$((RANDOM % 241 + 60))  # random 60-300 detik
+WAIT=$((RANDOM % 241 + 60))
 sleep $WAIT
 
 echo ""
@@ -64,7 +90,7 @@ echo "[>] Menjalankan script...."
 sleep 2
 
 # ==============================
-# HASIL (warna sesuai permintaan)
+# HASIL
 # ==============================
 
 echo ""
@@ -82,5 +108,4 @@ sleep 40
 # LANJUT KE SCRIPT UTAMA
 # ==============================
 
-# ganti main.sh dengan file utama kamu
 bash banner.sh
