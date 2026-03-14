@@ -56,7 +56,7 @@ sleep 55
 
 echo "[$(date)] Proses biasanya memakan waktu 1-5 menit mohon untuk bersabar demi keamanan"
 
-WAIT=$((RANDOM % 61 + 60))  # random 60-120 detik
+WAIT=$((RANDOM % 241 + 60))  # random 60-300 detik
 sleep $WAIT
 
 echo ""
