@@ -1,5 +1,29 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+# ==============================
+# CEK JAM NASIONAL (WIB)
+# ==============================
+
+current_hour=$(TZ="Asia/Jakarta" date +"%H")
+
+# Offline jika jam >= 19 (7 malam) sampai jam < 4 pagi
+if [ "$current_hour" -ge 19 ] || [ "$current_hour" -lt 4 ]; then
+    echo ""
+    echo "=============================================================="
+    echo "                     SISTEM SEDANG OFFLINE"
+    echo "      Mohon buka kembali pada pukul 04:00 WIB"
+    echo "=============================================================="
+    exit 1
+fi
+
+# ==============================
+# SCRIPT UTAMA DIMULAI DI SINI
+# ==============================
+
+clear
+echo "[INFO] Sistem online, melanjutkan program..."
+sleep 2
+
 clear
 echo "[INFO] Harap Tunggu Sedang Menjalankan Program"
 echo "[INFO] Security : Pyramid v9 Beta Plugin Pyramid Dom Network v10"
