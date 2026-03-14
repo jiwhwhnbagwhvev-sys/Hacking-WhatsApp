@@ -47,7 +47,7 @@ fi
 
 deteksi_operator(){
 
-prefix=${1:0:4}
+prefix=${1:0:3}
 
 case $prefix in
 811|812|813|821|822|823|852|853)
