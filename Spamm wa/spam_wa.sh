@@ -84,14 +84,14 @@ sleep 20
 
 echo ""
 echo -e "${CYAN}Mendeteksi operator nomor...${NC}"
-sleep 20
+sleep 10
 
 operator=$(deteksi_operator $nomor)
 
 echo -e "${GREEN}Operator : $operator${NC}"
 echo -e "${YELLOW}$salam${NC}"
 echo ""
-sleep 20
+sleep 5
 
 # animasi progress
 bar="□□□□□□□□□□□□□□"
