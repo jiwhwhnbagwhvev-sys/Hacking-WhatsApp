@@ -18,7 +18,7 @@ EOF
 
 echo ""
 echo "=============================================================="
-echo "                 PRIVATE POLICE v3.1"
+echo "                 PRIVATE POLICE v4.0"
 echo "=============================================================="
 echo "Fitur ini sudah di update"
 echo "Diperbarui versi 4.0 pada tgl 10 Maret 2026"
