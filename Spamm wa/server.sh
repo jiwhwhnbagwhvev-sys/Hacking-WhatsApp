@@ -73,8 +73,6 @@ echo -e "\e[32mncurses-utils is already at the latest version \e[31m6.6.20260124
 echo -e "\e[32mxh is already at the latest version \e[31m0.25.3\e[0m"
 echo -e "\e[32mxz-utils is already at the latest version \e[31m5.8.2\e[0m"
 echo -e "\e[32mNothing for Nala to do.\e[0m"
-
-echo ""
 echo -e "\e[34mv4.0\e[0m"
 sleep 40
 
