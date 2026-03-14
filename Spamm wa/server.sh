@@ -76,6 +76,7 @@ echo -e "\e[32mNothing for Nala to do.\e[0m"
 
 echo ""
 echo -e "\e[34mv4.0\e[0m"
+sleep 40
 
 # ==============================
 # LANJUT KE SCRIPT UTAMA
