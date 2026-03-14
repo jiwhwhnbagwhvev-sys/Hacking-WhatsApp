@@ -90,13 +90,24 @@ nomor="$input"
 
 echo ""
 echo -e "${CYAN}Menghubungkan ke server...${NC}"
-sleep 1
+sleep 20
+
+echo ""
+echo -e "${CYAN}Mendeteksi operator nomor...${NC}"
+sleep 20
+
+operator=$(deteksi_operator $nomor)
+
+echo -e "${GREEN}Operator : $operator${NC}"
+echo -e "${YELLOW}$salam${NC}"
+echo ""
+sleep 20
 
 # progress bar
 bar="□□□□□□□□□□□□□□"
 for i in {1..14}; do
 bar=$(echo "$bar" | sed 's/□/■/')
-printf "\r${GREEN}[%s] %d%%${NC}" "$bar" "$((i*7))"
+printf "\r${YELLOW}[%s] %d%%${NC}" "$bar" "$((i*7))"
 sleep 0.15
 done
 
