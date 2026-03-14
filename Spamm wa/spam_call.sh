@@ -27,6 +27,51 @@ echo "             Spamm WhatsApp Call v4.0            "
 echo -e "${NC}"
 }
 
+# ===============================
+# DETEKSI WAKTU
+# ===============================
+
+jam=$(date +"%H")
+
+if [ $jam -ge 5 ] && [ $jam -lt 11 ]; then
+salam="Selamat Pagi ☀️ Awan ceria!"
+elif [ $jam -ge 11 ] && [ $jam -lt 17 ]; then
+salam="Selamat Siang ☀️ Matahari terang!"
+else
+salam="Selamat Malam 🌙 Bulan gelap!"
+fi
+
+# ===============================
+# DETEKSI OPERATOR
+# ===============================
+
+deteksi_operator(){
+
+prefix=${1:0:4}
+
+case $prefix in
+811|812|813|821|822|823|852|853)
+echo "Telkomsel"
+;;
+817|818|819|859|877|878)
+echo "XL"
+;;
+831|832|833|838)
+echo "Axis"
+;;
+856|857)
+echo "Indosat"
+;;
+881|882|883|887|888)
+echo "Smartfren"
+;;
+*)
+echo "Operator tidak diketahui"
+;;
+esac
+}
+
+
 logo
 echo -e "${CYAN}SPAM CALL WHATSAPP - FITUR 1${NC}"
 echo ""
