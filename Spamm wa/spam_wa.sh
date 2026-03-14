@@ -69,6 +69,8 @@ echo "Smartfren"
 echo "Operator tidak diketahui"
 ;;
 esac
+echo -e "\nOperator : ${GREEN}$operator${NC}"
+echo -e "${RED}Warning: gunakan dengan bijak${NC}"
 }
 
 logo
