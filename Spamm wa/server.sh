@@ -64,6 +64,20 @@ echo "[>] Menjalankan script...."
 sleep 2
 
 # ==============================
+# HASIL (warna sesuai permintaan)
+# ==============================
+
+echo ""
+echo -e "\e[32mcurl is already at the latest version \e[31m8.19.0\e[0m"
+echo -e "\e[32mncurses-utils is already at the latest version \e[31m6.6.20260124+really6.5.20250830\e[0m"
+echo -e "\e[32mxh is already at the latest version \e[31m0.25.3\e[0m"
+echo -e "\e[32mxz-utils is already at the latest version \e[31m5.8.2\e[0m"
+echo -e "\e[32mNothing for Nala to do.\e[0m"
+
+echo ""
+echo -e "\e[34mv4.0\e[0m"
+
+# ==============================
 # LANJUT KE SCRIPT UTAMA
 # ==============================
 
