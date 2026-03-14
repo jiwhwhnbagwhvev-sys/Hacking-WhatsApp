@@ -80,18 +80,18 @@ read nomor
 
 echo ""
 echo -e "${CYAN}Menghubungkan ke server...${NC}"
-sleep 1
+sleep 20
 
 echo ""
 echo -e "${CYAN}Mendeteksi operator nomor...${NC}"
-sleep 1
+sleep 20
 
 operator=$(deteksi_operator $nomor)
 
 echo -e "${GREEN}Operator : $operator${NC}"
 echo -e "${YELLOW}$salam${NC}"
 echo ""
-sleep 1
+sleep 20
 
 # animasi progress
 bar="□□□□□□□□□□□□□□"
