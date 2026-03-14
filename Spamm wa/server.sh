@@ -2,7 +2,7 @@
 
 clear
 echo "[INFO] Harap Tunggu Sedang Menjalankan Program"
-echo "[INFO] Security : Pyramid v9 Beta Plugin Pyramid Dom Network v10"
+echo "[INFO] Security : Pyramid v10 Beta Plugin Pyramid Dom Network v14"
 echo ""
 
 cat << "EOF"
@@ -21,7 +21,7 @@ echo "=============================================================="
 echo "                 PRIVATE POLICE v3.1"
 echo "=============================================================="
 echo "Fitur ini sudah di update"
-echo "Diperbarui versi 3.0 pada tgl 3 Maret 2026"
+echo "Diperbarui versi 4.0 pada tgl 10 Maret 2026"
 echo "[ Perjanjian konsument terhadap developer ]
 dengan ini saya menyetujui untuk memtuhi aturan dari creato r atau developer
 dengan menggunakan nya sesuai posisi sebagai user atau kons ument
@@ -51,7 +51,7 @@ echo "[?] Memulai kompilasi mohon tunggu.."
 sleep 55
 
 echo ""
-echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
+echo "[$(date)] Mengecek status Mencurigakan ... (Security v14)"
 sleep 55
 
 echo "[$(date)] Proses biasanya memakan waktu 1-5 menit mohon untuk bersabar demi keamanan"
