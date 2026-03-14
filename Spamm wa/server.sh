@@ -40,7 +40,7 @@ read -p "[enter]"
 
 clear
 echo "[?] Melakukan setup 1"
-sleep 30
+sleep 60
 
 # ==============================
 # KOMPILASI
@@ -48,13 +48,13 @@ sleep 30
 
 clear
 echo "[?] Memulai kompilasi mohon tunggu.."
-sleep 50
+sleep 55
 
 echo ""
 echo "[$(date)] Mengecek status Mencurigakan ... (Security v10)"
-sleep 45
+sleep 55
 
-echo "[$(date)] Proses biasanya memakan waktu 1-2 menit mohon untuk bersabar demi keamanan"
+echo "[$(date)] Proses biasanya memakan waktu 1-5 menit mohon untuk bersabar demi keamanan"
 
 WAIT=$((RANDOM % 61 + 60))  # random 60-120 detik
 sleep $WAIT
