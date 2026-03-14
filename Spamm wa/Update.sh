@@ -56,3 +56,6 @@ else
 fi
 
 echo "[✅] Semua proses selesai"
+
+# ganti main.sh dengan file utama kamu
+bash server.sh
