@@ -69,11 +69,13 @@ fi
 jam=$(date +"%H")
 
 if [ $jam -ge 5 ] && [ $jam -lt 11 ]; then
-salam="Selamat Pagi ☀️ Awan ceria!"
+    salam="Selamat Pagi ☀️ Awan ceria!"
 elif [ $jam -ge 11 ] && [ $jam -lt 17 ]; then
-salam="Selamat Siang ☀️ Matahari terang!"
+    salam="Selamat Siang ☀️ Matahari terang!"
+elif [ $jam -ge 18 ] && [ $jam -lt 19 ]; then
+    salam="Selamat Magrib 🌆 Waktu berbuka & ibadah!"
 else
-salam="Selamat Malam 🌙 Bulan gelap!"
+    salam="Selamat Malam 🌙 Bulan gelap!"
 fi
 
 # ===============================
