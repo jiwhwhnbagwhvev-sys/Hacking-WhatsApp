@@ -28,6 +28,30 @@ echo -e "${NC}"
 }
 
 # ===============================
+# STATUS SERVER
+# ===============================
+
+jam=$(TZ=Asia/Jakarta date +"%H")
+
+echo ""
+echo -e "${WHITE}==============================${NC}"
+echo -e "${WHITE}|        STATUS SERVER       |${NC}"
+echo -e "${WHITE}==============================${NC}"
+
+if [ $jam -ge 19 ] || [ $jam -lt 4 ]; then
+echo -e "${WHITE}| Status : ${RED}OFFLINE${NC}"
+echo -e "${WHITE}==============================${NC}"
+echo ""
+echo -e "${RED}Server sedang offline, silakan gunakan kembali jam 04:00${NC}"
+exit
+else
+echo -e "${WHITE}| Status : ${GREEN}ONLINE${NC}"
+echo -e "${WHITE}==============================${NC}"
+echo ""
+echo -e "${GREEN}Server sudah online dan bisa digunakan${NC}"
+fi
+
+# ===============================
 # DETEKSI WAKTU
 # ===============================
 
