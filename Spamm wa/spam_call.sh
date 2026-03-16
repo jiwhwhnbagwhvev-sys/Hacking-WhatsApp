@@ -33,11 +33,45 @@ echo -e "${NC}"
 
 jam=$(TZ=Asia/Jakarta date +"%H")
 waktu=$(TZ=Asia/Jakarta date +"%H:%M:%S")
+tanggal=$(TZ=Asia/Jakarta date +"%d")
+bulan=$(TZ=Asia/Jakarta date +"%m")
 
 echo ""
 echo -e "${WHITE}==============================${NC}"
 echo -e "${WHITE}|        STATUS SERVER       |${NC}"
 echo -e "${WHITE}==============================${NC}"
+
+# ===============================
+# UCAPAN RAMADHAN
+# ===============================
+
+if [ "$bulan" = "03" ] && [ "$tanggal" -ge 21 ] && [ "$tanggal" -le 30 ]; then
+echo -e "${CYAN}🌙 Selamat Menunaikan Ibadah Puasa${NC}"
+echo ""
+fi
+
+# ===============================
+# PEMBERITAHUAN TRIAL
+# ===============================
+
+if [ "$bulan" = "03" ] && [ "$tanggal" = "22" ]; then
+echo -e "${YELLOW}⚠ Pemberitahuan Trial${NC}"
+echo -e "${WHITE}Fitur trial akan berakhir.${NC}"
+echo -e "${CYAN}Silahkan beli fitur permanen.${NC}"
+echo -e "${GREEN}Chat Admin untuk pembelian.${NC}"
+echo ""
+fi
+
+# ===============================
+# UCAPAN IDUL FITRI
+# ===============================
+
+if { [ "$bulan" = "03" ] && [ "$tanggal" = "31" ]; } || { [ "$bulan" = "04" ] && [ "$tanggal" = "01" ]; }; then
+echo -e "${YELLOW}✨ Selamat Hari Raya Idul Fitri${NC}"
+echo -e "${YELLOW}Mohon Maaf Lahir dan Batin${NC}"
+echo ""
+fi
+
 
 if [ $jam -ge 19 ] || [ $jam -lt 4 ]; then
 
