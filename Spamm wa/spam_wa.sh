@@ -28,6 +28,36 @@ echo -e "${NC}"
 }
 
 # ===============================
+# CEK JARINGAN
+# ===============================
+
+ping -c 1 -W 1 google.com > /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    STATUS="${GREEN}ONLINE ✔${NC}"
+else
+    STATUS="${RED}OFFLINE ✖${NC}"
+fi
+
+# ===============================
+# TAMPILKAN DALAM BOX (RAPI)
+# ===============================
+
+printf "${WHITE}| Server : %-17b |\n" "$STATUS"
+echo -e "${WHITE}==============================${NC}"
+
+# ===============================
+# STOP JIKA OFFLINE
+# ===============================
+
+if [[ "$STATUS" == *"OFFLINE"* ]]; then
+    echo ""
+    echo -e "${RED}Tidak ada jaringan internet!${NC}"
+    echo -e "${YELLOW}Aktifkan data / WiFi dulu.${NC}"
+    exit
+fi
+
+# ===============================
 # DETEKSI WAKTU + STATUS SERVER
 # ===============================
 
