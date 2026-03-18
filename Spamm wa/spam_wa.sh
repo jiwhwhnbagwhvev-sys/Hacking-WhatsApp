@@ -240,34 +240,7 @@ echo -e "${WHITE}Menu   : Spamm Chat WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
-# ===============================
-# DETEKSI DEVICE & LOKASI
-# ===============================
 
-device=$(getprop ro.product.model)
-brand=$(getprop ro.product.brand)
-android=$(getprop ro.build.version.release)
-
-lokasi=$(TZ=Asia/Jakarta date +"%Z")
-
-[ -z "$device" ] && device="Unknown Device"
-[ -z "$brand" ] && brand="Unknown Brand"
-[ -z "$android" ] && android="?"
-
-# ===============================
-# INFO TAMBAHAN
-# ===============================
-
-operator=$(deteksi_operator "$nomor")
-
-echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
-echo -e "${RED}•${WHITE} Device : ${GREEN}$brand $device${NC}"
-echo -e "${RED}•${WHITE} Android : ${GREEN}$android${NC}"
-echo -e "${RED}•${WHITE} Region : ${GREEN}$lokasi${NC}"
-echo -e "${RED}•${WHITE} Waktu : ${GREEN}$salam${NC}"
-echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
-echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
-echo ""
 
 echo -e "${YELLOW}Memulai Spam Engine...${NC}"
 sleep 1
