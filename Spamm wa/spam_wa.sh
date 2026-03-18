@@ -157,7 +157,7 @@ DIM='\033[2;37m'
 GREEN='\033[1;32m'
 NC='\033[0m'
 
-hint="812xxxxxxxxxx"
+hint="812xxxxxxxx"
 input=""
 
 echo -ne "${WHITE}Masukkan Nomor Target : ${DIM}$hint${NC}"
@@ -223,7 +223,7 @@ echo ""
 sleep 1
 
 # pesan WhatsApp RAPAT TANPA JARAK
-TEXT="Menu Spamm Chat whatsapp Fitur 2 | Nomor Target: $nomor | Status: Aktif ✓"
+TEXT="Menu Spamm Chat whatsapp Fitur 2 | Nomor Target: $nomor
 
 ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
 
