@@ -261,13 +261,13 @@ lokasi="$(TZ=Asia/Jakarta date +"%Z")"
 
 operator="$(deteksi_operator "$nomor")"
 
-echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
-echo -e "${RED}•${WHITE} Device : ${GREEN}$brand $device${NC}"
-echo -e "${RED}•${WHITE} Android : ${GREEN}$android${NC}"
-echo -e "${RED}•${WHITE} Region : ${GREEN}$lokasi${NC}"
-echo -e "${RED}•${WHITE} Waktu : ${GREEN}$salam${NC}"
+echo -e "${RED}•${WHITE} Carrier   : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} Device    : ${GREEN}$brand $device${NC}"
+echo -e "${RED}•${WHITE} Android   : ${GREEN}$android${NC}"
+echo -e "${RED}•${WHITE} Region    : ${GREEN}$lokasi${NC}"
+echo -e "${RED}•${WHITE} Waktu     : ${GREEN}$salam${NC}"
 echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
-echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
+echo -e "${RED}•${WHITE} note      : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
 echo ""
 
 # ===============================
