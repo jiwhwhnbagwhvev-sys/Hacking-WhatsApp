@@ -40,7 +40,7 @@ read -p "[enter]"
 
 clear
 echo "[?] Melakukan setup 1"
-sleep 200
+sleep 100
 
 # ==============================
 # KOMPILASI
