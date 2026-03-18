@@ -194,8 +194,48 @@ echo -e "${WHITE}Menu   : Spam Chat WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
-echo -e "${YELLOW}Memulai Spam Engine...${NC}"
-sleep 1
+# ===============================
+# INFO TAMBAHAN (INI YANG DITAMBAH)
+# ===============================
+
+operator=$(deteksi_operator "$nomor")
+
+echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
+echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
+echo ""
+
+# ==============================
+
+echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
+
+hint="812xxxxxxxxxx"
+
+# tampil full dulu
+echo -ne "${WHITE}$hint"
+sleep 0.5
+
+# efek samar dari kanan ke kiri
+for ((i=${#hint}; i>0; i--)); do
+    # bagian kiri tetap putih
+    left="${hint:0:i-1}"
+    
+    # bagian kanan jadi abu (samar)
+    right="${hint:i-1:1}"
+    
+    echo -ne "\r${WHITE}Masukkan Nomor Target : ${WHITE}$left\033[2;37m$right${NC}"
+    sleep 0.05
+done
+
+# hapus semua pelan
+for ((i=${#hint}; i>0; i--)); do
+    echo -ne "\r${WHITE}Masukkan Nomor Target : ${WHITE}${hint:0:i-1} ${NC}"
+    sleep 0.03
+done
+
+# cursor siap input
+echo -ne "\r${WHITE}Masukkan Nomor Target : ${NC}"
+read input
 
 RED='\033[1;31m'
 GREEN='\033[1;32m'
