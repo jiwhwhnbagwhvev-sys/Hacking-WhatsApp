@@ -225,7 +225,7 @@ sleep 6
 
 logo
 
-echo -e "${WHITE}Menu   : Spamm Call WhatsApp${NC}"
+echo -e "${WHITE}Menu   : Spamm Chat WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
