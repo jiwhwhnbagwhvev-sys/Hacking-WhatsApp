@@ -23,7 +23,7 @@ echo "                     (   \"   )                  "
 echo "                      \~(*)~/                   "
 echo "                       - ^ -                    "
 echo ""
-echo "              Sepamm Chat WhatsApp v4.0     "
+echo "              Sepamm Chat WhatsApp v5.0     "
 echo -e "${NC}"
 }
 
