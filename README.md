@@ -56,7 +56,7 @@ chmod +x Run
 
 ![Spam WhatsApp](update%20terbaru%20v5.0.jpg) 
 
-![Spam WhatsApp](Spamm%20WhatsApp%20vitur%20v5.0.jpg)
+![Spam WhatsApp](Spamm%20whatsApp%20vitur%20v5.0.jpg)
 
 ![Spam WhatsApp](Spamm%20WhatsApp%20update%203.0.jpg)
 
