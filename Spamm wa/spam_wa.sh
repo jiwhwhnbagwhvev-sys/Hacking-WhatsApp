@@ -202,29 +202,27 @@ GREEN='\033[1;32m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
-width=20       # panjang bar
-pos=0          # posisi awal
-dir=1          # arah gerak: 1=kanan, -1=kiri
+width=20
+pos=0
+dir=1
 
 while true
 do
     bar=""
-    
+
     for ((i=0; i<width; i++)); do
         if [ $i -eq $pos ]; then
-            # panah > tetap putih
-            bar="${bar}${WHITE}>${NC}"
-        else
-            # isi bar sesuai arah
             if [ $dir -eq 1 ]; then
-                bar="${bar}${GREEN}-${NC}"
+                bar="${bar}${GREEN}>${NC}"
             else
-                bar="${bar}${RED}-${NC}"
+                bar="${bar}${RED}<${NC}"
             fi
+        else
+            bar="${bar}-"
         fi
     done
 
-    echo -ne "\r[<${bar}>] Target:${GREEN} $nomor ${NC}"
+    echo -ne "\r${WHITE}[${bar}] Target:${GREEN} $nomor ${NC}"
 
     sleep 0.05
 
@@ -232,4 +230,5 @@ do
     if [ $pos -eq $((width-1)) ] || [ $pos -eq 0 ]; then
         dir=$((dir * -1))
     fi
+
 done
