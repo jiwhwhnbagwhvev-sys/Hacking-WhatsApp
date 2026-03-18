@@ -58,7 +58,7 @@ chmod +x Run
 
 ![Spam WhatsApp](Spamm%20whatsapp%20vitur%20v5.0.jpg)
 
-![Spam WhatsApp](Spamm%20tanpa%20batas%20yang%20terbaru%20nit.jpg)
+![Spam WhatsApp](Spamm%20whatsapp%20vitur%201v5.0.jpg)
 
 # ROOT POWER TOOLKIT ☠
 
