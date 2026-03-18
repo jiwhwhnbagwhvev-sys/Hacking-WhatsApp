@@ -147,8 +147,36 @@ logo
 echo -e "${RED}SPAM CHAT WHATSAPP - FITUR 2${NC}"
 echo ""
 
-echo -ne "${YELLOW}Masukkan Nomor Target : ${WHITE}"
-read nomor
+# ===============================
+# INPUT + ANIMASI CONTOH
+# ===============================
+
+echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
+
+hint="812xxxxxxxxxx"
+
+# tampil satu per satu
+for ((i=0; i<${#hint}; i++)); do
+    echo -ne "${WHITE}${hint:$i:1}"
+    sleep 0.05
+done
+
+sleep 0.5
+
+# hapus perlahan
+for ((i=${#hint}; i>0; i--)); do
+    echo -ne "\b \b"
+    sleep 0.03
+done
+
+# input user
+read input
+
+# validasi kosong
+if [[ -z "$input" ]]; then
+echo -e "${RED}Nomor tidak boleh kosong!${NC}"
+exit
+fi
 
 echo ""
 echo -e "${CYAN}Menghubungkan ke server...${NC}"
