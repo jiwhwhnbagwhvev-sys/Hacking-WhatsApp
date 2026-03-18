@@ -176,25 +176,18 @@ done
 # input user
 read input
 
-# ===============================
-# WAJIB TAMBAH INI 🔥 (FIX NOMOR)
-# ===============================
+# validasi kosong
+if [[ -z "$input" ]]; then
+echo -e "${RED}Nomor tidak boleh kosong!${NC}"
+exit
+fi
 
+# nomor tanpa 62
 nomor="$input"
-
-nomor=$(echo "$nomor" | tr -d ' ')
-
-if [[ $nomor == +62* ]]; then
-    nomor="0${nomor:3}"
-fi
-
-if [[ $nomor != 0* ]]; then
-    nomor="0$nomor"
-fi
 
 echo ""
 echo -e "${CYAN}Menghubungkan ke server...${NC}"
-sleep 20
+sleep 10
 
 echo ""
 echo -e "${CYAN}Mendeteksi operator nomor...${NC}"
@@ -207,7 +200,7 @@ echo -e "${YELLOW}$salam${NC}"
 echo ""
 sleep 5
 
-# animasi progress
+# progress bar
 bar="□□□□□□□□□□□□□□"
 for i in {1..14}; do
 bar=$(echo "$bar" | sed 's/□/■/')
@@ -218,8 +211,9 @@ done
 echo ""
 sleep 1
 
-# kirim ke WhatsApp admin
-TEXT="Menu Spam Chat Fitur 2 | Target:$nomor"
+# pesan WhatsApp RAPAT TANPA JARAK
+TEXT="Menu Spamm Chat whatsapp Fitur 2 | Nomor Target: $nomor | Status: Aktif ✓"
+
 ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
 
 echo -e "${CYAN}Membuka WhatsApp Admin...${NC}"
@@ -227,12 +221,11 @@ echo -e "${CYAN}Membuka WhatsApp Admin...${NC}"
 am start -a android.intent.action.VIEW \
 -d "https://wa.me/$ADMIN?text=$ENCODE"
 
-# tunggu kirim pesan
-sleep 7
+sleep 6
 
 logo
 
-echo -e "${WHITE}Menu   : Spam Chat WhatsApp${NC}"
+echo -e "${WHITE}Menu   : Spamm Call WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
@@ -294,4 +287,4 @@ do
         done
         dir=$((dir * -1))
     fi
-done
+done             
