@@ -137,11 +137,13 @@ echo "Indosat"
 echo "Smartfren"
 ;;
 *)
-echo "Tidak diketahui"
+echo "Operator tidak diketahui"
 ;;
 esac
-
+echo -e "${RED}Warning: gunakan dengan bijak${NC}"
 }
+
+
 
 logo
 echo -e "${RED}SPAM CHAT WHATSAPP - FITUR 2${NC}"
