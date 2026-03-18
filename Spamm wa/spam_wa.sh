@@ -223,7 +223,7 @@ echo ""
 sleep 1
 
 # pesan WhatsApp RAPAT TANPA JARAK
-TEXT="Menu Spamm Chat Fitur 1 | Nomor Target: $nomor
+TEXT="Menu Spamm Chat Fitur 1 | Nomor Target: $nomor"
 
 ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
 
@@ -241,8 +241,34 @@ echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
 # ===============================
-# INFO TAMBAHAN (INI YANG DITAMBAH)
+# DETEKSI DEVICE & LOKASI
 # ===============================
+
+device="$(getprop ro.product.model 2>/dev/null)"
+brand="$(getprop ro.product.brand 2>/dev/null)"
+android="$(getprop ro.build.version.release 2>/dev/null)"
+
+lokasi="$(TZ=Asia/Jakarta date +"%Z")"
+
+# fallback biar gak error
+[ -z "$device" ] && device="Unknown Device"
+[ -z "$brand" ] && brand="Unknown Brand"
+[ -z "$android" ] && android="?"
+
+# ===============================
+# INFO TAMBAHAN
+# ===============================
+
+operator="$(deteksi_operator "$nomor")"
+
+echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} Device : ${GREEN}$brand $device${NC}"
+echo -e "${RED}•${WHITE} Android : ${GREEN}$android${NC}"
+echo -e "${RED}•${WHITE} Region : ${GREEN}$lokasi${NC}"
+echo -e "${RED}•${WHITE} Waktu : ${GREEN}$salam${NC}"
+echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
+echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
+echo ""
 
 operator=$(deteksi_operator "$nomor")
 
