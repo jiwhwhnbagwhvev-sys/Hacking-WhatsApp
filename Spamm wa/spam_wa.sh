@@ -137,10 +137,10 @@ echo "Indosat"
 echo "Smartfren"
 ;;
 *)
-echo "Operator tidak diketahui"
+echo "Tidak diketahui"
 ;;
 esac
-echo -e "${RED}Warning: gunakan dengan bijak${NC}"
+
 }
 
 logo
