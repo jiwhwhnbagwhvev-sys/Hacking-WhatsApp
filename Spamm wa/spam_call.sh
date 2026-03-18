@@ -155,7 +155,7 @@ DIM='\033[2;37m'
 GREEN='\033[1;32m'
 NC='\033[0m'
 
-hint="812xxxxxxxxxx"
+hint="812xxxxxxxx"
 input=""
 
 echo -ne "${WHITE}Masukkan Nomor Target : ${DIM}$hint${NC}"
