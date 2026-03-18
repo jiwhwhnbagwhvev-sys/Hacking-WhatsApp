@@ -149,30 +149,41 @@ logo
 echo -e "${CYAN}SPAM CALL WHATSAPP - FITUR 1${NC}"
 echo ""
 
-# ===============================
-# INPUT + ANIMASI CONTOH
-# ===============================
-
-echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
+# warna
+WHITE='\033[1;37m'
+DIM='\033[2;37m'
+GREEN='\033[1;32m'
+NC='\033[0m'
 
 hint="812xxxxxxxxxx"
+input=""
 
-# tampil satu per satu
-for ((i=0; i<${#hint}; i++)); do
-    echo -ne "${WHITE}${hint:$i:1}"
-    sleep 0.05
+echo -ne "${WHITE}Masukkan Nomor Target : ${DIM}$hint${NC}"
+
+while IFS= read -rsn1 char; do
+    # ENTER = selesai
+    if [[ $char == "" ]]; then
+        break
+    fi
+
+    # BACKSPACE (ASCII 127)
+    if [[ $char == $'\x7f' ]]; then
+        input="${input%?}"
+    else
+        # hanya angka
+        if [[ $char =~ [0-9] ]]; then
+            input+="$char"
+        fi
+    fi
+
+    # ambil sisa hint
+    sisa="${hint:${#input}}"
+
+    # render ulang baris
+    echo -ne "\r${WHITE}Masukkan Nomor Target : ${WHITE}$input${DIM}$sisa${NC} "
 done
 
-sleep 0.5
-
-# hapus perlahan
-for ((i=${#hint}; i>0; i--)); do
-    echo -ne "\b \b"
-    sleep 0.03
-done
-
-# input user
-read input
+echo ""
 
 # validasi kosong
 if [[ -z "$input" ]]; then
@@ -202,7 +213,7 @@ sleep 5
 bar="□□□□□□□□□□□□□□"
 for i in {1..14}; do
 bar=$(echo "$bar" | sed 's/□/■/')
-printf "\r${YELLOW}[%s] %d%%${NC}" "$bar" "$((i*7))"
+printf "\r${WHITE}[%s] %d%%${NC}" "$bar" "$((i*7))"
 sleep 0.15
 done
 
