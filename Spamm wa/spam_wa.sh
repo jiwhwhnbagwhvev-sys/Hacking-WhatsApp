@@ -194,7 +194,7 @@ echo -e "${WHITE}Menu   : Spam Chat WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
-echo -e "${GREEN}Memulai Spam Engine...${NC}"
+echo -e "${YELLOW}Memulai Spam Engine...${NC}"
 sleep 1
 
 RED='\033[1;31m'
@@ -202,30 +202,34 @@ GREEN='\033[1;32m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
-count=1
-pos=0
-dir=1
+width=20       # panjang bar
+pos=0          # posisi awal
+dir=1          # arah gerak: 1=kanan, -1=kiri
 
 while true
 do
+    bar=""
+    
+    for ((i=0; i<width; i++)); do
+        if [ $i -eq $pos ]; then
+            # panah > tetap putih
+            bar="${bar}${WHITE}>${NC}"
+        else
+            # isi bar sesuai arah
+            if [ $dir -eq 1 ]; then
+                bar="${bar}${GREEN}-${NC}"
+            else
+                bar="${bar}${RED}-${NC}"
+            fi
+        fi
+    done
 
-# panjang bar
-width=20
+    echo -ne "\r[<${bar}>] Target:${GREEN} $nomor ${NC}"
 
-# bikin spasi kiri kanan
-left=$(printf "%*s" $pos "")
-right=$(printf "%*s" $((width-pos)) "")
+    sleep 0.05
 
-echo -ne "\r${WHITE}[${count}] ${RED}<${left}${GREEN}>${right}${RED}>${WHITE} Target:${GREEN} $nomor ${NC}"
-
-sleep 0.05
-
-# gerak bolak balik
-pos=$((pos + dir))
-if [ $pos -eq $width ] || [ $pos -eq 0 ]; then
-    dir=$((dir * -1))
-fi
-
-count=$((count+1))
-
+    pos=$((pos + dir))
+    if [ $pos -eq $((width-1)) ] || [ $pos -eq 0 ]; then
+        dir=$((dir * -1))
+    fi
 done
