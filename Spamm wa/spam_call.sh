@@ -149,7 +149,29 @@ logo
 echo -e "${CYAN}SPAM CALL WHATSAPP - FITUR 1${NC}"
 echo ""
 
+# ===============================
+# INPUT + ANIMASI CONTOH
+# ===============================
+
 echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
+
+hint="812xxxxxxxxxx"
+
+# tampil satu per satu
+for ((i=0; i<${#hint}; i++)); do
+    echo -ne "${WHITE}${hint:$i:1}"
+    sleep 0.05
+done
+
+sleep 0.5
+
+# hapus perlahan
+for ((i=${#hint}; i>0; i--)); do
+    echo -ne "\b \b"
+    sleep 0.03
+done
+
+# input user
 read input
 
 # validasi kosong
@@ -204,6 +226,19 @@ logo
 echo -e "${WHITE}Menu   : Spamm Call WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
+
+# ===============================
+# INFO TAMBAHAN (INI YANG DITAMBAH)
+# ===============================
+
+operator=$(deteksi_operator "$nomor")
+
+echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
+echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
+echo ""
+
+# ===============================
 
 echo -e "${YELLOW}Memulai Spam Engine...${NC}"
 sleep 1
