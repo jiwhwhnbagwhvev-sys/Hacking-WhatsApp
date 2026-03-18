@@ -199,10 +199,6 @@ exit
 fi
 
 echo ""
-echo -e "${CYAN}Menghubungkan ke server...${NC}"
-sleep 20
-
-echo ""
 echo -e "${CYAN}Mendeteksi operator nomor...${NC}"
 sleep 10
 
