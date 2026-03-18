@@ -261,11 +261,11 @@ lokasi="$(TZ=Asia/Jakarta date +"%Z")"
 
 operator="$(deteksi_operator "$nomor")"
 
-echo -e "${RED}•${WHITE} Carrier   : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} Carrier   : ${YELLOW}$operator${NC}"
 echo -e "${RED}•${WHITE} Device    : ${GREEN}$brand $device${NC}"
 echo -e "${RED}•${WHITE} Android   : ${GREEN}$android${NC}"
 echo -e "${RED}•${WHITE} Region    : ${GREEN}$lokasi${NC}"
-echo -e "${RED}•${WHITE} Waktu     : ${GREEN}$salam${NC}"
+echo -e "${RED}•${WHITE} Waktu     : ${YELLOW}$salam${NC}"
 echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
 echo -e "${RED}•${WHITE} psn admin : ${YELLOW}Tunggu 5-10 menit ya ka baru masuk spamm nya ${RED}:v${NC}"
 echo -e "${RED}•${WHITE} note      : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
