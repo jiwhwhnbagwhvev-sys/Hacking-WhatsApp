@@ -298,4 +298,4 @@ do
         done
         dir=$((dir * -1))
     fi
-done       
+done
