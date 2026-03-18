@@ -192,12 +192,6 @@ echo ""
 echo -e "${CYAN}Menghubungkan ke server...${NC}"
 sleep 20
 
-# validasi kosong
-if [[ -z "$input" ]]; then
-echo -e "${RED}Nomor tidak boleh kosong!${NC}"
-exit
-fi
-
 echo ""
 echo -e "${CYAN}Mendeteksi operator nomor...${NC}"
 sleep 10
