@@ -309,9 +309,9 @@ do
         for ((b=0; b<blink_count; b++)); do
             echo -ne "\r${WHITE}[${bar}] Target:${GREEN} $nomor ${NC}"
             sleep 0.1
-            TEXT="Menu Spam Chat Fitur 2 | Target:$nomor"
+            echo -ne "\r${WHITE}[${bar}] Target:${NC} $nomor "
             sleep 0.1
         done
         dir=$((dir * -1))
     fi
-done             
+done       
