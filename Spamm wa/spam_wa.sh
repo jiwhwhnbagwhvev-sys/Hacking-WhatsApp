@@ -140,7 +140,7 @@ echo "Smartfren"
 echo "Operator tidak diketahui"
 ;;
 esac
-echo -e "${RED}Warning: gunakan dengan bijak${NC}"
+
 }
 
 logo
@@ -171,6 +171,26 @@ done
 
 # input user
 read input
+
+# ===============================
+# WAJIB TAMBAH INI 🔥 (FIX NOMOR)
+# ===============================
+
+nomor="$input"
+
+nomor=$(echo "$nomor" | tr -d ' ')
+
+if [[ $nomor == +62* ]]; then
+    nomor="0${nomor:3}"
+fi
+
+if [[ $nomor != 0* ]]; then
+    nomor="0$nomor"
+fi
+
+echo ""
+echo -e "${CYAN}Menghubungkan ke server...${NC}"
+sleep 20
 
 # validasi kosong
 if [[ -z "$input" ]]; then
@@ -235,14 +255,6 @@ echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
 echo ""
 
 # ===============================
-
-echo -e "${GREEN}Memulai Spam Engine...${NC}"
-sleep 1
-
-# loop tidak habis
-count=1
-while true
-do
 
 echo -e "${YELLOW}Memulai Spam Engine...${NC}"
 sleep 1
