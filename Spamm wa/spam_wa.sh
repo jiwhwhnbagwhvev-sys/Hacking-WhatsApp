@@ -210,3 +210,92 @@ echo -e "${GREEN}Operator : $operator${NC}"
 echo -e "${YELLOW}$salam${NC}"
 echo ""
 sleep 5
+
+# progress bar
+bar="□□□□□□□□□□□□□□"
+for i in {1..14}; do
+bar=$(echo "$bar" | sed 's/□/■/')
+printf "\r${WHITE}[%s] %d%%${NC}" "$bar" "$((i*7))"
+sleep 0.15
+done
+
+echo ""
+sleep 1
+
+# pesan WhatsApp RAPAT TANPA JARAK
+TEXT="Menu Spamm Call Fitur 1 | Nomor Target: $nomor | Status: Aktif ✓"
+
+ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
+
+echo -e "${CYAN}Membuka WhatsApp Admin...${NC}"
+
+am start -a android.intent.action.VIEW \
+-d "https://wa.me/$ADMIN?text=$ENCODE"
+
+sleep 6
+
+logo
+
+echo -e "${WHITE}Menu   : Spamm Call WhatsApp${NC}"
+echo -e "${WHITE}Target : $nomor${NC}"
+echo ""
+
+# ===============================
+# INFO TAMBAHAN (INI YANG DITAMBAH)
+# ===============================
+
+operator=$(deteksi_operator "$nomor")
+
+echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} Waktu : ${GREEN}$salam${NC}"
+echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
+echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
+echo ""
+
+# ===============================
+
+echo -e "${YELLOW}Memulai Spam Engine...${NC}"
+sleep 1
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+width=20
+pos=0
+dir=1
+blink_count=3   # jumlah kedap-kedip
+
+while true
+do
+    # buat bar biasa
+    bar=""
+    for ((i=0; i<width; i++)); do
+        if [ $i -eq $pos ]; then
+            if [ $dir -eq 1 ]; then
+                bar="${bar}${GREEN}>${NC}"
+            else
+                bar="${bar}${RED}<${NC}"
+            fi
+        else
+            bar="${bar}-"
+        fi
+    done
+
+    echo -ne "\r${WHITE}[${bar}] Target:${GREEN} $nomor ${NC}"
+    sleep 0.05
+
+    # update posisi
+    pos=$((pos + dir))
+    if [ $pos -eq $((width-1)) ] || [ $pos -eq 0 ]; then
+        # bolak-balik selesai, kasih kedap-kedip
+        for ((b=0; b<blink_count; b++)); do
+            echo -ne "\r${WHITE}[${bar}] Target:${GREEN} $nomor ${NC}"
+            sleep 0.1
+            echo -ne "\r${WHITE}[${bar}] Target:${NC} $nomor "
+            sleep 0.1
+        done
+        dir=$((dir * -1))
+    fi
+done
