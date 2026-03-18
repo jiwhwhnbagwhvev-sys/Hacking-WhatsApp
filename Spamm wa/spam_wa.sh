@@ -232,6 +232,7 @@ echo ""
 operator=$(deteksi_operator "$nomor")
 
 echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} Waktu : ${GREEN}$salam${NC}"
 echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
 echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
 echo ""
