@@ -61,7 +61,7 @@ echo -e "${RED}=================================================================
 
 echo -e "${YELLOW}* Creator        : Rio${NC}"
 echo -e "${YELLOW}* YouTube        : Pecinta hpkentang${NC}"
-echo -e "${YELLOW}* Version        : 4.0 Extended${NC}"
+echo -e "${YELLOW}* Version        : 5.0 Extended${NC}"
 echo -e "${YELLOW}* Build          : Stable Release${NC}"
 echo -e "${YELLOW}* Core Engine    : WhatsApp tolls Engine${NC}"
 echo -e "${YELLOW}* Security Mode  : Active${NC}"
