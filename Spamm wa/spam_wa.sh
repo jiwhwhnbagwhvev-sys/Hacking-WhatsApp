@@ -194,7 +194,7 @@ echo -e "${WHITE}Menu   : Spam Chat WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
-echo -e "${GREEN}Memulai Spam Engine...${NC}"
+echo -e "${YELLOW}Memulai Spam Engine...${NC}"
 sleep 1
 
 RED='\033[1;31m'
@@ -223,7 +223,7 @@ do
         fi
     done
 
-    echo -ne "\r${WHITE}[${bar}] Target:${GREEN} $nomor ${NC}"
+    echo -ne "\r${WHITE}[${bar}] Target:${RED} $nomor ${NC}"
     sleep 0.05
 
     # update posisi
