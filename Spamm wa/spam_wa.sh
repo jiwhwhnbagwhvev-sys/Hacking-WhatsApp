@@ -241,22 +241,6 @@ echo ""
 
 # ===============================
 
-# ===============================
-# DETEKSI WAKTU
-# ===============================
-
-jam=$(date +"%H")
-
-if [ $jam -ge 5 ] && [ $jam -lt 11 ]; then
-    salam="Selamat Pagi ☀️ Awan ceria!"
-elif [ $jam -ge 11 ] && [ $jam -lt 17 ]; then
-    salam="Selamat Siang ☀️ Matahari terang!"
-elif [ $jam -ge 18 ] && [ $jam -lt 19 ]; then
-    salam="Selamat Magrib 🌆 Waktu berbuka & ibadah!"
-else
-    salam="Selamat Malam 🌙 Bulan gelap!"
-fi
-
 echo -e "${YELLOW}Memulai Spam Engine...${NC}"
 sleep 1
 
