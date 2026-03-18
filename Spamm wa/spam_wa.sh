@@ -207,34 +207,29 @@ echo ""
 
 # ==============================
 
+# ===============================
+# INPUT + ANIMASI CONTOH
+# ===============================
+
 echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
 
 hint="812xxxxxxxxxx"
 
-# tampil full dulu
-echo -ne "${WHITE}$hint"
-sleep 0.5
-
-# efek samar dari kanan ke kiri
-for ((i=${#hint}; i>0; i--)); do
-    # bagian kiri tetap putih
-    left="${hint:0:i-1}"
-    
-    # bagian kanan jadi abu (samar)
-    right="${hint:i-1:1}"
-    
-    echo -ne "\r${WHITE}Masukkan Nomor Target : ${WHITE}$left\033[2;37m$right${NC}"
+# tampil satu per satu
+for ((i=0; i<${#hint}; i++)); do
+    echo -ne "${WHITE}${hint:$i:1}"
     sleep 0.05
 done
 
-# hapus semua pelan
+sleep 0.5
+
+# hapus perlahan
 for ((i=${#hint}; i>0; i--)); do
-    echo -ne "\r${WHITE}Masukkan Nomor Target : ${WHITE}${hint:0:i-1} ${NC}"
+    echo -ne "\b \b"
     sleep 0.03
 done
 
-# cursor siap input
-echo -ne "\r${WHITE}Masukkan Nomor Target : ${NC}"
+# input user
 read input
 
 RED='\033[1;31m'
