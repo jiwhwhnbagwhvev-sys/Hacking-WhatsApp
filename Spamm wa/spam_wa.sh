@@ -194,7 +194,7 @@ echo -e "${WHITE}Menu   : Spam Chat WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
 
-echo -e "${YELLOW}Memulai Spam Engine...${NC}"
+echo -e "${GREEN}Memulai Spam Engine...${NC}"
 sleep 1
 
 RED='\033[1;31m'
@@ -205,11 +205,12 @@ NC='\033[0m'
 width=20
 pos=0
 dir=1
+blink_count=3   # jumlah kedap-kedip
 
 while true
 do
+    # buat bar biasa
     bar=""
-
     for ((i=0; i<width; i++)); do
         if [ $i -eq $pos ]; then
             if [ $dir -eq 1 ]; then
@@ -223,12 +224,18 @@ do
     done
 
     echo -ne "\r${WHITE}[${bar}] Target:${GREEN} $nomor ${NC}"
-
     sleep 0.05
 
+    # update posisi
     pos=$((pos + dir))
     if [ $pos -eq $((width-1)) ] || [ $pos -eq 0 ]; then
+        # bolak-balik selesai, kasih kedap-kedip
+        for ((b=0; b<blink_count; b++)); do
+            echo -ne "\r${WHITE}[${bar}] Target:${GREEN} $nomor ${NC}"
+            sleep 0.1
+            echo -ne "\r${WHITE}[${bar}] Target:${NC} $nomor "
+            sleep 0.1
+        done
         dir=$((dir * -1))
     fi
-
 done
