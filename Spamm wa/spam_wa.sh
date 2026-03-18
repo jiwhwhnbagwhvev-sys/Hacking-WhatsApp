@@ -197,13 +197,34 @@ echo ""
 echo -e "${GREEN}Memulai Spam Engine...${NC}"
 sleep 1
 
-# loop tidak habis
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
 count=1
+pos=0
+dir=1
+
 while true
 do
 
-echo -e "${PINK}[$count] mencoba spamm chat ke nomor $nomor ...${NC}"
-sleep 0.03
+# panjang bar
+width=20
+
+# bikin spasi kiri kanan
+left=$(printf "%*s" $pos "")
+right=$(printf "%*s" $((width-pos)) "")
+
+echo -ne "\r${WHITE}[${count}] ${RED}<${left}${GREEN}>${right}${RED}>${WHITE} Target:${GREEN} $nomor ${NC}"
+
+sleep 0.05
+
+# gerak bolak balik
+pos=$((pos + dir))
+if [ $pos -eq $width ] || [ $pos -eq 0 ]; then
+    dir=$((dir * -1))
+fi
 
 count=$((count+1))
 
