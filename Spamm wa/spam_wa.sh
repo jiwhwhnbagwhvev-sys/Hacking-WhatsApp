@@ -154,7 +154,7 @@ echo ""
 # warna tambahan
 DIM='\033[2;37m'
 
-hint="812xxxxxxxxxx"
+hint="812xxxxxxxx"
 input=""
 
 echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
