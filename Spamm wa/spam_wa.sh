@@ -113,6 +113,8 @@ else
 fi
 
 # ===============================
+
+# ===============================
 # DETEKSI OPERATOR
 # ===============================
 
@@ -140,11 +142,13 @@ echo "Smartfren"
 echo "Operator tidak diketahui"
 ;;
 esac
-
+echo -e "${RED}Warning: gunakan dengan bijak${NC}"
 }
 
+
+
 logo
-echo -e "${RED}SPAM CHAT WHATSAPP - FITUR 2${NC}"
+echo -e "${CYAN}SPAM CHAT WHATSAPP - FITUR 2${NC}"
 echo ""
 
 # ===============================
