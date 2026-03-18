@@ -147,8 +147,39 @@ logo
 echo -e "${RED}SPAM CHAT WHATSAPP - FITUR 2${NC}"
 echo ""
 
-echo -ne "${YELLOW}Masukkan Nomor Target : ${WHITE}"
-read nomor
+# ===============================
+# INPUT NOMOR (PLACEHOLDER SAMAR)
+# ===============================
+
+# warna tambahan
+DIM='\033[2;37m'
+
+hint="812xxxxxxxxxx"
+input=""
+
+echo -ne "${WHITE}Masukkan Nomor Target : ${NC}"
+
+# tampilkan hint samar
+echo -ne "${DIM}$hint${NC}"
+
+# balik ke awal
+echo -ne "\r${WHITE}Masukkan Nomor Target : ${NC}"
+
+# input per karakter
+while IFS= read -rsn1 char; do
+    # enter = selesai
+    if [[ $char == "" ]]; then
+        break
+    fi
+
+    input+="$char"
+
+    sisa="${hint:${#input}}"
+
+    echo -ne "\r${WHITE}Masukkan Nomor Target : ${WHITE}$input${DIM}$sisa${NC}"
+done
+
+echo ""
 
 echo ""
 echo -e "${CYAN}Menghubungkan ke server...${NC}"
@@ -193,6 +224,19 @@ logo
 echo -e "${WHITE}Menu   : Spam Chat WhatsApp${NC}"
 echo -e "${WHITE}Target : $nomor${NC}"
 echo ""
+
+# ===============================
+# INFO TAMBAHAN (INI YANG DITAMBAH)
+# ===============================
+
+operator=$(deteksi_operator "$nomor")
+
+echo -e "${RED}•${WHITE} Carrier : ${GREEN}$operator${NC}"
+echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
+echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
+echo ""
+
+# ===============================
 
 echo -e "${GREEN}Memulai Spam Engine...${NC}"
 sleep 1
