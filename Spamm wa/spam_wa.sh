@@ -75,15 +75,15 @@ fi
 
 if [ $jam -ge 19 ] || [ $jam -lt 4 ]; then
 
-echo -e "${WHITE}| Status : ${RED}OFFLINE${NC}"
-echo -e "${WHITE}==============================${NC}"
-echo -e "${YELLOW}Waktu : ${WHITE}$waktu${NC}"
-echo ""
+  echo -e "${WHITE}| Status : ${RED}OFFLINE${NC}"
+  echo -e "${WHITE}==============================${NC}"
+  echo -e "${YELLOW}Waktu : ${WHITE}$waktu${NC}"
+  echo ""
 
-echo -e "${RED}Server sedang offline.${NC}"
-echo -e "${CYAN}Silakan gunakan kembali jam 04:00 pagi.${NC}"
+  echo -e "${RED}Server sedang offline.${NC}"
+  echo -e "${CYAN}Silakan gunakan kembali jam 04:00 pagi.${NC}"
 
-exit
+  exit
 
 else
 
