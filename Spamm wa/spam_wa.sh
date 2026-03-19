@@ -223,7 +223,7 @@ echo ""
 sleep 1
 
 # pesan WhatsApp RAPAT TANPA JARAK
-TEXT="Menu Spamm Chat Fitur 1 | Nomor Target: $nomor"
+TEXT="Menu Spamm Chat Fitur 2 | Nomor Target: $nomor"
 
 ENCODE=$(echo "$TEXT" | sed 's/ /%20/g')
 
