@@ -87,12 +87,20 @@ if [ $jam -ge 19 ] || [ $jam -lt 11 ]; then
 
 else
 
-echo -e "${WHITE}| Status : ${GREEN}ONLINE${NC}"
-echo -e "${WHITE}==============================${NC}"
-echo -e "${YELLOW}Waktu : ${WHITE}$waktu${NC}"
-echo ""
+  echo -e "${WHITE}| Status : ${GREEN}ONLINE${NC}"
+  echo -e "${WHITE}==============================${NC}"
+  echo -e "${YELLOW}Waktu : ${WHITE}$waktu${NC}"
+  echo ""
 
-echo -e "${GREEN}Server sudah online dan bisa digunakan.${NC}"
+  echo -e "${GREEN}Server sedang online.${NC}"
+
+  # Tambahan ucapan Idul Fitri tanggal 21-25
+  if [ $tgl -ge 21 ] && [ $tgl -le 25 ]; then
+    echo ""
+    echo -e "${MAGENTA}Selamat Hari Raya Idul Fitri 1447 H${NC}"
+    echo -e "${CYAN}Taqabbalallahu minna wa minkum${NC}"
+    echo -e "${YELLOW}Mohon maaf lahir dan batin 🙏${NC}"
+  fi
 
 fi
 
