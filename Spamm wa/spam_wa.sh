@@ -46,7 +46,7 @@ echo -e "${WHITE}==============================${NC}"
 # ===============================
 
 if [ "$bulan" = "03" ] && [ "$tanggal" -ge 21 ] && [ "$tanggal" -le 30 ]; then
-echo -e "${CYAN}🌙 Selamat Menunaikan Ibadah Puasa${NC}"
+echo -e "${CYAN}⚠ gunakan dengan bijak jangan salah gunakan ⚠${NC}"
 echo ""
 fi
 
