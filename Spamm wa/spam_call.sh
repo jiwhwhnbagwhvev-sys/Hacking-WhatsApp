@@ -255,11 +255,11 @@ echo ""
 
 operator=$(deteksi_operator "$nomor")
 
-echo -e "${RED}•${WHITE} Carrier : ${YELLOW}$operator${NC}"
-echo -e "${RED}•${WHITE} Waktu : ${YELLOW}$salam${NC}"
+echo -e "${RED}•${WHITE} Carrier   : ${YELLOW}$operator${NC}"
+echo -e "${RED}•${WHITE} Waktu     : ${YELLOW}$salam${NC}"
 echo -e "${RED}•${WHITE} psn admin : ${RED}jangan pakai lebih dari 1 sesi ${YELLOW}:v${NC}"
 echo -e "${RED}•${WHITE} psn admin : ${YELLOW}Tunggu 5-10 menit ya ka baru masuk spamm nya ${RED}:v${NC}"
-echo -e "${RED}•${WHITE} note : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
+echo -e "${RED}•${WHITE} note      : ${RED}Exit ${YELLOW}--> ${RED}Ctrl z${NC}"
 echo ""
 
 # ===============================
