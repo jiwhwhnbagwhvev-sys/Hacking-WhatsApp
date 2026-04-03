@@ -72,8 +72,7 @@ echo -e "${YELLOW}Mohon Maaf Lahir dan Batin${NC}"
 echo ""
 fi
 
-
-if [ $jam -ge 19 ] || [ $jam -lt 11 ]; then
+if [ $jam -ge 20 ] || [ $jam -lt 15 ]; then
 
   echo -e "${WHITE}| Status : ${RED}OFFLINE${NC}"
   echo -e "${WHITE}==============================${NC}"
@@ -81,9 +80,10 @@ if [ $jam -ge 19 ] || [ $jam -lt 11 ]; then
   echo ""
 
   echo -e "${RED}Server sedang offline.${NC}"
-  echo -e "${CYAN}Silakan gunakan kembali jam 11:00 siang.${NC}"
+  echo -e "${CYAN}Silakan gunakan kembali jam 15:00.${NC}"
 
   exit
+fi 
 
 else
 
