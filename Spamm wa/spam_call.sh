@@ -23,7 +23,7 @@ echo "                     (   \"   )                  "
 echo "                      \~(*)~/                   "
 echo "                       - ^ -                    "
 echo ""
-echo "             Spamm WhatsApp Call v5.0            "
+echo "             Spamm WhatsApp Call v6.0            "
 echo -e "${NC}"
 }
 
