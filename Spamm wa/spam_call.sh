@@ -67,10 +67,14 @@ fi
 # ===============================
 
 if { [ "$bulan" = "03" ] && [ "$tanggal" = "31" ]; } || { [ "$bulan" = "04" ] && [ "$tanggal" = "01" ]; }; then
-echo -e "${YELLOW}✨ Selamat Hari Raya Idul Fitri${NC}"
-echo -e "${YELLOW}Mohon Maaf Lahir dan Batin${NC}"
-echo ""
+  echo -e "${YELLOW}✨ Selamat Hari Raya Idul Fitri${NC}"
+  echo -e "${YELLOW}Mohon Maaf Lahir dan Batin${NC}"
+  echo ""
 fi
+
+# ===============================
+# STATUS SERVER
+# ===============================
 
 if [ $jam -ge 20 ] || [ $jam -lt 15 ]; then
 
@@ -83,7 +87,6 @@ if [ $jam -ge 20 ] || [ $jam -lt 15 ]; then
   echo -e "${CYAN}Silakan gunakan kembali jam 15:00.${NC}"
 
   exit
-fi 
 
 else
 
