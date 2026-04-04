@@ -111,64 +111,7 @@ Selamat datang di PRIVATE POLICE v4.0. Sebelum melanjutkan, harap baca hal-hal b
  Pastikan semua langkah keamanan dijalankan sebelum memulai.
  Software ini hanya untuk edukasi dan pengawasan legal.
  Perhatikan setiap detail saat menjalankan software.
- Jangan mengambil risiko yang tidak perlu.
- Setiap penggunaan ilegal menjadi tanggung jawab pengguna.
- Gunakan teknologi dengan bijak dan sadar konsekuensi.
- Hormati etika digital dalam setiap tindakan.
- Selalu cadangkan data penting sebelum penggunaan.
- Jangan mengubah atau memodifikasi software tanpa izin.
- Gunakan software sesuai panduan resmi.
- Setiap pengguna harus menyadari dampak dari keputusan.
- Monitoring tambahan tidak menjamin keamanan mutlak.
- Selalu prioritaskan keamanan dan etika.
- Ikuti semua prosedur dengan aman dan benar.
- jangan menyalahgunakan kemampuan digital.
- perhatikan konsekuensi dari setiap tindakan.
- Selalu update pengetahuan keamanan digital.
- Hormati privasi pihak lain.
- Jangan menggunakan software untuk merugikan orang lain.
- Gunakan password yang kuat dan aman.
- Jangan berbagi akun atau kredensial.
- Selalu periksa versi software terbaru.
- Jangan jalankan software pada perangkat tidak aman.
- Simpan backup konfigurasi penting.
- Jangan mencoba menembus sistem lain.
- Gunakan software hanya untuk tujuan yang sah.
- Patuhi standar keamanan yang berlaku.
- Jangan mengunduh software dari sumber tidak resmi.
- Pelajari dokumentasi sebelum penggunaan.
- Hindari menjalankan software di jaringan publik tanpa keamanan.
- Pastikan firewall dan antivirus aktif.
- Jangan membocorkan informasi internal.
- Periksa izin akses software.
- Gunakan jaringan VPN jika memungkinkan.
- Jangan menggunakan software untuk spam.
- Jangan memalsukan data atau logs.
- Selalu matikan software jika terjadi masalah.
- Jangan menambahkan modul yang tidak resmi.
- Gunakan software sesuai lisensi.
- Jangan berbagi software ilegal.
- Pahami risiko penggunaan software pihak ketiga.
- Jangan menghapus log penting.
- Selalu pantau aktivitas software.
- Jangan melakukan brute force atau hacking.
- Pastikan semua perangkat terupdate.
- Gunakan enkripsi jika perlu.
- Jangan menyebar malware.
- Selalu baca pesan peringatan.
- Jangan mengubah file konfigurasi utama tanpa izin.
- Jangan menjalankan skrip yang tidak dikenal.
- Periksa dependensi software sebelum eksekusi.
- Jangan menyalahgunakan fitur debug.
- Backup semua data secara berkala.
- Jangan mengabaikan error yang muncul.
- Gunakan software sesuai kebutuhan.
- Users are strictly prohibited from deleting any critical files related to the system or the operation of this software. Any removal of essential files without proper understanding may result in system failure, and all consequences shall be the sole responsibility of the user.
-Users must always verify the versions of libraries and dependencies in use. Incompatibility or outdated components may lead to errors, security vulnerabilities, or unexpected system behavior.
-Running the software with root or administrative privileges is strongly discouraged unless absolutely necessary. Elevated access increases security risks and may expose the system to unintended damage or exploitation.
-Users are required to ensure that proper access permissions are configured at all times. Misconfigured permissions may lead to unauthorized access or misuse of the system.
-The use of this software to disrupt, harm, or interfere with other individuals, systems, or networks is strictly prohibited. Any such actions will be considered a serious violation.
-Users must routinely review security logs to detect any suspicious or unauthorized activity. Failure to monitor logs may result in delayed response to potential threats.
+ Users must routinely review security logs to detect any suspicious or unauthorized activity. Failure to monitor logs may result in delayed response to potential threats.
 Installing plugins, extensions, or third-party modules from untrusted or unofficial sources is strictly forbidden. Such components may introduce malware or security vulnerabilities into the system.
 The software must only be operated within a controlled and secure environment. Running it in unstable or unverified environments significantly increases operational risk.
 Users are strictly prohibited from publicly disclosing any discovered bugs or vulnerabilities without prior written consent from the developer. Unauthorized disclosure may compromise the security of other users.
