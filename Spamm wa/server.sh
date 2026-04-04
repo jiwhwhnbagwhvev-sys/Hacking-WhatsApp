@@ -88,106 +88,81 @@ PERINGATAN_SUPER="PERINGATAN PENTING
 
 Selamat datang di PRIVATE POLICE v4.0. Sebelum melanjutkan, harap baca hal-hal berikut dengan seksama:
 
-1. Gunakan software ini hanya untuk tujuan yang sah dan sesuai hukum.
-2. Setiap tindakan yang merugikan pihak lain menjadi tanggung jawab penuh pengguna.
-3. Dilarang melakukan reverse engineering, cracking, deobfuscation, atau eksploitasi software.
-4. Developer tidak bertanggung jawab atas kerusakan perangkat atau kehilangan data.
-5. Hormati hak kekayaan intelektual dan aturan developer.
-6. Jangan menyalahgunakan software untuk kegiatan ilegal.
-7. Selalu perhatikan keamanan perangkat dan data pribadi.
-8. Dengan melanjutkan, Anda menyetujui semua aturan di atas.
-9. Peringatan ini akan muncul setiap kali program dijalankan.
-10. Gunakan software dengan bijak.
-11. Selalu update software agar tetap aman.
-12. Periksa integritas perangkat sebelum menjalankan software.
-13. Hindari penggunaan yang merusak sistem atau jaringan.
-14. Ikuti panduan resmi developer.
-15. Patuhi hukum dan aturan digital di wilayah Anda.
-16. Jangan mendistribusikan software tanpa izin.
-17. Gunakan software hanya untuk tujuan positif.
-18. Selalu periksa keamanan jaringan dan perangkat keras.
-19. Hormati hak pihak lain saat menggunakan software.
-20. Jangan menyalahi ketentuan penggunaan.
-21. Pastikan semua langkah keamanan dijalankan sebelum memulai.
-22. Software ini hanya untuk edukasi dan pengawasan legal.
-23. Perhatikan setiap detail saat menjalankan software.
-24. Jangan mengambil risiko yang tidak perlu.
-25. Setiap penggunaan ilegal menjadi tanggung jawab pengguna.
-26. Gunakan teknologi dengan bijak dan sadar konsekuensi.
-27. Hormati etika digital dalam setiap tindakan.
-28. Selalu cadangkan data penting sebelum penggunaan.
-29. Jangan mengubah atau memodifikasi software tanpa izin.
-30. Gunakan software sesuai panduan resmi.
-31. Setiap pengguna harus menyadari dampak dari keputusan.
-32. Monitoring tambahan tidak menjamin keamanan mutlak.
-33. Selalu prioritaskan keamanan dan etika.
-34. Ikuti semua prosedur dengan aman dan benar.
-35. Jangan menyalahgunakan kemampuan digital.
-36. Perhatikan konsekuensi dari setiap tindakan.
-37. Selalu update pengetahuan keamanan digital.
-38. Hormati privasi pihak lain.
-39. Jangan menggunakan software untuk merugikan orang lain.
-40. Gunakan password yang kuat dan aman.
-41. Jangan berbagi akun atau kredensial.
-42. Selalu periksa versi software terbaru.
-43. Jangan jalankan software pada perangkat tidak aman.
-44. Simpan backup konfigurasi penting.
-45. Jangan mencoba menembus sistem lain.
-46. Gunakan software hanya untuk tujuan yang sah.
-47. Patuhi standar keamanan yang berlaku.
-48. Jangan mengunduh software dari sumber tidak resmi.
-49. Pelajari dokumentasi sebelum penggunaan.
-50. Hindari menjalankan software di jaringan publik tanpa keamanan.
-51. Pastikan firewall dan antivirus aktif.
-52. Jangan membocorkan informasi internal.
-53. Periksa izin akses software.
-54. Gunakan jaringan VPN jika memungkinkan.
-55. Jangan menggunakan software untuk spam.
-56. Jangan memalsukan data atau logs.
-57. Selalu matikan software jika terjadi masalah.
-58. Jangan menambahkan modul yang tidak resmi.
-59. Gunakan software sesuai lisensi.
-60. Jangan berbagi software ilegal.
-61. Pahami risiko penggunaan software pihak ketiga.
-62. Jangan menghapus log penting.
-63. Selalu pantau aktivitas software.
-64. Jangan melakukan brute force atau hacking.
-65. Pastikan semua perangkat terupdate.
-66. Gunakan enkripsi jika perlu.
-67. Jangan menyebar malware.
-68. Selalu baca pesan peringatan.
-69. Jangan mengubah file konfigurasi utama tanpa izin.
-70. Jangan menjalankan skrip yang tidak dikenal.
-71. Periksa dependensi software sebelum eksekusi.
-72. Jangan menyalahgunakan fitur debug.
-73. Backup semua data secara berkala.
-74. Jangan mengabaikan error yang muncul.
-75. Gunakan software sesuai kebutuhan.
-76. Jangan menghapus file penting.
-77. Selalu cek versi library.
-78. Jangan menjalankan software di root jika tidak perlu.
-79. Selalu cek hak akses.
-80. Jangan menggunakan software untuk mengganggu pihak lain.
-81. Periksa log keamanan secara rutin.
-82. Jangan menginstal plugin pihak ketiga yang tidak aman.
-83. Gunakan software pada environment terkontrol.
-84. Jangan membocorkan bug publik tanpa izin developer.
-85. Gunakan software dengan tanggung jawab penuh.
-86. Jangan mencoba bypass keamanan software.
-87. Ikuti semua protokol keamanan.
-88. Jangan menginstal di sistem yang terinfeksi malware.
-89. Selalu laporkan bug ke developer.
-90. Jangan gunakan software untuk mengubah data orang lain.
-91. Pastikan software berjalan di lingkungan aman.
-92. Jangan jalankan skrip otomatis berbahaya.
-93. Gunakan software untuk tujuan edukasi atau monitoring legal.
-94. Jangan mengubah license software.
-95. Pastikan konfigurasi default aman.
-96. Jangan menyebarkan tools hacking bersama software.
-97. Selalu dokumentasikan penggunaan software.
-98. Jangan gunakan software di sistem publik tanpa izin.
-99. Gunakan password kuat dan unik.
-100. Dengan menyetujui, Anda siap menerima semua tanggung jawab."
+ Gunakan software ini hanya untuk tujuan yang sah dan sesuai hukum.
+ Setiap tindakan yang merugikan pihak lain menjadi tanggung jawab penuh pengguna.
+ Dilarang melakukan reverse engineering, cracking, deobfuscation, atau eksploitasi software.
+ Developer tidak bertanggung jawab atas kerusakan perangkat atau kehilangan data. 
+ Hormati hak kekayaan intelektual dan aturan developer.
+ Jangan menyalahgunakan software untuk kegiatan ilegal.
+ Selalu perhatikan keamanan perangkat dan data pribadi.
+ Dengan melanjutkan, Anda menyetujui semua aturan di atas.
+ Peringatan ini akan muncul setiap kali program dijalankan.
+ Gunakan software dengan bijak.
+ Selalu update software agar tetap aman.
+ Periksa integritas perangkat sebelum menjalankan software.
+ Hindari penggunaan yang merusak sistem atau jaringan.
+ Ikuti panduan resmi developer.
+ Patuhi hukum dan aturan digital di wilayah Anda.
+ Jangan mendistribusikan software tanpa izin.
+ Gunakan software hanya untuk tujuan positif.
+ Selalu periksa keamanan jaringan dan perangkat keras.
+ Hormati hak pihak lain saat menggunakan software.
+ Jangan menyalahi ketentuan penggunaan.
+ Pastikan semua langkah keamanan dijalankan sebelum memulai.
+ Software ini hanya untuk edukasi dan pengawasan legal.
+ Perhatikan setiap detail saat menjalankan software.
+ Jangan mengambil risiko yang tidak perlu.
+ Setiap penggunaan ilegal menjadi tanggung jawab pengguna.
+ Gunakan teknologi dengan bijak dan sadar konsekuensi.
+ Hormati etika digital dalam setiap tindakan.
+ Selalu cadangkan data penting sebelum penggunaan.
+ Jangan mengubah atau memodifikasi software tanpa izin.
+ Gunakan software sesuai panduan resmi.
+ Setiap pengguna harus menyadari dampak dari keputusan.
+ Monitoring tambahan tidak menjamin keamanan mutlak.
+ Selalu prioritaskan keamanan dan etika.
+ Ikuti semua prosedur dengan aman dan benar.
+ jangan menyalahgunakan kemampuan digital.
+ perhatikan konsekuensi dari setiap tindakan.
+ Selalu update pengetahuan keamanan digital.
+ Hormati privasi pihak lain.
+ Jangan menggunakan software untuk merugikan orang lain.
+ Gunakan password yang kuat dan aman.
+ Jangan berbagi akun atau kredensial.
+ Selalu periksa versi software terbaru.
+ Jangan jalankan software pada perangkat tidak aman.
+ Simpan backup konfigurasi penting.
+ Jangan mencoba menembus sistem lain.
+ Gunakan software hanya untuk tujuan yang sah.
+ Patuhi standar keamanan yang berlaku.
+ Jangan mengunduh software dari sumber tidak resmi.
+ Pelajari dokumentasi sebelum penggunaan.
+ Hindari menjalankan software di jaringan publik tanpa keamanan.
+ Pastikan firewall dan antivirus aktif.
+ Jangan membocorkan informasi internal.
+ Periksa izin akses software.
+ Gunakan jaringan VPN jika memungkinkan.
+ Jangan menggunakan software untuk spam.
+ Jangan memalsukan data atau logs.
+ Selalu matikan software jika terjadi masalah.
+ Jangan menambahkan modul yang tidak resmi.
+ Gunakan software sesuai lisensi.
+ Jangan berbagi software ilegal.
+ Pahami risiko penggunaan software pihak ketiga.
+ Jangan menghapus log penting.
+ Selalu pantau aktivitas software.
+ Jangan melakukan brute force atau hacking.
+ Pastikan semua perangkat terupdate.
+ Gunakan enkripsi jika perlu.
+ Jangan menyebar malware.
+ Selalu baca pesan peringatan.
+ Jangan mengubah file konfigurasi utama tanpa izin.
+ Jangan menjalankan skrip yang tidak dikenal.
+ Periksa dependensi software sebelum eksekusi.
+ Jangan menyalahgunakan fitur debug.
+ Backup semua data secara berkala.
+ Jangan mengabaikan error yang muncul.
+ Gunakan software sesuai kebutuhan.
 
 
 # Fungsi efek ketik super cepat
