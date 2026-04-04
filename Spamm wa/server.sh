@@ -187,10 +187,8 @@ Users are strictly prohibited from distributing, bundling, or associating this s
 All usage activities should be properly documented for auditing, tracking, and accountability purposes.
 The software must not be used on public systems, shared devices, or unsecured networks without explicit authorization and adequate security measures.
 Users must implement strong, unique, and secure passwords for all accounts and access points مرتبط with this software. Reusing passwords across multiple services is strongly discouraged.
-By using this software, users acknowledge and agree to assume full responsibility for all actions, risks, and consequences arising from its use, including but not limited to technical failures, data loss, and legal liabilitie
+By using this software, users acknowledge and agree to assume full responsibility for all actions, risks, and consequences arising from its use, including but not limited to technical failures, data loss, and legal liabilitie"
  
-
-
 # Fungsi efek ketik super cepat
 type_writer_super() {
     TEXT="$1"
