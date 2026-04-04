@@ -77,6 +77,72 @@ echo -e "\e[34mv4.0\e[0m"
 sleep 40
 
 # ==============================
+# PERINGATAN DENGAN EFEK
+# ==============================
+
+clear
+tput civis  # sembunyikan cursor
+
+# Teks peringatan panjang
+PERINGATAN="⚠️ PERINGATAN ⚠️
+Gunakan software ini dengan bijak.
+Segala akibat dari penyalahgunaan menjadi tanggung jawab pengguna.
+Jangan melakukan crack, reverse, atau eksploitasi.
+Patuhi aturan developer untuk keamanan dan kenyamanan semua pihak."
+
+# Fungsi untuk menampilkan teks satu per satu dengan suara ketik
+type_writer() {
+    TEXT="$1"
+    for ((i=0; i<${#TEXT}; i++)); do
+        echo -n "${TEXT:$i:1}"
+        printf "\a"  # bunyi 'beep' (tergantung terminal)
+        sleep 0.05  # jeda per karakter
+    done
+    echo ""
+}
+
+# Menampilkan teks peringatan
+echo ""
+for LINE in $(echo "$PERINGATAN" | sed 's/\\n/ /g'); do
+    type_writer "$LINE"
+done
+
+# ==============================
+# TABEL PERINGKAT MELAYANG
+# ==============================
+
+# Fungsi untuk menampilkan tabel di tengah layar
+show_table() {
+    clear
+    ROWS=$(tput lines)
+    COLS=$(tput cols)
+    
+    TABLE=(
+        "┌───────────────┐"
+        "│   RANKING TOP │"
+        "├───────────────┤"
+        "│ 1. Admin      │"
+        "│ 2. User1      │"
+        "│ 3. User2      │"
+        "│ 4. Guest      │"
+        "└───────────────┘"
+    )
+
+    START_ROW=$((ROWS/2 - ${#TABLE[@]}/2))
+    for i in "${!TABLE[@]}"; do
+        tput cup $((START_ROW + i)) $(( (COLS - ${#TABLE[$i]}) / 2 ))
+        echo "${TABLE[$i]}"
+    done
+}
+
+# Tampilkan tabel 5 detik
+show_table
+sleep 5
+
+tput cnorm  # tampilkan cursor kembali
+clear
+
+# ==============================
 # LANJUT KE SCRIPT UTAMA
 # ==============================
 
