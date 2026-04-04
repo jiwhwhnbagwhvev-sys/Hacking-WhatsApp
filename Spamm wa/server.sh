@@ -163,6 +163,32 @@ Selamat datang di PRIVATE POLICE v4.0. Sebelum melanjutkan, harap baca hal-hal b
  Backup semua data secara berkala.
  Jangan mengabaikan error yang muncul.
  Gunakan software sesuai kebutuhan.
+ Users are strictly prohibited from deleting any critical files related to the system or the operation of this software. Any removal of essential files without proper understanding may result in system failure, and all consequences shall be the sole responsibility of the user.
+Users must always verify the versions of libraries and dependencies in use. Incompatibility or outdated components may lead to errors, security vulnerabilities, or unexpected system behavior.
+Running the software with root or administrative privileges is strongly discouraged unless absolutely necessary. Elevated access increases security risks and may expose the system to unintended damage or exploitation.
+Users are required to ensure that proper access permissions are configured at all times. Misconfigured permissions may lead to unauthorized access or misuse of the system.
+The use of this software to disrupt, harm, or interfere with other individuals, systems, or networks is strictly prohibited. Any such actions will be considered a serious violation.
+Users must routinely review security logs to detect any suspicious or unauthorized activity. Failure to monitor logs may result in delayed response to potential threats.
+Installing plugins, extensions, or third-party modules from untrusted or unofficial sources is strictly forbidden. Such components may introduce malware or security vulnerabilities into the system.
+The software must only be operated within a controlled and secure environment. Running it in unstable or unverified environments significantly increases operational risk.
+Users are strictly prohibited from publicly disclosing any discovered bugs or vulnerabilities without prior written consent from the developer. Unauthorized disclosure may compromise the security of other users.
+All usage of the software must be conducted with full responsibility. Users acknowledge that any consequences arising from its use are entirely their own responsibility.
+Any attempt to bypass, disable, or manipulate the software’s security mechanisms is strictly prohibited and may result in legal action.
+Users must comply with all established security protocols. Failure to adhere to these protocols may lead to system compromise or operational failure.
+The software must not be installed or executed on systems that are infected with malware or known to be vulnerable. Doing so may worsen system integrity and increase security risks.
+Any bugs or system issues discovered must be reported directly to the developer through official channels. Exploiting such issues for personal gain is strictly prohibited.
+Users are not permitted to access, modify, or manipulate data belonging to others without proper authorization. Such actions are illegal and violate digital ethics.
+The software must always be operated in a secure and stable environment that meets acceptable security standards. Unsafe environments may result in data breaches or system failure.
+Executing unknown, unverified, or potentially harmful automated scripts is strictly prohibited. Such scripts may compromise system integrity or enable unauthorized access.
+This software is intended strictly for legal, educational, and authorized monitoring purposes. Any use beyond these boundaries will be considered a violation.
+Users are not allowed to alter, remove, or tamper with the software license under any circumstances. The license is a legally binding component protecting the developer’s rights.
+Default configurations must be reviewed to ensure they meet proper security standards before use. Improper configuration may introduce vulnerabilities.
+Users are strictly prohibited from distributing, bundling, or associating this software with hacking tools, malware, or any form of illegal software.
+All usage activities should be properly documented for auditing, tracking, and accountability purposes.
+The software must not be used on public systems, shared devices, or unsecured networks without explicit authorization and adequate security measures.
+Users must implement strong, unique, and secure passwords for all accounts and access points مرتبط with this software. Reusing passwords across multiple services is strongly discouraged.
+By using this software, users acknowledge and agree to assume full responsibility for all actions, risks, and consequences arising from its use, including but not limited to technical failures, data loss, and legal liabilitie
+ 
 
 
 # Fungsi efek ketik super cepat
