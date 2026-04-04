@@ -76,7 +76,7 @@ fi
 # STATUS SERVER
 # ===============================
 
-if [ $jam -ge 20 ] || [ $jam -lt 15 ]; then
+if [ "$jam" -ge 20 ] || [ "$jam" -lt 16 ]; then
 
   echo -e "${WHITE}| Status : ${RED}OFFLINE${NC}"
   echo -e "${WHITE}==============================${NC}"
@@ -84,7 +84,7 @@ if [ $jam -ge 20 ] || [ $jam -lt 15 ]; then
   echo ""
 
   echo -e "${RED}Server sedang offline.${NC}"
-  echo -e "${CYAN}Silakan gunakan kembali jam 15:00.${NC}"
+  echo -e "${CYAN}Silakan gunakan kembali jam 16:00.${NC}"
 
   exit
 
@@ -98,7 +98,7 @@ else
   echo -e "${GREEN}Server sedang online.${NC}"
 
   # Tambahan ucapan Idul Fitri tanggal 21-25
-  if [ $tgl -ge 21 ] && [ $tgl -le 25 ]; then
+  if [ "$tgl" -ge 21 ] && [ "$tgl" -le 25 ]; then
     echo ""
     echo -e "${MAGENTA}Selamat Hari Raya Idul Fitri 1447 H${NC}"
     echo -e "${CYAN}Taqabbalallahu minna wa minkum${NC}"
@@ -106,7 +106,6 @@ else
   fi
 
 fi
-
 # ===============================
 # DETEKSI WAKTU
 # ===============================
