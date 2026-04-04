@@ -48,7 +48,7 @@ chmod +x Run
 
 # cara penginstalan nya 
 
-[![Lihat Video](https://img.youtube.com/vi/UsCX01RTH78/0.jpg)](https://youtu.be/UsCX01RTH78)
+[![Lihat Video](https://img.youtube.com/vi/ZX24SgGweSM/0.jpg)](https://youtu.be/ZX24SgGweSM)
 
 # update spamm v6.0 vitur baru
 
