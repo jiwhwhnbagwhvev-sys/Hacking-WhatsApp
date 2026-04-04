@@ -77,55 +77,62 @@ echo -e "\e[34mv4.0\e[0m"
 sleep 40
 
 # ==============================
-# PERINGATAN DENGAN EFEK
+# PERINGATAN SUPER PANJANG
 # ==============================
 
 clear
 tput civis  # sembunyikan cursor
 
-# Teks peringatan panjang
-PERINGATAN="⚠️ PERINGATAN ⚠️
-Gunakan software ini dengan bijak.
-Segala akibat dari penyalahgunaan menjadi tanggung jawab pengguna.
-Jangan melakukan crack, reverse, atau eksploitasi.
-Patuhi aturan developer untuk keamanan dan kenyamanan semua pihak."
+# Teks peringatan super panjang (horizontal + vertical)
+PERINGATAN_SUPER="⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+⚠️⚠️⚠️ PERINGATAN PENTING ⚠️⚠️⚠️
+⚠️ GUNAKAN SOFTWARE INI DENGAN BIJAK. SEGALA AKIBAT PENYALAHGUNAAN MENJADI TANGGUNG JAWAB ANDA. ⚠️
+⚠️ JANGAN MELAKUKAN CRACK, REVERSE ENGINEERING, ATAU EKSPLOITASI YANG MERUGIKAN DEVELOPER ⚠️
+⚠️ PASTIKAN MEMATUHI ATURAN DAN HUKUM YANG BERLAKU ⚠️
+⚠️ KEAMANAN DAN KENYAMANAN SEMUA PIHAK ADALAH PRIORITAS ⚠️
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+⚠️⚠️⚠️ Peringatan ini muncul untuk mengingatkan anda akan tanggung jawab ⚠️⚠️
+⚠️ Gunakan software ini secara bijaksana dan hormati developer ⚠️
+⚠️ Mengabaikan peringatan ini bisa mengakibatkan kerugian dan resiko besar ⚠️
+⚠️ Jangan salahkan developer atas akibat dari kelalaian atau keserakahan ⚠️
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+⚠️ Peringatan ini akan muncul setiap kali anda menjalankan program ⚠️
+⚠️ Gunakan dengan bijak, patuhi aturan, dan hormati hak developer ⚠️
+⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️"
 
-# Fungsi untuk menampilkan teks satu per satu dengan suara ketik
-type_writer() {
+# Fungsi efek ketik super cepat
+type_writer_super() {
     TEXT="$1"
     for ((i=0; i<${#TEXT}; i++)); do
         echo -n "${TEXT:$i:1}"
-        printf "\a"  # bunyi 'beep' (tergantung terminal)
-        sleep 0.05  # jeda per karakter
+        printf "\a" 2>/dev/null  # beep kalau terminal support
+        sleep 0.01  # lebih cepat untuk teks super panjang
     done
     echo ""
 }
 
-# Menampilkan teks peringatan
+# Tampilkan teks panjang
 echo ""
-for LINE in $(echo "$PERINGATAN" | sed 's/\\n/ /g'); do
-    type_writer "$LINE"
-done
+type_writer_super "$PERINGATAN_SUPER"
 
 # ==============================
 # TABEL PERINGKAT MELAYANG
 # ==============================
 
-# Fungsi untuk menampilkan tabel di tengah layar
 show_table() {
     clear
     ROWS=$(tput lines)
     COLS=$(tput cols)
     
     TABLE=(
-        "┌───────────────┐"
-        "│   RANKING TOP │"
-        "├───────────────┤"
-        "│ 1. Admin      │"
-        "│ 2. User1      │"
-        "│ 3. User2      │"
-        "│ 4. Guest      │"
-        "└───────────────┘"
+        "┌───────────────────────────────┐"
+        "│           RANKING TOP         │"
+        "├───────────────────────────────┤"
+        "│ 1. ADMIN                       │"
+        "│ 2. USER1                       │"
+        "│ 3. USER2                       │"
+        "│ 4. GUEST                       │"
+        "└───────────────────────────────┘"
     )
 
     START_ROW=$((ROWS/2 - ${#TABLE[@]}/2))
@@ -135,9 +142,9 @@ show_table() {
     done
 }
 
-# Tampilkan tabel 5 detik
+# Tampilkan tabel 7 detik agar lebih dramatis
 show_table
-sleep 5
+sleep 7
 
 tput cnorm  # tampilkan cursor kembali
 clear
