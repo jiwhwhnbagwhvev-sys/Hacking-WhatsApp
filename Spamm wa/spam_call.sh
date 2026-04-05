@@ -12,6 +12,91 @@ WHITE='\033[1;37m'
 RED='\033[1;31m'
 NC='\033[0m'
 
+# ===============================
+# 🔒 MAINTENANCE SYSTEM (LOCK UI)
+# ===============================
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+WHITE='\033[1;37m'
+DIM='\033[2;37m'
+NC='\033[0m'
+
+TARGET_DATE="2026-07-30 00:00:00"
+
+now_sec=$(date +%s)
+target_sec=$(date -d "$TARGET_DATE" +%s)
+
+# kalau masih dikunci
+if [ $now_sec -lt $target_sec ]; then
+
+while true
+do
+clear
+
+NOW=$(date +"%Y-%m-%d %H:%M:%S")
+now_sec=$(date +%s)
+diff=$((target_sec - now_sec))
+
+days=$((diff / 86400))
+hours=$(( (diff % 86400) / 3600 ))
+minutes=$(( (diff % 3600) / 60 ))
+seconds=$(( diff % 60 ))
+
+# progress bar
+total=2592000
+passed=$((total - diff))
+[ $passed -lt 0 ] && passed=0
+
+percent=$((passed * 100 / total))
+bars=$((percent / 5))
+
+bar=""
+for ((i=0;i<20;i++)); do
+    if [ $i -lt $bars ]; then
+        bar="${bar}█"
+    else
+        bar="${bar}░"
+    fi
+done
+
+# efek kedip
+if (( $(date +%S) % 2 == 0 )); then
+banner="${RED}⚠ SYSTEM LOCKED ⚠${NC}"
+else
+banner="${DIM}⚠ SYSTEM LOCKED ⚠${NC}"
+fi
+
+echo -e "$banner"
+echo ""
+
+echo -e "${WHITE}┌────────────────────────────────────────────┐${NC}"
+echo -e "${WHITE}│           SYSTEM STATUS MONITOR            │${NC}"
+echo -e "${WHITE}├────────────────────────────────────────────┤${NC}"
+echo -e "${WHITE}│ Status   : ${RED}MAINTENANCE${WHITE}               │${NC}"
+echo -e "${WHITE}│ Access   : ${RED}BLOCKED${WHITE}                   │${NC}"
+echo -e "${WHITE}│ Time     : ${CYAN}$NOW${WHITE} │${NC}"
+echo -e "${WHITE}├────────────────────────────────────────────┤${NC}"
+echo -e "${WHITE}│ Countdown: ${YELLOW}${days}D ${hours}H ${minutes}M ${seconds}S${WHITE}        │${NC}"
+echo -e "${WHITE}├────────────────────────────────────────────┤${NC}"
+printf "${WHITE}│ Progress : ${GREEN}%-20s ${WHITE}%3d%%        │${NC}\n" "$bar" "$percent"
+echo -e "${WHITE}└────────────────────────────────────────────┘${NC}"
+
+echo ""
+echo -e "${RED}System unlock: 30 July 2026${NC}"
+
+sleep 1
+
+done
+
+fi
+
+# ===============================
+# 🔓 END MAINTENANCE
+# ===============================
+
 ADMIN="6281385998324"
 
 logo(){
