@@ -61,7 +61,7 @@ sleep $WAIT
 
 echo ""
 echo "[>] Menjalankan script...."
-sleep 2
+sleep 200
 
 # ==============================
 # HASIL (warna sesuai permintaan)
