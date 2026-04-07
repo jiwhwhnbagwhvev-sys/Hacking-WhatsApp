@@ -1,61 +1,60 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-#!/data/data/com.termux/files/usr/bin/bash
-
 # ===============================
-# LOGIN + DETEKSI TANGGAL
+# CONFIG TOKEN
 # ===============================
-# <-- KODE PERTAMA DI TEMPATKAN DI SINI
-TOKEN_VALID="BsbuebenjeueiejnBctwuwvvwwtgwbwysbbBctwunwbehwkmsooiqjnqnwhwjnwne/iwjmwiNhhwbwbnw"
+TOKEN_TRIAL="BsbuebenjeueiejnBctwuwvvwwtgwbwysbbBctwunwbehwkmsooiqjnqnwhwjnwne/iwjmwiNhhwbwbnw"
+TOKEN_PERMANEN="BsbuebenjeueiejnBctwuwvvwwtgwbwysbbBctwunwbehwkmsooiqjnqnwhwjnwne/iwjmwiNhhwbwbnwPERM"
 
 FILE_LOGIN="$HOME/.login_spam"
 FILE_TRIAL="$HOME/.trial_spam"
+STATUS_USER=""
 
+# ===============================
 # LOGIN TOKEN
-if [ -f "$FILE_LOGIN" ]; then
-    status_login="VALID"
-else
-    clear
-    echo "=============================="
-    echo "        LOGIN LICENSE"
-    echo "=============================="
-    echo ""
-    read -p "Masukkan Token: " input_token
-
-    if [ "$input_token" = "$TOKEN_VALID" ]; then
-        echo "✔ Token diterima"
-        echo "AKTIF" > "$FILE_LOGIN"
-        sleep 2
-        status_login="VALID"
-    else
-        echo "❌ Token salah!"
-        exit
-    fi
-fi
-
-# DETEKSI TANGGAL OTOMATIS
-today=$(date +"%Y-%m-%d")   # contoh: 2026-04-07
-
-if [ ! -f "$FILE_TRIAL" ]; then
-    echo "$today" > "$FILE_TRIAL"
-fi
-
-first_date=$(cat "$FILE_TRIAL")
-first_sec=$(date -d "$first_date" +%s)
-now_sec=$(date +%s)
-selisih_hari=$(( (now_sec - first_sec) / 86400 ))
-
 # ===============================
-# KODE KEDUA (STATUS VALID / EXPIRED)
-# ===============================
-# <-- KODE INI DI TEMPATKAN DI BAWAHNYA
-
-# ===============================
-# TAMPILAN STATUS PRO
-# ===============================
-
 clear
+echo "=============================="
+echo "        LOGIN LICENSE"
+echo "=============================="
+echo ""
 
+read -p "Masukkan Token: " input_token
+
+if [ "$input_token" = "$TOKEN_PERMANEN" ]; then
+    echo "✔ Token permanen diterima!"
+    STATUS_USER="PERMANEN"
+    echo "PERMANEN" > "$FILE_LOGIN"
+
+elif [ "$input_token" = "$TOKEN_TRIAL" ]; then
+    echo "✔ Token trial diterima!"
+    STATUS_USER="TRIAL"
+    echo "TRIAL" > "$FILE_LOGIN"
+
+    # simpan tanggal pertama login jika belum ada
+    if [ ! -f "$FILE_TRIAL" ]; then
+        date +"%Y-%m-%d" > "$FILE_TRIAL"
+    fi
+
+else
+    echo "❌ Token salah!"
+    exit
+fi
+
+# ===============================
+# DETEKSI TANGGAL OTOMATIS (HANYA UNTUK TRIAL)
+# ===============================
+if [ "$STATUS_USER" = "TRIAL" ]; then
+    today=$(date +"%Y-%m-%d")
+    first_date=$(cat "$FILE_TRIAL")
+    first_sec=$(date -d "$first_date" +%s)
+    now_sec=$(date +%s)
+    selisih_hari=$(( (now_sec - first_sec) / 86400 ))
+fi
+
+# ===============================
+# TAMPILAN STATUS
+# ===============================
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
@@ -63,44 +62,54 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m'
 
+clear
 echo -e "${WHITE}╔════════════════════════════════════╗"
 echo -e "║          SYSTEM LICENSE           ║"
 echo -e "╠════════════════════════════════════╣"
 
-if [ "$selisih_hari" -lt 2 ]; then
-
+if [ "$STATUS_USER" = "PERMANEN" ]; then
     echo -e "║ Status   : ${GREEN}VALID ✔${WHITE}             ║"
-    echo -e "║ Login    : ${CYAN}$status_login${WHITE}        ║"
-    echo -e "║ Hari ke  : ${YELLOW}$selisih_hari${WHITE}                ║"
-    echo -e "║ Akses    : ${CYAN}TRIAL AKTIF${WHITE}        ║"
+    echo -e "║ User     : ${CYAN}PERMANEN${WHITE}          ║"
+    echo -e "║ Hari ke  : ∞                        ║"
+    echo -e "║ Akses    : ${GREEN}FULL ACCESS${WHITE}        ║"
     echo -e "╠════════════════════════════════════╣"
     echo -e "║ System   : ${GREEN}RUNNING${WHITE}            ║"
     echo -e "╚════════════════════════════════════╝"
     echo ""
 
-else
+elif [ "$STATUS_USER" = "TRIAL" ]; then
 
-    echo -e "║ Status   : ${RED}EXPIRED ✖${WHITE}           ║"
-    echo -e "║ Login    : ${RED}INVALID${WHITE}            ║"
-    echo -e "║ Hari ke  : ${YELLOW}$selisih_hari${WHITE}                ║"
-    echo -e "║ Akses    : ${RED}DITOLAK${WHITE}            ║"
-    echo -e "╠════════════════════════════════════╣"
-    echo -e "║ System   : ${RED}STOPPED${WHITE}            ║"
-    echo -e "╚════════════════════════════════════╝"
-    echo ""
+    if [ "$selisih_hari" -lt 2 ]; then
+        echo -e "║ Status   : ${GREEN}VALID ✔${WHITE}             ║"
+        echo -e "║ User     : ${CYAN}TRIAL USER${WHITE}        ║"
+        echo -e "║ Hari ke  : ${YELLOW}$selisih_hari${WHITE}                ║"
+        echo -e "║ Akses    : ${CYAN}LIMITED ACCESS${WHITE}    ║"
+        echo -e "╠════════════════════════════════════╣"
+        echo -e "║ System   : ${GREEN}RUNNING${WHITE}            ║"
+        echo -e "╚════════════════════════════════════╝"
+        echo ""
 
-    echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "${RED}        ⚠ TOKEN EXPIRED ⚠${NC}"
-    echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo ""
-    echo -e "${YELLOW}❌ Masa aktif sudah habis"
-    echo -e "🔒 Sistem dikunci otomatis"
-    echo ""
-    echo -e "${CYAN}🔥 Beli versi PREMIUM"
-    echo -e "📲 Hubungi Admin untuk akses penuh"
-    echo ""
+    else
+        echo -e "║ Status   : ${RED}EXPIRED ✖${WHITE}           ║"
+        echo -e "║ User     : ${RED}TRIAL HABIS${WHITE}         ║"
+        echo -e "║ Hari ke  : ${YELLOW}$selisih_hari${WHITE}                ║"
+        echo -e "║ Akses    : ${RED}DITOLAK${WHITE}            ║"
+        echo -e "╠════════════════════════════════════╣"
+        echo -e "║ System   : ${RED}STOPPED${WHITE}            ║"
+        echo -e "╚════════════════════════════════════╝"
+        echo ""
 
-    exit
+        echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+        echo -e "${RED}        ⚠ LICENSE EXPIRED ⚠${NC}"
+        echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+        echo ""
+        echo -e "${YELLOW}❌ Masa aktif sudah habis"
+        echo -e "🔒 Akses dihentikan"
+        echo -e "${CYAN}🔥 Beli versi PREMIUM untuk akses penuh"
+        echo ""
+        exit
+    fi
+
 fi
 
 # ==========================================
@@ -405,7 +414,7 @@ do
     # buat bar biasa
     bar=""
     for ((i=0; i<width; i++)); do
-        if [ $i -eq $pos ]; then
+        if [ $i -eq $pos ]; hen
             if [ $dir -eq 1 ]; then
                 bar="${bar}${GREEN}>${NC}"
             else
