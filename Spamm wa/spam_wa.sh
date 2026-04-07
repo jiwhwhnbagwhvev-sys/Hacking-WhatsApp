@@ -1,5 +1,108 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ===============================
+# LOGIN + DETEKSI TANGGAL
+# ===============================
+# <-- KODE PERTAMA DI TEMPATKAN DI SINI
+TOKEN_VALID="BsbuebenjeueiejnBctwuwvvwwtgwbwysbbBctwunwbehwkmsooiqjnqnwhwjnwne/iwjmwiNhhwbwbnw"
+
+FILE_LOGIN="$HOME/.login_spam"
+FILE_TRIAL="$HOME/.trial_spam"
+
+# LOGIN TOKEN
+if [ -f "$FILE_LOGIN" ]; then
+    status_login="VALID"
+else
+    clear
+    echo "=============================="
+    echo "        LOGIN LICENSE"
+    echo "=============================="
+    echo ""
+    read -p "Masukkan Token: " input_token
+
+    if [ "$input_token" = "$TOKEN_VALID" ]; then
+        echo "✔ Token diterima"
+        echo "AKTIF" > "$FILE_LOGIN"
+        sleep 2
+        status_login="VALID"
+    else
+        echo "❌ Token salah!"
+        exit
+    fi
+fi
+
+# DETEKSI TANGGAL OTOMATIS
+today=$(date +"%Y-%m-%d")   # contoh: 2026-04-07
+
+if [ ! -f "$FILE_TRIAL" ]; then
+    echo "$today" > "$FILE_TRIAL"
+fi
+
+first_date=$(cat "$FILE_TRIAL")
+first_sec=$(date -d "$first_date" +%s)
+now_sec=$(date +%s)
+selisih_hari=$(( (now_sec - first_sec) / 86400 ))
+
+# ===============================
+# KODE KEDUA (STATUS VALID / EXPIRED)
+# ===============================
+# <-- KODE INI DI TEMPATKAN DI BAWAHNYA
+
+# ===============================
+# TAMPILAN STATUS PRO
+# ===============================
+
+clear
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+echo -e "${WHITE}╔════════════════════════════════════╗"
+echo -e "║          SYSTEM LICENSE           ║"
+echo -e "╠════════════════════════════════════╣"
+
+if [ "$selisih_hari" -lt 2 ]; then
+
+    echo -e "║ Status   : ${GREEN}VALID ✔${WHITE}             ║"
+    echo -e "║ Login    : ${CYAN}$status_login${WHITE}        ║"
+    echo -e "║ Hari ke  : ${YELLOW}$selisih_hari${WHITE}                ║"
+    echo -e "║ Akses    : ${CYAN}TRIAL AKTIF${WHITE}        ║"
+    echo -e "╠════════════════════════════════════╣"
+    echo -e "║ System   : ${GREEN}RUNNING${WHITE}            ║"
+    echo -e "╚════════════════════════════════════╝"
+    echo ""
+
+else
+
+    echo -e "║ Status   : ${RED}EXPIRED ✖${WHITE}           ║"
+    echo -e "║ Login    : ${RED}INVALID${WHITE}            ║"
+    echo -e "║ Hari ke  : ${YELLOW}$selisih_hari${WHITE}                ║"
+    echo -e "║ Akses    : ${RED}DITOLAK${WHITE}            ║"
+    echo -e "╠════════════════════════════════════╣"
+    echo -e "║ System   : ${RED}STOPPED${WHITE}            ║"
+    echo -e "╚════════════════════════════════════╝"
+    echo ""
+
+    echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo -e "${RED}        ⚠ TOKEN EXPIRED ⚠${NC}"
+    echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo ""
+    echo -e "${YELLOW}❌ Masa aktif sudah habis"
+    echo -e "🔒 Sistem dikunci otomatis"
+    echo ""
+    echo -e "${CYAN}🔥 Beli versi PREMIUM"
+    echo -e "📲 Hubungi Admin untuk akses penuh"
+    echo ""
+
+    exit
+fi
+
 # ==========================================
 # SPAM CHAT WHATSAPP
 # ==========================================
