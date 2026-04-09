@@ -5,58 +5,6 @@
 <br><br>
 
 <style>
-.glow-border {
-  width: 300px;
-  padding: 10px;
-  border-radius: 50%;
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-}
-
-/* Cahaya biru muter */
-.glow-border::before {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: conic-gradient(#00f, transparent, #00f, transparent, #00f);
-  animation: rotateGlow 4s linear infinite;
-  z-index: -1;
-  filter: blur(12px);
-}
-
-/* Gambar */
-.glow-border img {
-  width: 100%;
-  border-radius: 50%;
-  display: block;
-}
-
-/* Partikel bulat */
-.glow-border::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.8) 2px, transparent 2px);
-  background-size: 30px 30px;
-  animation: floatParticles 6s linear infinite;
-  opacity: 0.6;
-}
-
-/* Animasi */
-@keyframes rotateGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes floatParticles {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-40px); }
-}
-</style>
-
 <div class="glow-border">
   <img src="Pecinta hpkentang.jpg">
 </div>
