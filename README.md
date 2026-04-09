@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=55&duration=1500&pause=800&color=00FF00&center=true&vCenter=true&width=1000&lines=WELCOME;MYPROJEK;SPAM+WA+TOOL;Version+5.0;+YouTube+Pecinta+Hpkentang" />
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=55&duration=1500&pause=800&color=00FF00&center=true&vCenter=true&width=1000&lines=WELCOME;MYPROJEK;SPAM+WA+TOOL;Version+6.0;+YouTube+Pecinta+Hpkentang" />
 
 </div>
 
@@ -47,6 +47,10 @@ chmod +x Run
 ```
 
 # cara penginstalan nya 
+
+<p align="center">
+  <img src="Pecinta hpkentang.jpg" width="300">
+</p>
 
 [![Lihat Video](https://img.youtube.com/vi/ZX24SgGweSM/0.jpg)](https://youtu.be/ZX24SgGweSM)
 
