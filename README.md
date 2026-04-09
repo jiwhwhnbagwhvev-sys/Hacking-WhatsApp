@@ -16,6 +16,10 @@
 
 </div>
 
+# Hubungi admin
+- Hubungi admin untuk mendapatkan katasandi server nya
+- https://wa.me/6281385998324
+
 # Join saluran kami
 
 https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w
@@ -145,10 +149,6 @@ ip route dan harus ada imput ini
 - Hacking akun WhatsApp 
 - Radar kapal aktif 
 - Spamm wa
-
-# Hubungi admin
-- Hubungi admin untuk mendapatkan katasandi server nya
-- https://wa.me/6281385998324
 
 # buka kunci main.sh nya harus hubungi admin terlebih dahulu
 ```
