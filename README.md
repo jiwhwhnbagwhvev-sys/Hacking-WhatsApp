@@ -4,7 +4,9 @@
 
 </div>
 
-![Sapamm Hecker](Sapamm%20hecker%20updtate.png)
+<p align="center">
+  <img src="Pecinta hpkentang.jpg" width="300">
+</p>
 
 # 🚀Spamm Wa Tool
 
@@ -47,10 +49,6 @@ chmod +x Run
 ```
 
 # cara penginstalan nya 
-
-<p align="center">
-  <img src="Pecinta hpkentang.jpg" width="300">
-</p>
 
 [![Lihat Video](https://img.youtube.com/vi/ZX24SgGweSM/0.jpg)](https://youtu.be/ZX24SgGweSM)
 
