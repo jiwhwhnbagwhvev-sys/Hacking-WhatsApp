@@ -31,9 +31,6 @@ https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w
 ![Forks](https://img.shields.io/github/forks/username/repo)
 ![License](https://img.shields.io/github/license/username/repo)
 [![Tonton Video](https://img.youtube.com/vi/AixTElRNRDE/0.jpg)](https://youtu.be/AixTElRNRDE)
-# Tutorial installing fitur Spamm WhatsApp 
-
-[![Tonton Video YouTube](https://img.youtube.com/vi/VFf40qqesek/0.jpg)](https://youtu.be/VFf40qqesek)
 
 ## Tutor instaling Spamm call
 
