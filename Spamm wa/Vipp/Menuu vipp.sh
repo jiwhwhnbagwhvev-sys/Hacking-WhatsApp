@@ -65,11 +65,20 @@ if [ "$pilih" = "1" ]; then
     echo ""
     read -p "Masukkan Voucher : " kode
 
-    if grep -q "$kode" $VOUCHER_FILE; then
-        echo "AKSES BERHASIL!"
-        echo $DEVICE >> $VIP_FILE
-        sed -i "/$kode/d" $VOUCHER_FILE
-        sleep 2
+VALID=$(grep "^$kode|AKTIF" $VOUCHER_FILE)
+
+if [ ! -z "$VALID" ]; then
+    echo "AKSES VIP BERHASIL!"
+    
+    # simpan user
+    echo $DEVICE >> $VIP_FILE
+    
+    # ubah status jadi USED
+    sed -i "s/^$kode|AKTIF/$kode|USED/" $VOUCHER_FILE
+    
+    sleep 2
+
+    # lanjut ke menu VIP
 
         # =========================
         # MENU VIP
