@@ -40,7 +40,7 @@ read -p "[enter]"
 
 clear
 echo "[?] Melakukan setup 1"
-sleep 100
+sleep 20
 
 # ==============================
 # KOMPILASI
@@ -48,11 +48,11 @@ sleep 100
 
 clear
 echo "[?] Memulai kompilasi mohon tunggu.."
-sleep 55
+sleep 20
 
 echo ""
 echo "[$(date)] Mengecek status Mencurigakan ... (Security v14)"
-sleep 55
+sleep 20
 
 echo "[$(date)] Proses biasanya memakan waktu 1-5 menit mohon untuk bersabar demi keamanan"
 
@@ -61,7 +61,7 @@ sleep $WAIT
 
 echo ""
 echo "[>] Menjalankan script...."
-sleep 200
+sleep 20
 
 # ==============================
 # HASIL (warna sesuai permintaan)
