@@ -5,7 +5,7 @@
 # =========================
 VIP_FILE="vip_users.txt"
 DEVICE_FILE="device_lock.txt"
-VOUCHER_FILE="voucher.txt"
+VOUCHER_FILE="voucher.enc"
 
 # warna
 WHITE='\033[1;37m'
